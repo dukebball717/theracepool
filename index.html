@@ -68,25 +68,26 @@
 .odds-note span{color:#e8a020;}
 
 .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:10px;}
-.card{background:#1e1e1e;border-radius:6px;border:1px solid #2c2c2c;}
+.card{background:#1e1e1e;border-radius:6px;border:1px solid #2c2c2c;overflow:hidden;}
 .card-header{padding:7px 8px;display:flex;align-items:center;justify-content:center;gap:4px;border-bottom:1px solid #2c2c2c;background:#252525;}
 .card-header .name{font-size:17px;font-weight:900;text-transform:uppercase;letter-spacing:1px;text-align:center;}
 .wave-flag{display:inline-block;animation:wave 1.2s ease-in-out infinite;transform-origin:bottom center;}
 @keyframes wave{0%{transform:rotate(-8deg);}50%{transform:rotate(8deg);}100%{transform:rotate(-8deg);}}
 .driver-row{display:flex;align-items:center;padding:4px 8px;border-bottom:1px solid #272727;gap:5px;}
 .driver-row:last-child{border-bottom:none;}
-.car-num-svg{flex-shrink:0;width:40px;height:24px;overflow:hidden;display:block;} .car-num-img{flex-shrink:0;width:40px;height:24px;object-fit:cover;border-radius:3px;}
+.car-num-svg{flex-shrink:0;width:36px;height:22px;}
 
 /* ── MANUFACTURER LOGOS ── */
-.mfr-logo{flex-shrink:0;width:16px;height:16px;object-fit:contain;opacity:0.85;}
+/* Toyota and Ford: use <img> with Wikipedia URLs — they load fine */
+/* Chevy: inline SVG using the proper bowtie path so it always renders */
+.mfr-logo{flex-shrink:0;width:18px;height:18px;object-fit:contain;opacity:0.9;}
 .mfr-chevy{flex-shrink:0;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;}
-.mfr-chevy img{width:18px;height:18px;object-fit:contain;opacity:0.9;}
+.mfr-chevy svg{width:18px;height:18px;overflow:visible;}
 
 .driver-info{display:flex;flex-direction:column;min-width:0;flex:1;}
-.driver-name-row{display:flex;align-items:center;gap:4px;}
 .driver-name{font-size:12px;font-weight:700;color:#ddd;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2;}
 .driver-track-stat{font-size:10px;color:#777;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.res-badge{width:32px;height:20px;vertical-align:middle;margin-right:4px;flex-shrink:0;} .res-badge-img{width:32px;height:20px;object-fit:cover;vertical-align:middle;margin-right:4px;flex-shrink:0;border-radius:2px;} .odds{font-size:10px;font-weight:700;color:#555;flex-shrink:0;margin-left:auto;}
+.odds{font-size:10px;font-weight:700;color:#555;flex-shrink:0;margin-left:auto;}
 .standings-title{font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#888;text-align:center;margin-bottom:3px;}
 .standings-title em{color:#e8a020;font-style:normal;}
 .standings-sub{font-size:9px;color:#555;text-align:center;margin-bottom:8px;letter-spacing:1px;}
@@ -121,8 +122,8 @@ td.stat-cell{text-align:center;font-size:12px;}
 .res-trophy{font-size:14px;width:18px;flex-shrink:0;}
 .res-driver{font-size:14px;font-weight:700;color:#ddd;flex:1;}
 .result-win .res-driver{color:#fff;}
-.res-delta{font-size:11px;color:#aaa;flex-shrink:0;font-style:italic;min-width:55px;text-align:right;}
-.result-win .res-delta{color:#aaa;}
+.res-delta{font-size:11px;color:#555;flex-shrink:0;font-style:italic;}
+.result-win .res-delta{color:#888;}
 .res-pool{font-size:13px;font-weight:900;color:#888;background:#222;border-radius:4px;padding:2px 8px;flex-shrink:0;}
 .result-win .res-pool{color:#e8a020;background:#2a1e00;}
 .section-title{font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#888;text-align:center;margin:14px 0 8px;}
@@ -159,71 +160,61 @@ body{padding:8px;}
 .driver-name{font-size:13px;}
 .upcoming-races,.last-races{gap:6px;}
 .race-pill,.last-pill{min-width:130px;padding:6px 10px;}
-.res-delta{font-size:10px;min-width:45px;}
+.res-delta{display:none;}
 }
 
 /* ── NEWS TICKER ── */
 .news-ticker-wrap{display:flex;align-items:center;gap:0;background:#111;border-bottom:2px solid #e8a020;overflow:hidden;height:30px;}
 .ticker-label{font-size:8px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#000;background:#e8a020;padding:0 10px;height:100%;display:flex;align-items:center;white-space:nowrap;flex-shrink:0;}
 .ticker-outer{flex:1;overflow:hidden;position:relative;height:100%;}
-.ticker-track{display:inline-flex;align-items:center;height:30px;white-space:nowrap;animation:tickerScroll 32s linear infinite;}
+.ticker-track{display:flex;align-items:center;height:100%;white-space:nowrap;animation:tickerScroll 20s linear infinite;}
 .ticker-track:hover{animation-play-state:paused;}
-@keyframes tickerScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+@keyframes tickerScroll{0%{transform:translateX(100%);}100%{transform:translateX(-100%);}}
 .ticker-item{font-size:11px;font-weight:700;color:#ddd;padding:0 30px;display:inline-block;}
 .ticker-item::after{content:’·’;color:#e8a020;margin-left:30px;}
 .ticker-item a{color:#ddd;text-decoration:none;}
 .ticker-item a:hover{color:#e8a020;}
 .ticker-src{font-size:8px;color:#555;padding:0 8px;white-space:nowrap;flex-shrink:0;text-decoration:none;letter-spacing:.5px;}
 .ticker-src:hover{color:#e8a020;}
-.ticker-error{font-size:10px;color:#555;font-style:italic;}
-
-/* ── ESPN LIVE BOX ── */
-.espn-box{background:#1e1e1e;border:1px solid #2c2c2c;border-radius:8px;padding:8px 10px;min-width:0;display:flex;flex-direction:column;}
-.espn-live-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
-.espn-live-badge{display:flex;align-items:center;gap:5px;font-size:8px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:#ef4444;}
-.espn-live-dot{width:6px;height:6px;border-radius:50%;background:#ef4444;animation:pulse 1s ease-in-out infinite;flex-shrink:0;}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
-.espn-lap{font-size:9px;color:#555;font-weight:700;}
-.espn-update-time{font-size:8px;color:#444;font-style:italic;}
-.espn-loading{font-size:11px;color:#555;font-style:italic;text-align:center;padding:20px 0;flex:1;display:flex;align-items:center;justify-content:center;}
-.espn-rows{flex:1;}
-.espn-row{display:flex;align-items:center;gap:5px;padding:2px 0;border-bottom:1px solid #222;}
-.espn-row:last-child{border-bottom:none;}
-.espn-pos{font-size:11px;font-weight:900;width:18px;flex-shrink:0;color:#555;}
-.espn-pos.ep1{color:#e8a020;}.espn-pos.ep2{color:#c0c0c0;}.espn-pos.ep3{color:#cd7f32;}.espn-pos.etop5{color:#3b82f6;}.espn-pos.etop10{color:#777;}
-.espn-num{font-size:9px;font-weight:900;font-style:italic;color:#444;width:20px;flex-shrink:0;}
-.espn-name{font-size:11px;font-weight:700;color:#ccc;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.espn-name.eleader{color:#fff;}
-.espn-pool{font-size:9px;font-weight:900;color:#e8a020;flex-shrink:0;width:38px;text-align:right;}
-.espn-gap{font-size:9px;color:#555;flex-shrink:0;font-style:italic;min-width:42px;text-align:right;}
-.espn-err{font-size:10px;color:#555;text-align:center;padding:12px 0;font-style:italic;}
-.espn-footer{display:flex;align-items:center;justify-content:space-between;margin-top:5px;padding-top:4px;border-top:1px solid #222;}
-.espn-refresh-btn{background:none;border:1px solid #333;color:#666;border-radius:3px;padding:1px 7px;font-size:9px;cursor:pointer;font-family:‘Barlow Condensed’,sans-serif;font-weight:700;letter-spacing:.5px;}
-.espn-refresh-btn:hover{border-color:#e8a020;color:#e8a020;}
-.espn-prerace{text-align:center;padding:12px 6px;color:#555;font-size:11px;font-style:italic;line-height:1.5;}
-
-/* ── TOP 20 POINTS GRID ── */
-.pts-grid-section{margin-top:20px;padding-top:16px;border-top:1px solid #2a2a2a;margin-bottom:14px;}
-.pts-grid-title{font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#888;text-align:center;margin-bottom:10px;}
-.pts-grid-title em{color:#e8a020;font-style:normal;}
-.pts-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px 8px;}
-.ptg-row{display:flex;align-items:center;gap:5px;padding:3px 6px;border-bottom:1px solid #1e1e1e;border-radius:3px;}
-.ptg-row:last-child{border-bottom:none;}
-.ptg-cutline{background:#1a1200;border-left:2px solid #e8a020;}
-.ptg-below{opacity:.7;}
-.ptg-cutline-label{font-size:7px;color:#e8a020;letter-spacing:1px;text-transform:uppercase;text-align:center;padding:2px 0;font-weight:900;grid-column:1/-1;}
-.ptg-pos{font-size:10px;font-weight:900;color:#555;width:16px;flex-shrink:0;}
-.ptg-car{font-size:9px;color:#444;width:20px;flex-shrink:0;}
-.ptg-name{font-size:11px;font-weight:700;color:#ccc;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.ptg-pts{font-size:10px;font-weight:900;color:#e8a020;flex-shrink:0;}
-.ptg-diff{font-size:9px;color:#555;flex-shrink:0;min-width:28px;text-align:right;}
-@media(max-width:600px){.pts-grid{grid-template-columns:repeat(2,1fr);}}
 
 </style>
 </head>
 <body>
 
 <!-- ══ SVG DEFS ══ -->
+
+<svg style="display:none">
+  <symbol id="n11" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#0a1f5c"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#cc0000" stroke="#fff" stroke-width="1.5" paint-order="stroke">11</text></symbol>
+  <symbol id="n48" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#0d0d0d"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#c084fc" stroke="#ff6eb4" stroke-width="1" paint-order="stroke">48</text></symbol>
+  <symbol id="n42" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#1a6e2e"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#ffe600" stroke="#fff" stroke-width="1" paint-order="stroke">42</text></symbol>
+  <symbol id="n5"  viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#003087"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#cc0000" stroke-width="2" paint-order="stroke">5</text></symbol>
+  <symbol id="n60" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#cc0000"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#000" stroke-width="1" paint-order="stroke">60</text></symbol>
+  <symbol id="n7"  viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#0057b8"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#00b050" stroke-width="1.5" paint-order="stroke">7</text></symbol>
+  <symbol id="n24" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#1a1a1a"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#f5a800" stroke="#111" stroke-width="1.5" paint-order="stroke">24</text></symbol>
+  <symbol id="n23" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#000"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#00b2a9" stroke="#fff" stroke-width="1" paint-order="stroke">23</text></symbol>
+  <symbol id="n3"  viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#1a3d1a"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#c9a84c" stroke="#fff" stroke-width="1" paint-order="stroke">3</text></symbol>
+  <symbol id="n20" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#111"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#ffcd00" stroke="#000" stroke-width="1.5" paint-order="stroke">20</text></symbol>
+  <symbol id="n88" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#0047ba"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#7ec8e3" stroke-width="1" paint-order="stroke">88</text></symbol>
+  <symbol id="n71" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#3b1f0d"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#f97316" stroke="#fff" stroke-width="1" paint-order="stroke">71</text></symbol>
+  <symbol id="n12" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#003087"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#ffd700" stroke="#fff" stroke-width="1" paint-order="stroke">12</text></symbol>
+  <symbol id="n54" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#0a0a0a"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#70ff00" stroke="#000" stroke-width="1.5" paint-order="stroke">54</text></symbol>
+  <symbol id="n2"  viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#3a3a3a"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#e8e8e8" stroke="#cc0000" stroke-width="1.5" paint-order="stroke">2</text></symbol>
+  <symbol id="n45" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#0a0a0a"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#e8a020" stroke="#cc0000" stroke-width="1.5" paint-order="stroke">45</text></symbol>
+  <symbol id="n77" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#0047ba"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#7ec8e3" stroke-width="1" paint-order="stroke">77</text></symbol>
+  <symbol id="n38" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#00205b"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#f5c400" stroke="#fff" stroke-width="1" paint-order="stroke">38</text></symbol>
+  <symbol id="n22" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#c8102e"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#ffc72c" stroke-width="1.5" paint-order="stroke">22</text></symbol>
+  <symbol id="n21" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#00338d"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#ff6900" stroke="#fff" stroke-width="1" paint-order="stroke">21</text></symbol>
+  <symbol id="n4"  viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#b71c1c"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#000" stroke-width="1" paint-order="stroke">4</text></symbol>
+  <symbol id="n9"  viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#001f5b"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#f5c400" stroke="#fff" stroke-width="1" paint-order="stroke">9</text></symbol>
+  <symbol id="n6"  viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#1a1a1a"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#d0d0d0" stroke="#555" stroke-width="1.5" paint-order="stroke">6</text></symbol>
+  <symbol id="n34" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#006241"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#ff6600" stroke="#fff" stroke-width="1" paint-order="stroke">34</text></symbol>
+  <symbol id="n19" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#0d3b1e"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#c9a84c" stroke-width="1.5" paint-order="stroke">19</text></symbol>
+  <symbol id="n8"  viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#cc0000"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#000" stroke="#fff" stroke-width="1.5" paint-order="stroke">8</text></symbol>
+  <symbol id="n97" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#001e62"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#e8003d" stroke="#ffc72c" stroke-width="1.5" paint-order="stroke">97</text></symbol>
+  <symbol id="n1"  viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#1a4b8c"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#7ec8e3" stroke-width="1.5" paint-order="stroke">1</text></symbol>
+  <symbol id="n17" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#00338d"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#ff6900" stroke="#fff" stroke-width="1" paint-order="stroke">17</text></symbol>
+  <symbol id="n43" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#1a6e2e"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#ffe600" stroke="#fff" stroke-width="1" paint-order="stroke">43</text></symbol>
+</svg>
 
 <!-- HEADER -->
 
@@ -242,7 +233,7 @@ body{padding:8px;}
       <span class="ticker-item">Fetching latest NASCAR news...</span>
     </div>
   </div>
-  <a class="ticker-src" id="ticker-src" href="https://racingnews365.com/nascar" target="_blank" rel="noopener">racingnews365 ↗</a>
+  <a class="ticker-src" id="ticker-src" href="#" target="_blank" rel="noopener">loading ↗</a>
 </div>
 
 <!-- INFO BAR -->
@@ -326,20 +317,71 @@ body{padding:8px;}
 
   </div>
 
-  <!-- ESPN LIVE RUNNING ORDER -->
+  <!-- POINTS BOX -->
 
-  <div class="espn-box">
-    <div class="espn-live-header">
-      <div class="espn-live-badge"><div class="espn-live-dot"></div>LIVE RUNNING ORDER</div>
-      <span class="espn-lap" id="espn-lap">–</span>
+  <div class="points-box">
+    <div class="box-title">🏆 Cup Points · <span>After COTA · Race 3 of 36</span></div>
+    <div class="pts-arrows">
+      <button class="pts-arr" onclick="changePage(-1)">◀ Prev</button>
+      <span style="font-size:9px;color:#555;align-self:center;" id="pts-page-label">Pos 1–5</span>
+      <button class="pts-arr" onclick="changePage(1)">Next ▶</button>
     </div>
-    <div id="espn-content">
-      <div class="espn-prerace">⏳ Race hasn't started yet.<br>Running order will appear here automatically once green flag drops.</div>
+    <div class="points-scroll-wrap">
+      <div class="points-pages" id="pts-pages">
+        <div class="points-page">
+          <div class="points-row"><span class="pts-pos">1</span><span class="pts-car">#45</span><div style="flex:1;min-width:0"><div class="pts-name">T. Reddick <span style="font-size:9px">🔥🔥🔥</span></div><div class="pts-team">23XI Racing</div></div><div style="text-align:right"><div class="pts-val">186</div><div class="pts-w">3W</div></div></div>
+          <div class="points-row"><span class="pts-pos">2</span><span class="pts-car">#23</span><div style="flex:1;min-width:0"><div class="pts-name">B. Wallace</div><div class="pts-team">23XI Racing</div></div><div style="text-align:right"><div class="pts-val">116</div><div class="pts-diff">–70</div></div></div>
+          <div class="points-row"><span class="pts-pos">3</span><span class="pts-car">#9</span><div style="flex:1;min-width:0"><div class="pts-name">C. Elliott</div><div class="pts-team">Hendrick Motorsports</div></div><div style="text-align:right"><div class="pts-val">114</div><div class="pts-diff">–72</div></div></div>
+          <div class="points-row"><span class="pts-pos">4</span><span class="pts-car">#12</span><div style="flex:1;min-width:0"><div class="pts-name">R. Blaney</div><div class="pts-team">Team Penske</div></div><div style="text-align:right"><div class="pts-val">100</div><div class="pts-diff">–86</div></div></div>
+          <div class="points-row"><span class="pts-pos">5</span><span class="pts-car">#97</span><div style="flex:1;min-width:0"><div class="pts-name">S. Van Gisbergen</div><div class="pts-team">Trackhouse Racing</div></div><div style="text-align:right"><div class="pts-val">90</div><div class="pts-diff">–96</div></div></div>
+        </div>
+        <div class="points-page">
+          <div class="points-row"><span class="pts-pos">6</span><span class="pts-car">#22</span><div style="flex:1;min-width:0"><div class="pts-name">J. Logano</div><div class="pts-team">Team Penske</div></div><div style="text-align:right"><div class="pts-val">90</div><div class="pts-diff">–96</div></div></div>
+          <div class="points-row"><span class="pts-pos">7</span><span class="pts-car">#7</span><div style="flex:1;min-width:0"><div class="pts-name">D. Suarez</div><div class="pts-team">Trackhouse Racing</div></div><div style="text-align:right"><div class="pts-val">87</div><div class="pts-diff">–99</div></div></div>
+          <div class="points-row"><span class="pts-pos">8</span><span class="pts-car">#16</span><div style="flex:1;min-width:0"><div class="pts-name">A.J. Allmendinger</div><div class="pts-team">Kaulig Racing</div></div><div style="text-align:right"><div class="pts-val">86</div><div class="pts-diff">–100</div></div></div>
+          <div class="points-row"><span class="pts-pos">9</span><span class="pts-car">#71</span><div style="flex:1;min-width:0"><div class="pts-name">M. McDowell</div><div class="pts-team">Spire Motorsports</div></div><div style="text-align:right"><div class="pts-val">83</div><div class="pts-diff">–103</div></div></div>
+          <div class="points-row"><span class="pts-pos">10</span><span class="pts-car">#77</span><div style="flex:1;min-width:0"><div class="pts-name">C. Hocevar</div><div class="pts-team">Spire Motorsports</div></div><div style="text-align:right"><div class="pts-val">82</div><div class="pts-diff">–104</div></div></div>
+        </div>
+        <div class="points-page">
+          <div class="points-row"><span class="pts-pos">11</span><span class="pts-car">#17</span><div style="flex:1;min-width:0"><div class="pts-name">C. Buescher</div><div class="pts-team">RFK Racing</div></div><div style="text-align:right"><div class="pts-val">81</div><div class="pts-diff">–105</div></div></div>
+          <div class="points-row"><span class="pts-pos">12</span><span class="pts-car">#6</span><div style="flex:1;min-width:0"><div class="pts-name">B. Keselowski</div><div class="pts-team">RFK Racing</div></div><div style="text-align:right"><div class="pts-val">78</div><div class="pts-diff">–108</div></div></div>
+          <div class="points-row"><span class="pts-pos">13</span><span class="pts-car">#24</span><div style="flex:1;min-width:0"><div class="pts-name">W. Byron</div><div class="pts-team">Hendrick Motorsports</div></div><div style="text-align:right"><div class="pts-val">76</div><div class="pts-diff">–110</div></div></div>
+          <div class="points-row"><span class="pts-pos">14</span><span class="pts-car">#38</span><div style="flex:1;min-width:0"><div class="pts-name">Z. Smith</div><div class="pts-team">Front Row Motorsports</div></div><div style="text-align:right"><div class="pts-val">75</div><div class="pts-diff">–111</div></div></div>
+          <div class="points-row"><span class="pts-pos">15</span><span class="pts-car">#5</span><div style="flex:1;min-width:0"><div class="pts-name">K. Larson</div><div class="pts-team">Hendrick Motorsports</div></div><div style="text-align:right"><div class="pts-val">73</div><div class="pts-diff">–113</div></div></div>
+        </div>
+        <div class="points-page">
+          <div class="points-row cutline-row"><span class="pts-pos">16</span><span class="pts-car">#60</span><div style="flex:1;min-width:0"><div class="pts-name">R. Preece</div><div class="pts-team">Haas Factory Team</div></div><div style="text-align:right"><div class="pts-val">68</div><div class="pts-diff">–118</div></div></div>
+          <div class="cutline-label">── Chase Cutline ──</div>
+          <div class="points-row"><span class="pts-pos">17</span><span class="pts-car">#54</span><div style="flex:1;min-width:0"><div class="pts-name">T. Gibbs</div><div class="pts-team">Joe Gibbs Racing</div></div><div style="text-align:right"><div class="pts-val">65</div><div class="pts-diff">–3</div></div></div>
+          <div class="points-row"><span class="pts-pos">18</span><span class="pts-car">#4</span><div style="flex:1;min-width:0"><div class="pts-name">N. Gragson</div><div class="pts-team">Stewart-Haas Racing</div></div><div style="text-align:right"><div class="pts-val">65</div><div class="pts-diff">–3</div></div></div>
+          <div class="points-row"><span class="pts-pos">19</span><span class="pts-car">#10</span><div style="flex:1;min-width:0"><div class="pts-name">T. Dillon</div><div class="pts-team">Kaulig Racing</div></div><div style="text-align:right"><div class="pts-val">65</div><div class="pts-diff">–3</div></div></div>
+          <div class="points-row"><span class="pts-pos">20</span><span class="pts-car">#1</span><div style="flex:1;min-width:0"><div class="pts-name">R. Chastain</div><div class="pts-team">Trackhouse Racing</div></div><div style="text-align:right"><div class="pts-val">64</div><div class="pts-diff">–4</div></div></div>
+        </div>
+        <div class="points-page">
+          <div class="points-row"><span class="pts-pos">21</span><span class="pts-car">#42</span><div style="flex:1;min-width:0"><div class="pts-name">J.H. Nemechek</div><div class="pts-team">Legacy Motor Club</div></div><div style="text-align:right"><div class="pts-val">63</div><div class="pts-diff">–5</div></div></div>
+          <div class="points-row"><span class="pts-pos">22</span><span class="pts-car">#8</span><div style="flex:1;min-width:0"><div class="pts-name">K. Busch</div><div class="pts-team">Richard Childress Racing</div></div><div style="text-align:right"><div class="pts-val">61</div><div class="pts-diff">–7</div></div></div>
+          <div class="points-row"><span class="pts-pos">23</span><span class="pts-car">#11</span><div style="flex:1;min-width:0"><div class="pts-name">D. Hamlin</div><div class="pts-team">Joe Gibbs Racing</div></div><div style="text-align:right"><div class="pts-val">60</div><div class="pts-diff">–8</div></div></div>
+          <div class="points-row"><span class="pts-pos">24</span><span class="pts-car">#20</span><div style="flex:1;min-width:0"><div class="pts-name">C. Bell</div><div class="pts-team">Joe Gibbs Racing</div></div><div style="text-align:right"><div class="pts-val">59</div><div class="pts-diff">–9</div></div></div>
+          <div class="points-row"><span class="pts-pos">25</span><span class="pts-car">#35</span><div style="flex:1;min-width:0"><div class="pts-name">R. Herbst</div><div class="pts-team">Front Row Motorsports</div></div><div style="text-align:right"><div class="pts-val">53</div><div class="pts-diff">–15</div></div></div>
+        </div>
+        <div class="points-page">
+          <div class="points-row"><span class="pts-pos">26</span><span class="pts-car">#47</span><div style="flex:1;min-width:0"><div class="pts-name">R. Stenhouse Jr.</div><div class="pts-team">JTG Daugherty Racing</div></div><div style="text-align:right"><div class="pts-val">49</div><div class="pts-diff">–19</div></div></div>
+          <div class="points-row"><span class="pts-pos">27</span><span class="pts-car">#19</span><div style="flex:1;min-width:0"><div class="pts-name">C. Briscoe</div><div class="pts-team">Joe Gibbs Racing</div></div><div style="text-align:right"><div class="pts-val">46</div><div class="pts-diff">–22</div></div></div>
+          <div class="points-row"><span class="pts-pos">28</span><span class="pts-car">#21</span><div style="flex:1;min-width:0"><div class="pts-name">J. Berry</div><div class="pts-team">Wood Brothers Racing</div></div><div style="text-align:right"><div class="pts-val">45</div><div class="pts-diff">–23</div></div></div>
+          <div class="points-row"><span class="pts-pos">29</span><span class="pts-car">#41</span><div style="flex:1;min-width:0"><div class="pts-name">C. Custer</div><div class="pts-team">Haas Factory Team</div></div><div style="text-align:right"><div class="pts-val">40</div><div class="pts-diff">–28</div></div></div>
+          <div class="points-row"><span class="pts-pos">30</span><span class="pts-car">#34</span><div style="flex:1;min-width:0"><div class="pts-name">T. Gilliland</div><div class="pts-team">Front Row Motorsports</div></div><div style="text-align:right"><div class="pts-val">39</div><div class="pts-diff">–29</div></div></div>
+        </div>
+        <div class="points-page">
+          <div class="points-row"><span class="pts-pos">31</span><span class="pts-car">#2</span><div style="flex:1;min-width:0"><div class="pts-name">A. Cindric</div><div class="pts-team">Team Penske</div></div><div style="text-align:right"><div class="pts-val">39</div><div class="pts-diff">–29</div></div></div>
+          <div class="points-row"><span class="pts-pos">32</span><span class="pts-car">#88</span><div style="flex:1;min-width:0"><div class="pts-name">C. Zilisch #</div><div class="pts-team">Trackhouse Racing</div></div><div style="text-align:right"><div class="pts-val">37</div><div class="pts-diff">–31</div></div></div>
+          <div class="points-row"><span class="pts-pos">33</span><span class="pts-car">#48</span><div style="flex:1;min-width:0"><div class="pts-name">A. Bowman</div><div class="pts-team">Hendrick Motorsports</div></div><div style="text-align:right"><div class="pts-val">33</div><div class="pts-diff">–35</div></div></div>
+          <div class="points-row"><span class="pts-pos">34</span><span class="pts-car">#3</span><div style="flex:1;min-width:0"><div class="pts-name">A. Dillon</div><div class="pts-team">Richard Childress Racing</div></div><div style="text-align:right"><div class="pts-val">28</div><div class="pts-diff">–40</div></div></div>
+          <div class="points-row"><span class="pts-pos">35</span><span class="pts-car">#43</span><div style="flex:1;min-width:0"><div class="pts-name">E. Jones</div><div class="pts-team">Legacy Motor Club</div></div><div style="text-align:right"><div class="pts-val">27</div><div class="pts-diff">–41</div></div></div>
+          <div class="points-row"><span class="pts-pos">36</span><span class="pts-car">#67</span><div style="flex:1;min-width:0"><div class="pts-name">C. Heim</div><div class="pts-team">Niece Motorsports</div></div><div style="text-align:right"><div class="pts-val">24</div><div class="pts-diff">–44</div></div></div>
+        </div>
+      </div>
     </div>
-    <div class="espn-footer">
-      <span class="espn-update-time" id="espn-update-time">Not yet updated</span>
-      <button class="espn-refresh-btn" onclick="fetchESPN(true)">↻ Refresh</button>
-    </div>
+    <div class="pts-nav" id="pts-dots"></div>
   </div>
 </div>
 
@@ -367,18 +409,21 @@ body{padding:8px;}
   <div class="card">
     <div class="card-header"><span class="wave-flag" style="font-size:13px">🏁</span>&nbsp;<span class="name">Scott</span></div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,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" alt="n11">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Hamlin</span> <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota" onerror="this.style.display='none'"></div><span class="driver-track-stat">🏆 3 wins PHX</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n11"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota" onerror="this.style.display='none'">
+      <div class="driver-info"><span class="driver-name">Hamlin</span><span class="driver-track-stat">🏆 3 wins PHX</span></div>
       <span class="odds">+550</span>
     </div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,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" alt="n48">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Bowman</span> <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Chevrolet-logo.png" alt="Chevy" onerror="this.style.display='none'"></div><span class="driver-track-stat">🏆 1 win PHX</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n48"/></svg>
+      <span class="mfr-chevy"><svg viewBox="0 0 32 20" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="6" width="10" height="8" fill="#c9a020" rx="1"/><rect x="11" y="0" width="10" height="8" fill="#c9a020" rx="1"/><rect x="11" y="12" width="10" height="8" fill="#c9a020" rx="1"/><rect x="22" y="6" width="10" height="8" fill="#c9a020" rx="1"/><rect x="10" y="6" width="12" height="8" fill="#141414"/></svg></span>
+      <div class="driver-info"><span class="driver-name">Bowman</span><span class="driver-track-stat">🏆 1 win PHX</span></div>
       <span class="odds">+5000</span>
     </div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAwAFADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD7LooooAKKw/FPivQ/DUHm6rerGx6Rr8zn3x/jXluqfHlEvpE03QPOtQcJJNPsZvfABxWU68IOzZlVr06Pxux7dRXkXgj4t6p4o8SWuj2/h6CLzSTJL9oJ8tByWxtrd8TfFzwjo0jwRXEupXCEgpapkA+hY4H86Sr02r3FHEUpQ5+bQ9Aorwq9+PdwZD9i8ORhO3nXJJ/QVLpHx6zcKuq6AEhJ+Z7ecsVHrhhz+dT9ap9zJY/Dt25vzPcKKraZe22pafBf2cgkt54xJG3qDVmuhO51kF/d21jaSXd3MsMES7ndugFeM/ED4zbDJY+GkIIyrXLjn8B2/n9K9quIYriB4JkWSORSrqwyCD1FeHeJ/gnf3OtXE+k3lrHaO2UWQncPrxXLifa29zYwxHtvZ/udzz/T9D1vxSbjV9SvUhtowXknuZRuY+iKTlif8muZvhCLp1twREp2qSck47103jzwTceEGjjv7+Ca4kUMqRc4Ge5PToawND0251jWLXTLRd09zII09s9681pp2PAxUJJqk4+++t7t/wCR7N+zp4etG0jUdSvHj86/U28UYkAcRD7xA6jJ7+1RXPwjsoL661TxHq8Vnp6OcbWy0oHQ+xI7c1SjEPwba4y8Gq6zexqEcKVWBPTHUknntwK888VeLdc8SXRm1O8kdf4YwcKo9AK3k4KKi1qj051qOGoRp1Y3a6b/APALHjebwyt49p4btX+zoQBNKQWJHU8evpVbwT4W1PxXrMen6fE2zIM0xHyRL3JP9O9V/Dy6ALtZNflvzbqeYrRF3N7bmPFe3+A/iR4Rims/Dnhvw5fwGZwiKqIMnuzHdk+5NRShGT952OKlCGKqqdRpdkj1DRdPg0nSbXTbbPk20SxJnuAOtXKKK9dKysfQBRRRTA8/8XfC/T/E+sS6lqOqXm9z8qKFCoMYAH5VY8GfDDw74X1SPVLVrqe8jVlV5XBUZ7hccHFdxRWSoQT5rakOnBy5mlfvbU878T/CrTvEWrzalqWq3ryyMSAoUBR2A+gAFZf/AAozw7/0Eb7/AMdr1iik8PTethSo05u8opv0R5P/AMKM8O/9BG+/8drofBXwy8O+FtTTU7M3U14iMgeVwVGe4GODjiu3oojQpxd0hRoUou6ik/RBRRRWxqf/2Q==" alt="n42">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Nemechek</span> <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota" onerror="this.style.display='none'"></div><span class="driver-track-stat">📊 Best PHX: 14th</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n42"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota" onerror="this.style.display='none'">
+      <div class="driver-info"><span class="driver-name">Nemechek</span><span class="driver-track-stat">📊 Best PHX: 14th</span></div>
       <span class="odds">+35000</span>
     </div>
   </div>
@@ -388,18 +433,21 @@ body{padding:8px;}
   <div class="card">
     <div class="card-header"><span class="name">Brenda</span></div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAwAFADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDw61/49Yf+ua/yFSVHa/8AHrD/ANc1/kKkr9Yh8KPl5bhRRRVEhRXrPwY+COs/ELT5tWuL06PpSnbBO0PmNO467VyPlH97PXgd69E/4ZRX/od2/wDBcP8A4uvKq51g6U3CUtV5HbHAVZK58xUV9Of8MpL/ANDu/wD4Lv8A7OuR+KfwR0L4e+HW1XVfHLyzPlbW0SwAkuH9B8/AHdu35VMM8wc5KMW235Mf9n1fI8RopTjPHSkr1lqcTVnYjtf+PWH/AK5r/IVJUdr/AMesP/XNf5CpKUPhQ5bhXpnwL+Hll4u1kX/iPUrTTdAtHBm865SJ7luvlpkg49W7DpzS/BH4Qap8SJ7i5e5fTNHt8q14Yt5eT+4ikjOO5zx9a9Rf9lCAv/yO0hH+1poJ/wDQ68TMc0oK9BVOV9Xa56OEwsotVJK/Y9/0TVvC0cFvpej6rpHlxIsUFvbXMZ2qOAqqDWZ4w8Cw+JtQF7N4m8UacVjCJFp2pG3jHvtA5J9TmvNvBf7M3hTQ9Xt9S1PV77V5LeRZY4tiwR7lORnbljyOmRXsfiHxDofh2xa81zVbPToFGd1xKFz9AeSfYV8ZVUIT/cScvlY9aLfXc8a8f/CLxdZaNd6j4Z+KfinzLaJpfs9/fMQ4UEkB1IweO4xXyfrWtaxrc6XGs6pe6jKi7Ue6naRlXrgEngV7r8ePj8PEOn3HhnwYJodPmBS6v3Gx517oi9VU9yeSOOK+e6+wyTDVowc66Xlornl4+vF+7F69Qooor6A8ojtf+PWH/rmv8hUlR2v/AB6w/wDXNf5CpKiHwr0Lk7SPQfDnxm+Inh7SbfSdJ1uG3srZNkUP2GEhR/3zn8TzWlJ+0D8VXXH/AAkMC+62EOf/AEGvLKK5HluEbu6a+42+t1v5jutU+L3xM1JGS48Zamqt1EDLD/6AAa4y+vLu+uDcX11PdTHrJNIzt+ZJNQUVvSw1Gl8EEvkRKvUno5MKKKK3MQooooA//9k=" alt="n5">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Larson</span> <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Chevrolet-logo.png" alt="Chevy" onerror="this.style.display='none'"></div><span class="driver-track-stat">🏆 3 wins PHX</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n5"/></svg>
+      <span class="mfr-chevy"><svg viewBox="0 0 32 20" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="6" width="10" height="8" fill="#c9a020" rx="1"/><rect x="11" y="0" width="10" height="8" fill="#c9a020" rx="1"/><rect x="11" y="12" width="10" height="8" fill="#c9a020" rx="1"/><rect x="22" y="6" width="10" height="8" fill="#c9a020" rx="1"/><rect x="10" y="6" width="12" height="8" fill="#141414"/></svg></span>
+      <div class="driver-info"><span class="driver-name">Larson</span><span class="driver-track-stat">🏆 3 wins PHX</span></div>
       <span class="odds">+750</span>
     </div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,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" alt="n60">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Preece</span> <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford" onerror="this.style.display='none'"></div><span class="driver-track-stat">📊 Best PHX: 6th</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n60"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford" onerror="this.style.display='none'">
+      <div class="driver-info"><span class="driver-name">Preece</span><span class="driver-track-stat">📊 Best PHX: 6th</span></div>
       <span class="odds">+5500</span>
     </div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAwAFADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD6Looor8SPpQoorJ8Q62mmPbWVray6lq96Stjp8BHmTEdWJPCRr/E54HucCtaNGpXmqdNXb6EznGC5pPQ1qKpJonxJKhmtfCAJGSv2q5+X2zs5+tPGh/EU9YPCSe/2m5b/ANkFe1/qzmP8i++P+Zy/XqPf8GWqKzdS0vxlpthNqGq654N0uzhUtLPLDOUQepLSKK4D4J/EPWfG/iDxTa3UNjc6Rpk6x6dqtjbyRw3gywJG8nPQHg8ZrLFZBjcLRdaqkorzRVPGUqk+SO56jRRRXinUFFFFADZQ5jcRFVk2naWGQDjgkdxmvL9FtPjBpkOoQWGneFbfXdQfZdeKZ7555DGCdvlW2z5FVekZO0Hk5616Tqt/Z6Xp0+o6hcJb2sCb5JG6Af1JPAA5JOKn8P8Ahu88QwpqHiNJbPT5AGh0oNtd17NcEdSevljgfxbj0+l4chjXUk8Mkls5NXt6efl95wY50rJTu32PPNP8BtrJ8n/hJ/G3iy/B23F4+vzWtojd8mIqgH+wgYisPV7rwN8M/EQ03SIdY+IHxAlH7jSIdRuJ7ezPrJ5jsEAzyWy3stb3xb8ca/4g8YN8H/hbNHpjWsQOu6xEgC6dCf8AllEBwJCPT6DHJG58OvAnh3wJpJsdDtT5svzXd5Md9xdP3aR+p57dBX0mMzSGTR5HOVSq+7dl8tl6LXzOGlhnineyUfQ5CD4eeJPHeoRa78ZtYXU9jeZa+HbJymn2vpvxzKw9+Pc16jZ21vZ2kVpaQRW9vCoWOKJAiIB2CjgCpaK+Ex2Y4jHT560r+XReiPYpUIUlaKCiiiuE1CiiigDlfiZ4X1LxVo9nbaT4gfRLyyvo72Gb7KtxG7x52h0bqoPP1ArCfwl8WtRYtrXxv1SNW6x6VpMNsB9G5Nej0V6eFzjGYSl7KjO0d9l/kYVMNSqS5pK7OT+G3gTTfA9lfx2l7f6lealdG6vr6+cPPcSEYyxAHA5/M11lFFcNatUrzdSo7t7s1jFQXLFaBRRRWRQUUUUAf//Z" alt="n7">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Suarez</span> <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Chevrolet-logo.png" alt="Chevy" onerror="this.style.display='none'"></div><span class="driver-track-stat">📊 Best PHX: 5th</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n7"/></svg>
+      <span class="mfr-chevy"><svg viewBox="0 0 32 20" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="6" width="10" height="8" fill="#c9a020" rx="1"/><rect x="11" y="0" width="10" height="8" fill="#c9a020" rx="1"/><rect x="11" y="12" width="10" height="8" fill="#c9a020" rx="1"/><rect x="22" y="6" width="10" height="8" fill="#c9a020" rx="1"/><rect x="10" y="6" width="12" height="8" fill="#141414"/></svg></span>
+      <div class="driver-info"><span class="driver-name">Suarez</span><span class="driver-track-stat">📊 Best PHX: 5th</span></div>
       <span class="odds">+20000</span>
     </div>
   </div>
@@ -409,18 +457,21 @@ body{padding:8px;}
   <div class="card">
     <div class="card-header"><span class="name">KO3</span></div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,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" alt="n24">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Byron</span> <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Chevrolet-logo.png" alt="Chevy" onerror="this.style.display='none'"></div><span class="driver-track-stat">🏆 1 win PHX</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n24"/></svg>
+      <span class="mfr-chevy"><svg viewBox="0 0 32 20" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="6" width="10" height="8" fill="#c9a020" rx="1"/><rect x="11" y="0" width="10" height="8" fill="#c9a020" rx="1"/><rect x="11" y="12" width="10" height="8" fill="#c9a020" rx="1"/><rect x="22" y="6" width="10" height="8" fill="#c9a020" rx="1"/><rect x="10" y="6" width="12" height="8" fill="#141414"/></svg></span>
+      <div class="driver-info"><span class="driver-name">Byron</span><span class="driver-track-stat">🏆 1 win PHX</span></div>
       <span class="odds">+800</span>
     </div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAwAFADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDzyiiirJCiu5+Gfwv8R+PIZ7vTXtbSyhfy2ubottZ+6qACTjv2Fdr/AMM3+J/+hi0X/v3L/hU86NvYyW+nzPEaK9u/4Zu8Uf8AQw6L/wB+5f8ACuU8dfCXXPCt9pOnHUtP1PUdVn8m2tLUOJDjqx3DAUdzSdSK1ZUMNObtHV+qPPKK9qt/2cfFjwI82uaLC5GWTEjbT6ZxzUg/Zu8UH/mYdF/79y/4U+dEeyfdfejxGivarn9nTxHbW8k8/iXQ44o1Lu7JKAqgZJJx0rxeVVSV0WRZVViA652uAfvDPOD1oUk3YJUpRjzdBtAVnYIgJZjhQoySfQD1p0UcksqRRRtJI7BURRksxOAAPUmvrv4I/CzT/B+kwalqlrFceIZk3yyuA32bP/LNPTHdupPtRKXRFU4JLnlsvx/rqcx8Otc+LUHh2y03QvhvpVjp1vGEia8neAsP7xDHcSepOO9TP4Y+PGra29zdeLrLRbWaTcY7WbesC+iLs5wPU9a2/iXf/GSXXHtvBGjW1vpsQwLmWSFpJ27kB2+Vew4zUA8F/FvV9KhbVfic2nXEkYM1vaWKDyyf4fMUgnHqK57dNTv5vtNxV/m/w/rudj4r8X6D4C8PRPrurNNPHEFjjZg1zdMB1CjuT1PAFfM1p8XdWg8f6h4yl0ixvb64TybVbl3K2cP9xNvc9z35rX0D4P3/AIw8TayIPFRu7Owl8iTVprdn+0Tj76KC+SF7tnrV/wAS/s665YaTJPpOsJq93kKlstuIcg9SXZ8ACmnGSu+gOE6E3TTSct722evy9DpNO8SfGT4leFlvfDtvpOgWvn4FykzLJNt6hdwb5c9++K7z4Y6D4x0C1vNR8eeLzqUjJ8sW8eRbqOSxYquT+gFc58HNO+L2n6va2PiVbGy8O2luUWBI4cnAwir5fI9STXRfHnxjZeFPAl2koSW+1GN7W0gPO4suGYj+6oOT+A700tLsio7yVOFrPt28/PqeV/tC/Fuy1mwfwp4VujNau2L69jOEkA/5ZIe656noegryPwN4duPE2vxWEe5YF+e5lA/1cf8AiegrFtLeWeaG1t42llkYRxoByxPAFfR/w+8MQ+F9BS1wrXkuHupR/E/oPYdBXj59mqy3D+6/3ktvLz+X5hhqH1mpb7Ef6+9ngXhPXbrw1r9vrVlbWdxdW2TCLqIuiMRjdgEcjt6V6L/w0H4//wCeei/+Ajf/ABdeS0V7zgr3OJVppKOmnkj1r/hoPx//AM89F/8AARv/AIuqur/Hbx9qWl3Ng0um2y3EZjaW3tmWRQRglSWOD74ry+ik6cWNYicXdW+5f5HpPhr40+LfDuiWujaVaaJBaWybEX7IxJ9STv5JPJPrWj/w0H4//wCeei/+Ajf/ABdeS0UKnFKyHLE1JtylZt+S/wAj1o/tB+P8cJoo/wC3Rv8A4uvPvGHifXPFmrHVNevmurjbsQYCpGv91VHAFY1dV8M/Cz+JtdCzKRp9th7lv73og9z/ACzWOJr0sLSlWqPRBCVSrLkj18kvyO1+CXhLyox4n1CIh3BFkjDoveT8eg9smvVqbGiRxrHGqoiAKqqMAAdAKdX47mWPqY/ESrT67LsuiPqMPQjQgoI//9k=" alt="n23">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Wallace</span> <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota" onerror="this.style.display='none'"></div><span class="driver-track-stat">📊 Best PHX: 4th</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n23"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota" onerror="this.style.display='none'">
+      <div class="driver-info"><span class="driver-name">Wallace</span><span class="driver-track-stat">📊 Best PHX: 4th</span></div>
       <span class="odds">+3500</span>
     </div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,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" alt="n3">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Dillon</span> <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Chevrolet-logo.png" alt="Chevy" onerror="this.style.display='none'"></div><span class="driver-track-stat">📊 Best PHX: 2nd</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n3"/></svg>
+      <span class="mfr-chevy"><svg viewBox="0 0 32 20" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="6" width="10" height="8" fill="#c9a020" rx="1"/><rect x="11" y="0" width="10" height="8" fill="#c9a020" rx="1"/><rect x="11" y="12" width="10" height="8" fill="#c9a020" rx="1"/><rect x="22" y="6" width="10" height="8" fill="#c9a020" rx="1"/><rect x="10" y="6" width="12" height="8" fill="#141414"/></svg></span>
+      <div class="driver-info"><span class="driver-name">Dillon</span><span class="driver-track-stat">📊 Best PHX: 2nd</span></div>
       <span class="odds">+7500</span>
     </div>
   </div>
@@ -430,18 +481,21 @@ body{padding:8px;}
   <div class="card">
     <div class="card-header"><span class="name">Pam</span></div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,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" alt="n20">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Bell</span> <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota" onerror="this.style.display='none'"></div><span class="driver-track-stat">🏆 2 wins PHX</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n20"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota" onerror="this.style.display='none'">
+      <div class="driver-info"><span class="driver-name">Bell</span><span class="driver-track-stat">🏆 2 wins PHX</span></div>
       <span class="odds">+600</span>
     </div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,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" alt="n88">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Zilisch</span> <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Chevrolet-logo.png" alt="Chevy" onerror="this.style.display='none'"></div><span class="driver-track-stat">🆕 Rookie</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n88"/></svg>
+      <span class="mfr-chevy"><svg viewBox="0 0 32 20" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="6" width="10" height="8" fill="#c9a020" rx="1"/><rect x="11" y="0" width="10" height="8" fill="#c9a020" rx="1"/><rect x="11" y="12" width="10" height="8" fill="#c9a020" rx="1"/><rect x="22" y="6" width="10" height="8" fill="#c9a020" rx="1"/><rect x="10" y="6" width="12" height="8" fill="#141414"/></svg></span>
+      <div class="driver-info"><span class="driver-name">Zilisch</span><span class="driver-track-stat">🆕 Rookie</span></div>
       <span class="odds">+6000</span>
     </div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,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" alt="n71">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">McDowell</span> <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Chevrolet-logo.png" alt="Chevy" onerror="this.style.display='none'"></div><span class="driver-track-stat">📊 Best PHX: 3rd</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n71"/></svg>
+      <span class="mfr-chevy"><svg viewBox="0 0 32 20" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="6" width="10" height="8" fill="#c9a020" rx="1"/><rect x="11" y="0" width="10" height="8" fill="#c9a020" rx="1"/><rect x="11" y="12" width="10" height="8" fill="#c9a020" rx="1"/><rect x="22" y="6" width="10" height="8" fill="#c9a020" rx="1"/><rect x="10" y="6" width="12" height="8" fill="#141414"/></svg></span>
+      <div class="driver-info"><span class="driver-name">McDowell</span><span class="driver-track-stat">📊 Best PHX: 3rd</span></div>
       <span class="odds">+15000</span>
     </div>
   </div>
@@ -451,18 +505,21 @@ body{padding:8px;}
   <div class="card">
     <div class="card-header"><span class="name">Nick</span></div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,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" alt="n12">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Blaney</span> <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford" onerror="this.style.display='none'"></div><span class="driver-track-stat">🏆 1 win PHX</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n12"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford" onerror="this.style.display='none'">
+      <div class="driver-info"><span class="driver-name">Blaney</span><span class="driver-track-stat">🏆 1 win PHX</span></div>
       <span class="odds">+475</span>
     </div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,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" alt="n54">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Gibbs</span> <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota" onerror="this.style.display='none'"></div><span class="driver-track-stat">📊 Best PHX: 3rd</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n54"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota" onerror="this.style.display='none'">
+      <div class="driver-info"><span class="driver-name">Gibbs</span><span class="driver-track-stat">📊 Best PHX: 3rd</span></div>
       <span class="odds">+4000</span>
     </div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAwAFADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD7LooooAKKK8j+Kv7Q3w4+HmpPpWp6hPfanH/rLWxj8xoz6McgA+1JyS3LhTlP4UeuUV8ut+2n4C3YXw3r7enEfP60j/tpeB1GT4W8QAe/lj+tTzr+kzVYWo9dPvX+Z9R0V8tw/tq+A2kVZPDOvohPLfuzj8M17v8ACz4h+GviT4cGu+Gbp5bcP5cqSpteJ/RhTUk9CZUJxXNpbyaf5M62iiiqMQoopHZUQuzBVAySTwBQBkeMtVsNI8O3l3qGt2uixeUyi8uCAsTEcHBIyR6V8HeJPBf7PFzrN1d6h8atXvLqaVnllj07eGYnnnFZX7ZHxXn8efEGbR9Ou3OhaS5hhRW+WVx95yO/NeNeFo9El1qAeIrq6t9MDZnNtHvlZfRQeM+5rF+97x6MGqL9ho23re1k/munr3Pqj4Man+zJ8NdSutRbxVceIbmVQsT32lEiEd9owRk+tJ+0/wDHX4Z+Ifh/L4c8C6fbXV3eMBLcHTliEKD0JGc1xdtrf7KEMKxv4T8ZTsBgvJcct78Nipf+Eg/ZN/6Ezxb/AOBB/wDi6i3dM6uZrWMor5q33XSPniytp7y8itbaNpJpnCIgHJJOAK/UL9mT4dJ8N/hfZaXKP+JhdAXN6f8AbYfd/AV5r+y94d+CniW+n1/wT8P9QgFgw232qN5gEnYICx575xxX01WsXzvmOCtH2EXTW7td+W6/z+4KKKK0OMK534j6NrHiHwhfaLouqx6Vc3iGJrpoy5jQ/e2gEc9q6Kik1dWZdObpyU1uj40k/Yikkdnfx/uZjkk2PJP/AH1Tf+GID/0Po/8AAD/7Kvs2ily+Zp7dv7K+4+Mv+GID/wBD6P8AwA/+yo/4YgP/AEPo/wDAD/7Kvs2ijl8w9u/5V9xyXwk8Dab8O/A1h4Y07a4t0zNMFwZZD1Y11tFFNJJWRnOcqknKW7CiiimQf//Z" alt="n2">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Cindric</span> <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford" onerror="this.style.display='none'"></div><span class="driver-track-stat">📊 Best PHX: 7th</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n2"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford" onerror="this.style.display='none'">
+      <div class="driver-info"><span class="driver-name">Cindric</span><span class="driver-track-stat">📊 Best PHX: 7th</span></div>
       <span class="odds">+7000</span>
     </div>
   </div>
@@ -472,18 +529,21 @@ body{padding:8px;}
   <div class="card">
     <div class="card-header"><span class="wave-flag" style="font-size:13px">🏁</span>&nbsp;<span class="name">Zach</span></div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAwAFADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD4yooooAKKKnsbS6vruK0sraa5uJW2xxRIXdz6ADkmjYCCivov4ffsh/EjxJpg1DWJ7Dw0jjMcN5uecj1KJ938Tn2qn8Yf2a7j4X+EZfEOv+OtIcbvLtrWK2k824kPRVBP4k9hWbqxSv8AoxXR4BRX0l8O/wBkTxl4r8H2HiC61zT9Fa9TzUtLmB2kVD90tjpkc4roP+GIvFP/AEO+jf8AgLLQqkXqvyYXPk2ivq66/Yq8R2ltLc3PjzQ4oYkLyO9tKFVQMkk18weIbOz0/Wruy0/UU1K2glKR3aRlFmA/iAPIB7ZpqpFvl6hcoUUVseDNR0zSPFOm6nrOlDVrC2uFlnsjJ5YmUc7d2DiqeiB6I9q+CH7LfjHx7bWut63Mvh7QZwJEkkXdcTp6onYH1b8jX0doKfBz4KahaeGfBeiN4g8ZXjLDGsA865dj3kmI2xL1JAx9K4OD9trSookgh+HNysagIiLqS4AHAAHl19E/DXxra+IvCtpresWGm+HZ7oeZHZPfRySoh6F8AYJ9O3esJxctG/6/ruZSlsr6nSXGpjQ/DU2r+I7qCBbeIzXLoPkjAGSq9zjp6mvlXwDp+pftH/G2fxr4jgkh8FeHJgmn6fNx5r9V3KfXhj+ArvvEH7Ren6h8V/8AhWfhSwsbuZ5PIfWLu8VLaFwCXIUj59vbnk10zfCv4Mzzy3t9Dp11qNx811dtqrq8793bbIB+FRKLk0lsiXK7stj0Txdp+qal4Zu9L0LVU0a8niMUd55PmGAEY3KuQMjtzXhH/DPXxFPI/aE8WEewf/47Ve3/AGdvAC+J49Ym+I+ovbLcCY6cl/GkBUHPl/e3BfxzXR/tKfG/QPhv4EksvDmpWF14guY/Isbe3mV/s4xjzGCngAdB3NU4KTvJD5k9Wj5K/aM1HxZ4K8VXfgmP4va94pg8gJfrJcSKiMesTDeQ3GM14jU9/d3N9ezXl3M89xPIZJZHOWdickk/WoK2pwUFY1irIKKKKsoKdub1NNooAXJo3H1pKKAF3H1ozSUUAFFFFAH/2Q==" alt="n45">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Reddick</span> <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota" onerror="this.style.display='none'"></div><span class="driver-track-stat">🏆 1 win PHX</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n45"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota" onerror="this.style.display='none'">
+      <div class="driver-info"><span class="driver-name">Reddick</span><span class="driver-track-stat">🏆 1 win PHX</span></div>
       <span class="odds">+1300</span>
     </div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,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" alt="n77">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Hocevar</span> <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Chevrolet-logo.png" alt="Chevy" onerror="this.style.display='none'"></div><span class="driver-track-stat">📊 Best PHX: 4th</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n77"/></svg>
+      <span class="mfr-chevy"><svg viewBox="0 0 32 20" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="6" width="10" height="8" fill="#c9a020" rx="1"/><rect x="11" y="0" width="10" height="8" fill="#c9a020" rx="1"/><rect x="11" y="12" width="10" height="8" fill="#c9a020" rx="1"/><rect x="22" y="6" width="10" height="8" fill="#c9a020" rx="1"/><rect x="10" y="6" width="12" height="8" fill="#141414"/></svg></span>
+      <div class="driver-info"><span class="driver-name">Hocevar</span><span class="driver-track-stat">📊 Best PHX: 4th</span></div>
       <span class="odds">+3000</span>
     </div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,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" alt="n38">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Smith</span> <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford" onerror="this.style.display='none'"></div><span class="driver-track-stat">📊 Best PHX: 11th</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n38"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford" onerror="this.style.display='none'">
+      <div class="driver-info"><span class="driver-name">Smith</span><span class="driver-track-stat">📊 Best PHX: 11th</span></div>
       <span class="odds">+25000</span>
     </div>
   </div>
@@ -493,18 +553,21 @@ body{padding:8px;}
   <div class="card">
     <div class="card-header"><span class="name">Nicole</span></div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,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" alt="n22">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Logano</span> <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford" onerror="this.style.display='none'"></div><span class="driver-track-stat">🏆 4 wins PHX</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n22"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford" onerror="this.style.display='none'">
+      <div class="driver-info"><span class="driver-name">Logano</span><span class="driver-track-stat">🏆 4 wins PHX</span></div>
       <span class="odds">+1300</span>
     </div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,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" alt="n21">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Berry</span> <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford" onerror="this.style.display='none'"></div><span class="driver-track-stat">📊 Best PHX: 9th</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n21"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford" onerror="this.style.display='none'">
+      <div class="driver-info"><span class="driver-name">Berry</span><span class="driver-track-stat">📊 Best PHX: 9th</span></div>
       <span class="odds">+2500</span>
     </div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,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" alt="n4">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Gragson</span> <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford" onerror="this.style.display='none'"></div><span class="driver-track-stat">📊 Best PHX: 11th</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n4"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford" onerror="this.style.display='none'">
+      <div class="driver-info"><span class="driver-name">Gragson</span><span class="driver-track-stat">📊 Best PHX: 11th</span></div>
       <span class="odds">+25000</span>
     </div>
   </div>
@@ -514,18 +577,21 @@ body{padding:8px;}
   <div class="card">
     <div class="card-header"><span class="name">Daniel</span></div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAwAFADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD56ooor9QPECu3+FH/ACG9J/7GPTf/AEJ64ivSvg94e128nstStdMlktoNXtLzzGIRZEhLbwpPU8gdMe9cePrU6NCU6kkl3bsa0YSlNKKuz6o1j/kLXn/Xd/5mvlv9qP8A5Lhrv+5b/wDolK+jb7UtVubyedNECLLIzgPdDIBOey15L8Wfhp4k8bePdQ8TW7WNlHdiICCSRnZdiBeSBjnGa/IeCMVh8uxtepiqsYqS096PfybPqs4pVMRRpxpxba8mfP1Fepv8C/FwHy3emOfTc4/9lrO1L4O+N7OJpBaWlyF5IiuMH/x4D+dfqVLiHK6r5YYiDf8AiR83LAYmKu6b+5nntFS3dvcWl1La3UMkE8LlJI5FwyMOoIqKvYTucgUUUUAbngTQW8S+KbPSdzLC5Mk7L1WJeWx7noPc19g6TYw6bp8NnBEkSRoFCL0UAYCj2A4FeB/D34Ta3cadp/iO019tKvHQSoqwAlAw4BJPOVIyCMc4r13TdP8AHFrCsdxrml3e0Y3NaMh/R8V+R8d4uhmU40KWKglBu8XzLX5JrQ+pySnPDp1JUm77NW2+86ljhScE4GcDqa5jTl8RXniq5mu3a20mONFgjHWR87mcn+EDhAvf5ie1UdevfHFnJbwWZsJ5JZ40dlt32xRnJZyd3YDgAHJIFdhZJKluPOd3diWO45K5/h/CvhpUJZTh3UvTn7VWW7aXVpNK3r9x7SqLF1FG0o8ur6Jk1Y/jDWrTQNAutRvJPLijjLMR1x0wPc5AHuRWu7KiM7sFVRkk9hXzd+0H4wbVta/4R+0kP2a0cNc4PDSjon/AQef9on0rfhHIpZvj1GS/dx1l/l8yc2xywlBtfE9jzfXtTuNZ1q81W72ia6lMjBei56KPYDA/CqNFFf0bGKiklsfnzd3cKKKKYHe+Ffix4r8P2MViklveW8ShIxcKdyqBgDcDzgcc5rvvCHxc17Xb20tX0+whNxqVtY7gzHb5xI34x2x0714JXb/Cj/kOaT/2Mem/+hPXz+YcP5ZXUqtShFyfWx3UMdiYWjGbS9T6kvLTXLa6mg/tCxbynZM/Z2GcHHrXlvxS+KOt+CfG1/4Z+wWN8bQRnz9zIG3oG+7g4xnHWvadZ/5C15/13f8A9CNfLX7Uf/JcNd/3Lf8A9EpX5nwVgcLmeMrU8VSjJRWmiXXysfRZxWq4ejCVOTTfmQ+IPjL4v1S3a3ga205G6tApLj6E8A++K85ZmZizMWZjkknJJ9SaSiv2HB4DDYKHJh6agvJWPlKtepWfNUk2/MKKKK6zI//Z" alt="n9">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Elliott</span> <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Chevrolet-logo.png" alt="Chevy" onerror="this.style.display='none'"></div><span class="driver-track-stat">🏆 1 win PHX</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n9"/></svg>
+      <span class="mfr-chevy"><svg viewBox="0 0 32 20" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="6" width="10" height="8" fill="#c9a020" rx="1"/><rect x="11" y="0" width="10" height="8" fill="#c9a020" rx="1"/><rect x="11" y="12" width="10" height="8" fill="#c9a020" rx="1"/><rect x="22" y="6" width="10" height="8" fill="#c9a020" rx="1"/><rect x="10" y="6" width="12" height="8" fill="#141414"/></svg></span>
+      <div class="driver-info"><span class="driver-name">Elliott</span><span class="driver-track-stat">🏆 1 win PHX</span></div>
       <span class="odds">+1000</span>
     </div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,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" alt="n6">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Keselowski</span> <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford" onerror="this.style.display='none'"></div><span class="driver-track-stat">🏆 2 wins PHX</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n6"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford" onerror="this.style.display='none'">
+      <div class="driver-info"><span class="driver-name">Keselowski</span><span class="driver-track-stat">🏆 2 wins PHX</span></div>
       <span class="odds">+3000</span>
     </div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,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" alt="n34">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Gilliland</span> <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford" onerror="this.style.display='none'"></div><span class="driver-track-stat">📊 Best PHX: 16th</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n34"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford" onerror="this.style.display='none'">
+      <div class="driver-info"><span class="driver-name">Gilliland</span><span class="driver-track-stat">📊 Best PHX: 16th</span></div>
       <span class="odds">+25000</span>
     </div>
   </div>
@@ -535,18 +601,21 @@ body{padding:8px;}
   <div class="card">
     <div class="card-header"><span class="wave-flag" style="font-size:13px">🏁</span>&nbsp;<span class="name">Ron</span></div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,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" alt="n19">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Briscoe</span> <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota" onerror="this.style.display='none'"></div><span class="driver-track-stat">🏆 1 win PHX</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n19"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota" onerror="this.style.display='none'">
+      <div class="driver-info"><span class="driver-name">Briscoe</span><span class="driver-track-stat">🏆 1 win PHX</span></div>
       <span class="odds">+1000</span>
     </div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,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" alt="n8">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Busch</span> <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Chevrolet-logo.png" alt="Chevy" onerror="this.style.display='none'"></div><span class="driver-track-stat">🏆 3 wins PHX</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n8"/></svg>
+      <span class="mfr-chevy"><svg viewBox="0 0 32 20" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="6" width="10" height="8" fill="#c9a020" rx="1"/><rect x="11" y="0" width="10" height="8" fill="#c9a020" rx="1"/><rect x="11" y="12" width="10" height="8" fill="#c9a020" rx="1"/><rect x="22" y="6" width="10" height="8" fill="#c9a020" rx="1"/><rect x="10" y="6" width="12" height="8" fill="#141414"/></svg></span>
+      <div class="driver-info"><span class="driver-name">Busch</span><span class="driver-track-stat">🏆 3 wins PHX</span></div>
       <span class="odds">+3500</span>
     </div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,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" alt="n97">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Van Gisbergen</span> <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Chevrolet-logo.png" alt="Chevy" onerror="this.style.display='none'"></div><span class="driver-track-stat">📊 Best PHX: 6th</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n97"/></svg>
+      <span class="mfr-chevy"><svg viewBox="0 0 32 20" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="6" width="10" height="8" fill="#c9a020" rx="1"/><rect x="11" y="0" width="10" height="8" fill="#c9a020" rx="1"/><rect x="11" y="12" width="10" height="8" fill="#c9a020" rx="1"/><rect x="22" y="6" width="10" height="8" fill="#c9a020" rx="1"/><rect x="10" y="6" width="12" height="8" fill="#141414"/></svg></span>
+      <div class="driver-info"><span class="driver-name">Van Gisbergen</span><span class="driver-track-stat">📊 Best PHX: 6th</span></div>
       <span class="odds">+25000</span>
     </div>
   </div>
@@ -556,22 +625,49 @@ body{padding:8px;}
   <div class="card">
     <div class="card-header"><span class="name">Ace</span></div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAwAFADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDrNA/5AOnf9ekP/oAq9VHQP+QDp3/XpD/6AKvV95HZHw8viYUUUUyQoqpFfJc3TWemW91qt4p2m3sYTKwb0Y/dX6sRiuq0/wCHfjy6tEuJhoFg7jP2eaSWR4x2DMvyk/TisKuJpUvjlY6KWGq1fgiYFFQanDq2keMZfDt++mXDwWonnktDJ+7LHCL83Unk/hU9awmpx5o7GU4OD5ZbhRRRVEFHQP8AkA6d/wBekP8A6AKvVR0D/kA6d/16Q/8AoAq9SjsipfEwpG3bW2NtbB2nGcHsaWqt1PcC+07TrG1F1fajceRbxGTYOmSxODgAe1Emoq7CKcnZF/4ZX2vaXrWg+CLMaTdW87yz3MxtHWdYwctIW39STjpXv1yI9Ps5rprmVIYY2kYO+4AAZPWvPPhL4H1nRvE+qeIfEMNpFcTQR21pHBP5ojjHLZOByT7V0vxY03Xta8DX+j+HRB9svE8kvLL5aqh+9zg84yK+Wxk6dXEKMHp3Pp8JCpToNzWp4Ro13JrF3qfiefPm6xdtMme0K/LGPyGfxrSrO0aWQS3ultaRQLpcosw0U3mI7KvIU4HTp9a0a+nppKKUdj5qq25u4UUUVZmUdA/5AOnf9ekP/oAq9VHQCP7B07kf8ekPf/YFXcj1H50o7IqXxMWqrW0yazbaxZ6jd2V5bRtHE8Ow7Qx5OGU8nHWrOR6j86Mj1H50NKSswjJxd0W/7b8W/wDQ561+UH/xug634sIIPjPWsHjpD/8AG6qZHqPzoyPUfnWP1aj/ACr7jX6zW/mZW0uyi0+zW2haRxuZ2eQ5d2Y5ZmPqSatUmR6j86Mj1H51stDF3eotFJkeo/OjI9R+dMD/2Q==" alt="n1">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Chastain</span> <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Chevrolet-logo.png" alt="Chevy" onerror="this.style.display='none'"></div><span class="driver-track-stat">📊 Best PHX: 3rd</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n1"/></svg>
+      <span class="mfr-chevy"><svg viewBox="0 0 32 20" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="6" width="10" height="8" fill="#c9a020" rx="1"/><rect x="11" y="0" width="10" height="8" fill="#c9a020" rx="1"/><rect x="11" y="12" width="10" height="8" fill="#c9a020" rx="1"/><rect x="22" y="6" width="10" height="8" fill="#c9a020" rx="1"/><rect x="10" y="6" width="12" height="8" fill="#141414"/></svg></span>
+      <div class="driver-info"><span class="driver-name">Chastain</span><span class="driver-track-stat">📊 Best PHX: 3rd</span></div>
       <span class="odds">+1800</span>
     </div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,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" alt="n17">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Buescher</span> <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford" onerror="this.style.display='none'"></div><span class="driver-track-stat">📊 Best PHX: 2nd</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n17"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford" onerror="this.style.display='none'">
+      <div class="driver-info"><span class="driver-name">Buescher</span><span class="driver-track-stat">📊 Best PHX: 2nd</span></div>
       <span class="odds">+2500</span>
     </div>
     <div class="driver-row">
-      <img class="car-num-img" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAwAFADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD7LooooAKKr6hfWen2/wBovrqG2izjfI4UZ9Oa5ib4iaDHKyJHezKpwHSIbW9xkg/pWFbFUaH8WaXqzalh6tb+HFv0Ovorl9N8c6NevNhLqCOCLzZZZowEVcgc4JPJNQXPxD0GJiIkvJ8d0hwD/wB9EVk8wwsYqbqKz8y1g8Q5OKg7ryOvori4fiPozNiS0v4x67Fb+Rrp9I1Sw1a1+06fcpPHnDY4Kn0IPINXQxmHxDtSmn6Mmrha1HWpFou0UUV0mAVx3ivx3Y6Yz2mmhb+9HBw37qM/7TDqfYfpXYSIsiMjgMrAgg9xXkGu+CdXsdVmh0uwlurFjvhZGXKA/wAByR0/lXm5pWxNKjfDRuztwFOhUq2rysjF1C51XWp5r+9eW7eBC7tjEcK+3ZR+p96oxlmQMwwTzj0q3qNnqOlsthf29xaicGTymkG1wD1IBI6+tR2dtPeXcVpaxNNPK21EHc18BjI1JzUJqTqPe/4JI+xwrhCDnFr2a2t+LbO+8GeHIbrwNftdv5J1JSVkJxsRfuH6Zy1ZGn2HgKFMX+tXl7KOGKo8aE+wUf1NLp02kw6DP4d1PWpopbqXE8kB86OBEOBHk8DOOccVW13QfD9hpMt1ZeKBd3AX9zAoRt59MLyPr2r6maUaEFShBuC15nqv+D3PnotyqzdSUkpPTlW//AMTV/7P/tWc6SJ1sOPKExJbpyeecZ9a7H4Q2l4dRur8B1sjD5ZY/dkfIIx64GefeuEyVAfgFfmGRkAjnoete9aDJJLotlLLCsEjwIzRquApIGQB2rgyCisVi5YmWjj0SstTuzio8Ph40Fqn1b10LtFFFfbnygUUUUAcD4q8E6trWvz6kNRtERlVIkaNiUQduvrk1c8K+BotLuHub67W7keBoiixlFXd94g5z047d67KiuL+zsN7b27j73c6vrtf2XsVL3exwGo/DS2LltK1GS1TtFKnmKPocg/zqgnw11Ld82q2gX1ELZ/nXp1FY1MmwVSXNKmr/ca08zxVOPLGbscjoXgHSrCZLi7kkv5kOVEgCxg+u0dfxJrrqKK7KGGpYePLSikvI5a1epWlzVHdhRRRW5kf/9k=" alt="n43">
-      <div class="driver-info"><div class="driver-name-row"><span class="driver-name">Jones</span> <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota" onerror="this.style.display='none'"></div><span class="driver-track-stat">📊 Best PHX: 6th</span></div>
+      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n43"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota" onerror="this.style.display='none'">
+      <div class="driver-info"><span class="driver-name">Jones</span><span class="driver-track-stat">📊 Best PHX: 6th</span></div>
       <span class="odds">+25000</span>
+    </div>
+  </div>
 </div>
-</div>
-</div>
+
+<!-- STANDINGS -->
+
+<div class="standings-title">Season Standings · <em>Through Race 3 · Post-COTA</em></div>
+<div class="standings-sub">SORTED BY AVG FINISH · ALL DRIVER RESULTS COUNT · LOWER = BETTER</div>
+<table class="standings">
+  <thead>
+    <tr>
+      <th class="rank">#</th><th>Player</th><th class="center">Avg</th><th class="center">Wins</th><th class="center">Top 5s</th><th class="center">Top 10s</th><th class="right">+/–</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="rank">1</td><td class="player">Ace</td><td class="avg-cell avg-hot">14.9</td><td class="stat-cell"><span class="badge-zero">—</span></td><td class="stat-cell"><span class="badge badge-t5">2</span></td><td class="stat-cell"><span class="badge badge-t10">6</span></td><td class="money negative">–$30</td></tr>
+    <tr><td class="rank">2</td><td class="player">Nick</td><td class="avg-cell avg-hot">15.7</td><td class="stat-cell"><span class="badge-zero">—</span></td><td class="stat-cell"><span class="badge badge-t5">2</span></td><td class="stat-cell"><span class="badge badge-t10">4</span></td><td class="money negative">–$30</td></tr>
+    <tr><td class="rank">3</td><td class="player">KO3</td><td class="avg-cell avg-mid">18.1</td><td class="stat-cell"><span class="badge-zero">—</span></td><td class="stat-cell"><span class="badge badge-t5">3</span></td><td class="stat-cell"><span class="badge badge-t10">5</span></td><td class="money negative">–$30</td></tr>
+    <tr><td class="rank">4</td><td class="player">Scott <span class="wave-flag" style="font-size:11px">🏁</span></td><td class="avg-cell avg-mid">19.3</td><td class="stat-cell"><span class="badge badge-win">1</span></td><td class="stat-cell"><span class="badge badge-t5">3</span></td><td class="stat-cell"><span class="badge badge-t10">4</span></td><td class="money positive">+$70</td></tr>
+    <tr><td class="rank">5</td><td class="player">Ron <span class="wave-flag" style="font-size:11px">🏁</span></td><td class="avg-cell avg-mid">19.6</td><td class="stat-cell"><span class="badge badge-win">1</span></td><td class="stat-cell"><span class="badge badge-t5">1</span></td><td class="stat-cell"><span class="badge badge-t10">3</span></td><td class="money positive">+$70</td></tr>
+    <tr><td class="rank">6</td><td class="player">Pam</td><td class="avg-cell avg-mid">19.8</td><td class="stat-cell"><span class="badge-zero">—</span></td><td class="stat-cell"><span class="badge badge-t5">1</span></td><td class="stat-cell"><span class="badge badge-t10">2</span></td><td class="money negative">–$30</td></tr>
+    <tr><td class="rank">7</td><td class="player">Nicole</td><td class="avg-cell avg-mid">20.3</td><td class="stat-cell"><span class="badge-zero">—</span></td><td class="stat-cell"><span class="badge badge-t5">1</span></td><td class="stat-cell"><span class="badge badge-t10">2</span></td><td class="money negative">–$30</td></tr>
+    <tr><td class="rank">8</td><td class="player">Brenda</td><td class="avg-cell avg-cold">21.0</td><td class="stat-cell"><span class="badge-zero">—</span></td><td class="stat-cell"><span class="badge-zero">—</span></td><td class="stat-cell"><span class="badge-zero">—</span></td><td class="money negative">–$30</td></tr>
+    <tr><td class="rank">9</td><td class="player">Daniel</td><td class="avg-cell avg-cold">22.1</td><td class="stat-cell"><span class="badge-zero">—</span></td><td class="stat-cell"><span class="badge-zero">—</span></td><td class="stat-cell"><span class="badge badge-t10">2</span></td><td class="money negative">–$30</td></tr>
+    <tr><td class="rank">10</td><td class="player">Zach <span class="wave-flag" style="font-size:11px">🏁</span></td><td class="avg-cell avg-cold">22.2</td><td class="stat-cell"><span class="badge badge-win">1</span></td><td class="stat-cell"><span class="badge badge-t5">1</span></td><td class="stat-cell"><span class="badge badge-t10">1</span></td><td class="money positive">+$70</td></tr>
+  </tbody>
+</table>
 
 <!-- LAST RACE RESULTS — with deltas -->
 
@@ -579,31 +675,31 @@ body{padding:8px;}
 <div class="results-list">
   <div class="result-row result-win">
     <span class="res-pos">1st</span><span class="res-trophy">🏆</span>
-    <span class="res-driver"><img class="res-badge-img" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAoAEADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD4yooooAKK6j4eeAPF3j/VhpnhTRLnUZQR5kiLiKEeruflUfU19ffC79jbwzaaf5vxA1ifVNRZRutdPmMMMGe27G5z78D2qHNJ2QrnwzRX1h8Uvgp8PLr4p6T8Kvhnp142tuwuNZv5b15o9OtxyQVPG8gg8+oHfjvfHvwP/Zj+H0dkvjLUb3TZLsEQiTUJWeXbjc21ASBz1xjmoVZPoLmR8JUV9h/8Ix+xb/0NNz/4FXX/AMRXzL8Up/B83jS+XwHYT2mgQt5VqZ52kkmA6yEt03dh2GO9VGpzO1h3OWr239k/4X+GvH/ie6v/ABnq1laaDpoHmW8l6sEl1I33VGSCEGCSR7CvEqXNXJXVgaufqfJplgPDcfhP4UeKPDHhYBCFNnbxXUiDuUQOBn/aYNWtONM8EeChpj+J7e0vzA22/wBSlEk08xHMpUsDIxY/dHsBX5qfCj4q+KPhlPd3PhRdMhurtQktxPZrNJtH8ILfdGecDrVjxF8ZPHXiD4iab481XULe51fS9v2MNbKYItvpGfl6nP15rL2fVGbi9bH2H8IPDHjv4VWPiHWpfAo8Talqdy93caq+rKl5cx9VQwiNirZJOwE8n2rufh14g1D4j6rdP4u+DMvh6K0iULdaykcryknhEVowcDqTnAr48/4a4+M3/QU0r/wWx1FdftZfGee3khXWtOhLqR5kenRBl9wSDzRGlZW/yEotf0jvv27PHHhS1mT4b+FtE0WK5idZtUu4LONXiYcrCrAZB7t+A9a+Sqn1C8utQvp76+uJLi6uJGlmlkbLOxOSSfUmoK0jHlNIqyCiiiqKCiiigAooooAKKKKAP//Z" alt="n45"> Reddick</span>
+    <span class="res-driver">#45 · Reddick</span>
     <span class="res-delta">–</span>
     <span class="res-pool">Zach</span>
   </div>
   <div class="result-row">
     <span class="res-pos">2nd</span><span class="res-trophy"> </span>
-    <span class="res-driver"><img class="res-badge-img" src="data:image/jpeg;base64,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" alt="n97"> Van Gisbergen</span>
+    <span class="res-driver">#97 · Van Gisbergen</span>
     <span class="res-delta">+3.841s</span>
     <span class="res-pool">KO3</span>
   </div>
   <div class="result-row">
     <span class="res-pos">3rd</span><span class="res-trophy"> </span>
-    <span class="res-driver"><img class="res-badge-img" src="data:image/jpeg;base64,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" alt="n20"> Bell</span>
+    <span class="res-driver">#20 · Bell</span>
     <span class="res-delta">+5.217s</span>
     <span class="res-pool">Scott</span>
   </div>
   <div class="result-row">
     <span class="res-pos">4th</span><span class="res-trophy"> </span>
-    <span class="res-driver"><img class="res-badge-img" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAoAEADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD4yooq7oel32tatbaVpsDT3dzII4kHGSe5PQADJJPAAJPAoApUV9bfCb4S6Bc+HY5bu3imsduLe4FtEZb58/PcFpEYrESNsSDGVG88vwxtO+EYvLm1Wxv3a2naB3FtZLGzL1KsygMv+0OK8h5zQ9rKlBSk472VyeZHyZRX1jr3hXwb9n8rTNKuLJzIiPc3NrZTMC4yiQQxqTcTOM7VBCAZZmCg11OnfDDw9cRQSa7pGnabLKBFa2NrbWxdVUZJml8r99MerMoVF6KMDJqvnFDD01OqnG+ya1fna+3qDkkfEtFfZ/jT4e+CNA0RrmLTBPfTuLewtzHbr507A7QT5XCgAsx7KrGvlj4k6rp2o65HbaTFaGzsIRbLdQWiQG8YZ3zsqAfeYnaOyhR1zW+AzCnjoOdJOy7jTucvX0H8Gvhnq506X7Pb2Y1CeOM6lJfM6xQ27gMLMGMbvMlUhpMfdjKpwXYV8+V6N4d+MXi7RodiTLK7KoeYSyRSS7VCqX2MFdgoA3EFsAZJxWuLhWnRcaDSk+rBn034kvvivDPpujaVY+G0N9J5b31nBPJHp8S4y7CTCdOFXvXQ/Ebxbb+CfCTX9wGvLtwILG2IAa7mxwMDgL/E2OAM+1fLJ+PvjIj/AFkn/gbP/wDFVy3iL4l+K9Zd3e+No0i7JJIHfzXXOdplZmk28D5QwB9K+Yp8NTnOHtnFRW/Le79SOQ+pfhnbeE/Cmlx32teLdLu9ZcSSSyvdqsFmZW3yRW6/djQsTkjG7vxgV1nhTT7g6hf+JNU1i11O4uvktTbqVt7S1HIjj3ckk/Mz/wAWB2Ar4s8OfEHV9K07ULG6Q6rHfeUJDd3U5Kqj7wow4GCwUkEHO0ds56a++Oviq+tZrS9Q3NtOhSaKS+uNsiHqpw4OCODgjirxnDtarJyhVvzb37dlZf5DcD1b4y+J9Im1O6v9Q1WO88OGwNnBJYTGOUM2GljgcqySySDaruBtjj4Jy20/Ks7RtO7QoY4yxKKW3FR2GeM/WtDxLrup+IdVl1LVLhpZnPyqOEiXsiL0VB0CjgAVmV9Jg8LHC0Y0Y7IpKyCiiiukYUUUUAFFFFABRRRQB//Z" alt="n54"> T. Gibbs</span>
+    <span class="res-driver">#54 · T. Gibbs</span>
     <span class="res-delta">+6.094s</span>
     <span class="res-pool">KO3</span>
   </div>
   <div class="result-row">
     <span class="res-pos">5th</span><span class="res-trophy"> </span>
-    <span class="res-driver"><img class="res-badge-img" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAoAEADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDmaKKa7qiM7sFVRkk9AK/Pz9zbtuOort9I+H1suix6v448Z6X4HiugGsbe/CefMn99ld1Kg9l5PrjpV7RPAPgTWtUi0vR/jRo2pX0v3Le1sklkb3wspOPeu6OX1pK+n3ng1OJMBCTjzN27JtHnVFdL8YfDegeCYJNH0rxpL4g8ZSlI7PRrTTVdjIzADzdrHywfcgnsK6Wx+DmoWfhm48R+OPFWleG9Ptbfzp/soF00WB8wd2wvHTChsnoaf9m172svvJ/1nwHLe7+56+h5rRVGwkluL27uoZbk6U7AWCXcKR3DIP8AlpIF4Ut1Cc4HU5q9XHOHJLlZ7VCsq1NVEmr99wqG7WMxB5JXh8t1kWVJCjRupBVlYcgg4x71NV/wlrx8MeLLfXZPDVt4hW1iJtbea8+ziK4J4mOUYNhcgdwST6YqjFSmk3bzM8bUlToScYc77d/+AdZ4W+EN5fwXXjrx/q9xounCLzrnUNWnM9/JCo/vS58lfTPP+yKwNW8d/aLWbRvhbYSeEfDUo2z6rt/4muqD+8HbLRIexPzem3pTviv498T/ABOTTdP1qw07StEs5zczWNrdSTm7kA/d+YSqgqpycY5P0rnJSVntWksY9QtFnVru0a4MBuIh1jDhTt3cA8dMjjOa9OtiKcGoUXq95P8Ar+vy+WwuV168HWxkPdj8NNaL7l/w/wCvdfBH4L2njMRarqlj9l8KxSmRDkibU5OhYP8AeEfUGTO5+QpAyTU+Nfi638X+Jf8AhEtBjitvBXhmbyEggULFe3cfBOBwYojwB0LZPYV0WtfHvxfdaNPpmheDtE0RGt2ggkfU3lMAK7VKqkSj5eMDOOK8m0SxXTdItbBW3mGMKz/326s34kk/jVYjEU6VHkpSu3uycuy3E4vG/WMZT5Yx2XTyVvIu0UUV4p9qFFFFABRRRQAUUUUAFFFFAH//2Q==" alt="n71"> McDowell</span>
+    <span class="res-driver">#71 · McDowell</span>
     <span class="res-delta">+8.552s</span>
     <span class="res-pool">Pam</span>
   </div>
@@ -675,35 +771,6 @@ body{padding:8px;}
     <div class="lp-winner">🏆 Reddick</div>
     <div class="lp-car">#45 · Toyota</div>
     <div class="lp-pool">Pool: <strong style="color:#e8a020">Zach</strong></div>
-  </div>
-</div>
-
-<!-- TOP 20 POINTS -->
-
-<div class="pts-grid-section">
-  <div class="pts-grid-title">🏆 <em>Cup Points · Top 20 · After Race 3</em></div>
-  <div class="pts-grid">
-    <div class="ptg-row"><span class="ptg-pos">1</span><span class="ptg-car">#45</span><span class="ptg-name">T. Reddick <span style="font-size:9px">🔥🔥🔥</span></span><span class="ptg-pts">186</span><span class="ptg-diff" style="color:#e8a020;font-weight:900;">3W</span></div>
-    <div class="ptg-row"><span class="ptg-pos">2</span><span class="ptg-car">#23</span><span class="ptg-name">B. Wallace</span><span class="ptg-pts">116</span><span class="ptg-diff">–70</span></div>
-    <div class="ptg-row"><span class="ptg-pos">3</span><span class="ptg-car">#9</span><span class="ptg-name">C. Elliott</span><span class="ptg-pts">114</span><span class="ptg-diff">–72</span></div>
-    <div class="ptg-row"><span class="ptg-pos">4</span><span class="ptg-car">#12</span><span class="ptg-name">R. Blaney</span><span class="ptg-pts">100</span><span class="ptg-diff">–86</span></div>
-    <div class="ptg-row"><span class="ptg-pos">5</span><span class="ptg-car">#97</span><span class="ptg-name">S. Van Gisbergen</span><span class="ptg-pts">90</span><span class="ptg-diff">–96</span></div>
-    <div class="ptg-row"><span class="ptg-pos">6</span><span class="ptg-car">#22</span><span class="ptg-name">J. Logano</span><span class="ptg-pts">90</span><span class="ptg-diff">–96</span></div>
-    <div class="ptg-row"><span class="ptg-pos">7</span><span class="ptg-car">#7</span><span class="ptg-name">D. Suarez</span><span class="ptg-pts">87</span><span class="ptg-diff">–99</span></div>
-    <div class="ptg-row"><span class="ptg-pos">8</span><span class="ptg-car">#16</span><span class="ptg-name">A.J. Allmendinger</span><span class="ptg-pts">86</span><span class="ptg-diff">–100</span></div>
-    <div class="ptg-row"><span class="ptg-pos">9</span><span class="ptg-car">#71</span><span class="ptg-name">M. McDowell</span><span class="ptg-pts">83</span><span class="ptg-diff">–103</span></div>
-    <div class="ptg-row"><span class="ptg-pos">10</span><span class="ptg-car">#77</span><span class="ptg-name">C. Hocevar</span><span class="ptg-pts">82</span><span class="ptg-diff">–104</span></div>
-    <div class="ptg-row"><span class="ptg-pos">11</span><span class="ptg-car">#17</span><span class="ptg-name">C. Buescher</span><span class="ptg-pts">81</span><span class="ptg-diff">–105</span></div>
-    <div class="ptg-row"><span class="ptg-pos">12</span><span class="ptg-car">#6</span><span class="ptg-name">B. Keselowski</span><span class="ptg-pts">78</span><span class="ptg-diff">–108</span></div>
-    <div class="ptg-row"><span class="ptg-pos">13</span><span class="ptg-car">#24</span><span class="ptg-name">W. Byron</span><span class="ptg-pts">76</span><span class="ptg-diff">–110</span></div>
-    <div class="ptg-row"><span class="ptg-pos">14</span><span class="ptg-car">#38</span><span class="ptg-name">Z. Smith</span><span class="ptg-pts">75</span><span class="ptg-diff">–111</span></div>
-    <div class="ptg-row"><span class="ptg-pos">15</span><span class="ptg-car">#5</span><span class="ptg-name">K. Larson</span><span class="ptg-pts">73</span><span class="ptg-diff">–113</span></div>
-    <div class="ptg-row"><span class="ptg-pos">16</span><span class="ptg-car">#60</span><span class="ptg-name">R. Preece</span><span class="ptg-pts">68</span><span class="ptg-diff">–118</span></div>
-    <div class="ptg-cutline-label">── Chase Cutline ──</div>
-    <div class="ptg-row ptg-below"><span class="ptg-pos">17</span><span class="ptg-car">#54</span><span class="ptg-name">T. Gibbs</span><span class="ptg-pts">65</span><span class="ptg-diff">–3</span></div>
-    <div class="ptg-row ptg-below"><span class="ptg-pos">18</span><span class="ptg-car">#4</span><span class="ptg-name">N. Gragson</span><span class="ptg-pts">65</span><span class="ptg-diff">–3</span></div>
-    <div class="ptg-row ptg-below"><span class="ptg-pos">19</span><span class="ptg-car">#10</span><span class="ptg-name">T. Dillon</span><span class="ptg-pts">65</span><span class="ptg-diff">–3</span></div>
-    <div class="ptg-row ptg-below"><span class="ptg-pos">20</span><span class="ptg-car">#1</span><span class="ptg-name">R. Chastain</span><span class="ptg-pts">64</span><span class="ptg-diff">–4</span></div>
   </div>
 </div>
 
@@ -789,11 +856,33 @@ function updateParty(){
 }
 updateParty(); setInterval(updateParty,1000);
 
+// ── POINTS SCROLLER ──
+const totalPages=7; let currentPage=0;
+const pageLabels=['Pos 1–5','Pos 6–10','Pos 11–15','Pos 16–20','Pos 21–25','Pos 26–30','Pos 31–36'];
+const dotsEl=document.getElementById('pts-dots');
+for(let i=0;i<totalPages;i++){
+  const d=document.createElement('button');
+  d.className='pts-dot'+(i===0?' active':'');
+  d.onclick=(function(n){return function(){goToPage(n);};})(i);
+  dotsEl.appendChild(d);
+}
+function goToPage(n){
+  currentPage=Math.max(0,Math.min(totalPages-1,n));
+  document.getElementById('pts-pages').style.transform=`translateX(-${currentPage*100}%)`;
+  document.getElementById('pts-page-label').textContent=pageLabels[currentPage];
+  document.querySelectorAll('.pts-dot').forEach((d,i)=>d.classList.toggle('active',i===currentPage));
+}
+function changePage(dir){goToPage(currentPage+dir);}
+let tsX=0;
+const pw=document.getElementById('pts-pages');
+pw.addEventListener('touchstart',e=>tsX=e.touches[0].clientX,{passive:true});
+pw.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-tsX;
+  if(Math.abs(dx)>40)changePage(dx<0?1:-1);
+},{passive:true});
+
 // ── NASCAR NEWS TICKER ──
-// Try multiple CORS proxies + RSS sources
-const RSS_SOURCES = [
-  { url: 'https://api.foxsports.com/v2/content/optimized-rss?partnerKey=MB0Wehpmuj2lUhuRhQaafhBjAJqaPU244mlTDK1i&size=30&tags=fs%2Ftruck-series%2Cfs%2Fcup-series%2Cfs%2Fxfinity-series&_hp5_cdc=479232849%3B5041767677184277%3B3594210756360113%3B1772649453025%3B', label: 'Fox Sports' }
-];
+const FOX_RSS = 'https://api.foxsports.com/v2/content/optimized-rss?partnerKey=MB0Wehpmuj2lUhuRhQaafhBjAJqaPU244mlTDK1i&size=30&tags=fs%2Ftruck-series%2Cfs%2Fcup-series%2Cfs%2Fxfinity-series';
 const CORS_PROXIES = [
   url => `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`,
   url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
@@ -809,179 +898,46 @@ const FALLBACK_ITEMS = [
   'Christopher Bell is the two-time defending spring Phoenix winner',
 ];
 
-async function fetchRSS(source, proxyFn) {
-  const res = await fetch(proxyFn(source.url), { signal: AbortSignal.timeout(6000) });
-  if (!res.ok) throw new Error('fetch failed');
-  const data = await res.json();
-  const xml = data.contents || data.body || '';
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(xml, 'text/xml');
-  const items = Array.from(doc.querySelectorAll('item')).slice(0, 10);
-  if (items.length === 0) throw new Error('no items');
-  return { items, label: source.label };
-}
-
 async function loadTicker() {
-  for (const source of RSS_SOURCES) {
-    for (const proxyFn of CORS_PROXIES) {
-      try {
-        const { items, label } = await fetchRSS(source, proxyFn);
-        const texts = items.map(item => {
-          const title = item.querySelector('title')?.textContent?.trim() || '';
-          const link  = item.querySelector('link')?.textContent?.trim() || '#';
-          return title ? `<span class="ticker-item"><a href="${link}" target="_blank" rel="noopener">${title}</a></span>` : '';
-        }).filter(Boolean);
-
-        if (texts.length > 0) {
-          const joined = texts.join('');
-          // Duplicate for seamless infinite loop
-          document.getElementById('ticker-track').innerHTML = joined + joined;
-          const srcEl = document.getElementById('ticker-src');
-          srcEl.textContent = label + ' ↗';
-          srcEl.href = source.url;
-          // Speed based on content — one full set width
-          const totalChars = texts.join('').replace(/<[^>]+>/g,'').length;
-          const dur = Math.max(20, totalChars * 0.065);
-          document.getElementById('ticker-track').style.animationDuration = dur + 's';
-          return;
-        }
-      } catch(e) { /* try next */ }
-    }
+  for (const proxyFn of CORS_PROXIES) {
+    try {
+      const res = await fetch(proxyFn(FOX_RSS), { signal: AbortSignal.timeout(6000) });
+      if (!res.ok) throw new Error('fetch failed');
+      const data = await res.json();
+      const xml = data.contents || data.body || '';
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(xml, 'text/xml');
+      const items = Array.from(doc.querySelectorAll('item')).slice(0, 12);
+      if (items.length === 0) throw new Error('no items');
+      const texts = items.map(item => {
+        const title = item.querySelector('title')?.textContent?.trim() || '';
+        const link  = item.querySelector('link')?.textContent?.trim() || '#';
+        return title ? `<span class="ticker-item"><a href="${link}" target="_blank" rel="noopener">${title}</a></span>` : '';
+      }).filter(Boolean);
+      if (texts.length > 0) {
+        document.getElementById('ticker-track').innerHTML = texts.join('');
+        const srcEl = document.getElementById('ticker-src');
+        srcEl.textContent = 'Fox Sports ↗';
+        srcEl.href = 'https://www.foxsports.com/nascar';
+        const totalChars = texts.join('').replace(/<[^>]+>/g,'').length;
+        const dur = Math.max(20, totalChars * 0.04);
+        document.getElementById('ticker-track').style.animationDuration = dur + 's';
+        return;
+      }
+    } catch(e) { /* try next */ }
   }
-  // All failed — use fallback
   useFallbackTicker();
 }
 
 function useFallbackTicker() {
   const html = FALLBACK_ITEMS.map(t => `<span class="ticker-item">${t}</span>`).join('');
-  // Duplicate for seamless loop
-  document.getElementById('ticker-track').innerHTML = html + html;
+  document.getElementById('ticker-track').innerHTML = html;
   document.getElementById('ticker-src').textContent = 'race facts';
   document.getElementById('ticker-src').removeAttribute('href');
 }
 
 loadTicker();
-// Refresh every 5 minutes
 setInterval(loadTicker, 300000);
-
-
-// ══════════════════════════════════════
-// ESPN LIVE RUNNING ORDER
-// ══════════════════════════════════════
-
-// Pool driver lookup by car number
-const POOL_BY_CAR = {
-  '11':'Scott','48':'Scott','42':'Scott',
-  '5':'Brenda','60':'Brenda','7':'Brenda',
-  '24':'KO3','23':'KO3','3':'KO3',
-  '20':'Pam','88':'Pam','71':'Pam',
-  '12':'Nick','54':'Nick','2':'Nick',
-  '45':'Zach','77':'Zach','38':'Zach',
-  '22':'Nicole','21':'Nicole','4':'Nicole',
-  '9':'Daniel','6':'Daniel','34':'Daniel',
-  '19':'Ron','8':'Ron','97':'Ron',
-  '1':'Ace','17':'Ace','43':'Ace',
-};
-
-let espnEventId = null;
-let espnInterval = null;
-
-function posClass(p) {
-  if (p === 1) return 'ep1';
-  if (p === 2) return 'ep2';
-  if (p === 3) return 'ep3';
-  if (p <= 5) return 'etop5';
-  if (p <= 10) return 'etop10';
-  return '';
-}
-
-async function getESPNEventId() {
-  // Fetch the current/upcoming NASCAR Cup event ID
-  const res = await fetch('https://site.api.espn.com/apis/site/v2/sports/racing/nascar-cup/scoreboard');
-  const data = await res.json();
-  const events = data.events || [];
-  if (events.length > 0) return events[0].id;
-  return null;
-}
-
-async function fetchESPN(manual = false) {
-  const contentEl = document.getElementById('espn-content');
-  const lapEl = document.getElementById('espn-lap');
-  const updateEl = document.getElementById('espn-update-time');
-
-  try {
-    // Get event ID if we don't have one
-    if (!espnEventId) {
-      espnEventId = await getESPNEventId();
-    }
-    if (!espnEventId) {
-      contentEl.innerHTML = '<div class="espn-err">No active race found on ESPN.</div>';
-      return;
-    }
-
-    const res = await fetch(`https://site.api.espn.com/apis/site/v2/sports/racing/nascar-cup/summary?event=${espnEventId}`);
-    const data = await res.json();
-
-    // Pull lap info
-    const status = data.header?.competitions?.[0]?.status;
-    const lap = status?.period || 0;
-    const totalLaps = 312;
-    const statusType = status?.type?.name || '';
-    const isActive = statusType === 'STATUS_IN_PROGRESS';
-    const isPreRace = statusType === 'STATUS_SCHEDULED' || statusType === 'STATUS_PRE_RACE' || !statusType;
-
-    if (isPreRace || lap === 0) {
-      contentEl.innerHTML = '<div class="espn-prerace">⏳ Race hasn\'t started yet.<br>Running order will appear automatically once green flag drops.</div>';
-      lapEl.textContent = '–';
-      return;
-    }
-
-    lapEl.textContent = `Lap ${lap} / ${totalLaps}`;
-
-    // Pull competitors
-    const competitors = data.header?.competitions?.[0]?.competitors || [];
-    if (competitors.length === 0) {
-      contentEl.innerHTML = '<div class="espn-err">Live data not yet available.</div>';
-      return;
-    }
-
-    // Sort by position
-    const sorted = [...competitors].sort((a, b) => (parseInt(a.order) || 99) - (parseInt(b.order) || 99));
-
-    // Show top 20
-    const top20 = sorted.slice(0, 20);
-    const rows = top20.map((c, idx) => {
-      const pos = parseInt(c.order) || (idx + 1);
-      const carNum = c.athlete?.displayName?.match(/#(\d+)/)?.[1] || c.athlete?.shortName || '';
-      const lastName = c.athlete?.lastName || c.athlete?.displayName || '?';
-      const gap = c.status?.gap || (pos === 1 ? 'Leader' : '');
-      const pool = POOL_BY_CAR[carNum] || '';
-      const pc = posClass(pos);
-      return `<div class="espn-row">
-        <span class="espn-pos ${pc}">${pos}</span>
-        <span class="espn-num">#${carNum}</span>
-        <span class="espn-name ${pos===1?'eleader':''}">${lastName}</span>
-        <span class="espn-gap">${gap}</span>
-        <span class="espn-pool">${pool}</span>
-      </div>`;
-    }).join('');
-
-    contentEl.innerHTML = `<div class="espn-rows">${rows}</div>`;
-
-    // Update time
-    const now = new Date();
-    updateEl.textContent = `Updated ${now.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'})}`;
-
-  } catch(e) {
-    contentEl.innerHTML = `<div class="espn-err">Couldn't reach ESPN. Will retry...<br><small style="color:#333">${e.message}</small></div>`;
-    updateEl.textContent = 'Update failed';
-    console.warn('ESPN fetch error:', e);
-  }
-}
-
-// Initial fetch + auto-refresh every 45 seconds
-fetchESPN();
-espnInterval = setInterval(fetchESPN, 45000);
 
 </script>
 
