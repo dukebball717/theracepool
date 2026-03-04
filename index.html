@@ -8,12 +8,10 @@
   @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,700;0,900;1,900&display=swap');
   *{margin:0;padding:0;box-sizing:border-box;}
   body{font-family:'Barlow Condensed',sans-serif;background:#141414;color:#fff;padding:12px;}
-
   .header{text-align:center;margin-bottom:10px;}
   .header .series{font-size:10px;letter-spacing:3px;color:#888;text-transform:uppercase;}
   .header h1{font-size:20px;font-weight:900;text-transform:uppercase;letter-spacing:1px;line-height:1.2;}
   .header .sub{font-size:12px;color:#e8a020;letter-spacing:2px;margin-top:2px;}
-
   .info-bar{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
   .info-item{display:flex;align-items:center;gap:5px;background:#1e1e1e;border:1px solid #2e2e2e;border-radius:20px;padding:4px 11px;font-size:12px;font-weight:700;}
   .info-item .label{color:#aaa;font-size:9px;letter-spacing:1px;text-transform:uppercase;}
@@ -24,29 +22,39 @@
   .party-inline{display:flex;align-items:center;gap:5px;background:#1e1e1e;border:1px solid #2e2e2e;border-radius:20px;padding:4px 11px;}
   .party-inline .label{color:#aaa;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:700;}
   .party-digits{font-size:12px;font-weight:900;color:#c084fc;font-variant-numeric:tabular-nums;}
-
   .secondary-bar{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;}
   .track-map-box,.points-box{background:#1e1e1e;border:1px solid #2c2c2c;border-radius:8px;padding:8px 10px;min-width:0;}
   .box-title{font-size:8px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#888;margin-bottom:6px;}
   .box-title span{color:#e8a020;}
   .track-svg-wrap{display:flex;justify-content:center;}
-  .points-row{display:flex;align-items:center;gap:4px;padding:2px 0;border-bottom:1px solid #242424;}
+  .points-scroll-wrap{overflow:hidden;position:relative;}
+  .points-pages{display:flex;transition:transform 0.4s ease;}
+  .points-page{min-width:100%;flex-shrink:0;}
+  .points-row{display:flex;align-items:center;gap:4px;padding:3px 0;border-bottom:1px solid #242424;}
   .points-row:last-child{border-bottom:none;}
-  .pts-pos{font-size:9px;font-weight:900;color:#555;width:10px;flex-shrink:0;}
-  .pts-name{font-size:10px;font-weight:700;color:#ddd;flex:1;}
+  .pts-pos{font-size:10px;font-weight:900;color:#555;width:14px;flex-shrink:0;}
+  .pts-car{font-size:9px;color:#444;width:18px;flex-shrink:0;}
+  .pts-name{font-size:11px;font-weight:700;color:#ddd;flex:1;line-height:1.2;}
+  .pts-team{font-size:9px;color:#666;line-height:1;}
   .pts-val{font-size:10px;font-weight:900;color:#e8a020;white-space:nowrap;}
-  .pts-gap{font-size:9px;color:#555;}
-  .hot-streak{font-size:9px;}
-
+  .pts-diff{font-size:9px;color:#555;}
+  .pts-w{font-size:9px;color:#e8a020;font-weight:900;}
+  .pts-nav{display:flex;justify-content:center;gap:5px;margin-top:5px;}
+  .pts-dot{width:6px;height:6px;border-radius:50%;background:#333;border:none;cursor:pointer;padding:0;}
+  .pts-dot.active{background:#e8a020;}
+  .pts-arrows{display:flex;justify-content:space-between;margin-bottom:3px;}
+  .pts-arr{background:none;border:1px solid #333;color:#888;border-radius:3px;padding:1px 6px;font-size:10px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;}
+  .pts-arr:hover{border-color:#e8a020;color:#e8a020;}
+  .cutline-row{background:#1a1200;border-left:2px solid #e8a020;}
+  .cutline-label{font-size:7px;color:#e8a020;letter-spacing:1px;text-transform:uppercase;text-align:center;padding:1px 0;font-weight:900;}
   .dyk-bar{background:#1a1a1a;border:1px solid #2a2a2a;border-left:3px solid #e8a020;border-radius:6px;padding:6px 10px;margin-bottom:10px;display:flex;align-items:flex-start;gap:7px;}
   .dyk-icon{font-size:13px;flex-shrink:0;margin-top:1px;}
   .dyk-text{font-size:11px;color:#ccc;line-height:1.4;}
   .dyk-text strong{color:#e8a020;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;display:block;margin-bottom:2px;}
-
   .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:10px;}
   .card{background:#1e1e1e;border-radius:6px;border:1px solid #2c2c2c;overflow:hidden;}
-  .card-header{padding:5px 8px;display:flex;align-items:center;gap:4px;border-bottom:1px solid #2c2c2c;background:#252525;}
-  .card-header .name{font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:0.5px;}
+  .card-header{padding:7px 8px;display:flex;align-items:center;justify-content:center;gap:4px;border-bottom:1px solid #2c2c2c;background:#252525;}
+  .card-header .name{font-size:17px;font-weight:900;text-transform:uppercase;letter-spacing:1px;text-align:center;}
   .wave-flag{display:inline-block;animation:wave 1.2s ease-in-out infinite;transform-origin:bottom center;}
   @keyframes wave{0%{transform:rotate(-8deg);}50%{transform:rotate(8deg);}100%{transform:rotate(-8deg);}}
   .driver-row{display:flex;align-items:center;padding:4px 8px;border-bottom:1px solid #272727;gap:5px;}
@@ -57,7 +65,6 @@
   .driver-name{font-size:12px;font-weight:700;color:#ddd;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2;}
   .driver-track-stat{font-size:10px;color:#777;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .odds{font-size:10px;font-weight:700;color:#555;flex-shrink:0;margin-left:auto;}
-
   .standings-title{font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#888;text-align:center;margin-bottom:3px;}
   .standings-title em{color:#e8a020;font-style:normal;}
   .standings-sub{font-size:9px;color:#555;text-align:center;margin-bottom:8px;letter-spacing:1px;}
@@ -81,21 +88,36 @@
   .badge-t5{background:#3b82f6;color:#fff;}
   .badge-t10{background:#374151;color:#9ca3af;}
   .badge-zero{color:#444;font-size:11px;}
-
-  .podium-title{font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#888;text-align:center;margin-bottom:10px;}
-  .podium-title em{color:#e8a020;font-style:normal;}
-  .podium-wrap{display:flex;align-items:flex-end;justify-content:center;gap:6px;margin-bottom:6px;}
-  .podium-slot{display:flex;flex-direction:column;align-items:center;gap:4px;}
-  .podium-name{font-size:13px;font-weight:900;color:#fff;text-align:center;}
-  .podium-driver{font-size:10px;color:#aaa;text-align:center;}
-  .podium-block{width:90px;display:flex;align-items:center;justify-content:center;border-radius:4px 4px 0 0;font-size:28px;font-weight:900;}
-  .podium-1 .podium-block{height:80px;background:linear-gradient(180deg,#b8860b,#ffd700);color:#000;animation:riseUp 0.8s ease-out both .1s;}
-  .podium-2 .podium-block{height:55px;background:linear-gradient(180deg,#555,#999);color:#000;animation:riseUp 0.8s ease-out both .3s;}
-  .podium-3 .podium-block{height:40px;background:linear-gradient(180deg,#7b4a00,#cd7f32);color:#fff;animation:riseUp 0.8s ease-out both .5s;}
-  @keyframes riseUp{from{transform:scaleY(0);transform-origin:bottom;}to{transform:scaleY(1);transform-origin:bottom;}}
-  .podium-order{display:flex;justify-content:center;gap:6px;}
-  .podium-label{width:90px;text-align:center;font-size:9px;color:#555;letter-spacing:1px;text-transform:uppercase;}
-
+  .results-title{font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#888;text-align:center;margin-bottom:8px;}
+  .results-title em{color:#e8a020;font-style:normal;}
+  .results-list{max-width:480px;margin:0 auto 16px;}
+  .result-row{display:flex;align-items:center;gap:10px;padding:6px 12px;border-bottom:1px solid #252525;border-radius:4px;}
+  .result-row:last-child{border-bottom:none;}
+  .result-win{background:#1a1400;border-left:3px solid #e8a020;border-radius:4px;}
+  .res-pos{font-size:13px;font-weight:900;color:#555;width:30px;flex-shrink:0;}
+  .result-win .res-pos{color:#e8a020;}
+  .res-trophy{font-size:14px;width:18px;flex-shrink:0;}
+  .res-driver{font-size:14px;font-weight:700;color:#ddd;flex:1;}
+  .result-win .res-driver{color:#fff;}
+  .res-pool{font-size:13px;font-weight:900;color:#888;background:#222;border-radius:4px;padding:2px 8px;flex-shrink:0;}
+  .result-win .res-pool{color:#e8a020;background:#2a1e00;}
+  .section-title{font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#888;text-align:center;margin:14px 0 8px;}
+  .section-title em{color:#e8a020;font-style:normal;}
+  .upcoming-races{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;}
+  .race-pill{background:#1e1e1e;border:1px solid #2c2c2c;border-radius:10px;padding:8px 14px;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:140px;}
+  .race-pill .rp-track{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:#fff;}
+  .race-pill .rp-date{font-size:10px;color:#e8a020;font-weight:700;}
+  .race-pill .rp-time{font-size:10px;color:#888;}
+  .race-pill .rp-tv{font-size:9px;color:#555;}
+  .last-races{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;}
+  .last-pill{background:#1e1e1e;border:1px solid #2c2c2c;border-radius:10px;padding:8px 14px;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:140px;}
+  .last-pill .lp-track{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:#888;}
+  .last-pill .lp-winner{font-size:13px;font-weight:900;color:#e8a020;}
+  .last-pill .lp-pool{font-size:11px;color:#ccc;}
+  .last-pill .lp-car{font-size:9px;color:#555;}
+  .footer-logo{text-align:center;margin-top:20px;padding-top:16px;border-top:1px solid #2a2a2a;}
+  .footer-logo .prod-name{font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:3px;color:#e8a020;}
+  .footer-logo .prod-sub{font-size:11px;color:#666;letter-spacing:2px;text-transform:uppercase;margin-top:2px;}
   @media(max-width:600px){
     body{padding:8px;}
     .header h1{font-size:16px;}
@@ -105,28 +127,10 @@
     .countdown-digits,.party-digits{font-size:11px;}
     .secondary-bar{grid-template-columns:1fr 1fr;}
     .grid{grid-template-columns:1fr 1fr;gap:7px;}
-    .card-header{padding:7px 10px;}
-    .card-header .name{font-size:16px;}
-    .driver-row{padding:6px 10px;gap:6px;}
-    .car-num-svg{width:42px;height:26px;}
-    .mfr-logo{width:16px;height:16px;}
-    .driver-name{font-size:14px;}
-    .driver-track-stat{font-size:11px;}
-    .odds{font-size:11px;}
-    table.standings thead th{font-size:8px;padding:4px 4px;}
-    table.standings tbody td{padding:5px 4px;}
-    td.player{font-size:13px;}
-    td.money{font-size:13px;}
-    td.avg-cell{font-size:12px;}
-    td.stat-cell{font-size:11px;}
-    .badge{font-size:8px;padding:1px 3px;}
-    .podium-block{width:75px;}
-    .podium-1 .podium-block{height:70px;}
-    .podium-2 .podium-block{height:48px;}
-    .podium-3 .podium-block{height:35px;}
-    .podium-name{font-size:14px;}
-    .podium-driver{font-size:11px;}
-    .podium-label{width:75px;}
+    .card-header .name{font-size:18px;}
+    .driver-name{font-size:13px;}
+    .upcoming-races,.last-races{gap:6px;}
+    .race-pill,.last-pill{min-width:120px;padding:6px 10px;}
   }
 </style>
 </head>
@@ -136,517 +140,20 @@
   <symbol id="n11" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#0a1f5c"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#cc0000" stroke="#fff" stroke-width="1.5" paint-order="stroke">11</text></symbol>
   <symbol id="n48" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#0d0d0d"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#c084fc" stroke="#ff6eb4" stroke-width="1" paint-order="stroke">48</text></symbol>
   <symbol id="n42" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#1a6e2e"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#ffe600" stroke="#fff" stroke-width="1" paint-order="stroke">42</text></symbol>
-  <symbol id="n5" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#003087"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#cc0000" stroke-width="2" paint-order="stroke">5</text></symbol>
+  <symbol id="n5"  viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#003087"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#cc0000" stroke-width="2" paint-order="stroke">5</text></symbol>
   <symbol id="n60" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#cc0000"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#000" stroke-width="1" paint-order="stroke">60</text></symbol>
-  <symbol id="n7" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#0057b8"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#00b050" stroke-width="1.5" paint-order="stroke">7</text></symbol>
-  <symbol id="n24" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#e8e8e8"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#f5a800" stroke="#111" stroke-width="1.5" paint-order="stroke">24</text></symbol>
+  <symbol id="n7"  viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#0057b8"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#00b050" stroke-width="1.5" paint-order="stroke">7</text></symbol>
+  <symbol id="n24" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#1a1a1a"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#f5a800" stroke="#111" stroke-width="1.5" paint-order="stroke">24</text></symbol>
   <symbol id="n23" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#000"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#00b2a9" stroke="#fff" stroke-width="1" paint-order="stroke">23</text></symbol>
-  <symbol id="n3" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#1a3d1a"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#c9a84c" stroke="#fff" stroke-width="1" paint-order="stroke">3</text></symbol>
+  <symbol id="n3"  viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#1a3d1a"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#c9a84c" stroke="#fff" stroke-width="1" paint-order="stroke">3</text></symbol>
   <symbol id="n20" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#111"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#ffcd00" stroke="#000" stroke-width="1.5" paint-order="stroke">20</text></symbol>
   <symbol id="n88" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#0047ba"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#7ec8e3" stroke-width="1" paint-order="stroke">88</text></symbol>
   <symbol id="n71" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#3b1f0d"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#f97316" stroke="#fff" stroke-width="1" paint-order="stroke">71</text></symbol>
   <symbol id="n12" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#003087"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#ffd700" stroke="#fff" stroke-width="1" paint-order="stroke">12</text></symbol>
   <symbol id="n54" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#0a0a0a"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#70ff00" stroke="#000" stroke-width="1.5" paint-order="stroke">54</text></symbol>
-  <symbol id="n2" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#3a3a3a"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#e8e8e8" stroke="#cc0000" stroke-width="1.5" paint-order="stroke">2</text></symbol>
+  <symbol id="n2"  viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#3a3a3a"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#e8e8e8" stroke="#cc0000" stroke-width="1.5" paint-order="stroke">2</text></symbol>
   <symbol id="n45" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#0a0a0a"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#e8a020" stroke="#cc0000" stroke-width="1.5" paint-order="stroke">45</text></symbol>
   <symbol id="n77" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#0047ba"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#7ec8e3" stroke-width="1" paint-order="stroke">77</text></symbol>
   <symbol id="n38" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#00205b"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#f5c400" stroke="#fff" stroke-width="1" paint-order="stroke">38</text></symbol>
   <symbol id="n22" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#c8102e"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#ffc72c" stroke-width="1.5" paint-order="stroke">22</text></symbol>
-  <symbol id="n21" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#00338d"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#ff6900" stroke="#fff" stroke-width="1" paint-order="stroke">21</text></symbol>
-  <symbol id="n4" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#b71c1c"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#000" stroke-width="1" paint-order="stroke">4</text></symbol>
-  <symbol id="n9" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#001f5b"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#f5c400" stroke="#fff" stroke-width="1" paint-order="stroke">9</text></symbol>
-  <symbol id="n6" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#1a1a1a"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#d0d0d0" stroke="#555" stroke-width="1.5" paint-order="stroke">6</text></symbol>
-  <symbol id="n34" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#006241"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#ff6600" stroke="#fff" stroke-width="1" paint-order="stroke">34</text></symbol>
-  <symbol id="n19" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#0d3b1e"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#c9a84c" stroke-width="1.5" paint-order="stroke">19</text></symbol>
-  <symbol id="n8" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#cc0000"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#000" stroke="#fff" stroke-width="1.5" paint-order="stroke">8</text></symbol>
-  <symbol id="n97" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#001e62"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#e8003d" stroke="#ffc72c" stroke-width="1.5" paint-order="stroke">97</text></symbol>
-  <symbol id="n1" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#1a4b8c"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#7ec8e3" stroke-width="1.5" paint-order="stroke">1</text></symbol>
-  <symbol id="n17" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#00338d"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#ff6900" stroke="#fff" stroke-width="1" paint-order="stroke">17</text></symbol>
-  <symbol id="n43" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#1a6e2e"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#ffe600" stroke="#fff" stroke-width="1" paint-order="stroke">43</text></symbol>
-</svg>
-
-<!-- Manufacturer logo URLs -->
-<!-- Chevrolet: https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Chevrolet_bowtie_emblem.svg/120px-Chevrolet_bowtie_emblem.svg.png -->
-<!-- Ford: https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png -->
-<!-- Toyota: https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png -->
-
-<div class="header">
-  <div class="series">2026 NASCAR Cup Series · Race Pool</div>
-  <h1>Straight Talk Wireless 500 · Phoenix Raceway</h1>
-  <div class="sub">March 8, 2026</div>
-</div>
-
-<div class="info-bar">
-  <!-- Party countdown FIRST now -->
-  <div class="party-inline">
-    <span class="label">🎉 Party</span>
-    <span class="party-digits" id="party-countdown">--d --h</span>
-  </div>
-  <!-- Race countdown SECOND -->
-  <div class="countdown-box">
-    <span class="countdown-label">🏁 Race</span>
-    <span class="countdown-digits" id="countdown">--:--:--</span>
-  </div>
-  <div class="info-item">
-    <svg width="16" height="14" viewBox="0 0 20 18" style="flex-shrink:0"><rect x="1" y="0" width="2" height="18" fill="#888" rx="1"/><rect x="3" y="1" width="8" height="5" fill="#22c55e" rx="1"/><rect x="3" y="6" width="8" height="5" fill="#16a34a" rx="1"/><rect x="7" y="1" width="4" height="5" fill="#16a34a"/><rect x="7" y="6" width="4" height="5" fill="#22c55e"/></svg>
-    <span class="label">Green Flag</span>
-    <span>3:30 PM ET</span>
-  </div>
-  <div class="info-item">
-    <span style="font-size:13px">🔄</span>
-    <span class="label">Laps</span>
-    <span>312</span>
-  </div>
-  <div class="info-item">
-    <span style="font-size:13px">⏱️</span>
-    <span class="label">Avg Duration</span>
-    <span>~3hr 5min</span>
-  </div>
-  <div class="info-item">
-    <span style="font-size:15px">☀️</span>
-    <span class="label">Forecast</span>
-    <span>Sunny · 83°F</span>
-  </div>
-  <div class="fs1-badge">
-    <span style="font-size:9px;color:#aaa;letter-spacing:1px;text-transform:uppercase;font-weight:700;">TV</span>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/2015_Fox_Sports_1_logo.svg/1280px-2015_Fox_Sports_1_logo.svg.png" alt="FS1" style="height:20px;width:auto;display:block;">
-  </div>
-</div>
-
-<div class="secondary-bar">
-  <div class="track-map-box">
-    <div class="box-title">🏟 Track Map · <span>Phoenix</span> · 1.0mi Oval</div>
-    <div class="track-svg-wrap">
-      <svg viewBox="0 0 200 140" width="100%" height="auto" style="max-height:110px">
-        <ellipse cx="105" cy="70" rx="88" ry="55" fill="none" stroke="#333" stroke-width="9"/>
-        <ellipse cx="105" cy="70" rx="88" ry="55" fill="none" stroke="#555" stroke-width="2"/>
-        <ellipse cx="105" cy="70" rx="76" ry="43" fill="#1a2e1a"/>
-        <rect x="17" y="58" width="3" height="24" fill="#fff" rx="1"/>
-        <text x="24" y="54" font-family="Arial" font-size="7" fill="#888">S/F</text>
-        <text x="90" y="16" font-family="Arial" font-size="7" fill="#666" text-anchor="middle">T3-T4</text>
-        <text x="90" y="130" font-family="Arial" font-size="7" fill="#666" text-anchor="middle">T1-T2</text>
-        <text x="105" y="68" font-family="Arial Black" font-size="9" fill="#333" text-anchor="middle" font-weight="900">PHOENIX</text>
-        <text x="105" y="79" font-family="Arial" font-size="7" fill="#2a2a2a" text-anchor="middle">RACEWAY</text>
-      </svg>
-    </div>
-  </div>
-  <div class="points-box">
-    <div class="box-title">🏆 Cup Points · <span>After COTA</span></div>
-    <div class="points-row"><span class="pts-pos">1</span><span class="pts-name">Reddick <span class="hot-streak">🔥🔥🔥</span></span><span class="pts-val">186</span></div>
-    <div class="points-row"><span class="pts-pos">2</span><span class="pts-name">Wallace</span><span class="pts-val">116<span class="pts-gap"> –70</span></span></div>
-    <div class="points-row"><span class="pts-pos">3</span><span class="pts-name">Elliott</span><span class="pts-val">116<span class="pts-gap"> –70</span></span></div>
-    <div class="points-row"><span class="pts-pos">4</span><span class="pts-name">Blaney</span><span class="pts-val">100<span class="pts-gap"> –86</span></span></div>
-    <div class="points-row"><span class="pts-pos">5</span><span class="pts-name">Van Gisbergen</span><span class="pts-val">90<span class="pts-gap"> –96</span></span></div>
-  </div>
-</div>
-
-<div class="dyk-bar">
-  <span class="dyk-icon">💡</span>
-  <div class="dyk-text"><strong>Did You Know?</strong><span id="dyk-fact"></span></div>
-</div>
-
-<div class="grid">
-
-  <!-- SCOTT -->
-  <div class="card">
-    <div class="card-header"><span class="wave-flag" style="font-size:13px">🏁</span><span class="name">Scott</span></div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n11"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota">
-      <div class="driver-info"><span class="driver-name">Hamlin</span><span class="driver-track-stat">🏆 3 wins PHX</span></div>
-      <span class="odds">+550</span>
-    </div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n48"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Chevrolet_bowtie_emblem.svg/120px-Chevrolet_bowtie_emblem.svg.png" alt="Chevy">
-      <div class="driver-info"><span class="driver-name">Bowman</span><span class="driver-track-stat">🏆 1 win PHX</span></div>
-      <span class="odds">+5000</span>
-    </div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n42"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota">
-      <div class="driver-info"><span class="driver-name">Nemechek</span><span class="driver-track-stat">📊 Best PHX: 14th</span></div>
-      <span class="odds">+35000</span>
-    </div>
-  </div>
-
-  <!-- BRENDA -->
-  <div class="card">
-    <div class="card-header"><span class="name">Brenda</span></div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n5"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Chevrolet_bowtie_emblem.svg/120px-Chevrolet_bowtie_emblem.svg.png" alt="Chevy">
-      <div class="driver-info"><span class="driver-name">Larson</span><span class="driver-track-stat">🏆 3 wins PHX</span></div>
-      <span class="odds">+750</span>
-    </div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n60"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford">
-      <div class="driver-info"><span class="driver-name">Preece</span><span class="driver-track-stat">📊 Best PHX: 6th</span></div>
-      <span class="odds">+5500</span>
-    </div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n7"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Chevrolet_bowtie_emblem.svg/120px-Chevrolet_bowtie_emblem.svg.png" alt="Chevy">
-      <div class="driver-info"><span class="driver-name">Suarez</span><span class="driver-track-stat">📊 Best PHX: 5th</span></div>
-      <span class="odds">+20000</span>
-    </div>
-  </div>
-
-  <!-- KO3 -->
-  <div class="card">
-    <div class="card-header"><span class="name">KO3</span></div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n24"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Chevrolet_bowtie_emblem.svg/120px-Chevrolet_bowtie_emblem.svg.png" alt="Chevy">
-      <div class="driver-info"><span class="driver-name">Byron</span><span class="driver-track-stat">🏆 1 win PHX</span></div>
-      <span class="odds">+800</span>
-    </div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n23"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota">
-      <div class="driver-info"><span class="driver-name">Wallace</span><span class="driver-track-stat">📊 Best PHX: 4th</span></div>
-      <span class="odds">+3500</span>
-    </div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n3"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Chevrolet_bowtie_emblem.svg/120px-Chevrolet_bowtie_emblem.svg.png" alt="Chevy">
-      <div class="driver-info"><span class="driver-name">Dillon</span><span class="driver-track-stat">📊 Best PHX: 2nd</span></div>
-      <span class="odds">+7500</span>
-    </div>
-  </div>
-
-  <!-- PAM -->
-  <div class="card">
-    <div class="card-header"><span class="name">Pam</span></div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n20"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota">
-      <div class="driver-info"><span class="driver-name">Bell</span><span class="driver-track-stat">🏆 2 wins PHX</span></div>
-      <span class="odds">+600</span>
-    </div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n88"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Chevrolet_bowtie_emblem.svg/120px-Chevrolet_bowtie_emblem.svg.png" alt="Chevy">
-      <div class="driver-info"><span class="driver-name">Zilisch</span><span class="driver-track-stat">🆕 Rookie</span></div>
-      <span class="odds">+6000</span>
-    </div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n71"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Chevrolet_bowtie_emblem.svg/120px-Chevrolet_bowtie_emblem.svg.png" alt="Chevy">
-      <div class="driver-info"><span class="driver-name">McDowell</span><span class="driver-track-stat">📊 Best PHX: 3rd</span></div>
-      <span class="odds">+15000</span>
-    </div>
-  </div>
-
-  <!-- NICK -->
-  <div class="card">
-    <div class="card-header"><span class="name">Nick</span></div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n12"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford">
-      <div class="driver-info"><span class="driver-name">Blaney</span><span class="driver-track-stat">🏆 1 win PHX</span></div>
-      <span class="odds">+475</span>
-    </div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n54"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota">
-      <div class="driver-info"><span class="driver-name">Gibbs</span><span class="driver-track-stat">📊 Best PHX: 3rd</span></div>
-      <span class="odds">+4000</span>
-    </div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n2"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford">
-      <div class="driver-info"><span class="driver-name">Cindric</span><span class="driver-track-stat">📊 Best PHX: 7th</span></div>
-      <span class="odds">+7000</span>
-    </div>
-  </div>
-
-  <!-- ZACH -->
-  <div class="card">
-    <div class="card-header"><span class="wave-flag" style="font-size:13px">🏁</span><span class="name">Zach</span></div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n45"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota">
-      <div class="driver-info"><span class="driver-name">Reddick</span><span class="driver-track-stat">🏆 1 win PHX</span></div>
-      <span class="odds">+1300</span>
-    </div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n77"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Chevrolet_bowtie_emblem.svg/120px-Chevrolet_bowtie_emblem.svg.png" alt="Chevy">
-      <div class="driver-info"><span class="driver-name">Hocevar</span><span class="driver-track-stat">📊 Best PHX: 4th</span></div>
-      <span class="odds">+3000</span>
-    </div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n38"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford">
-      <div class="driver-info"><span class="driver-name">Smith</span><span class="driver-track-stat">📊 Best PHX: 11th</span></div>
-      <span class="odds">+25000</span>
-    </div>
-  </div>
-
-  <!-- NICOLE -->
-  <div class="card">
-    <div class="card-header"><span class="name">Nicole</span></div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n22"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford">
-      <div class="driver-info"><span class="driver-name">Logano</span><span class="driver-track-stat">🏆 4 wins PHX</span></div>
-      <span class="odds">+1300</span>
-    </div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n21"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford">
-      <div class="driver-info"><span class="driver-name">Berry</span><span class="driver-track-stat">📊 Best PHX: 9th</span></div>
-      <span class="odds">+2500</span>
-    </div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n4"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford">
-      <div class="driver-info"><span class="driver-name">Gragson</span><span class="driver-track-stat">📊 Best PHX: 11th</span></div>
-      <span class="odds">+25000</span>
-    </div>
-  </div>
-
-  <!-- DANIEL -->
-  <div class="card">
-    <div class="card-header"><span class="name">Daniel</span></div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n9"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Chevrolet_bowtie_emblem.svg/120px-Chevrolet_bowtie_emblem.svg.png" alt="Chevy">
-      <div class="driver-info"><span class="driver-name">Elliott</span><span class="driver-track-stat">🏆 1 win PHX</span></div>
-      <span class="odds">+1000</span>
-    </div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n6"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford">
-      <div class="driver-info"><span class="driver-name">Keselowski</span><span class="driver-track-stat">🏆 2 wins PHX</span></div>
-      <span class="odds">+3000</span>
-    </div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n34"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford">
-      <div class="driver-info"><span class="driver-name">Gilliland</span><span class="driver-track-stat">📊 Best PHX: 16th</span></div>
-      <span class="odds">+25000</span>
-    </div>
-  </div>
-
-  <!-- RON -->
-  <div class="card">
-    <div class="card-header"><span class="wave-flag" style="font-size:13px">🏁</span><span class="name">Ron</span></div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n19"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota">
-      <div class="driver-info"><span class="driver-name">Briscoe</span><span class="driver-track-stat">🏆 1 win PHX</span></div>
-      <span class="odds">+1000</span>
-    </div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n8"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Chevrolet_bowtie_emblem.svg/120px-Chevrolet_bowtie_emblem.svg.png" alt="Chevy">
-      <div class="driver-info"><span class="driver-name">Busch</span><span class="driver-track-stat">🏆 8 wins PHX</span></div>
-      <span class="odds">+3500</span>
-    </div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n97"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Chevrolet_bowtie_emblem.svg/120px-Chevrolet_bowtie_emblem.svg.png" alt="Chevy">
-      <div class="driver-info"><span class="driver-name">Van Gisbergen</span><span class="driver-track-stat">📊 Best PHX: 6th</span></div>
-      <span class="odds">+25000</span>
-    </div>
-  </div>
-
-  <!-- ACE -->
-  <div class="card">
-    <div class="card-header"><span class="name">Ace</span></div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n1"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Chevrolet_bowtie_emblem.svg/120px-Chevrolet_bowtie_emblem.svg.png" alt="Chevy">
-      <div class="driver-info"><span class="driver-name">Chastain</span><span class="driver-track-stat">📊 Best PHX: 3rd</span></div>
-      <span class="odds">+1800</span>
-    </div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n17"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford">
-      <div class="driver-info"><span class="driver-name">Buescher</span><span class="driver-track-stat">📊 Best PHX: 2nd</span></div>
-      <span class="odds">+2500</span>
-    </div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n43"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota">
-      <div class="driver-info"><span class="driver-name">Jones</span><span class="driver-track-stat">📊 Best PHX: 6th</span></div>
-      <span class="odds">+25000</span>
-    </div>
-  </div>
-
-</div>
-
-<div class="standings-title">Through 3 Races · <em>Post-COTA</em></div>
-<div class="standings-sub">SORTED BY AVG FINISH · ALL DRIVER RESULTS COUNT · LOWER = BETTER</div>
-<table class="standings">
-  <thead>
-    <tr>
-      <th class="rank">#</th>
-      <th>Player</th>
-      <th class="center">Avg</th>
-      <th class="center">Wins</th>
-      <th class="center">Top 5s</th>
-      <th class="center">Top 10s</th>
-      <th class="right">+/–</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="rank">1</td><td class="player">Ace</td>
-      <td class="avg-cell avg-hot">14.9</td>
-      <td class="stat-cell"><span class="badge-zero">—</span></td>
-      <td class="stat-cell"><span class="badge badge-t5">2</span></td>
-      <td class="stat-cell"><span class="badge badge-t10">6</span></td>
-      <td class="money negative">–$30</td>
-    </tr>
-    <tr>
-      <td class="rank">2</td><td class="player">Nick</td>
-      <td class="avg-cell avg-hot">15.7</td>
-      <td class="stat-cell"><span class="badge-zero">—</span></td>
-      <td class="stat-cell"><span class="badge badge-t5">2</span></td>
-      <td class="stat-cell"><span class="badge badge-t10">4</span></td>
-      <td class="money negative">–$30</td>
-    </tr>
-    <tr>
-      <td class="rank">3</td><td class="player">KO3</td>
-      <td class="avg-cell avg-mid">18.1</td>
-      <td class="stat-cell"><span class="badge-zero">—</span></td>
-      <td class="stat-cell"><span class="badge badge-t5">3</span></td>
-      <td class="stat-cell"><span class="badge badge-t10">5</span></td>
-      <td class="money negative">–$30</td>
-    </tr>
-    <tr>
-      <td class="rank">4</td><td class="player">Scott <span class="wave-flag" style="font-size:11px">🏁</span></td>
-      <td class="avg-cell avg-mid">19.3</td>
-      <td class="stat-cell"><span class="badge badge-win">1</span></td>
-      <td class="stat-cell"><span class="badge badge-t5">3</span></td>
-      <td class="stat-cell"><span class="badge badge-t10">4</span></td>
-      <td class="money positive">+$70</td>
-    </tr>
-    <tr>
-      <td class="rank">5</td><td class="player">Ron <span class="wave-flag" style="font-size:11px">🏁</span></td>
-      <td class="avg-cell avg-mid">19.6</td>
-      <td class="stat-cell"><span class="badge badge-win">1</span></td>
-      <td class="stat-cell"><span class="badge badge-t5">1</span></td>
-      <td class="stat-cell"><span class="badge badge-t10">3</span></td>
-      <td class="money positive">+$70</td>
-    </tr>
-    <tr>
-      <td class="rank">6</td><td class="player">Pam</td>
-      <td class="avg-cell avg-mid">19.8</td>
-      <td class="stat-cell"><span class="badge-zero">—</span></td>
-      <td class="stat-cell"><span class="badge badge-t5">1</span></td>
-      <td class="stat-cell"><span class="badge badge-t10">2</span></td>
-      <td class="money negative">–$30</td>
-    </tr>
-    <tr>
-      <td class="rank">7</td><td class="player">Nicole</td>
-      <td class="avg-cell avg-mid">20.3</td>
-      <td class="stat-cell"><span class="badge-zero">—</span></td>
-      <td class="stat-cell"><span class="badge badge-t5">1</span></td>
-      <td class="stat-cell"><span class="badge badge-t10">2</span></td>
-      <td class="money negative">–$30</td>
-    </tr>
-    <tr>
-      <td class="rank">8</td><td class="player">Brenda</td>
-      <td class="avg-cell avg-cold">21.0</td>
-      <td class="stat-cell"><span class="badge-zero">—</span></td>
-      <td class="stat-cell"><span class="badge-zero">—</span></td>
-      <td class="stat-cell"><span class="badge-zero">—</span></td>
-      <td class="money negative">–$30</td>
-    </tr>
-    <tr>
-      <td class="rank">9</td><td class="player">Daniel</td>
-      <td class="avg-cell avg-cold">22.1</td>
-      <td class="stat-cell"><span class="badge-zero">—</span></td>
-      <td class="stat-cell"><span class="badge-zero">—</span></td>
-      <td class="stat-cell"><span class="badge badge-t10">2</span></td>
-      <td class="money negative">–$30</td>
-    </tr>
-    <tr>
-      <td class="rank">10</td><td class="player">Zach <span class="wave-flag" style="font-size:11px">🏁</span></td>
-      <td class="avg-cell avg-cold">22.2</td>
-      <td class="stat-cell"><span class="badge badge-win">1</span></td>
-      <td class="stat-cell"><span class="badge badge-t5">1</span></td>
-      <td class="stat-cell"><span class="badge badge-t10">1</span></td>
-      <td class="money positive">+$70</td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="podium-title">🏆 Last Race Podium · <em>COTA – March 1, 2026</em></div>
-<div class="podium-wrap">
-  <div class="podium-slot podium-2">
-    <div class="podium-name">KO3</div>
-    <div class="podium-driver">#97 · Van Gisbergen</div>
-    <div class="podium-block">2</div>
-  </div>
-  <div class="podium-slot podium-1">
-    <div class="podium-name">Zach</div>
-    <div class="podium-driver">#45 · Reddick</div>
-    <div class="podium-block">1</div>
-  </div>
-  <div class="podium-slot podium-3">
-    <div class="podium-name">Scott</div>
-    <div class="podium-driver">#20 · Bell</div>
-    <div class="podium-block">3</div>
-  </div>
-</div>
-<div class="podium-order">
-  <div class="podium-label">2nd Place</div>
-  <div class="podium-label">Winner 🏆</div>
-  <div class="podium-label">3rd Place</div>
-</div>
-
-<script>
-  const facts = [
-    // ── POOL FACTS (verified against actual race data) ──
-    "Ace leads the pool in avg finish (14.9) and has the most top-10s (6) through 3 races — but has zero pool wins and is down $30. Best performing pool, worst luck on race winners.",
-    "Zach has the worst avg finish in the pool (22.2) but leads the money standings at +$70 — saved entirely by Reddick's COTA win. His Daytona pool averaged 25.8th place across 4 drivers.",
-    "KO3 leads everyone with 3 top-5 driver finishes — Hocevar 4th at Atlanta, SVG 2nd at COTA, Gibbs 4th at COTA — yet has zero pool wins to show for it.",
-    "Brenda is the only player with zero top-5s AND zero top-10s through 3 races. Across 10 driver-race results, not one finish inside the top 10.",
-    "Scott has the best avg finish (19.3) among pool winners — Reddick 1st at Daytona, Wallace 8th at Atlanta, Bell 3rd at COTA. The most complete pool through 3 races.",
-    "Ace had Stenhouse 2nd AND Keselowski 5th at Daytona — the only player to land two top-5 finishes in a single race this season.",
-    "Daniel has zero top-5s through 3 races. His best driver finishes are Buescher 7th at Daytona and Blaney 8th at COTA — both just missing the top 5.",
-    "Nick's pool has quietly been the 2nd-best performing through 3 races (avg 15.7), with Elliott finishing 4th at Daytona and 7th at COTA anchoring his numbers.",
-    "Ron won the pool money at Atlanta thanks to Briscoe's 2nd place — but Ron's other 9 driver-race results average out to 24th place.",
-    "The three pool winners so far — Scott (Daytona), Ron (Atlanta), Zach (COTA) — have all been won by different drivers: Reddick, Briscoe, and Reddick again.",
-    // ── RACE/TRACK FACTS ──
-    "Tyler Reddick is the first driver in NASCAR Cup history to win the first three races of a season — Daytona, Atlanta, and COTA in 2026.",
-    "Joey Logano has 4 Cup wins at Phoenix — the most of any active driver entering this race.",
-    "Kyle Busch has 8 career Cup wins at Phoenix, the most all-time at this track. Kevin Harvick is second with 9, but is retired.",
-    "Christopher Bell is the defending spring Phoenix winner, having won in both 2024 and 2025.",
-    "Phoenix Raceway stages: Stage 1 ends lap 60, Stage 2 ends lap 185. The final stage runs laps 186–312.",
-    "The spring Phoenix race has run within a few minutes of 3 hours in each of the last 5 years — plan for a ~3hr race.",
-    "The first Cup race at Phoenix was in 1988, won by Alan Kulwicki — who celebrated with his famous 'Polish Victory Lap' driving the wrong way around the track.",
-    "Phoenix is one of only three tracks to host the NASCAR Championship race — it has been the season finale every year since 2020."
-  ];
-  document.getElementById('dyk-fact').textContent = facts[Math.floor(Math.random() * facts.length)];
-
-  // Race countdown
-  const greenFlag = new Date('2026-03-08T15:30:00-05:00');
-  function updateCountdown(){
-    const diff = greenFlag - new Date();
-    if(diff<=0){document.getElementById('countdown').textContent='🟢 GO!';return;}
-    const d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
-    const p=n=>String(n).padStart(2,'0');
-    document.getElementById('countdown').textContent=d>0?`${d}d ${p(h)}h ${p(m)}m`:` ${p(h)}:${p(m)}:${p(s)}`;
-  }
-  updateCountdown(); setInterval(updateCountdown,1000);
-
-  // Party countdown
-  const party = new Date('2026-08-29T19:00:00-04:00');
-  function updateParty(){
-    const diff = party - new Date();
-    if(diff<=0){document.getElementById('party-countdown').textContent='🎉 LET\'S GO!';return;}
-    const d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
-    const p=n=>String(n).padStart(2,'0');
-    document.getElementById('party-countdown').textContent=`${d}d ${p(h)}h ${p(m)}m ${p(s)}s`;
-  }
-  updateParty(); setInterval(updateParty,1000);
-</script>
-</body>
-</html>
+  <symbol id="n21" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#00338​​​​​​​​​​​​​​​​
