@@ -160,8 +160,23 @@ body{padding:8px;}
 .race-pill,.last-pill{min-width:130px;padding:6px 10px;}
 .res-delta{font-size:10px;min-width:45px;}
 }
-</style>
 
+/* ── NEWS TICKER ── */
+.news-ticker-wrap{display:flex;align-items:center;gap:0;background:#111;border-bottom:2px solid #e8a020;overflow:hidden;height:30px;}
+.ticker-label{font-size:8px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#000;background:#e8a020;padding:0 10px;height:100%;display:flex;align-items:center;white-space:nowrap;flex-shrink:0;}
+.ticker-outer{flex:1;overflow:hidden;position:relative;height:100%;}
+.ticker-track{display:flex;align-items:center;height:100%;white-space:nowrap;animation:tickerScroll 20s linear infinite;}
+.ticker-track:hover{animation-play-state:paused;}
+@keyframes tickerScroll{0%{transform:translateX(100%);}100%{transform:translateX(-100%);}}
+.ticker-item{font-size:11px;font-weight:700;color:#ddd;padding:0 30px;display:inline-block;}
+.ticker-item::after{content:’·’;color:#e8a020;margin-left:30px;}
+.ticker-item a{color:#ddd;text-decoration:none;}
+.ticker-item a:hover{color:#e8a020;}
+.ticker-src{font-size:8px;color:#555;padding:0 8px;white-space:nowrap;flex-shrink:0;text-decoration:none;letter-spacing:.5px;}
+.ticker-src:hover{color:#e8a020;}
+.ticker-error{font-size:10px;color:#555;font-style:italic;}
+
+</style>
 </head>
 <body>
 
@@ -206,6 +221,18 @@ body{padding:8px;}
   <div class="series">2026 NASCAR Cup Series · Race Pool</div>
   <h1>Straight Talk Wireless 500 · Phoenix Raceway</h1>
   <div class="sub">March 8, 2026 · Avondale, AZ</div>
+</div>
+
+<!-- NEWS TICKER -->
+
+<div class="news-ticker-wrap" id="news-ticker-wrap">
+  <div class="ticker-label">📡 NASCAR NEWS</div>
+  <div class="ticker-outer">
+    <div class="ticker-track" id="ticker-track">
+      <span class="ticker-item">Fetching latest NASCAR news...</span>
+    </div>
+  </div>
+  <a class="ticker-src" id="ticker-src" href="https://racingnews365.com/nascar" target="_blank" rel="noopener">racingnews365 ↗</a>
 </div>
 
 <!-- INFO BAR -->
@@ -852,6 +879,82 @@ pw.addEventListener('touchend',e=>{
   const dx=e.changedTouches[0].clientX-tsX;
   if(Math.abs(dx)>40)changePage(dx<0?1:-1);
 },{passive:true});
+
+
+// ── NASCAR NEWS TICKER ──
+// Try multiple CORS proxies + RSS sources
+const RSS_SOURCES = [
+  { url: 'https://www.motorsport.com/rss/nascar/news/', label: 'motorsport.com' },
+  { url: 'https://racingnews365.com/feed', label: 'racingnews365.com' },
+  { url: 'https://www.jayski.com/feed/', label: 'jayski.com' },
+];
+const CORS_PROXIES = [
+  url => `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`,
+  url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
+];
+
+const FALLBACK_ITEMS = [
+  'Tyler Reddick enters Phoenix as the only driver to win all 3 races in 2026',
+  'Phoenix Raceway – 1.0 mile D-shaped oval · 312 laps today',
+  'Stage 1 ends Lap 60 · Stage 2 ends Lap 185 · Final stage Laps 186–312',
+  'Joey Logano leads all active drivers with 4 career wins at Phoenix',
+  'Kevin Harvick holds the all-time Phoenix record with 9 Cup victories',
+  'Green flag today at 3:30 PM ET · Watch on FS1',
+  'Christopher Bell is the two-time defending spring Phoenix winner',
+];
+
+async function fetchRSS(source, proxyFn) {
+  const res = await fetch(proxyFn(source.url), { signal: AbortSignal.timeout(6000) });
+  if (!res.ok) throw new Error('fetch failed');
+  const data = await res.json();
+  const xml = data.contents || data.body || '';
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(xml, 'text/xml');
+  const items = Array.from(doc.querySelectorAll('item')).slice(0, 10);
+  if (items.length === 0) throw new Error('no items');
+  return { items, label: source.label };
+}
+
+async function loadTicker() {
+  for (const source of RSS_SOURCES) {
+    for (const proxyFn of CORS_PROXIES) {
+      try {
+        const { items, label } = await fetchRSS(source, proxyFn);
+        const texts = items.map(item => {
+          const title = item.querySelector('title')?.textContent?.trim() || '';
+          const link  = item.querySelector('link')?.textContent?.trim() || '#';
+          return title ? `<span class="ticker-item"><a href="${link}" target="_blank" rel="noopener">${title}</a></span>` : '';
+        }).filter(Boolean);
+
+        if (texts.length > 0) {
+          document.getElementById('ticker-track').innerHTML = texts.join('');
+          const srcEl = document.getElementById('ticker-src');
+          srcEl.textContent = label + ' ↗';
+          srcEl.href = source.url;
+          // adjust animation speed based on content length
+          const totalChars = texts.join('').replace(/<[^>]+>/g,'').length;
+          const dur = Math.max(12, totalChars * 0.04);
+          document.getElementById('ticker-track').style.animationDuration = dur + 's';
+          return;
+        }
+      } catch(e) { /* try next */ }
+    }
+  }
+  // All failed — use fallback
+  useFallbackTicker();
+}
+
+function useFallbackTicker() {
+  const html = FALLBACK_ITEMS.map(t => `<span class="ticker-item">${t}</span>`).join('');
+  document.getElementById('ticker-track').innerHTML = html;
+  document.getElementById('ticker-src').textContent = 'race facts';
+  document.getElementById('ticker-src').removeAttribute('href');
+}
+
+loadTicker();
+// Refresh every 5 minutes
+setInterval(loadTicker, 300000);
+
 </script>
 
 </body>
