@@ -9,88 +9,186 @@
   *{margin:0;padding:0;box-sizing:border-box;}
   body{font-family:'Barlow Condensed',sans-serif;background:#141414;color:#fff;padding:12px;}
 
-  /* (all your existing CSS — unchanged) */
-  /* ... [full CSS from your original file] ... */
+  /* ── HEADER ── */
+  .header{text-align:center;margin-bottom:10px;}
+  .header .series{font-size:10px;letter-spacing:3px;color:#888;text-transform:uppercase;}
+  .header h1{font-size:20px;font-weight:900;text-transform:uppercase;letter-spacing:1px;line-height:1.2;}
+  .header .sub{font-size:12px;color:#e8a020;letter-spacing:2px;margin-top:2px;}
+
+  /* ── INFO BAR ── */
+  .info-bar{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+  .info-item{display:flex;align-items:center;gap:5px;background:#1e1e1e;border:1px solid #2e2e2e;border-radius:20px;padding:4px 11px;font-size:12px;font-weight:700;}
+  .info-item .label{color:#aaa;font-size:9px;letter-spacing:1px;text-transform:uppercase;}
+  .fs1-badge{display:flex;align-items:center;gap:5px;background:#1e1e1e;border:1px solid #2e2e2e;border-radius:20px;padding:3px 11px;}
+  .countdown-box{display:flex;align-items:center;gap:5px;background:#1e1e1e;border:1px solid #2e2e2e;border-radius:20px;padding:4px 11px;}
+  .countdown-label{font-size:9px;color:#aaa;letter-spacing:1px;text-transform:uppercase;font-weight:700;}
+  .countdown-digits{font-size:12px;font-weight:900;color:#e8a020;font-variant-numeric:tabular-nums;}
+  .party-inline{display:flex;align-items:center;gap:5px;background:#1e1e1e;border:1px solid #2e2e2e;border-radius:20px;padding:4px 11px;}
+  .party-inline .label{color:#aaa;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:700;}
+  .party-digits{font-size:12px;font-weight:900;color:#c084fc;font-variant-numeric:tabular-nums;}
+
+  /* ── SECONDARY BAR ── */
+  .secondary-bar{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;}
+  .track-map-box,.points-box{background:#1e1e1e;border:1px solid #2c2c2c;border-radius:8px;padding:8px 10px;min-width:0;}
+  .box-title{font-size:8px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#888;margin-bottom:6px;}
+  .box-title span{color:#e8a020;}
+  .track-svg-wrap{display:flex;justify-content:center;}
+
+  /* Points scrollable */
+  .points-scroll-wrap{overflow:hidden;position:relative;}
+  .points-pages{display:flex;transition:transform 0.4s ease;}
+  .points-page{min-width:100%;flex-shrink:0;}
+  .points-row{display:flex;align-items:center;gap:4px;padding:3px 0;border-bottom:1px solid #242424;}
+  .points-row:last-child{border-bottom:none;}
+  .pts-pos{font-size:10px;font-weight:900;color:#555;width:14px;flex-shrink:0;}
+  .pts-car{font-size:9px;color:#444;width:18px;flex-shrink:0;}
+  .pts-name{font-size:11px;font-weight:700;color:#ddd;flex:1;line-height:1.2;}
+  .pts-team{font-size:9px;color:#666;line-height:1;}
+  .pts-val{font-size:10px;font-weight:900;color:#e8a020;white-space:nowrap;}
+  .pts-diff{font-size:9px;color:#555;}
+  .pts-w{font-size:9px;color:#e8a020;font-weight:900;}
+  .pts-nav{display:flex;justify-content:center;gap:5px;margin-top:5px;}
+  .pts-dot{width:6px;height:6px;border-radius:50%;background:#333;border:none;cursor:pointer;padding:0;}
+  .pts-dot.active{background:#e8a020;}
+  .pts-arrows{display:flex;justify-content:space-between;margin-bottom:3px;}
+  .pts-arr{background:none;border:1px solid #333;color:#888;border-radius:3px;padding:1px 6px;font-size:10px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;}
+  .pts-arr:hover{border-color:#e8a020;color:#e8a020;}
+  .cutline-row{background:#1a1200;border-left:2px solid #e8a020;}
+  .cutline-label{font-size:7px;color:#e8a020;letter-spacing:1px;text-transform:uppercase;text-align:center;padding:1px 0;font-weight:900;}
+
+  /* ── DYK ── */
+  .dyk-bar{background:#1a1a1a;border:1px solid #2a2a2a;border-left:3px solid #e8a020;border-radius:6px;padding:6px 10px;margin-bottom:10px;display:flex;align-items:flex-start;gap:7px;}
+  .dyk-icon{font-size:13px;flex-shrink:0;margin-top:1px;}
+  .dyk-text{font-size:11px;color:#ccc;line-height:1.4;}
+  .dyk-text strong{color:#e8a020;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;display:block;margin-bottom:2px;}
+
+  /* ── POOL GRID ── */
+  .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:10px;}
+  .card{background:#1e1e1e;border-radius:6px;border:1px solid #2c2c2c;overflow:hidden;}
+  .card-header{padding:7px 8px;display:flex;align-items:center;justify-content:center;gap:4px;border-bottom:1px solid #2c2c2c;background:#252525;}
+  .card-header .name{font-size:17px;font-weight:900;text-transform:uppercase;letter-spacing:1px;text-align:center;}
+  .wave-flag{display:inline-block;animation:wave 1.2s ease-in-out infinite;transform-origin:bottom center;}
+  @keyframes wave{0%{transform:rotate(-8deg);}50%{transform:rotate(8deg);}100%{transform:rotate(-8deg);}}
+
+  .driver-row{display:flex;align-items:center;padding:4px 8px;border-bottom:1px solid #272727;gap:5px;}
+  .driver-row:last-child{border-bottom:none;}
+  .car-num-svg{flex-shrink:0;width:36px;height:22px;}
+  .mfr-logo{flex-shrink:0;width:18px;height:18px;object-fit:contain;opacity:0.85;}
+  .driver-info{display:flex;flex-direction:column;min-width:0;flex:1;}
+  .driver-name{font-size:12px;font-weight:700;color:#ddd;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2;}
+  .driver-track-stat{font-size:10px;color:#777;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .odds{font-size:10px;font-weight:700;color:#555;flex-shrink:0;margin-left:auto;}
+
+  /* ── STANDINGS ── */
+  .standings-title{font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#888;text-align:center;margin-bottom:3px;}
+  .standings-title em{color:#e8a020;font-style:normal;}
+  .standings-sub{font-size:9px;color:#555;text-align:center;margin-bottom:8px;letter-spacing:1px;}
+  table.standings{width:100%;border-collapse:collapse;margin-bottom:14px;}
+  table.standings thead tr{background:#252525;border-bottom:2px solid #e8a020;}
+  table.standings thead th{padding:5px 6px;text-align:left;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#777;font-weight:700;}
+  table.standings thead th.right{text-align:right;}
+  table.standings thead th.center{text-align:center;}
+  table.standings tbody tr{border-bottom:1px solid #252525;}
+  table.standings tbody tr:nth-child(even){background:#1b1b1b;}
+  table.standings tbody td{padding:5px 6px;font-weight:600;}
+  td.rank{color:#444;font-size:10px;width:16px;}
+  td.player{color:#ddd;font-size:14px;}
+  td.money{text-align:right;font-weight:900;font-size:14px;}
+  td.avg-cell{text-align:center;font-size:13px;font-weight:900;}
+  td.stat-cell{text-align:center;font-size:12px;}
+  .positive{color:#2ecc71;}.negative{color:#e74c3c;}
+  .avg-hot{color:#22c55e;}.avg-mid{color:#e8a020;}.avg-cold{color:#ef4444;}
+  .badge{display:inline-block;font-size:9px;font-weight:900;padding:1px 5px;border-radius:3px;}
+  .badge-win{background:#e8a020;color:#000;}
+  .badge-t5{background:#3b82f6;color:#fff;}
+  .badge-t10{background:#374151;color:#9ca3af;}
+  .badge-zero{color:#444;font-size:11px;}
+
+  /* ── LAST RACE RESULTS ── */
+  .results-title{font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#888;text-align:center;margin-bottom:8px;}
+  .results-title em{color:#e8a020;font-style:normal;}
+  .results-list{max-width:480px;margin:0 auto 16px;}
+  .result-row{display:flex;align-items:center;gap:10px;padding:6px 12px;border-bottom:1px solid #252525;border-radius:4px;}
+  .result-row:last-child{border-bottom:none;}
+  .result-win{background:#1a1400;border-left:3px solid #e8a020;border-radius:4px;}
+  .res-pos{font-size:13px;font-weight:900;color:#555;width:30px;flex-shrink:0;}
+  .result-win .res-pos{color:#e8a020;}
+  .res-trophy{font-size:14px;width:18px;flex-shrink:0;}
+  .res-driver{font-size:14px;font-weight:700;color:#ddd;flex:1;}
+  .result-win .res-driver{color:#fff;}
+  .res-pool{font-size:13px;font-weight:900;color:#888;background:#222;border-radius:4px;padding:2px 8px;flex-shrink:0;}
+  .result-win .res-pool{color:#e8a020;background:#2a1e00;}
+
+  /* ── UPCOMING RACES ── */
+  .section-title{font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#888;text-align:center;margin:14px 0 8px;}
+  .section-title em{color:#e8a020;font-style:normal;}
+  .upcoming-races{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;}
+  .race-pill{background:#1e1e1e;border:1px solid #2c2c2c;border-radius:10px;padding:8px 14px;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:140px;}
+  .race-pill .rp-track{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:#fff;}
+  .race-pill .rp-date{font-size:10px;color:#e8a020;font-weight:700;}
+  .race-pill .rp-time{font-size:10px;color:#888;}
+  .race-pill .rp-tv{font-size:9px;color:#555;}
+  .race-pill .rp-icon{font-size:22px;margin-bottom:2px;}
+
+  /* ── LAST 3 RACES ── */
+  .last-races{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;}
+  .last-pill{background:#1e1e1e;border:1px solid #2c2c2c;border-radius:10px;padding:8px 14px;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:140px;}
+  .last-pill .lp-track{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:#888;}
+  .last-pill .lp-winner{font-size:13px;font-weight:900;color:#e8a020;}
+  .last-pill .lp-pool{font-size:11px;color:#ccc;}
+  .last-pill .lp-car{font-size:9px;color:#555;}
+
+  /* ── FOOTER LOGO ── */
+  .footer-logo{text-align:center;margin-top:20px;padding-top:16px;border-top:1px solid #2a2a2a;}
+  .footer-logo .prod-name{font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:3px;color:#e8a020;}
+  .footer-logo .prod-sub{font-size:11px;color:#666;letter-spacing:2px;text-transform:uppercase;margin-top:2px;}
+  .dog-svg{margin-top:10px;display:flex;justify-content:center;}
+
+  @media(max-width:600px){
+  body{padding:8px;}
+  .header h1{font-size:16px;}
+  .info-bar{gap:5px;}
+  .info-item,.countdown-box,.party-inline,.fs1-badge{padding:4px 9px;}
+  .info-item{font-size:11px;}
+  .countdown-digits,.party-digits{font-size:11px;}
+  .secondary-bar{grid-template-columns:1fr 1fr;}
+  .grid{grid-template-columns:1fr 1fr;gap:7px;}
+  .card-header{padding:8px 10px;}
+  .card-header .name{font-size:18px;}
+  .driver-row{padding:6px 10px;gap:6px;}
+  .car-num-svg{width:40px;height:24px;}
+  .mfr-logo{width:16px;height:16px;}
+  .driver-name{font-size:13px;}
+  .driver-track-stat{font-size:10px;}
+  .odds{font-size:10px;}
+  table.standings thead th{font-size:8px;padding:4px 3px;}
+  table.standings tbody td{padding:4px 3px;}
+  td.player{font-size:12px;}
+  td.money{font-size:12px;}
+  td.avg-cell{font-size:11px;}
+  td.stat-cell{font-size:10px;}
+  .badge{font-size:8px;padding:1px 3px;}
+  .upcoming-races,.last-races{gap:6px;}
+  .race-pill,.last-pill{min-width:120px;padding:6px 10px;}
+  }
 </style>
 </head>
 <body>
 
 <!-- ═══════════════════════════════════════ SVG DEFS ═══════════════════════════════════════ -->
 <svg style="display:none">
-  <!-- All your original car number symbols (n11, n48, etc.) — unchanged -->
   <symbol id="n11" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#0a1f5c"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#cc0000" stroke="#fff" stroke-width="1.5" paint-order="stroke">11</text></symbol>
-  <!-- ... all the way to n43 ... -->
-  <symbol id="n43" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#1a6e2e"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#ffe600" stroke="#fff" stroke-width="1" paint-order="stroke">43</text></symbol>
-
-  <!-- NEW: Chevrolet logo as reusable symbol (gold bowtie) -->
-  <symbol id="chevy" viewBox="0 0 24 24">
-    <path fill="#e8a020" d="M2 9h6.5l1.5-3h4l1.5 3H22v2h-5.5l-1.5 3H9L7.5 11H2z"/>
-  </symbol>
-</svg>
-
-<!-- (the old separate chevy-svg block has been removed — no longer needed) -->
-
-<!-- ═══════════════════════════════════════ HEADER & REST OF PAGE (unchanged) ═══════════════════════════════════════ -->
-<!-- ... everything from <div class="header"> down to the start of the grid is exactly the same ... -->
-
-<div class="grid">
-
-  <!-- SCOTT -->
-  <div class="card">
-    <div class="card-header"><span class="wave-flag" style="font-size:13px">🏁</span>&nbsp;<span class="name">Scott</span></div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n11"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota" onerror="this.style.display='none'">
-      <div class="driver-info"><span class="driver-name">Hamlin</span><span class="driver-track-stat">🏆 3 wins PHX</span></div>
-      <span class="odds">+550</span>
-    </div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n48"/></svg>
-      <svg class="mfr-logo" viewBox="0 0 24 24"><use href="#chevy"/></svg>   <!-- FIXED CHEVY -->
-      <div class="driver-info"><span class="driver-name">Bowman</span><span class="driver-track-stat">🏆 1 win PHX</span></div>
-      <span class="odds">+5000</span>
-    </div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n42"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/120px-Toyota_carlogo.svg.png" alt="Toyota" onerror="this.style.display='none'">
-      <div class="driver-info"><span class="driver-name">Nemechek</span><span class="driver-track-stat">📊 Best PHX: 14th</span></div>
-      <span class="odds">+35000</span>
-    </div>
-  </div>
-
-  <!-- BRENDA -->
-  <div class="card">
-    <div class="card-header"><span class="name">Brenda</span></div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n5"/></svg>
-      <svg class="mfr-logo" viewBox="0 0 24 24"><use href="#chevy"/></svg>   <!-- FIXED CHEVY -->
-      <div class="driver-info"><span class="driver-name">Larson</span><span class="driver-track-stat">🏆 3 wins PHX</span></div>
-      <span class="odds">+750</span>
-    </div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n60"/></svg>
-      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/120px-Ford_logo_flat.svg.png" alt="Ford" onerror="this.style.display='none'">
-      <div class="driver-info"><span class="driver-name">Preece</span><span class="driver-track-stat">📊 Best PHX: 6th</span></div>
-      <span class="odds">+5500</span>
-    </div>
-    <div class="driver-row">
-      <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n7"/></svg>
-      <svg class="mfr-logo" viewBox="0 0 24 24"><use href="#chevy"/></svg>   <!-- FIXED CHEVY -->
-      <div class="driver-info"><span class="driver-name">Suarez</span><span class="driver-track-stat">📊 Best PHX: 5th</span></div>
-      <span class="odds">+20000</span>
-    </div>
-  </div>
-
-  <!-- (All other cards follow the same pattern — every Chevy now uses the inline <svg class="mfr-logo" viewBox="0 0 24 24"><use href="#chevy"/></svg> ) -->
-
-  <!-- ... the rest of your grid, standings, results, etc. are identical to your original ... -->
-
-</div>
-
-<!-- ═══════════════════════════════════════ SCRIPTS (unchanged) ═══════════════════════════════════════ -->
-<script>
-  // your entire script block — no changes needed
-</script>
-
-</body>
-</html>
+  <symbol id="n48" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#0d0d0d"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#c084fc" stroke="#ff6eb4" stroke-width="1" paint-order="stroke">48</text></symbol>
+  <symbol id="n42" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#1a6e2e"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#ffe600" stroke="#fff" stroke-width="1" paint-order="stroke">42</text></symbol>
+  <symbol id="n5"  viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#003087"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#cc0000" stroke-width="2" paint-order="stroke">5</text></symbol>
+  <symbol id="n60" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#cc0000"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#000" stroke-width="1" paint-order="stroke">60</text></symbol>
+  <symbol id="n7"  viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#0057b8"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#00b050" stroke-width="1.5" paint-order="stroke">7</text></symbol>
+  <symbol id="n24" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#1a1a1a"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#f5a800" stroke="#111" stroke-width="1.5" paint-order="stroke">24</text></symbol>
+  <symbol id="n23" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#000"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#00b2a9" stroke="#fff" stroke-width="1" paint-order="stroke">23</text></symbol>
+  <symbol id="n3"  viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#1a3d1a"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#c9a84c" stroke="#fff" stroke-width="1" paint-order="stroke">3</text></symbol>
+  <symbol id="n20" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#111"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#ffcd00" stroke="#000" stroke-width="1.5" paint-order="stroke">20</text></symbol>
+  <symbol id="n88" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#0047ba"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#7ec8e3" stroke-width="1" paint-order="stroke">88</text></symbol>
+  <symbol id="n71" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#3b1f0d"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#f97316" stroke="#fff" stroke-width="1" paint-order="stroke">71</text></symbol>
+  <symbol id="n12" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#003087"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#ffd700" stroke="#fff" stroke-width="1" paint-order="stroke">12</text></symbol>
+  <symbol id="n54" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#0a0a0a"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#70ff00" stroke="#000" stroke-width="1.5" paint-order="stroke">54</text></symbol>
+  <symbol id="n2"  viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#3a3a3a"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#e8e8e8" stroke="#cc0000" stroke-width="1.5" paint
