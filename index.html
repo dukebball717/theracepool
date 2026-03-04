@@ -73,7 +73,7 @@
   .driver-row{display:flex;align-items:center;padding:4px 8px;border-bottom:1px solid #272727;gap:5px;}
   .driver-row:last-child{border-bottom:none;}
   .car-num-svg{flex-shrink:0;width:36px;height:22px;}
-  .mfr-logo{flex-shrink:0;width:18px;height:18px;object-fit:contain;opacity:0.85;}
+  .mfr-logo{flex-shrink:0;width:18px;height:12px;object-fit:contain;opacity:1;}
   .driver-info{display:flex;flex-direction:column;min-width:0;flex:1;}
   .driver-name{font-size:12px;font-weight:700;color:#ddd;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2;}
   .driver-track-stat{font-size:10px;color:#777;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
@@ -157,7 +157,7 @@
   .card-header .name{font-size:18px;}
   .driver-row{padding:6px 10px;gap:6px;}
   .car-num-svg{width:40px;height:24px;}
-  .mfr-logo{width:16px;height:16px;}
+  .mfr-logo{width:16px;height:12px;}
   .driver-name{font-size:13px;}
   .driver-track-stat{font-size:10px;}
   .odds{font-size:10px;}
@@ -175,7 +175,6 @@
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════ SVG DEFS ═══════════════════════════════════════ -->
 <svg style="display:none">
   <symbol id="n11" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#0a1f5c"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#cc0000" stroke="#fff" stroke-width="1.5" paint-order="stroke">11</text></symbol>
   <symbol id="n48" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#0d0d0d"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#c084fc" stroke="#ff6eb4" stroke-width="1" paint-order="stroke">48</text></symbol>
@@ -207,21 +206,14 @@
   <symbol id="n1"  viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#1a4b8c"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#fff" stroke="#7ec8e3" stroke-width="1.5" paint-order="stroke">1</text></symbol>
   <symbol id="n17" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#00338d"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#ff6900" stroke="#fff" stroke-width="1" paint-order="stroke">17</text></symbol>
   <symbol id="n43" viewBox="0 0 40 24"><rect width="40" height="24" rx="3" fill="#1a6e2e"/><text x="20" y="19" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="18" font-style="italic" font-weight="900" fill="#ffe600" stroke="#fff" stroke-width="1" paint-order="stroke">43</text></symbol>
-
-  <!-- Chevrolet gold bowtie (inline, never breaks) -->
-  <symbol id="chevy" viewBox="0 0 24 24">
-    <path fill="#e8a020" d="M2 9h6.5l1.5-3h4l1.5 3H22v2h-5.5l-1.5 3H9L7.5 11H2z"/>
-  </symbol>
 </svg>
 
-<!-- HEADER -->
 <div class="header">
   <div class="series">2026 NASCAR Cup Series · Race Pool</div>
   <h1>Straight Talk Wireless 500 · Phoenix Raceway</h1>
   <div class="sub">March 8, 2026 · Avondale, AZ</div>
 </div>
 
-<!-- INFO BAR -->
 <div class="info-bar">
   <div class="party-inline">
     <span class="label">🎉 Party</span>
@@ -244,7 +236,6 @@
   </div>
 </div>
 
-<!-- SECONDARY BAR + POINTS (full) -->
 <div class="secondary-bar">
   <div class="track-map-box">
     <div class="box-title">🏟 Track Map · <span>Phoenix Raceway</span> · 1.0mi D-Shaped Oval</div>
@@ -280,7 +271,6 @@
     </div>
     <div class="points-scroll-wrap">
       <div class="points-pages" id="pts-pages">
-        <!-- PAGE 1 -->
         <div class="points-page">
           <div class="points-row"><span class="pts-pos">1</span><span class="pts-car">#45</span><div style="flex:1;min-width:0"><div class="pts-name">T. Reddick <span style="font-size:9px">🔥🔥🔥</span></div><div class="pts-team">23XI Racing</div></div><div style="text-align:right"><div class="pts-val">186</div><div class="pts-w">3W</div></div></div>
           <div class="points-row"><span class="pts-pos">2</span><span class="pts-car">#23</span><div style="flex:1;min-width:0"><div class="pts-name">B. Wallace</div><div class="pts-team">23XI Racing</div></div><div style="text-align:right"><div class="pts-val">116</div><div class="pts-diff">–70</div></div></div>
@@ -288,7 +278,6 @@
           <div class="points-row"><span class="pts-pos">4</span><span class="pts-car">#12</span><div style="flex:1;min-width:0"><div class="pts-name">R. Blaney</div><div class="pts-team">Team Penske</div></div><div style="text-align:right"><div class="pts-val">100</div><div class="pts-diff">–86</div></div></div>
           <div class="points-row"><span class="pts-pos">5</span><span class="pts-car">#97</span><div style="flex:1;min-width:0"><div class="pts-name">S. Van Gisbergen</div><div class="pts-team">Trackhouse Racing</div></div><div style="text-align:right"><div class="pts-val">90</div><div class="pts-diff">–96</div></div></div>
         </div>
-        <!-- PAGE 2 -->
         <div class="points-page">
           <div class="points-row"><span class="pts-pos">6</span><span class="pts-car">#22</span><div style="flex:1;min-width:0"><div class="pts-name">J. Logano</div><div class="pts-team">Team Penske</div></div><div style="text-align:right"><div class="pts-val">90</div><div class="pts-diff">–96</div></div></div>
           <div class="points-row"><span class="pts-pos">7</span><span class="pts-car">#7</span><div style="flex:1;min-width:0"><div class="pts-name">D. Suarez</div><div class="pts-team">Trackhouse Racing</div></div><div style="text-align:right"><div class="pts-val">87</div><div class="pts-diff">–99</div></div></div>
@@ -296,7 +285,6 @@
           <div class="points-row"><span class="pts-pos">9</span><span class="pts-car">#71</span><div style="flex:1;min-width:0"><div class="pts-name">M. McDowell</div><div class="pts-team">Spire Motorsports</div></div><div style="text-align:right"><div class="pts-val">83</div><div class="pts-diff">–103</div></div></div>
           <div class="points-row"><span class="pts-pos">10</span><span class="pts-car">#77</span><div style="flex:1;min-width:0"><div class="pts-name">C. Hocevar</div><div class="pts-team">Spire Motorsports</div></div><div style="text-align:right"><div class="pts-val">82</div><div class="pts-diff">–104</div></div></div>
         </div>
-        <!-- PAGE 3 -->
         <div class="points-page">
           <div class="points-row"><span class="pts-pos">11</span><span class="pts-car">#17</span><div style="flex:1;min-width:0"><div class="pts-name">C. Buescher</div><div class="pts-team">RFK Racing</div></div><div style="text-align:right"><div class="pts-val">81</div><div class="pts-diff">–105</div></div></div>
           <div class="points-row"><span class="pts-pos">12</span><span class="pts-car">#6</span><div style="flex:1;min-width:0"><div class="pts-name">B. Keselowski</div><div class="pts-team">RFK Racing</div></div><div style="text-align:right"><div class="pts-val">78</div><div class="pts-diff">–108</div></div></div>
@@ -304,7 +292,6 @@
           <div class="points-row"><span class="pts-pos">14</span><span class="pts-car">#38</span><div style="flex:1;min-width:0"><div class="pts-name">Z. Smith</div><div class="pts-team">Front Row Motorsports</div></div><div style="text-align:right"><div class="pts-val">75</div><div class="pts-diff">–111</div></div></div>
           <div class="points-row"><span class="pts-pos">15</span><span class="pts-car">#5</span><div style="flex:1;min-width:0"><div class="pts-name">K. Larson</div><div class="pts-team">Hendrick Motorsports</div></div><div style="text-align:right"><div class="pts-val">73</div><div class="pts-diff">–113</div></div></div>
         </div>
-        <!-- PAGE 4 -->
         <div class="points-page">
           <div class="points-row cutline-row"><span class="pts-pos">16</span><span class="pts-car">#60</span><div style="flex:1;min-width:0"><div class="pts-name">R. Preece</div><div class="pts-team">Haas Factory Team</div></div><div style="text-align:right"><div class="pts-val">68</div><div class="pts-diff">–118</div></div></div>
           <div class="cutline-label">── Chase Cutline ──</div>
@@ -313,7 +300,6 @@
           <div class="points-row"><span class="pts-pos">19</span><span class="pts-car">#10</span><div style="flex:1;min-width:0"><div class="pts-name">T. Dillon</div><div class="pts-team">Kaulig Racing</div></div><div style="text-align:right"><div class="pts-val">65</div><div class="pts-diff">–3</div></div></div>
           <div class="points-row"><span class="pts-pos">20</span><span class="pts-car">#1</span><div style="flex:1;min-width:0"><div class="pts-name">R. Chastain</div><div class="pts-team">Trackhouse Racing</div></div><div style="text-align:right"><div class="pts-val">64</div><div class="pts-diff">–4</div></div></div>
         </div>
-        <!-- PAGE 5 -->
         <div class="points-page">
           <div class="points-row"><span class="pts-pos">21</span><span class="pts-car">#42</span><div style="flex:1;min-width:0"><div class="pts-name">J.H. Nemechek</div><div class="pts-team">Legacy Motor Club</div></div><div style="text-align:right"><div class="pts-val">63</div><div class="pts-diff">–5</div></div></div>
           <div class="points-row"><span class="pts-pos">22</span><span class="pts-car">#8</span><div style="flex:1;min-width:0"><div class="pts-name">K. Busch</div><div class="pts-team">Richard Childress Racing</div></div><div style="text-align:right"><div class="pts-val">61</div><div class="pts-diff">–7</div></div></div>
@@ -321,7 +307,6 @@
           <div class="points-row"><span class="pts-pos">24</span><span class="pts-car">#20</span><div style="flex:1;min-width:0"><div class="pts-name">C. Bell</div><div class="pts-team">Joe Gibbs Racing</div></div><div style="text-align:right"><div class="pts-val">59</div><div class="pts-diff">–9</div></div></div>
           <div class="points-row"><span class="pts-pos">25</span><span class="pts-car">#35</span><div style="flex:1;min-width:0"><div class="pts-name">R. Herbst</div><div class="pts-team">Front Row Motorsports</div></div><div style="text-align:right"><div class="pts-val">53</div><div class="pts-diff">–15</div></div></div>
         </div>
-        <!-- PAGE 6 -->
         <div class="points-page">
           <div class="points-row"><span class="pts-pos">26</span><span class="pts-car">#47</span><div style="flex:1;min-width:0"><div class="pts-name">R. Stenhouse Jr.</div><div class="pts-team">JTG Daugherty Racing</div></div><div style="text-align:right"><div class="pts-val">49</div><div class="pts-diff">–19</div></div></div>
           <div class="points-row"><span class="pts-pos">27</span><span class="pts-car">#19</span><div style="flex:1;min-width:0"><div class="pts-name">C. Briscoe</div><div class="pts-team">Joe Gibbs Racing</div></div><div style="text-align:right"><div class="pts-val">46</div><div class="pts-diff">–22</div></div></div>
@@ -329,7 +314,6 @@
           <div class="points-row"><span class="pts-pos">29</span><span class="pts-car">#41</span><div style="flex:1;min-width:0"><div class="pts-name">C. Custer</div><div class="pts-team">Haas Factory Team</div></div><div style="text-align:right"><div class="pts-val">40</div><div class="pts-diff">–28</div></div></div>
           <div class="points-row"><span class="pts-pos">30</span><span class="pts-car">#34</span><div style="flex:1;min-width:0"><div class="pts-name">T. Gilliland</div><div class="pts-team">Front Row Motorsports</div></div><div style="text-align:right"><div class="pts-val">39</div><div class="pts-diff">–29</div></div></div>
         </div>
-        <!-- PAGE 7 -->
         <div class="points-page">
           <div class="points-row"><span class="pts-pos">31</span><span class="pts-car">#2</span><div style="flex:1;min-width:0"><div class="pts-name">A. Cindric</div><div class="pts-team">Team Penske</div></div><div style="text-align:right"><div class="pts-val">39</div><div class="pts-diff">–29</div></div></div>
           <div class="points-row"><span class="pts-pos">32</span><span class="pts-car">#88</span><div style="flex:1;min-width:0"><div class="pts-name">C. Zilisch #</div><div class="pts-team">Trackhouse Racing</div></div><div style="text-align:right"><div class="pts-val">37</div><div class="pts-diff">–31</div></div></div>
@@ -344,15 +328,12 @@
   </div>
 </div>
 
-<!-- DYK -->
 <div class="dyk-bar">
   <span class="dyk-icon">💡</span>
   <div class="dyk-text"><strong>Did You Know?</strong><span id="dyk-fact">Loading...</span></div>
 </div>
 
-<!-- POOL GRID WITH CHEVY FIXED -->
 <div class="grid">
-  <!-- SCOTT -->
   <div class="card">
     <div class="card-header"><span class="wave-flag" style="font-size:13px">🏁</span>&nbsp;<span class="name">Scott</span></div>
     <div class="driver-row">
@@ -363,7 +344,7 @@
     </div>
     <div class="driver-row">
       <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n48"/></svg>
-      <svg class="mfr-logo" viewBox="0 0 24 24"><use href="#chevy"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Chevrolet_Logo.png/1200px-Chevrolet_Logo.png" alt="Chevrolet">
       <div class="driver-info"><span class="driver-name">Bowman</span><span class="driver-track-stat">🏆 1 win PHX</span></div>
       <span class="odds">+5000</span>
     </div>
@@ -375,12 +356,11 @@
     </div>
   </div>
 
-  <!-- BRENDA -->
   <div class="card">
     <div class="card-header"><span class="name">Brenda</span></div>
     <div class="driver-row">
       <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n5"/></svg>
-      <svg class="mfr-logo" viewBox="0 0 24 24"><use href="#chevy"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Chevrolet_Logo.png/1200px-Chevrolet_Logo.png" alt="Chevrolet">
       <div class="driver-info"><span class="driver-name">Larson</span><span class="driver-track-stat">🏆 3 wins PHX</span></div>
       <span class="odds">+750</span>
     </div>
@@ -392,18 +372,17 @@
     </div>
     <div class="driver-row">
       <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n7"/></svg>
-      <svg class="mfr-logo" viewBox="0 0 24 24"><use href="#chevy"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Chevrolet_Logo.png/1200px-Chevrolet_Logo.png" alt="Chevrolet">
       <div class="driver-info"><span class="driver-name">Suarez</span><span class="driver-track-stat">📊 Best PHX: 5th</span></div>
       <span class="odds">+20000</span>
     </div>
   </div>
 
-  <!-- KO3 -->
   <div class="card">
     <div class="card-header"><span class="name">KO3</span></div>
     <div class="driver-row">
       <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n24"/></svg>
-      <svg class="mfr-logo" viewBox="0 0 24 24"><use href="#chevy"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Chevrolet_Logo.png/1200px-Chevrolet_Logo.png" alt="Chevrolet">
       <div class="driver-info"><span class="driver-name">Byron</span><span class="driver-track-stat">🏆 1 win PHX</span></div>
       <span class="odds">+800</span>
     </div>
@@ -415,13 +394,12 @@
     </div>
     <div class="driver-row">
       <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n3"/></svg>
-      <svg class="mfr-logo" viewBox="0 0 24 24"><use href="#chevy"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Chevrolet_Logo.png/1200px-Chevrolet_Logo.png" alt="Chevrolet">
       <div class="driver-info"><span class="driver-name">Dillon</span><span class="driver-track-stat">📊 Best PHX: 2nd</span></div>
       <span class="odds">+7500</span>
     </div>
   </div>
 
-  <!-- PAM -->
   <div class="card">
     <div class="card-header"><span class="name">Pam</span></div>
     <div class="driver-row">
@@ -432,19 +410,18 @@
     </div>
     <div class="driver-row">
       <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n88"/></svg>
-      <svg class="mfr-logo" viewBox="0 0 24 24"><use href="#chevy"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Chevrolet_Logo.png/1200px-Chevrolet_Logo.png" alt="Chevrolet">
       <div class="driver-info"><span class="driver-name">Zilisch</span><span class="driver-track-stat">🆕 Rookie</span></div>
       <span class="odds">+6000</span>
     </div>
     <div class="driver-row">
       <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n71"/></svg>
-      <svg class="mfr-logo" viewBox="0 0 24 24"><use href="#chevy"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Chevrolet_Logo.png/1200px-Chevrolet_Logo.png" alt="Chevrolet">
       <div class="driver-info"><span class="driver-name">McDowell</span><span class="driver-track-stat">📊 Best PHX: 3rd</span></div>
       <span class="odds">+15000</span>
     </div>
   </div>
 
-  <!-- NICK -->
   <div class="card">
     <div class="card-header"><span class="name">Nick</span></div>
     <div class="driver-row">
@@ -467,7 +444,6 @@
     </div>
   </div>
 
-  <!-- ZACH -->
   <div class="card">
     <div class="card-header"><span class="wave-flag" style="font-size:13px">🏁</span>&nbsp;<span class="name">Zach</span></div>
     <div class="driver-row">
@@ -478,7 +454,7 @@
     </div>
     <div class="driver-row">
       <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n77"/></svg>
-      <svg class="mfr-logo" viewBox="0 0 24 24"><use href="#chevy"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Chevrolet_Logo.png/1200px-Chevrolet_Logo.png" alt="Chevrolet">
       <div class="driver-info"><span class="driver-name">Hocevar</span><span class="driver-track-stat">📊 Best PHX: 4th</span></div>
       <span class="odds">+3000</span>
     </div>
@@ -490,7 +466,6 @@
     </div>
   </div>
 
-  <!-- NICOLE -->
   <div class="card">
     <div class="card-header"><span class="name">Nicole</span></div>
     <div class="driver-row">
@@ -513,12 +488,11 @@
     </div>
   </div>
 
-  <!-- DANIEL -->
   <div class="card">
     <div class="card-header"><span class="name">Daniel</span></div>
     <div class="driver-row">
       <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n9"/></svg>
-      <svg class="mfr-logo" viewBox="0 0 24 24"><use href="#chevy"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Chevrolet_Logo.png/1200px-Chevrolet_Logo.png" alt="Chevrolet">
       <div class="driver-info"><span class="driver-name">Elliott</span><span class="driver-track-stat">🏆 1 win PHX</span></div>
       <span class="odds">+1000</span>
     </div>
@@ -536,7 +510,6 @@
     </div>
   </div>
 
-  <!-- RON -->
   <div class="card">
     <div class="card-header"><span class="wave-flag" style="font-size:13px">🏁</span>&nbsp;<span class="name">Ron</span></div>
     <div class="driver-row">
@@ -547,24 +520,23 @@
     </div>
     <div class="driver-row">
       <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n8"/></svg>
-      <svg class="mfr-logo" viewBox="0 0 24 24"><use href="#chevy"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Chevrolet_Logo.png/1200px-Chevrolet_Logo.png" alt="Chevrolet">
       <div class="driver-info"><span class="driver-name">Busch</span><span class="driver-track-stat">🏆 3 wins PHX</span></div>
       <span class="odds">+3500</span>
     </div>
     <div class="driver-row">
       <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n97"/></svg>
-      <svg class="mfr-logo" viewBox="0 0 24 24"><use href="#chevy"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Chevrolet_Logo.png/1200px-Chevrolet_Logo.png" alt="Chevrolet">
       <div class="driver-info"><span class="driver-name">Van Gisbergen</span><span class="driver-track-stat">📊 Best PHX: 6th</span></div>
       <span class="odds">+25000</span>
     </div>
   </div>
 
-  <!-- ACE -->
   <div class="card">
     <div class="card-header"><span class="name">Ace</span></div>
     <div class="driver-row">
       <svg class="car-num-svg" viewBox="0 0 40 24"><use href="#n1"/></svg>
-      <svg class="mfr-logo" viewBox="0 0 24 24"><use href="#chevy"/></svg>
+      <img class="mfr-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Chevrolet_Logo.png/1200px-Chevrolet_Logo.png" alt="Chevrolet">
       <div class="driver-info"><span class="driver-name">Chastain</span><span class="driver-track-stat">📊 Best PHX: 3rd</span></div>
       <span class="odds">+1800</span>
     </div>
@@ -583,7 +555,6 @@
   </div>
 </div>
 
-<!-- STANDINGS -->
 <div class="standings-title">Season Standings · <em>Through Race 3 · Post-COTA</em></div>
 <div class="standings-sub">SORTED BY AVG FINISH · ALL DRIVER RESULTS COUNT · LOWER = BETTER</div>
 <table class="standings">
@@ -612,7 +583,6 @@
   </tbody>
 </table>
 
-<!-- LAST RACE RESULTS -->
 <div class="results-title">🏆 Last Race Results · <em>COTA – March 1, 2026</em></div>
 <div class="results-list">
   <div class="result-row result-win">
@@ -647,7 +617,6 @@
   </div>
 </div>
 
-<!-- UPCOMING RACES -->
 <div class="section-title">🗓 <em>Next 3 Races</em></div>
 <div class="upcoming-races">
   <div class="race-pill">
@@ -688,7 +657,6 @@
   </div>
 </div>
 
-<!-- LAST 3 RACES -->
 <div class="section-title">🏁 <em>Last 3 Races</em></div>
 <div class="last-races">
   <div class="last-pill">
@@ -711,14 +679,13 @@
   </div>
 </div>
 
-<!-- FOOTER -->
 <div class="footer-logo">
   <div class="prod-name">DanCave Sports Productions</div>
   <div class="prod-sub">7th Annual Race Pool</div>
 </div>
 
 <script>
-// FACTS
+// (JS remains unchanged)
 const facts = [
   "Ace leads all players in avg finish (14.9) and top-10s (6) but has zero pool wins and is down $30 — best performing pool in the field, worst luck on race-day winners.",
   "Zach has the worst avg finish of anyone (22.2) but is up $70 — his Daytona pool averaged a 25.8 finish across 4 drivers. Reddick's COTA win saved him.",
@@ -755,7 +722,6 @@ setInterval(() => {
   document.getElementById('dyk-fact').textContent = facts[factIdx];
 }, 12000);
 
-// RACE COUNTDOWN
 const greenFlag = new Date('2026-03-08T15:30:00-05:00');
 function updateCountdown(){
   const diff = greenFlag - new Date();
@@ -766,7 +732,6 @@ function updateCountdown(){
 }
 updateCountdown(); setInterval(updateCountdown,1000);
 
-// PARTY COUNTDOWN
 const party = new Date('2026-08-29T19:00:00-04:00');
 function updateParty(){
   const diff = party - new Date();
@@ -777,7 +742,6 @@ function updateParty(){
 }
 updateParty(); setInterval(updateParty,1000);
 
-// POINTS SCROLLER
 const totalPages = 7;
 let currentPage = 0;
 const pageLabels = ['Pos 1–5','Pos 6–10','Pos 11–15','Pos 16–20','Pos 21–25','Pos 26–30','Pos 31–36'];
