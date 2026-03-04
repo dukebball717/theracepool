@@ -825,9 +825,7 @@ updateParty(); setInterval(updateParty,1000);
 // ── NASCAR NEWS TICKER ──
 // Try multiple CORS proxies + RSS sources
 const RSS_SOURCES = [
-  { url: 'https://www.motorsport.com/rss/nascar/news/', label: 'motorsport.com' },
-  { url: 'https://racingnews365.com/feed', label: 'racingnews365.com' },
-  { url: 'https://www.jayski.com/feed/', label: 'jayski.com' },
+  { url: 'https://api.foxsports.com/v2/content/optimized-rss?partnerKey=MB0Wehpmuj2lUhuRhQaafhBjAJqaPU244mlTDK1i&size=30&tags=fs%2Ftruck-series%2Cfs%2Fcup-series%2Cfs%2Fxfinity-series&_hp5_cdc=479232849%3B5041767677184277%3B3594210756360113%3B1772649453025%3B', label: 'Fox Sports' }
 ];
 const CORS_PROXIES = [
   url => `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`,
