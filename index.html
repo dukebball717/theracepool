@@ -165,9 +165,9 @@ body{padding:8px;}
 .news-ticker-wrap{display:flex;align-items:center;gap:0;background:#111;border-bottom:2px solid #e8a020;overflow:hidden;height:30px;}
 .ticker-label{font-size:8px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#000;background:#e8a020;padding:0 10px;height:100%;display:flex;align-items:center;white-space:nowrap;flex-shrink:0;}
 .ticker-outer{flex:1;overflow:hidden;position:relative;height:100%;}
-.ticker-track{display:flex;align-items:center;height:100%;white-space:nowrap;animation:tickerScroll 20s linear infinite;}
+.ticker-track{display:inline-flex;align-items:center;height:30px;white-space:nowrap;animation:tickerScroll 32s linear infinite;}
 .ticker-track:hover{animation-play-state:paused;}
-@keyframes tickerScroll{0%{transform:translateX(100%);}100%{transform:translateX(-100%);}}
+@keyframes tickerScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 .ticker-item{font-size:11px;font-weight:700;color:#ddd;padding:0 30px;display:inline-block;}
 .ticker-item::after{content:’·’;color:#e8a020;margin-left:30px;}
 .ticker-item a{color:#ddd;text-decoration:none;}
@@ -927,13 +927,15 @@ async function loadTicker() {
         }).filter(Boolean);
 
         if (texts.length > 0) {
-          document.getElementById('ticker-track').innerHTML = texts.join('');
+          const joined = texts.join('');
+          // Duplicate for seamless infinite loop
+          document.getElementById('ticker-track').innerHTML = joined + joined;
           const srcEl = document.getElementById('ticker-src');
           srcEl.textContent = label + ' ↗';
           srcEl.href = source.url;
-          // adjust animation speed based on content length
+          // Speed based on content — one full set width
           const totalChars = texts.join('').replace(/<[^>]+>/g,'').length;
-          const dur = Math.max(12, totalChars * 0.04);
+          const dur = Math.max(20, totalChars * 0.065);
           document.getElementById('ticker-track').style.animationDuration = dur + 's';
           return;
         }
@@ -946,7 +948,8 @@ async function loadTicker() {
 
 function useFallbackTicker() {
   const html = FALLBACK_ITEMS.map(t => `<span class="ticker-item">${t}</span>`).join('');
-  document.getElementById('ticker-track').innerHTML = html;
+  // Duplicate for seamless loop
+  document.getElementById('ticker-track').innerHTML = html + html;
   document.getElementById('ticker-src').textContent = 'race facts';
   document.getElementById('ticker-src').removeAttribute('href');
 }
