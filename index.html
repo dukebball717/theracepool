@@ -179,23 +179,25 @@ body{padding:8px;}
 .lb-refresh-btn:hover{border-color:#e8a020;color:#e8a020;}
 
 /* ── POINTS STRIP 2-COL ── */
-.pts2-wrap{margin-bottom:14px;}
-.pts2-title{font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#888;text-align:center;margin-bottom:8px;}
+.pts2-wrap{background:#1e1e1e;border:1px solid #2c2c2c;border-radius:8px;padding:10px 12px;margin-bottom:14px;}
+.pts2-title{font-size:9px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:#666;text-align:center;margin-bottom:10px;}
 .pts2-title em{color:#e8a020;font-style:normal;}
-.pts2-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0 6px;}
+.pts2-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #2a2a2a;border-radius:6px;overflow:hidden;}
 .pts2-table{width:100%;border-collapse:collapse;}
-.pts2-table thead tr{border-bottom:2px solid #e8a020;}
-.pts2-table thead th{padding:2px 3px;font-size:7px;letter-spacing:.5px;text-transform:uppercase;color:#555;font-weight:700;text-align:left;}
+.pts2-table+.pts2-table{border-left:1px solid #2a2a2a;}
+.pts2-table thead tr{background:#252525;border-bottom:1px solid #e8a020;}
+.pts2-table thead th{padding:4px 6px;font-size:7px;letter-spacing:.5px;text-transform:uppercase;color:#555;font-weight:700;text-align:left;}
 .pts2-table thead th.r{text-align:right;}
-.pts2-row{border-bottom:1px solid #222;}
-.pts2-dimmed{opacity:.65;}
-.pts2-pos{font-size:8px;font-weight:900;color:#555;padding:3px 3px;width:16px;}
-.pts2-car{font-size:8px;color:#444;padding:3px 2px;width:20px;}
-.pts2-name{font-size:10px;font-weight:700;color:#ddd;padding:3px 2px;}
-.pts2-pts{font-size:10px;font-weight:900;color:#e8a020;text-align:right;padding:3px 2px;white-space:nowrap;}
-.pts2-diff{display:none;}
-.pts2-pool{display:inline-block;font-size:6px;font-weight:900;padding:1px 2px;border-radius:2px;background:#2a1e00;color:#e8a020;margin-left:2px;vertical-align:middle;}
-.pts2-cutline-label{font-size:6px;color:#e8a020;letter-spacing:1px;text-transform:uppercase;text-align:center;padding:2px 0;font-weight:900;background:#1a1200;border-top:2px solid #e8a020;border-bottom:1px solid #2a1a00;}
+.pts2-row{border-bottom:1px solid #1c1c1c;transition:background .15s;}
+.pts2-row:hover{background:#252525;}
+.pts2-row:last-child{border-bottom:none;}
+.pts2-dimmed{opacity:.55;}
+.pts2-pos{font-size:8px;font-weight:900;color:#444;padding:5px 4px 5px 6px;width:18px;white-space:nowrap;}
+.pts2-car{font-size:8px;color:#555;padding:5px 2px;width:22px;white-space:nowrap;}
+.pts2-name{font-size:10px;font-weight:700;color:#ccc;padding:5px 4px;}
+.pts2-pts{font-size:10px;font-weight:900;color:#e8a020;text-align:right;padding:5px 6px 5px 2px;white-space:nowrap;}
+.pts2-cutline-row td{background:#1a1200 !important;border-top:1px solid #e8a020;}
+.pts2-cutline-label{font-size:6px;color:#e8a020;letter-spacing:1.5px;text-transform:uppercase;text-align:center;padding:3px 0;font-weight:900;background:#1a1200;border-top:1px solid #e8a020;border-bottom:1px solid #2a1a00;display:block;}
 
 </style>
 </head>
@@ -431,24 +433,9 @@ body{padding:8px;}
 <div class="pts2-wrap">
 <div class="pts2-title">🏆 Cup Points · <em>After COTA · Race 3 of 36</em></div>
 <div class="pts2-grid">
-  <table class="pts2-table">
-    <thead><tr><th>Pos</th><th>Car</th><th>Driver</th><th class="r">Pts</th></tr></thead>
-    <tbody><tr class="pts2-row"><td class="pts2-pos" style="color:#e8a020">P1</td><td class="pts2-car">#45</td><td class="pts2-name">Reddick<span class="pts2-pool">Zach</span></td><td class="pts2-pts">186</td></tr><tr class="pts2-row"><td class="pts2-pos">P2</td><td class="pts2-car">#23</td><td class="pts2-name">Wallace<span class="pts2-pool">KO3</span></td><td class="pts2-pts">116</td></tr><tr class="pts2-row"><td class="pts2-pos">P3</td><td class="pts2-car">#9</td><td class="pts2-name">Elliott<span class="pts2-pool">Daniel</span></td><td class="pts2-pts">114</td></tr><tr class="pts2-row"><td class="pts2-pos">P4</td><td class="pts2-car">#12</td><td class="pts2-name">Blaney<span class="pts2-pool">Nick</span></td><td class="pts2-pts">100</td></tr><tr class="pts2-row"><td class="pts2-pos">P5</td><td class="pts2-car">#97</td><td class="pts2-name">SVG<span class="pts2-pool">Ron</span></td><td class="pts2-pts">90</td></tr></tbody>
-  </table>
-  <table class="pts2-table">
-    <thead><tr><th>Pos</th><th>Car</th><th>Driver</th><th class="r">Pts</th></tr></thead>
-    <tbody><tr class="pts2-row"><td class="pts2-pos">P6</td><td class="pts2-car">#22</td><td class="pts2-name">Logano<span class="pts2-pool">Nicole</span></td><td class="pts2-pts">90</td></tr><tr class="pts2-row"><td class="pts2-pos">P7</td><td class="pts2-car">#7</td><td class="pts2-name">Suarez<span class="pts2-pool">Brenda</span></td><td class="pts2-pts">87</td></tr><tr class="pts2-row"><td class="pts2-pos">P8</td><td class="pts2-car">#16</td><td class="pts2-name">Allmendinger</td><td class="pts2-pts">86</td></tr><tr class="pts2-row"><td class="pts2-pos">P9</td><td class="pts2-car">#71</td><td class="pts2-name">McDowell<span class="pts2-pool">Pam</span></td><td class="pts2-pts">83</td></tr><tr class="pts2-row"><td class="pts2-pos">P10</td><td class="pts2-car">#77</td><td class="pts2-name">Hocevar<span class="pts2-pool">Zach</span></td><td class="pts2-pts">82</td></tr></tbody>
-  </table>
-  <table class="pts2-table">
-    <thead><tr><th>Pos</th><th>Car</th><th>Driver</th><th class="r">Pts</th></tr></thead>
-    <tbody><tr class="pts2-row"><td class="pts2-pos">P11</td><td class="pts2-car">#17</td><td class="pts2-name">Buescher<span class="pts2-pool">Ace</span></td><td class="pts2-pts">81</td></tr><tr class="pts2-row"><td class="pts2-pos">P12</td><td class="pts2-car">#6</td><td class="pts2-name">Keselowski<span class="pts2-pool">Daniel</span></td><td class="pts2-pts">78</td></tr><tr class="pts2-row"><td class="pts2-pos">P13</td><td class="pts2-car">#24</td><td class="pts2-name">Byron<span class="pts2-pool">KO3</span></td><td class="pts2-pts">76</td></tr><tr class="pts2-row"><td class="pts2-pos">P14</td><td class="pts2-car">#38</td><td class="pts2-name">Z.Smith<span class="pts2-pool">Zach</span></td><td class="pts2-pts">75</td></tr><tr class="pts2-row"><td class="pts2-pos">P15</td><td class="pts2-car">#5</td><td class="pts2-name">Larson<span class="pts2-pool">Brenda</span></td><td class="pts2-pts">73</td></tr><tr class="pts2-row"><td class="pts2-pos">P16</td><td class="pts2-car">#60</td><td class="pts2-name">Preece<span class="pts2-pool">Brenda</span></td><td class="pts2-pts">68</td></tr></tbody>
-  </table>
-  <table class="pts2-table">
-    <thead><tr><th>Pos</th><th>Car</th><th>Driver</th><th class="r">Pts</th></tr></thead>
-    <tbody><tr class="pts2-row pts2-dimmed"><td class="pts2-pos">P17</td><td class="pts2-car">#54</td><td class="pts2-name">T.Gibbs<span class="pts2-pool">Nick</span></td><td class="pts2-pts">65</td></tr><tr class="pts2-row pts2-dimmed"><td class="pts2-pos">P18</td><td class="pts2-car">#4</td><td class="pts2-name">Gragson<span class="pts2-pool">Nicole</span></td><td class="pts2-pts">65</td></tr><tr class="pts2-row pts2-dimmed"><td class="pts2-pos">P19</td><td class="pts2-car">#10</td><td class="pts2-name">T.Dillon</td><td class="pts2-pts">65</td></tr><tr class="pts2-row pts2-dimmed"><td class="pts2-pos">P20</td><td class="pts2-car">#1</td><td class="pts2-name">Chastain<span class="pts2-pool">Ace</span></td><td class="pts2-pts">64</td></tr></tbody>
-  </table>
+  <table class="pts2-table"><thead><tr><th>Pos</th><th>Car</th><th>Driver</th><th class="r">Pts</th></tr></thead><tbody><tr class="pts2-row"><td class="pts2-pos" style="color:#e8a020">P1</td><td class="pts2-car">#45</td><td class="pts2-name">Reddick</td><td class="pts2-pts">186</td></tr><tr class="pts2-row"><td class="pts2-pos">P2</td><td class="pts2-car">#23</td><td class="pts2-name">Wallace</td><td class="pts2-pts">116</td></tr><tr class="pts2-row"><td class="pts2-pos">P3</td><td class="pts2-car">#9</td><td class="pts2-name">Elliott</td><td class="pts2-pts">114</td></tr><tr class="pts2-row"><td class="pts2-pos">P4</td><td class="pts2-car">#12</td><td class="pts2-name">Blaney</td><td class="pts2-pts">100</td></tr><tr class="pts2-row"><td class="pts2-pos">P5</td><td class="pts2-car">#97</td><td class="pts2-name">SVG</td><td class="pts2-pts">90</td></tr></tbody></table><table class="pts2-table"><thead><tr><th>Pos</th><th>Car</th><th>Driver</th><th class="r">Pts</th></tr></thead><tbody><tr class="pts2-row"><td class="pts2-pos">P6</td><td class="pts2-car">#22</td><td class="pts2-name">Logano</td><td class="pts2-pts">90</td></tr><tr class="pts2-row"><td class="pts2-pos">P7</td><td class="pts2-car">#7</td><td class="pts2-name">Suarez</td><td class="pts2-pts">87</td></tr><tr class="pts2-row"><td class="pts2-pos">P8</td><td class="pts2-car">#16</td><td class="pts2-name">A.Dinger</td><td class="pts2-pts">86</td></tr><tr class="pts2-row"><td class="pts2-pos">P9</td><td class="pts2-car">#71</td><td class="pts2-name">McDowell</td><td class="pts2-pts">83</td></tr><tr class="pts2-row"><td class="pts2-pos">P10</td><td class="pts2-car">#77</td><td class="pts2-name">Hocevar</td><td class="pts2-pts">82</td></tr></tbody></table><table class="pts2-table"><thead><tr><th>Pos</th><th>Car</th><th>Driver</th><th class="r">Pts</th></tr></thead><tbody><tr class="pts2-row"><td class="pts2-pos">P11</td><td class="pts2-car">#17</td><td class="pts2-name">Buescher</td><td class="pts2-pts">81</td></tr><tr class="pts2-row"><td class="pts2-pos">P12</td><td class="pts2-car">#6</td><td class="pts2-name">Keselowski</td><td class="pts2-pts">78</td></tr><tr class="pts2-row"><td class="pts2-pos">P13</td><td class="pts2-car">#24</td><td class="pts2-name">Byron</td><td class="pts2-pts">76</td></tr><tr class="pts2-row"><td class="pts2-pos">P14</td><td class="pts2-car">#38</td><td class="pts2-name">Z.Smith</td><td class="pts2-pts">75</td></tr><tr class="pts2-row"><td class="pts2-pos">P15</td><td class="pts2-car">#5</td><td class="pts2-name">Larson</td><td class="pts2-pts">73</td></tr><tr class="pts2-row"><td class="pts2-pos">P16</td><td class="pts2-car">#60</td><td class="pts2-name">Preece</td><td class="pts2-pts">68</td></tr></tbody></table><table class="pts2-table"><thead><tr><th>Pos</th><th>Car</th><th>Driver</th><th class="r">Pts</th></tr></thead><tbody><tr class="pts2-row pts2-dimmed pts2-cutline-row"><td class="pts2-pos">P17</td><td class="pts2-car">#54</td><td class="pts2-name">T.Gibbs</td><td class="pts2-pts">65</td></tr><tr class="pts2-row pts2-dimmed"><td class="pts2-pos">P18</td><td class="pts2-car">#4</td><td class="pts2-name">Gragson</td><td class="pts2-pts">65</td></tr><tr class="pts2-row pts2-dimmed"><td class="pts2-pos">P19</td><td class="pts2-car">#10</td><td class="pts2-name">T.Dillon</td><td class="pts2-pts">65</td></tr><tr class="pts2-row pts2-dimmed"><td class="pts2-pos">P20</td><td class="pts2-car">#1</td><td class="pts2-name">Chastain</td><td class="pts2-pts">64</td></tr></tbody></table>
 </div>
-<div style="font-size:7px;color:#555;text-align:right;margin-top:3px;letter-spacing:.5px;">✂ Chase cutline after P16 · Drivers P17–P20 below the cut</div>
+<div style="font-size:7px;color:#444;text-align:right;margin-top:6px;letter-spacing:.5px;">✂ Gold border = Chase cutline after P16</div>
 </div>
 
 <!-- UPCOMING RACES -->
@@ -526,10 +513,23 @@ async function fetchLeaderboard() {
   const statusTxt = document.getElementById('live-status-txt');
   const meta = document.getElementById('live-lb-meta');
   const content = document.getElementById('lb-content');
+  const ESPN_URL = 'https://site.api.espn.com/apis/site/v2/sports/racing/nascar-cup/scoreboard';
+  const PROXIES = [
+    u => `https://api.allorigins.win/get?url=${encodeURIComponent(u)}`,
+    u => `https://corsproxy.io/?${encodeURIComponent(u)}`
+  ];
+  let data = null;
+  for (const proxyFn of PROXIES) {
+    try {
+      const res = await fetch(proxyFn(ESPN_URL), {signal: AbortSignal.timeout(8000)});
+      if (!res.ok) continue;
+      const raw = await res.json();
+      data = raw.contents ? JSON.parse(raw.contents) : raw;
+      if (data) break;
+    } catch(e) { continue; }
+  }
   try {
-    const res = await fetch('https://site.api.espn.com/apis/site/v2/sports/racing/nascar-cup/scoreboard', {signal:AbortSignal.timeout(8000)});
-    if(!res.ok) throw new Error('API error');
-    const data = await res.json();
+    if (!data) throw new Error('all proxies failed');
     const events = data.events||[];
     if(!events.length){showNoRace(content,statusTxt,dot);return;}
     const evt=events[0];
@@ -567,6 +567,9 @@ async function fetchLeaderboard() {
       rows+=`<tr class="${pos===17?'lb-cutline':''}"><td class="${posClass}">${pos}</td><td class="lb-car">#${carNum}</td><td class="lb-driver">${lastName}${poolBadge}</td><td class="lb-laps">${laps}</td><td class="lb-gap">${gap}</td><td class="lb-status ${statusClass}">${statusLabel}</td></tr>`;
     });
     content.innerHTML=`<table class="lb-table"><thead><tr><th>Pos</th><th>Car</th><th>Driver</th><th class="r">Lap</th><th class="r">Gap</th><th class="r"></th></tr></thead><tbody>${rows}</tbody></table>`;
+  } catch(e2) {
+    // inner parse error, fall through to outer catch
+  }
   } catch(e) {
     meta.innerHTML='<span style="color:#ef4444">⚠ Could not reach ESPN API</span>';
     content.innerHTML='<div class="lb-no-race"><strong>Connection Error</strong>Check your connection and try refreshing.</div>';
