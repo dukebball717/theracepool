@@ -489,48 +489,99 @@ updateParty();
 setInterval(updateParty, 60000);
 
 // ── NEWS TICKER ──
-var FOX_RSS = 'https://api.foxsports.com/v2/content/optimized-rss?partnerKey=MB0Wehpmuj2lUhuRhQaafhBjAJqaPU244mlTDK1i&size=30&tags=fs%2Ftruck-series%2Cfs%2Fcup-series%2Cfs%2Fxfinity-series';
+// Multiple NASCAR RSS sources — tried in order, all Cup-series focused
+var RSS_SOURCES = [
+  {
+    url: 'https://api.foxsports.com/v2/content/optimized-rss?partnerKey=MB0Wehpmuj2lUhuRhQaafhBjAJqaPU244mlTDK1i&size=20&tags=fs%2Fcup-series',
+    label: 'Fox Sports NASCAR'
+  },
+  {
+    url: 'https://www.nascar.com/rss/news/latest.rss',
+    label: 'NASCAR.com'
+  },
+  {
+    url: 'https://racingnews365.com/rss/nascar',
+    label: 'Racing News 365'
+  }
+];
 var CORS_PROXIES = [
   function(u) { return 'https://api.allorigins.win/get?url=' + encodeURIComponent(u); },
   function(u) { return 'https://corsproxy.io/?' + encodeURIComponent(u); }
 ];
 var FALLBACK_NEWS = [
-  'Tyler Reddick enters Phoenix as the only driver to win all 3 races in 2026',
-  'Phoenix Raceway - 1.0 mile D-shaped oval · 312 laps today',
-  'Stage 1 ends Lap 60 · Stage 2 ends Lap 185 · Final stage Laps 186-312',
-  'Joey Logano leads all active drivers with 4 career wins at Phoenix',
-  'Green flag today at 3:30 PM ET · Watch on FS1'
+  'Tyler Reddick enters Phoenix as the only 3-race winner in 2026',
+  'Phoenix Raceway · 1.0 mile D-shaped oval · 312 laps today',
+  'Stage 1 ends Lap 60 · Stage 2 ends Lap 185 · Final stage Laps 186–312',
+  'Joey Logano on pole · 26.561s · Fastest qualifier at Phoenix in Next Gen era',
+  'Daniel Suarez topped practice with a 26.877s lap',
+  'Green flag at 3:30 PM ET · Watch on FS1',
+  'Alex Bowman out with vertigo · Anthony Alfredo in the #48',
+  'Brad Keselowski goes to backup car after practice wall contact · starts last',
+  'Denny Hamlin holds the all-time Phoenix lap record: 26.914s (Nov 2024)',
+  'Phoenix has 3 stages: Stage 1 ends Lap 60 · Stage 2 ends Lap 185'
 ];
-async function loadTicker() {
-  for (var i = 0; i < CORS_PROXIES.length; i++) {
-    try {
-      var proxyFn = CORS_PROXIES[i];
-      var r = await fetch(proxyFn(FOX_RSS), {signal: AbortSignal.timeout(6000)});
-      if (!r.ok) continue;
-      var rawData = await r.json();
-      var xmlStr = rawData.contents || rawData.body || '';
-      var parser = new DOMParser();
-      var doc = parser.parseFromString(xmlStr, 'text/xml');
-      var items = Array.from(doc.querySelectorAll('item')).slice(0, 12);
-      if (!items.length) continue;
-      var texts = items.map(function(item) {
-        var title = (item.querySelector('title') || {}).textContent || '';
-        var link = (item.querySelector('link') || {}).textContent || '#';
-        return title ? '<span class="ticker-item"><a href="' + link + '" target="_blank" rel="noopener">' + title + '</a></span>' : '';
-      }).filter(Boolean);
-      if (texts.length) {
-        document.getElementById('ticker-track').innerHTML = texts.join('');
-        document.getElementById('ticker-src').textContent = 'Fox Sports ↗';
-        document.getElementById('ticker-src').href = 'https://www.foxsports.com/nascar';
-        return;
-      }
-    } catch(e) { continue; }
+function shuffleArray(arr) {
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
   }
-  document.getElementById('ticker-track').innerHTML = FALLBACK_NEWS.map(function(t) { return '<span class="ticker-item">' + t + '</span>'; }).join('');
-  document.getElementById('ticker-src').textContent = 'race facts';
+  return a;
+}
+function parseRSSItems(xmlStr) {
+  var parser = new DOMParser();
+  var doc = parser.parseFromString(xmlStr, 'text/xml');
+  var items = Array.from(doc.querySelectorAll('item'));
+  return items.map(function(item) {
+    var title = (item.querySelector('title') || {}).textContent || '';
+    var link = (item.querySelector('link') || {}).textContent || '#';
+    // Strip CDATA wrappers if present
+    title = title.replace(/<!\[CDATA\[|\]\]>/g, '').trim();
+    return title ? { title: title, link: link } : null;
+  }).filter(Boolean);
+}
+async function loadTicker() {
+  var allItems = [];
+  var successLabel = '';
+  for (var s = 0; s < RSS_SOURCES.length; s++) {
+    var src = RSS_SOURCES[s];
+    for (var p = 0; p < CORS_PROXIES.length; p++) {
+      try {
+        var proxyUrl = CORS_PROXIES[p](src.url);
+        var r = await fetch(proxyUrl, {signal: AbortSignal.timeout(6000)});
+        if (!r.ok) continue;
+        var rawData = await r.json();
+        var xmlStr = rawData.contents || rawData.body || '';
+        var items = parseRSSItems(xmlStr);
+        if (items.length > 0) {
+          allItems = allItems.concat(items);
+          successLabel = src.label;
+          break;
+        }
+      } catch(e) { continue; }
+    }
+    if (allItems.length >= 15) break;
+  }
+  if (allItems.length > 0) {
+    // Shuffle so it doesn't always show same order on reload
+    var shuffled = shuffleArray(allItems).slice(0, 20);
+    var html = shuffled.map(function(item) {
+      return '<span class="ticker-item"><a href="' + item.link + '" target="_blank" rel="noopener">' + item.title + '</a></span>';
+    }).join('');
+    document.getElementById('ticker-track').innerHTML = html;
+    document.getElementById('ticker-src').textContent = successLabel + ' ↗';
+    document.getElementById('ticker-src').href = 'https://www.foxsports.com/nascar';
+  } else {
+    // Fallback: shuffle static facts so they appear in different order each load
+    var shuffledFallback = shuffleArray(FALLBACK_NEWS);
+    document.getElementById('ticker-track').innerHTML = shuffledFallback.map(function(t) {
+      return '<span class="ticker-item">' + t + '</span>';
+    }).join('');
+    document.getElementById('ticker-src').textContent = 'race facts';
+  }
 }
 loadTicker();
-setInterval(loadTicker, 300000);
+setInterval(loadTicker, 180000);
 
 // ── QUALIFYING TICKER ──
 var QUAL_HAPPENED = true;
@@ -597,72 +648,100 @@ buildQualTicker();
 
 // ── LIVE LEADERBOARD ──
 var POOL_DRIVERS = {"1": "Ace", "11": "Brenda", "12": "Pam", "17": "Ron", "19": "Ron", "2": "Daniel", "20": "KO3", "21": "Ace", "22": "Zach", "23": "Zach", "24": "Nick", "3": "Nicole", "34": "Daniel", "38": "KO3", "4": "Pam", "42": "Zach", "43": "Nick", "45": "Nicole", "48": "Scott", "5": "Scott", "54": "Brenda", "6": "Pam", "60": "KO3", "7": "Ace", "71": "Brenda", "77": "Nicole", "8": "Scott", "88": "Nick", "9": "Daniel", "97": "Ron"};
-var ESPN_URL = 'https://site.api.espn.com/apis/site/v2/sports/racing/nascar-cup/scoreboard';
+// NASCAR live leaderboard - uses NASCAR.com live timing feed via CORS proxy
+// ESPN NASCAR endpoint is no longer functional; NASCAR.com live-timing is the best available source
+var NASCAR_LIVE_URLS = [
+  'https://www.nascar.com/live-results/nascar-cup-series/2026-straight-talk-wireless-500/',
+  'https://cf.nascar.com/live/feeds/live-feed.json',
+];
 var LB_PROXIES = [
   function(u) { return 'https://api.allorigins.win/get?url=' + encodeURIComponent(u); },
   function(u) { return 'https://corsproxy.io/?' + encodeURIComponent(u); }
 ];
+
 async function fetchLeaderboard() {
   var dot = document.getElementById('live-dot');
   var statusTxt = document.getElementById('live-status-txt');
   var meta = document.getElementById('live-lb-meta');
   var content = document.getElementById('lb-content');
-  var lbData = null;
-  for (var i = 0; i < LB_PROXIES.length; i++) {
+
+  // Try NASCAR.com live feed JSON first
+  var liveUrl = 'https://cf.nascar.com/live/feeds/live-feed.json';
+  var data = null;
+
+  for (var p = 0; p < LB_PROXIES.length; p++) {
     try {
-      var r = await fetch(LB_PROXIES[i](ESPN_URL), {signal: AbortSignal.timeout(8000)});
+      var r = await fetch(LB_PROXIES[p](liveUrl), {signal: AbortSignal.timeout(8000)});
       if (!r.ok) continue;
-      var rawLb = await r.json();
-      lbData = rawLb.contents ? JSON.parse(rawLb.contents) : rawLb;
-      if (lbData && lbData.events) break;
+      var raw = await r.json();
+      var parsed = raw.contents ? JSON.parse(raw.contents) : raw;
+      if (parsed && (parsed.vehicles || parsed.run_id)) { data = parsed; break; }
     } catch(e) { continue; }
   }
-  if (!lbData) {
-    if (!window._lbLoaded) { setTimeout(fetchLeaderboard, 10000); }
+
+  if (!data || !data.vehicles || !data.vehicles.length) {
+    // Feed not live yet or race over - show offline state but keep retrying
+    if (dot) { dot.classList.add('live-dot-off'); }
+    if (statusTxt) { statusTxt.textContent = 'Awaiting feed'; statusTxt.style.color = '#e8a020'; }
+    if (meta) { meta.innerHTML = '<span>NASCAR live feed offline — retrying…</span>'; }
+    setTimeout(fetchLeaderboard, 15000);
     return;
   }
+
   window._lbLoaded = true;
-  var events = lbData.events || [];
-  if (!events.length) { showNoRace(content, statusTxt, dot); return; }
-  var comp = events[0].competitions && events[0].competitions[0];
-  if (!comp) { showNoRace(content, statusTxt, dot); return; }
-  var state = comp.status && comp.status.type && comp.status.type.state;
-  var detail = (comp.status && comp.status.type && comp.status.type.detail) || '';
-  if (state === 'in') {
-    dot.classList.remove('live-dot-off'); statusTxt.textContent = 'LIVE'; statusTxt.style.color = '#22c55e';
-  } else if (state === 'post') {
-    dot.classList.add('live-dot-off'); statusTxt.textContent = 'FINAL'; statusTxt.style.color = '#888';
-  } else {
-    dot.classList.add('live-dot-off'); statusTxt.textContent = 'Pre-Race'; statusTxt.style.color = '#e8a020';
-  }
-  var competitors = (comp.competitors || []).slice();
-  if (!competitors.length) { showNoRace(content, statusTxt, dot); return; }
-  competitors.sort(function(a, b) { return (parseInt(a.order)||99) - (parseInt(b.order)||99); });
-  meta.innerHTML = '<span>' + detail + '</span>';
+  var vehicles = data.vehicles;
+  var lapNumber = data.lap_number || '—';
+  var totalLaps = data.number_of_laps || 312;
+  var flagState = data.flag_state || 1;
+  // flag_state: 1=green, 2=yellow, 3=red, 4=checkered, 8=caution
+  var flagLabel = flagState === 1 ? '🟢 GREEN' : flagState === 2 || flagState === 8 ? '🟡 CAUTION' : flagState === 3 ? '🔴 RED' : flagState === 4 ? '🏁 CHECKERED' : '';
+
+  if (dot) { dot.classList.remove('live-dot-off'); }
+  if (statusTxt) { statusTxt.textContent = 'LIVE ' + flagLabel; statusTxt.style.color = '#22c55e'; }
+  if (meta) { meta.innerHTML = '<span>Lap ' + lapNumber + ' of ' + totalLaps + '</span>'; }
+
+  // Sort by running position
+  vehicles.sort(function(a,b) { return (a.running_position||99) - (b.running_position||99); });
+
   var rows = '';
-  competitors.slice(0,20).forEach(function(c, idx) {
-    var pos = c.order || (idx+1);
-    var carNum = ((c.athlete && c.athlete.shortName)||(c.vehicle && c.vehicle.number)||'?').replace('#','');
-    var lastName = ((c.athlete && c.athlete.displayName)||'').split(' ').pop();
-    var gap = c.gap || (pos===1 ? 'Leader' : '-');
-    var laps = c.lapsCompleted || '-';
+  vehicles.slice(0,20).forEach(function(v, idx) {
+    var pos = v.running_position || (idx+1);
+    var carNum = String(v.vehicle_number || '?');
+    var lastName = (v.driver && v.driver.full_name) ? v.driver.full_name.split(' ').pop() : (v.driver_name || '?').split(' ').pop();
+    var laps = v.laps_completed || '—';
+    var gap = pos === 1 ? 'Leader' : (v.delta ? '+' + v.delta : '—');
     var poolOwner = POOL_DRIVERS[carNum] || '';
     var poolBadge = poolOwner ? '<span class="lb-pool-badge">' + poolOwner + '</span>' : '';
-    var sCls = 'lb-status-run', sLbl = '▶';
-    if (c.inPit) { sCls = 'lb-status-pit'; sLbl = 'PIT'; }
-    else if (c.dnf || c.out) { sCls = 'lb-status-out'; sLbl = 'OUT'; }
-    var pCls = pos===1 ? 'lb-pos lb-pos-1' : 'lb-pos';
-    if (pos===17) { rows += '<tr><td colspan="6" class="lb-cutline-lbl">-- Chase Cutline --</td></tr>'; }
-    rows += '<tr><td class="' + pCls + '">' + pos + '</td><td class="lb-car">#' + carNum + '</td><td class="lb-driver">' + lastName + poolBadge + '</td><td class="lb-laps">' + laps + '</td><td class="lb-gap">' + gap + '</td><td class="lb-status ' + sCls + '">' + sLbl + '</td></tr>';
+    var pitFlag = v.is_on_track === false || v.pit_stops ? v.pit_stops && v.pit_stops > 0 : false;
+    var inPit = v.status === 2; // status 2 = on pit road in many NASCAR feeds
+    var out = v.out === true || v.status === 3;
+    var sCls = out ? 'lb-status-out' : inPit ? 'lb-status-pit' : 'lb-status-run';
+    var sLbl = out ? 'OUT' : inPit ? 'PIT' : '▶';
+    var posCls = pos === 1 ? 'lb-pos lb-pos-1' : 'lb-pos';
+    rows += '<tr>';
+    rows += '<td class="' + posCls + '">' + pos + '</td>';
+    rows += '<td class="lb-car">#' + carNum + '</td>';
+    rows += '<td class="lb-driver">' + lastName + poolBadge + '</td>';
+    rows += '<td class="lb-laps">' + laps + '</td>';
+    rows += '<td class="lb-gap">' + gap + '</td>';
+    rows += '<td class="lb-status ' + sCls + '">' + sLbl + '</td>';
+    rows += '</tr>';
+    if (idx === 9) {
+      rows += '<tr><td colspan="6" class="lb-cutline-lbl">— TOP 10 —</td></tr>';
+    }
   });
-  content.innerHTML = '<table class="lb-table"><thead><tr><th>Pos</th><th>Car</th><th>Driver</th><th class="r">Lap</th><th class="r">Gap</th><th class="r"></th></tr></thead><tbody>' + rows + '</tbody></table>';
+
+  content.innerHTML = '<table class="lb-table"><thead><tr><th>P</th><th>Car</th><th class="lb-driver">Driver</th><th class="r">Lap</th><th class="r">Gap</th><th class="r">St</th></tr></thead><tbody>' + rows + '</tbody></table>';
 }
+
 function showNoRace(content, statusTxt, dot) {
-  dot.classList.add('live-dot-off'); statusTxt.textContent = 'Pre-Race'; statusTxt.style.color = '#e8a020';
-  content.innerHTML = '<div class="lb-no-race"><strong>Race Not Yet Live</strong>Live timing will appear here once the race begins.<br>Green flag: 3:30 PM ET · Sun Mar 8</div>';
+  if (dot) dot.classList.add('live-dot-off');
+  if (statusTxt) { statusTxt.textContent = 'Pre-Race'; statusTxt.style.color = '#e8a020'; }
+  if (content) content.innerHTML = '<div style="color:#555;font-size:11px;padding:10px;text-align:center;">Race not yet started</div>';
 }
+
 fetchLeaderboard();
-setInterval(fetchLeaderboard, 30000);
+setInterval(fetchLeaderboard, 15000);
 </script>
 
 </body>
