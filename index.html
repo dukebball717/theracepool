@@ -52,8 +52,8 @@ body{font-family:'Barlow Condensed',sans-serif;background:#141414;color:#fff;pad
 .party-inline .label{color:#aaa;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:700;}
 .party-digits{font-size:12px;font-weight:900;color:#c084fc;font-variant-numeric:tabular-nums;}
 /* SECONDARY BAR */
-.secondary-bar{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;}
-.track-map-box,.live-lb-wrap{background:#1e1e1e;border:1px solid #2c2c2c;border-radius:8px;padding:8px 10px;min-width:0;}
+.secondary-bar-lb{display:block;margin-bottom:10px;}
+.live-lb-wrap{background:#1e1e1e;border:1px solid #2c2c2c;border-radius:8px;padding:8px 10px;min-width:0;}
 .box-title{font-size:8px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#888;margin-bottom:6px;}
 .box-title span{color:#e8a020;}
 .track-svg-wrap{display:flex;justify-content:center;}
@@ -200,25 +200,24 @@ body{font-family:'Barlow Condensed',sans-serif;background:#141414;color:#fff;pad
 .lb-cutline-lbl{font-size:7px;color:#e8a020;letter-spacing:1px;text-transform:uppercase;text-align:center;padding:2px 0;font-weight:900;background:#1a1200;border-top:2px solid #e8a020;}
 .lb-no-race{text-align:center;padding:24px 10px;color:#555;font-size:12px;line-height:1.8;}
 .lb-no-race strong{color:#888;display:block;font-size:14px;margin-bottom:4px;}
-.lb-refresh-btn{background:none;border:1px solid #333;color:#888;border-radius:4px;padding:3px 10px;font-size:9px;cursor:pointer;font-family:inherit;letter-spacing:1px;text-transform:uppercase;}
-.lb-refresh-btn:hover{border-color:#e8a020;color:#e8a020;}
+
 /* FOOTER */
 .footer-logo{text-align:center;margin-top:20px;padding-top:16px;border-top:1px solid #2a2a2a;}
 .footer-logo .prod-name{font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:3px;color:#e8a020;}
 .footer-logo .prod-sub{font-size:11px;color:#666;letter-spacing:2px;text-transform:uppercase;margin-top:2px;}
 @media(max-width:600px){
-  body{padding:8px;}
-  .header h1{font-size:16px;}
-  .info-bar{gap:5px;}
-  .secondary-bar{grid-template-columns:1fr 1fr;}
-  .grid{grid-template-columns:1fr 1fr;gap:7px;}
-  .res-delta{display:none;}
-  .pts2-desktop{display:none;}
-  .pts2-mobile{display:grid;}
-  .st-row,.st-cols{grid-template-columns:24px 1fr 76px 52px 46px;}
-  .avg-bar-wrap{width:44px;}
-  .st-player{font-size:13px;}
-  .st-money{font-size:13px;}
+body{padding:8px;}
+.header h1{font-size:16px;}
+.info-bar{gap:5px;}
+.secondary-bar-lb{display:block;}
+.grid{grid-template-columns:1fr 1fr;gap:7px;}
+.res-delta{display:none;}
+.pts2-desktop{display:none;}
+.pts2-mobile{display:grid;}
+.st-row,.st-cols{grid-template-columns:24px 1fr 76px 52px 46px;}
+.avg-bar-wrap{width:44px;}
+.st-player{font-size:13px;}
+.st-money{font-size:13px;}
 }
 
 .pos-pill-wrap{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:72px;}
@@ -257,31 +256,16 @@ body{font-family:'Barlow Condensed',sans-serif;background:#141414;color:#fff;pad
 <div class="fs1-badge"><span style="font-size:9px;color:#aaa;letter-spacing:1px;text-transform:uppercase;font-weight:700;">TV</span><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/2015_Fox_Sports_1_logo.svg/1280px-2015_Fox_Sports_1_logo.svg.png" alt="FS1" style="height:20px;width:auto;display:block;"></div>
 </div>
 
-<div class="secondary-bar">
-<div class="track-map-box">
-<div class="box-title">🏟 Track Map · <span>Phoenix Raceway</span> · 1.0mi D-Shaped Oval</div>
-<div class="track-svg-wrap">
-<svg viewBox="0 0 260 170" width="100%" height="auto" style="max-height:130px">
-<path d="M 30,85 Q 30,30 130,30 Q 230,30 235,75 L 235,95 Q 230,140 130,140 Q 30,140 30,85 Z" fill="none" stroke="#444" stroke-width="10"/>
-<path d="M 30,85 Q 30,30 130,30 Q 230,30 235,75 L 235,95 Q 230,140 130,140 Q 30,140 30,85 Z" fill="none" stroke="#666" stroke-width="2"/>
-<path d="M 50,85 Q 50,50 130,50 Q 215,50 215,75 L 215,95 Q 215,120 130,120 Q 50,120 50,85 Z" fill="#1a2e1a"/>
-<rect x="28" y="68" width="4" height="22" fill="#fff" rx="1"/>
-<rect x="34" y="72" width="14" height="8" fill="#222" rx="1"/>
-<text x="41" y="79" font-family="Arial" font-size="5" fill="#666" text-anchor="middle">PIT</text>
-<text x="130" y="25" font-family="Arial" font-size="8" fill="#555" text-anchor="middle">T3 – T4</text>
-<text x="130" y="155" font-family="Arial" font-size="8" fill="#555" text-anchor="middle">T1 – T2</text>
-<text x="22" y="66" font-family="Arial" font-size="7" fill="#aaa" text-anchor="middle">S/F</text>
-<text x="133" y="84" font-family="Arial Black" font-size="10" fill="#2e2e2e" text-anchor="middle" font-weight="900">PHOENIX</text>
-<text x="133" y="96" font-family="Arial" font-size="8" fill="#252525" text-anchor="middle">RACEWAY · 312 LAPS</text>
-<text x="240" y="80" font-family="Arial" font-size="7" fill="#e8a020" text-anchor="start">S1:60</text>
-<text x="240" y="90" font-family="Arial" font-size="7" fill="#3b82f6" text-anchor="start">S2:185</text>
-<text x="240" y="100" font-family="Arial" font-size="7" fill="#22c55e" text-anchor="start">F:312</text>
-</svg>
+<div class="secondary-bar-lb">
+<div class="live-lb-wrap" style="width:100%;">
+<div class="live-lb-header">
+<div class="live-lb-title">🏁 <span>Live Leaderboard</span></div>
+<div class="live-pulse"><span class="live-dot" id="live-dot"></span><span id="live-status-txt" style="color:#22c55e;">Loading…</span></div>
 </div>
-<div class="track-facts-wrap">
-<div class="track-fact-item active" id="tf0"><div><span class="tf-label">🏆 Last Year's Winner</span>Christopher Bell won the 2025 spring race at Phoenix, his second straight spring win here. He led 159 of 312 laps.</div></div>
-<div class="track-fact-item" id="tf1"><div><span class="tf-label">👑 All-Time Wins Leader</span>Kevin Harvick holds the record with 9 Cup wins at Phoenix — more than any driver in track history.</div></div>
-<div class="track-fact-item" id="tf2"><div><span class="tf-label">📍 Distance from Charlotte</span>Phoenix Raceway is approximately 1,750 miles from Charlotte, NC — about a 25-hour drive or 4-hour flight west.</div></div>
+<div class="live-lb-meta" id="live-lb-meta">&nbsp;</div>
+<div id="lb-content"><div style="color:#555;font-size:11px;padding:10px;text-align:center;">Connecting…</div></div>
+</div>
+</div>
 <div class="track-fact-item" id="tf3"><div><span class="tf-label">🗓 Track History</span>Phoenix Raceway opened in 1964. The first NASCAR Cup race was held in November 1988, won by Alan Kulwicki with his "Polish Victory Lap."</div></div>
 <div class="track-fact-item" id="tf4"><div><span class="tf-label">🏁 Track Shape</span>Phoenix is a unique D-shaped oval, 1.0 mile long. Turns 1–2 are flat; Turns 3–4 have 11° of banking. It runs clockwise — opposite most ovals.</div></div>
 <div class="track-fact-item" id="tf5"><div><span class="tf-label">☀️ Desert Factor</span>At 1,083 ft elevation, Phoenix's thin air reduces drag — cars run faster than the track size suggests. Tire wear is severe on the abrasive asphalt.</div></div>
@@ -289,17 +273,6 @@ body{font-family:'Barlow Condensed',sans-serif;background:#141414;color:#fff;pad
 <div class="track-fact-dots" id="tf-dots"></div>
 </div>
 
-<div class="live-lb-wrap">
-<div class="live-lb-header">
-<div class="live-lb-title">🏁 Live Race <span>Leaderboard</span></div>
-<div style="display:flex;align-items:center;gap:8px;">
-<div class="live-pulse"><div class="live-dot live-dot-off" id="live-dot"></div><span id="live-status-txt" style="color:#e8a020;font-size:9px;font-weight:900;">Checking...</span></div>
-<button class="lb-refresh-btn" onclick="fetchLeaderboard()">↻ Refresh</button>
-</div>
-</div>
-<div class="live-lb-meta" id="live-lb-meta">&nbsp;</div>
-<div id="lb-content"><div class="lb-no-race"><strong>⏳ Race Not Yet Live</strong>Live timing will appear here once the race begins.<br>Green flag: 3:30 PM ET · Sun Mar 8</div></div>
-</div>
 </div>
 
 <div class="dyk-bar">
@@ -703,8 +676,7 @@ async function fetchLeaderboard() {
   // Sort by running position
   vehicles.sort(function(a,b) { return (a.running_position||99) - (b.running_position||99); });
 
-  var rows = '';
-  vehicles.slice(0,20).forEach(function(v, idx) {
+  function buildLbRow(v, idx) {
     var pos = v.running_position || (idx+1);
     var carNum = String(v.vehicle_number || '?');
     var lastName = (v.driver && v.driver.full_name) ? v.driver.full_name.split(' ').pop() : (v.driver_name || '?').split(' ').pop();
@@ -712,26 +684,24 @@ async function fetchLeaderboard() {
     var gap = pos === 1 ? 'Leader' : (v.delta ? '+' + v.delta : '—');
     var poolOwner = POOL_DRIVERS[carNum] || '';
     var poolBadge = poolOwner ? '<span class="lb-pool-badge">' + poolOwner + '</span>' : '';
-    var pitFlag = v.is_on_track === false || v.pit_stops ? v.pit_stops && v.pit_stops > 0 : false;
-    var inPit = v.status === 2; // status 2 = on pit road in many NASCAR feeds
+    var inPit = v.status === 2;
     var out = v.out === true || v.status === 3;
     var sCls = out ? 'lb-status-out' : inPit ? 'lb-status-pit' : 'lb-status-run';
     var sLbl = out ? 'OUT' : inPit ? 'PIT' : '▶';
     var posCls = pos === 1 ? 'lb-pos lb-pos-1' : 'lb-pos';
-    rows += '<tr>';
-    rows += '<td class="' + posCls + '">' + pos + '</td>';
-    rows += '<td class="lb-car">#' + carNum + '</td>';
-    rows += '<td class="lb-driver">' + lastName + poolBadge + '</td>';
-    rows += '<td class="lb-laps">' + laps + '</td>';
-    rows += '<td class="lb-gap">' + gap + '</td>';
-    rows += '<td class="lb-status ' + sCls + '">' + sLbl + '</td>';
-    rows += '</tr>';
-    if (idx === 9) {
-      rows += '<tr><td colspan="6" class="lb-cutline-lbl">— TOP 10 —</td></tr>';
-    }
-  });
+    return '<tr><td class="' + posCls + '">' + pos + '</td><td class="lb-car">#' + carNum + '</td><td class="lb-driver">' + lastName + poolBadge + '</td><td class="lb-gap">' + gap + '</td><td class="lb-status ' + sCls + '">' + sLbl + '</td></tr>';
+  }
 
-  content.innerHTML = '<table class="lb-table"><thead><tr><th>P</th><th>Car</th><th class="lb-driver">Driver</th><th class="r">Lap</th><th class="r">Gap</th><th class="r">St</th></tr></thead><tbody>' + rows + '</tbody></table>';
+  var top20 = vehicles.slice(0, 20);
+  var col1 = top20.slice(0, 10);
+  var col2 = top20.slice(10, 20);
+  var thead = '<thead><tr><th>P</th><th>Car</th><th class="lb-driver">Driver</th><th class="r">Gap</th><th class="r">St</th></tr></thead>';
+  var t1rows = col1.map(function(v,i){ return buildLbRow(v,i); }).join('');
+  var t2rows = col2.map(function(v,i){ return buildLbRow(v,i+10); }).join('');
+  content.innerHTML = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">' +
+    '<table class="lb-table">' + thead + '<tbody>' + t1rows + '</tbody></table>' +
+    '<table class="lb-table">' + thead + '<tbody>' + t2rows + '</tbody></table>' +
+    '</div>';
 }
 
 function showNoRace(content, statusTxt, dot) {
