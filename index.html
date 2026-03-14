@@ -133,7 +133,7 @@ td:not(:first-child) { text-align:center; }
     <span>🏁 PENNZOIL 400 — LAS VEGAS MOTOR SPEEDWAY — SUNDAY MARCH 15 — 4:00 PM ET — FS1</span>
     <span>📋 PHOENIX RESULTS: 1. Ryan Blaney #12 · 2. Christopher Bell #20 · 3. Joey Logano #22 · 4. Tyler Reddick #45 · 5. Denny Hamlin #11</span>
     <span>🏆 PHOENIX POOL WINNER: PAM (Ryan Blaney #12) · +$90</span>
-    <span>🎰 LAS VEGAS ODDS FAVORITES: Kyle Larson +500 · Christopher Bell +600 · William Byron +750 · Denny Hamlin +850 · Ryan Blaney +850 · Tyler Reddick +850</span>
+    <span>🎰 LAS VEGAS ODDS FAVORITES: Kyle Larson +450 · Christopher Bell +550 · Tyler Reddick +750 · Denny Hamlin +750 · Ryan Blaney +800 · William Byron +850</span>
     <span>🏎️ LAS VEGAS MOTOR SPEEDWAY — 1.5-mile tri-oval — 400 laps — 267 miles</span>
   </div>
 </div>
@@ -298,47 +298,38 @@ STANDINGS.forEach(function(p, i){
 });
 
 // ODDS lookup by car number — FanDuel, updated 3/14/26
-// Car number corrections applied: Suarez=#7, SVG=#97, Josh Berry=#21, Justin Allgaier subs in #48
 var ODDS_BY_CAR = {
-  "5":  { driver:"Kyle Larson",           odds:"+500"  },
-  "20": { driver:"Christopher Bell",      odds:"+600"  },
-  "24": { driver:"William Byron",         odds:"+750"  },
-  "11": { driver:"Denny Hamlin",          odds:"+850"  },
-  "12": { driver:"Ryan Blaney",           odds:"+850"  },
-  "45": { driver:"Tyler Reddick",         odds:"+850"  },
-  "22": { driver:"Joey Logano",           odds:"+1100" },
-  "26": { driver:"Chase Briscoe",         odds:"+1200" },
-  "1":  { driver:"Ross Chastain",         odds:"+1300" },
-  "9":  { driver:"Chase Elliott",         odds:"+1800" },
-  "23": { driver:"Bubba Wallace",         odds:"+1900" },
-  "17": { driver:"Chris Buescher",        odds:"+2200" },
-  "77": { driver:"Carson Hocevar",        odds:"+2500" },
-  "6":  { driver:"Brad Keselowski",       odds:"+2700" },
-  "54": { driver:"Ty Gibbs",              odds:"+3000" },
-  "8":  { driver:"Kyle Busch",            odds:"+3000" },
-  "48": { driver:"Justin Allgaier",       odds:"+3300" },
-  "42": { driver:"John Hunter Nemechek",  odds:"+4000" },
-  "21": { driver:"Josh Berry",            odds:"+4000" },
-  "34": { driver:"Ryan Preece",           odds:"+4500" },
-  "7":  { driver:"Daniel Suarez",         odds:"+5000" },
-  "2":  { driver:"Austin Cindric",        odds:"+7000" },
-  "43": { driver:"Erik Jones",            odds:"+8000" },
-  "19": { driver:"Martin Truex Jr.",      odds:"+8000" },
-  "38": { driver:"Todd Gilliland",        odds:"+8000" },
-  "4":  { driver:"AJ Allmendinger",       odds:"+8000" },
-  "3":  { driver:"Austin Dillon",         odds:"+30000"},
-  "88": { driver:"Shane van Gisbergen",   odds:"+25000"},
-  "97": { driver:"Shane van Gisbergen",   odds:"+25000"},
-  "71": { driver:"Zane Smith",            odds:"+40000"},
-  "60": { driver:"Kaz Grala",            odds:"+50000"},
-  "41": { driver:"Connor Zilisch",        odds:"+4000" }
+  "5":  { driver:"Kyle Larson",              odds:"+450"   },
+  "20": { driver:"Christopher Bell",         odds:"+550"   },
+  "45": { driver:"Tyler Reddick",            odds:"+750"   },
+  "11": { driver:"Denny Hamlin",             odds:"+750"   },
+  "12": { driver:"Ryan Blaney",              odds:"+800"   },
+  "24": { driver:"William Byron",            odds:"+850"   },
+  "22": { driver:"Joey Logano",              odds:"+1400"  },
+  "19": { driver:"Chase Briscoe",            odds:"+1400"  },
+  "9":  { driver:"Chase Elliott",            odds:"+1600"  },
+  "1":  { driver:"Ross Chastain",            odds:"+2000"  },
+  "23": { driver:"Bubba Wallace",            odds:"+2000"  },
+  "77": { driver:"Carson Hocevar",           odds:"+2500"  },
+  "54": { driver:"Ty Gibbs",                 odds:"+3300"  },
+  "60": { driver:"Ryan Preece",              odds:"+4000"  },
+  "17": { driver:"Chris Buescher",           odds:"+4000"  },
+  "21": { driver:"Josh Berry",               odds:"+5000"  },
+  "8":  { driver:"Kyle Busch",               odds:"+5000"  },
+  "2":  { driver:"Austin Cindric",           odds:"+6000"  },
+  "48": { driver:"Justin Allgaier",          odds:"+6000"  },
+  "6":  { driver:"Brad Keselowski",          odds:"+7500"  },
+  "88": { driver:"Connor Zilisch",           odds:"+7500"  },
+  "7":  { driver:"Daniel Suarez",            odds:"+7500"  },
+  "42": { driver:"John Hunter Nemechek",     odds:"+10000" },
+  "97": { driver:"Shane van Gisbergen",      odds:"+10000" },
+  "43": { driver:"Erik Jones",               odds:"+15000" },
+  "4":  { driver:"Noah Gragson",             odds:"+15000" },
+  "71": { driver:"Michael McDowell",         odds:"+20000" },
+  "3":  { driver:"Austin Dillon",            odds:"+20000" },
+  "38": { driver:"Zane Smith",               odds:"+25000" },
+  "34": { driver:"Todd Gilliland",           odds:"+25000" }
 };
-
-// Corrections: #97 = SVG, #7 = Suarez, #21 = Josh Berry, #48 = Justin Allgaier
-ODDS_BY_CAR["97"] = { driver:"Shane van Gisbergen", odds:"+25000" };
-ODDS_BY_CAR["7"]  = { driver:"Daniel Suarez",       odds:"+5000"  };
-ODDS_BY_CAR["21"] = { driver:"Josh Berry",          odds:"+4000"  };
-ODDS_BY_CAR["48"] = { driver:"Justin Allgaier",     odds:"+3300"  };
 
 // Build participant driver cards — no balance shown
 var pgrid = document.getElementById('participant-grid');
