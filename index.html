@@ -132,8 +132,8 @@ td:not(:first-child) { text-align:center; }
   <div class="ticker-inner">
     <span>🏁 PENNZOIL 400 — LAS VEGAS MOTOR SPEEDWAY — SUNDAY MARCH 15 — 4:00 PM ET — FS1</span>
     <span>📋 PHOENIX RESULTS: 1. Ryan Blaney #12 · 2. Christopher Bell #20 · 3. Joey Logano #22 · 4. Tyler Reddick #45 · 5. Denny Hamlin #11</span>
-    <span>🏆 PHOENIX POOL WINNER: PAM (Christopher Bell #20) · +$90</span>
-    <span>🎰 LAS VEGAS ODDS FAVORITES: Kyle Larson +500 · Christopher Bell +600 · William Byron +750 · Denny Hamlin +850 · Ryan Blaney +850</span>
+    <span>🏆 PHOENIX POOL WINNER: PAM (Ryan Blaney #12) · +$90</span>
+    <span>🎰 LAS VEGAS ODDS FAVORITES: Kyle Larson +500 · Christopher Bell +600 · William Byron +750 · Denny Hamlin +850 · Ryan Blaney +850 · Tyler Reddick +850</span>
     <span>🏎️ LAS VEGAS MOTOR SPEEDWAY — 1.5-mile tri-oval — 400 laps — 267 miles</span>
   </div>
 </div>
@@ -167,6 +167,14 @@ td:not(:first-child) { text-align:center; }
     <div class="cd-unit"><div class="cd-num" id="cd-s">--</div><div class="cd-lbl">Sec</div></div>
   </div>
   <div class="green-flag-info">Green Flag: <strong>Sunday, Mar 15 · 4:00 PM ET</strong> &nbsp;|&nbsp; Track: <strong>Las Vegas Motor Speedway</strong> &nbsp;|&nbsp; Laps: <strong>267</strong></div>
+</div>
+
+<!-- PARTICIPANT DRIVER + ODDS CARDS -->
+
+<div style="padding:16px 28px 10px;border-bottom:1px solid var(--border);">
+  <div class="section-header">🎰 Las Vegas Odds — By Participant</div>
+  <div id="participant-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px;"></div>
+  <div style="font-size:11px;color:var(--muted);margin-top:10px;font-weight:600;">Source: FanDuel / DraftKings sportsbook odds · updated 3/13/26</div>
 </div>
 
 <!-- MAIN GRID -->
@@ -208,7 +216,7 @@ td:not(:first-child) { text-align:center; }
   <div class="section-header">🏁 Phoenix Results (Race 4)</div>
   <div class="pool-winner-row">
     <span class="pwtag">🏆 Pool Winner</span>
-    <span class="pwname">🏁 Pam &nbsp;<span style="color:var(--muted);font-size:14px;font-weight:600;">Christopher Bell #20 · +$90</span></span>
+    <span class="pwname">🏁 Pam &nbsp;<span style="color:var(--muted);font-size:14px;font-weight:600;">Ryan Blaney #12 · +$90</span></span>
   </div>
   <div class="winner-banner">
     <div class="wlabel">Race Winner</div>
@@ -224,15 +232,6 @@ td:not(:first-child) { text-align:center; }
   </div>
 </div>
 
-<!-- LAS VEGAS ODDS -->
-<div class="card">
-  <div class="section-header">🎰 Vegas Odds — Pennzoil 400</div>
-  <div id="odds-list">
-    <!-- populated by JS -->
-  </div>
-  <div style="font-size:10px;color:var(--muted);margin-top:10px;font-weight:600;">Source: FanDuel / DraftKings sportsbook odds · updated 3/13/26</div>
-</div>
-
 <!-- TRACK FACTS -->
 <div class="card">
   <div class="section-header">🗺️ Las Vegas Motor Speedway</div>
@@ -244,22 +243,10 @@ td:not(:first-child) { text-align:center; }
   <div class="fact-row"><span class="fact-label">Last Spring Winner</span><span class="fact-val">Josh Berry (2025)</span></div>
   <div class="fact-row"><span class="fact-label">Last Fall Winner</span><span class="fact-val">Denny Hamlin (2025)</span></div>
 </div>
-
-<!-- POOL RULES -->
-<div class="card">
-  <div class="section-header">📋 Pool Rules</div>
-  <ul class="rules-list">
-    <li><span>Race Win</span><span class="rv">+$90</span></li>
-    <li><span>All Others</span><span class="rv">–$10</span></li>
-    <li><span>Participants</span><span class="rv">10</span></li>
-    <li><span>Cars Per Person</span><span class="rv">3</span></li>
-    <li><span>Pool Win = 🏁</span><span class="rv">Accumulates</span></li>
-  </ul>
-</div>
 ```
 
-  </div>
-</div>
+  </div><!-- end sidebar -->
+</div><!-- end main grid -->
 
 <!-- FOOTNOTE -->
 
@@ -310,34 +297,71 @@ STANDINGS.forEach(function(p, i){
     + '</tr>';
 });
 
-// ODDS
-var ODDS = [
-  { driver:"Kyle Larson",      car:"5",  odds:"+500" },
-  { driver:"Christopher Bell", car:"20", odds:"+600" },
-  { driver:"William Byron",    car:"24", odds:"+750" },
-  { driver:"Denny Hamlin",     car:"11", odds:"+850" },
-  { driver:"Ryan Blaney",      car:"12", odds:"+850" },
-  { driver:"Tyler Reddick",    car:"45", odds:"+1000" },
-  { driver:"Joey Logano",      car:"22", odds:"+1100" },
-  { driver:"Ross Chastain",    car:"1",  odds:"+1300" },
-  { driver:"Bubba Wallace",    car:"23", odds:"+2000" },
-  { driver:"Chase Elliott",    car:"9",  odds:"+1800" }
-];
+// ODDS lookup by car number — FanDuel, updated 3/14/26
+// Car number corrections applied: Suarez=#7, SVG=#97, Josh Berry=#21, Justin Allgaier subs in #48
+var ODDS_BY_CAR = {
+  "5":  { driver:"Kyle Larson",           odds:"+500"  },
+  "20": { driver:"Christopher Bell",      odds:"+600"  },
+  "24": { driver:"William Byron",         odds:"+750"  },
+  "11": { driver:"Denny Hamlin",          odds:"+850"  },
+  "12": { driver:"Ryan Blaney",           odds:"+850"  },
+  "45": { driver:"Tyler Reddick",         odds:"+850"  },
+  "22": { driver:"Joey Logano",           odds:"+1100" },
+  "26": { driver:"Chase Briscoe",         odds:"+1200" },
+  "1":  { driver:"Ross Chastain",         odds:"+1300" },
+  "9":  { driver:"Chase Elliott",         odds:"+1800" },
+  "23": { driver:"Bubba Wallace",         odds:"+1900" },
+  "17": { driver:"Chris Buescher",        odds:"+2200" },
+  "77": { driver:"Carson Hocevar",        odds:"+2500" },
+  "6":  { driver:"Brad Keselowski",       odds:"+2700" },
+  "54": { driver:"Ty Gibbs",              odds:"+3000" },
+  "8":  { driver:"Kyle Busch",            odds:"+3000" },
+  "48": { driver:"Justin Allgaier",       odds:"+3300" },
+  "42": { driver:"John Hunter Nemechek",  odds:"+4000" },
+  "21": { driver:"Josh Berry",            odds:"+4000" },
+  "34": { driver:"Ryan Preece",           odds:"+4500" },
+  "7":  { driver:"Daniel Suarez",         odds:"+5000" },
+  "2":  { driver:"Austin Cindric",        odds:"+7000" },
+  "43": { driver:"Erik Jones",            odds:"+8000" },
+  "19": { driver:"Martin Truex Jr.",      odds:"+8000" },
+  "38": { driver:"Todd Gilliland",        odds:"+8000" },
+  "4":  { driver:"AJ Allmendinger",       odds:"+8000" },
+  "3":  { driver:"Austin Dillon",         odds:"+30000"},
+  "88": { driver:"Shane van Gisbergen",   odds:"+25000"},
+  "97": { driver:"Shane van Gisbergen",   odds:"+25000"},
+  "71": { driver:"Zane Smith",            odds:"+40000"},
+  "60": { driver:"Kaz Grala",            odds:"+50000"},
+  "41": { driver:"Connor Zilisch",        odds:"+4000" }
+};
 
-// Map cars to pool participants for pool tags
-var CAR_TO_PARTICIPANT = {};
-STANDINGS.forEach(function(p){
-  p.cars.forEach(function(c){ CAR_TO_PARTICIPANT[c] = p.name; });
-});
+// Corrections: #97 = SVG, #7 = Suarez, #21 = Josh Berry, #48 = Justin Allgaier
+ODDS_BY_CAR["97"] = { driver:"Shane van Gisbergen", odds:"+25000" };
+ODDS_BY_CAR["7"]  = { driver:"Daniel Suarez",       odds:"+5000"  };
+ODDS_BY_CAR["21"] = { driver:"Josh Berry",          odds:"+4000"  };
+ODDS_BY_CAR["48"] = { driver:"Justin Allgaier",     odds:"+3300"  };
 
-var oddsEl = document.getElementById('odds-list');
-ODDS.forEach(function(o, i){
-  var poolOwner = CAR_TO_PARTICIPANT[o.car];
-  var poolTag = poolOwner ? '<span class="pool-tag">'+poolOwner+'</span>' : '';
-  oddsEl.innerHTML += '<div class="odds-row">'
-    + '<span class="odds-pos-num">'+(i+1)+'.</span>'
-    + '<span class="odds-driver">'+o.driver+' <span class="odds-car">#'+o.car+'</span>'+poolTag+'</span>'
-    + '<span class="odds-val">'+o.odds+'</span>'
+// Build participant driver cards — no balance shown
+var pgrid = document.getElementById('participant-grid');
+var sortedForCards = STANDINGS.slice();
+sortedForCards.forEach(function(p){
+  var cardsHtml = p.cars.map(function(c){
+    var info = ODDS_BY_CAR[c];
+    var driverName = info ? info.driver : 'TBD';
+    var oddsVal = info ? info.odds : '—';
+    var isHot = PHOENIX_TOP5_CARS.indexOf(c) >= 0;
+    var carStyle = isHot ? 'color:var(--orange2);font-weight:900;' : 'color:var(--muted);font-weight:700;';
+    return '<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px;">'
+      + '<span><span style="'+carStyle+'">#'+c+'</span> <span style="font-weight:700;color:var(--text);">'+driverName+'</span></span>'
+      + '<span style="font-weight:800;color:var(--orange2);">'+oddsVal+'</span>'
+      + '</div>';
+  }).join('');
+  var flagStr = '';
+  for(var f=0;f<p.flags;f++) flagStr += '🏁';
+  pgrid.innerHTML += '<div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;">'
+    + '<div style="margin-bottom:10px;border-bottom:1px solid var(--border);padding-bottom:8px;">'
+    +   '<span style="font-size:18px;font-weight:900;">'+flagStr+' '+p.name+'</span>'
+    + '</div>'
+    + cardsHtml
     + '</div>';
 });
 
