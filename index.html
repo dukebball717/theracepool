@@ -147,34 +147,29 @@ td:not(:first-child) { text-align:center; }
       <div class="race-subtitle">Race 5 of 2026 · Las Vegas Motor Speedway · Sunday, March 15, 2026</div>
     </div>
   </div>
-  <div class="network-badge">
-    <div class="fs1-logo">
-      <span class="fs">FS</span><span class="one">1</span>
+  <div style="display:flex;align-items:center;gap:24px;">
+    <div class="countdown-digits">
+      <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:1px;text-align:center;margin-bottom:4px;">🟢 &nbsp;4:00 PM ET &nbsp;|&nbsp; 267 Laps</div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <div class="cd-unit"><div class="cd-num" id="cd-h">--</div><div class="cd-lbl">Hrs</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><div class="cd-num" id="cd-m">--</div><div class="cd-lbl">Min</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><div class="cd-num" id="cd-s">--</div><div class="cd-lbl">Sec</div></div>
+      </div>
     </div>
-    <div class="network-label">Broadcast Network</div>
+    <div class="network-badge">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/2015_Fox_Sports_1_logo.svg/150px-2015_Fox_Sports_1_logo.svg.png" alt="FS1" style="height:44px;display:block;">
+    </div>
   </div>
 </header>
-
-<!-- COUNTDOWN BAR -->
-
-<div class="countdown-bar">
-  <div class="countdown-label">🚦 Green Flag In</div>
-  <div class="countdown-digits">
-    <div class="cd-unit"><div class="cd-num" id="cd-h">--</div><div class="cd-lbl">Hrs</div></div>
-    <div class="cd-sep">:</div>
-    <div class="cd-unit"><div class="cd-num" id="cd-m">--</div><div class="cd-lbl">Min</div></div>
-    <div class="cd-sep">:</div>
-    <div class="cd-unit"><div class="cd-num" id="cd-s">--</div><div class="cd-lbl">Sec</div></div>
-  </div>
-  <div class="green-flag-info">Green Flag: <strong>Sunday, Mar 15 · 4:00 PM ET</strong> &nbsp;|&nbsp; Track: <strong>Las Vegas Motor Speedway</strong> &nbsp;|&nbsp; Laps: <strong>267</strong></div>
-</div>
 
 <!-- PARTICIPANT DRIVER + ODDS CARDS -->
 
 <div style="padding:16px 28px 10px;border-bottom:1px solid var(--border);">
-  <div class="section-header">🎰 Las Vegas Odds — By Participant</div>
+
   <div id="participant-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px;"></div>
-  <div style="font-size:11px;color:var(--muted);margin-top:10px;font-weight:600;">Source: FanDuel / DraftKings sportsbook odds · updated 3/13/26</div>
+  <div style="font-size:11px;color:var(--muted);margin-top:10px;font-weight:600;">Source: FanDuel / DraftKings sportsbook odds · updated 3/14/26</div>
 </div>
 
 <!-- MAIN GRID -->
