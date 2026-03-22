@@ -23,14 +23,9 @@
 
 /* ── NEWS TICKER ── */
 .ticker-wrap { background: var(–orange); overflow: hidden; padding: 6px 0; }
-.ticker-inner { display: flex; white-space: nowrap; animation: ticker 23s linear infinite; }
-.ticker-inner span { padding: 0 60px; font-size: 15px; font-weight: 700; color: #fff; letter-spacing: .5px; text-shadow: 0 1px 3px rgba(0,0,0,0.4); }
-@keyframes ticker { 0%{transform:translateX(100vw)} 100%{transform:translateX(-100%)} }
-.leaderboard-bar { background: #111; padding: 5px 28px; border-bottom: 1px solid var(–border); display: flex; align-items: center; gap: 8px; }
-.leaderboard-bar a { color: var(–orange); font-size: 12px; font-weight: 800; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; }
-.leaderboard-bar a:hover { color: var(–orange2); text-decoration: underline; }
-.leaderboard-dot { width: 7px; height: 7px; background: var(–green); border-radius: 50%; animation: pulse 1.5s ease-in-out infinite; }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+.ticker-inner { display: flex; white-space: nowrap; animation: ticker 35.5s linear infinite; }
+.ticker-inner span { padding: 0 60px; font-size: 15px; font-weight: 700; color: #fff; letter-spacing: .5px; text-shadow: 0 1px 3px rgba(0,0,0,0.4); flex-shrink: 0; }
+@keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 
 /* ── HEADER ── */
 header { display: flex; align-items: center; justify-content: space-between; padding: 18px 28px 14px; border-bottom: 2px solid var(–orange); flex-wrap: wrap; gap: 12px; }
@@ -51,14 +46,15 @@ header { display: flex; align-items: center; justify-content: space-between; pad
 
 /* ── PARTICIPANT CARDS ── */
 .participant-section { padding: 16px 28px 14px; border-bottom: 1px solid var(–border); }
-.participant-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.p-card { background: var(–card); border: 1px solid var(–border); border-radius: 10px; padding: 14px; }
-.p-card-header { font-size: 18px; font-weight: 900; border-bottom: 1px solid var(–border); padding-bottom: 8px; margin-bottom: 10px; }
-.p-driver-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(–border); font-size: 13px; }
-.p-driver-row:last-child { border-bottom: none; }
-.p-car { font-weight: 700; }
-.p-driver { font-weight: 700; color: var(–text); margin-left: 6px; }
-.p-odds { font-weight: 800; color: var(–orange2); }
+.participant-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.p-card { border-radius: 10px; overflow: hidden; border: 1px solid #3a3000; }
+.p-card-header { font-size: 19px; font-weight: 900; padding: 10px 14px; background: linear-gradient(135deg, #2a2000, #3a2c00); border-bottom: 2px solid var(–orange); display: flex; justify-content: space-between; align-items: center; }
+.p-driver-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 14px; font-size: 13px; }
+.p-driver-row:nth-child(odd) { background: #1c1c1c; }
+.p-driver-row:nth-child(even) { background: #252525; }
+.p-car { font-weight: 900; color: var(–orange); min-width: 34px; display: inline-block; }
+.p-driver { font-weight: 700; color: var(–text); margin-left: 4px; }
+.p-odds { font-weight: 800; color: var(–orange2); background: rgba(240,184,64,0.12); padding: 2px 8px; border-radius: 4px; font-size: 12px; }
 
 /* ── MAIN LAYOUT ── */
 .main { display: grid; grid-template-columns: 1fr 340px; gap: 20px; padding: 20px 28px; max-width: 1400px; margin: 0 auto; }
@@ -134,14 +130,23 @@ td:not(:first-child) { text-align: center; }
     <span>💸 Pam won Phoenix and Scott won Las Vegas. Someone else needs to step up or these two are running away with it.</span>
     <span>🔥 Four drivers co-favored at +600: Larson, Reddick, Briscoe, and Bell. Brenda, Daniel, and Zach each have one. Spicy.</span>
     <span>🏟️ DARLINGTON FACT: Harold Brasington built the track in 1949-50 and modeled it after Indianapolis Motor Speedway — except for that minnow pond.</span>
+    <!-- Duplicate for seamless loop -->
+    <span>🔥 KO3 landed the favorite — Denny Hamlin at +500. The man who owns Darlington. You're welcome, KO3.</span>
+    <span>🏟️ DARLINGTON FACT: Opened in 1950, it's the oldest superspeedway still on the Cup schedule. She doesn't care about your feelings.</span>
+    <span>💀 The "Darlington Stripe" — scrape the wall and wear it like a badge of honor. Some of y'all's drivers will be wearing one today.</span>
+    <span>🎰 Brenda drew Kyle Larson at +600. He's won here before. Don't get too excited — it's Darlington.</span>
+    <span>🏁 Scott is sitting at +$150 after back-to-back wins. The rest of the pool would like him to stop now.</span>
+    <span>🏟️ DARLINGTON FACT: The egg shape exists because a landowner refused to move his minnow pond. A minnow pond. Changed NASCAR history.</span>
+    <span>😬 Daniel drew Chase Briscoe at +600. Two-time Darlington winner. Daniel quietly has one of the best cards today.</span>
+    <span>🐍 Zach has Tyler Reddick at +600. Points leader. Fast everywhere. Nobody is talking about it and that's suspicious.</span>
+    <span>🏟️ DARLINGTON FACT: Only track on the circuit with two differently shaped ends — Turns 1-2 are tighter than 3-4. Drivers have to adjust mid-lap every single time.</span>
+    <span>😴 Ron drew Ross Chastain, Justin Allgaier, and Noah Gragson. Ron, buddy. We're rooting for you.</span>
+    <span>🎰 Nicole has William Byron at +750. Quietly one of the top picks on the board. Don't sleep on Nicole.</span>
+    <span>🏟️ DARLINGTON FACT: They call it "The Lady in Black." She's beautiful. She will also destroy your car without hesitation.</span>
+    <span>💸 Pam won Phoenix and Scott won Las Vegas. Someone else needs to step up or these two are running away with it.</span>
+    <span>🔥 Four drivers co-favored at +600: Larson, Reddick, Briscoe, and Bell. Brenda, Daniel, and Zach each have one. Spicy.</span>
+    <span>🏟️ DARLINGTON FACT: Harold Brasington built the track in 1949-50 and modeled it after Indianapolis Motor Speedway — except for that minnow pond.</span>
   </div>
-</div>
-
-<!-- LIVE LEADERBOARD LINK -->
-
-<div class="leaderboard-bar">
-  <div class="leaderboard-dot"></div>
-  <a href="https://www.nascar.com/nascar-cup-series/2026/race/leaderboard/" target="_blank">🏁 Live Race Leaderboard — NASCAR.com</a>
 </div>
 
 <!-- DARLINGTON LOGO BANNER -->
