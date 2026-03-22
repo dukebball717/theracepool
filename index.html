@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NASCAR Race Pool – Pennzoil 400 | Las Vegas</title>
+<title>NASCAR Race Pool – Goodyear 400 | Darlington</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,104 +23,93 @@
 
 /* ── NEWS TICKER ── */
 .ticker-wrap { background: var(–orange); overflow: hidden; padding: 6px 0; }
-.ticker-inner { display: flex; white-space: nowrap; animation: ticker 35s linear infinite; }
+.ticker-inner { display: flex; white-space: nowrap; animation: ticker 23s linear infinite; }
 .ticker-inner span { padding: 0 60px; font-size: 15px; font-weight: 700; color: #fff; letter-spacing: .5px; text-shadow: 0 1px 3px rgba(0,0,0,0.4); }
 @keyframes ticker { 0%{transform:translateX(100vw)} 100%{transform:translateX(-100%)} }
+.leaderboard-bar { background: #111; padding: 5px 28px; border-bottom: 1px solid var(–border); display: flex; align-items: center; gap: 8px; }
+.leaderboard-bar a { color: var(–orange); font-size: 12px; font-weight: 800; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; }
+.leaderboard-bar a:hover { color: var(–orange2); text-decoration: underline; }
+.leaderboard-dot { width: 7px; height: 7px; background: var(–green); border-radius: 50%; animation: pulse 1.5s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
 
 /* ── HEADER ── */
-header { display: flex; align-items: center; justify-content: space-between; padding: 18px 28px 10px; border-bottom: 2px solid var(–orange); flex-wrap: wrap; gap: 12px; }
-.header-left { display: flex; align-items: center; gap: 16px; }
+header { display: flex; align-items: center; justify-content: space-between; padding: 18px 28px 14px; border-bottom: 2px solid var(–orange); flex-wrap: wrap; gap: 12px; }
 .race-title { font-size: 34px; font-weight: 900; line-height: 1.05; text-transform: uppercase; letter-spacing: 1px; }
 .race-title span { color: var(–orange); }
 .race-subtitle { font-size: 15px; color: var(–muted); font-weight: 600; margin-top: 2px; }
-.network-badge { display:flex; flex-direction:column; align-items:center; gap:4px; }
-.fs1-logo { background:#003366; padding:6px 14px; border-radius:4px; display:flex; align-items:center; gap:4px; }
-.fs1-logo .fs { font-size:26px; font-weight:900; color:#fff; letter-spacing:-1px; }
-.fs1-logo .one { font-size:26px; font-weight:900; color:var(–orange); }
-.network-label { font-size:11px; color:var(–muted); font-weight:600; text-transform:uppercase; letter-spacing:1px; }
+.header-right { display: flex; align-items: center; gap: 24px; }
+.countdown-block { text-align: center; }
+.cd-info { font-size: 11px; color: var(–muted); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+.cd-digits { display: flex; gap: 8px; align-items: center; }
+.cd-unit { text-align: center; }
+.cd-num { font-size: 28px; font-weight: 900; color: var(–orange); line-height: 1; }
+.cd-lbl { font-size: 10px; color: var(–muted); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+.cd-sep { font-size: 24px; font-weight: 900; color: var(–orange); margin-bottom: 12px; }
 
-/* ── COUNTDOWN ── */
-.countdown-bar { background: var(–card); border-bottom: 1px solid var(–border); padding: 10px 28px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-.countdown-label { font-size:13px; color:var(–muted); font-weight:700; text-transform:uppercase; letter-spacing:1px; }
-.countdown-digits { display:flex; gap:8px; align-items:center; }
-.cd-unit { text-align:center; }
-.cd-num { font-size:28px; font-weight:900; color:var(–orange); line-height:1; }
-.cd-lbl { font-size:10px; color:var(–muted); font-weight:600; text-transform:uppercase; letter-spacing:1px; }
-.cd-sep { font-size:24px; font-weight:900; color:var(–orange); margin-bottom:12px; }
-.green-flag-info { margin-left:auto; font-size:14px; color:var(–muted); font-weight:700; }
-.green-flag-info strong { color: var(–text); }
+/* ── SECTION HEADERS ── */
+.section-header { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(–orange); border-bottom: 1px solid var(–border); padding-bottom: 8px; margin-bottom: 14px; }
+
+/* ── PARTICIPANT CARDS ── */
+.participant-section { padding: 16px 28px 14px; border-bottom: 1px solid var(–border); }
+.participant-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.p-card { background: var(–card); border: 1px solid var(–border); border-radius: 10px; padding: 14px; }
+.p-card-header { font-size: 18px; font-weight: 900; border-bottom: 1px solid var(–border); padding-bottom: 8px; margin-bottom: 10px; }
+.p-driver-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(–border); font-size: 13px; }
+.p-driver-row:last-child { border-bottom: none; }
+.p-car { font-weight: 700; }
+.p-driver { font-weight: 700; color: var(–text); margin-left: 6px; }
+.p-odds { font-weight: 800; color: var(–orange2); }
 
 /* ── MAIN LAYOUT ── */
 .main { display: grid; grid-template-columns: 1fr 340px; gap: 20px; padding: 20px 28px; max-width: 1400px; margin: 0 auto; }
-@media(max-width:900px){ .main{grid-template-columns:1fr;} }
+@media(max-width:900px){ .main { grid-template-columns: 1fr; } }
 
-/* ── SECTION HEADERS ── */
-.section-header { font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:2px; color:var(–orange); border-bottom:1px solid var(–border); padding-bottom:8px; margin-bottom:14px; }
+/* ── STANDINGS ── */
+.standings-card { background: var(–card); border-radius: 10px; padding: 20px; border: 1px solid var(–border); }
+table { width: 100%; border-collapse: collapse; }
+thead th { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(–muted); padding: 6px 10px; text-align: left; border-bottom: 1px solid var(–border); }
+thead th:not(:first-child) { text-align: center; }
+tbody tr { border-bottom: 1px solid var(–border); transition: background .15s; }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: #252525; }
+td { padding: 10px; font-size: 17px; font-weight: 700; vertical-align: middle; }
+td:not(:first-child) { text-align: center; }
+.rank { font-size: 13px; color: var(–muted); font-weight: 700; width: 28px; }
+.pname { font-size: 18px; font-weight: 800; }
+.cars-cell { font-size: 12px; color: var(–muted); font-weight: 600; line-height: 1.4; }
+.car-highlight { color: var(–orange2); font-weight: 800; }
+.balance { font-size: 18px; font-weight: 900; }
+.pos { color: var(–green); }
+.neg { color: var(–red); }
+.wins-cell { font-size: 14px; color: var(–muted); font-weight: 700; }
+.wins-cell.has-win { color: var(–orange); font-weight: 800; }
 
-/* ── STANDINGS TABLE ── */
-.standings-card { background:var(–card); border-radius:10px; padding:20px; border:1px solid var(–border); }
-table { width:100%; border-collapse:collapse; }
-thead th { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:var(–muted); padding:6px 10px; text-align:left; border-bottom:1px solid var(–border); }
-thead th:not(:first-child) { text-align:center; }
-tbody tr { border-bottom:1px solid var(–border); transition:background .15s; }
-tbody tr:last-child { border-bottom:none; }
-tbody tr:hover { background:#252525; }
-td { padding:10px 10px; font-size:17px; font-weight:700; vertical-align:middle; }
-td:not(:first-child) { text-align:center; }
-.rank { font-size:13px; color:var(–muted); font-weight:700; width:28px; }
-.participant { display:flex; align-items:center; gap:6px; }
-.flag { font-size:15px; }
-.pname { font-size:18px; font-weight:800; }
-.cars-cell { font-size:12px; color:var(–muted); font-weight:600; line-height:1.4; }
-.car-highlight { color:var(–orange2); font-weight:800; }
-.balance { font-size:18px; font-weight:900; }
-.pos { color:var(–green); }
-.neg { color:var(–red); }
-.wins-cell { font-size:14px; color:var(–muted); font-weight:700; }
-.wins-cell.has-win { color:var(–orange); font-weight:800; }
-
-/* ── RIGHT SIDEBAR ── */
-.sidebar { display:flex; flex-direction:column; gap:18px; }
-.card { background:var(–card); border-radius:10px; padding:18px; border:1px solid var(–border); }
+/* ── SIDEBAR ── */
+.sidebar { display: flex; flex-direction: column; gap: 18px; }
+.card { background: var(–card); border-radius: 10px; padding: 18px; border: 1px solid var(–border); }
 
 /* ── LAST RACE ── */
-.last-race-result { display:flex; flex-direction:column; gap:8px; }
-.result-row { display:flex; justify-content:space-between; align-items:center; padding:7px 0; border-bottom:1px solid var(–border); font-size:14px; }
-.result-row:last-child { border-bottom:none; }
-.result-pos { font-size:20px; font-weight:900; color:var(–orange); width:30px; }
-.result-driver { font-weight:700; flex:1; }
-.result-car { font-size:12px; color:var(–muted); font-weight:600; margin-left:6px; }
-.winner-banner { background: linear-gradient(135deg, #2a1f00, #3d2c00); border:1px solid var(–orange); border-radius:8px; padding:12px 14px; margin-bottom:12px; }
-.winner-banner .wlabel { font-size:11px; color:var(–orange); font-weight:700; text-transform:uppercase; letter-spacing:2px; margin-bottom:4px; }
-.winner-banner .wname { font-size:22px; font-weight:900; }
-.winner-banner .wdetail { font-size:13px; color:var(–muted); margin-top:2px; }
-.pool-winner-row { background:#1a2d1a; border-radius:6px; padding:8px 12px; display:flex; align-items:center; gap:8px; margin-bottom:10px; }
-.pool-winner-row .pwtag { font-size:11px; color:var(–green); font-weight:700; text-transform:uppercase; letter-spacing:1.5px; }
-.pool-winner-row .pwname { font-size:18px; font-weight:900; }
-
-/* ── ODDS / QUALIFYING ── */
-.odds-row { display:flex; justify-content:space-between; align-items:center; padding:6px 0; border-bottom:1px solid var(–border); font-size:14px; }
-.odds-row:last-child { border-bottom:none; }
-.odds-pos-num { font-size:13px; color:var(–muted); width:22px; font-weight:700; }
-.odds-driver { font-weight:700; flex:1; }
-.odds-car { font-size:12px; color:var(–muted); }
-.odds-val { font-size:13px; font-weight:800; color:var(–orange2); }
-.pool-tag { font-size:10px; background:var(–orange); color:#111; font-weight:800; border-radius:3px; padding:1px 5px; margin-left:4px; }
+.pool-winner-row { background: #1a2d1a; border-radius: 6px; padding: 8px 12px; display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.pwtag { font-size: 11px; color: var(–green); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
+.pwname { font-size: 18px; font-weight: 900; }
+.winner-banner { background: linear-gradient(135deg, #2a1f00, #3d2c00); border: 1px solid var(–orange); border-radius: 8px; padding: 12px 14px; margin-bottom: 12px; }
+.winner-banner .wlabel { font-size: 11px; color: var(–orange); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 4px; }
+.winner-banner .wname { font-size: 22px; font-weight: 900; }
+.winner-banner .wdetail { font-size: 13px; color: var(–muted); margin-top: 2px; }
+.result-row { display: flex; align-items: center; padding: 7px 0; border-bottom: 1px solid var(–border); font-size: 14px; }
+.result-row:last-child { border-bottom: none; }
+.result-pos { font-size: 20px; font-weight: 900; color: var(–orange); width: 30px; }
+.result-driver { font-weight: 700; flex: 1; }
+.result-car { font-size: 12px; color: var(–muted); font-weight: 600; margin-left: 6px; }
 
 /* ── TRACK FACTS ── */
-.fact-row { display:flex; justify-content:space-between; align-items:baseline; padding:6px 0; border-bottom:1px solid var(–border); font-size:13px; }
-.fact-row:last-child { border-bottom:none; }
-.fact-label { color:var(–muted); font-weight:600; }
-.fact-val { font-weight:800; color:var(–text); text-align:right; }
-
-/* ── POOL RULES ── */
-.rules-list { font-size:13px; color:var(–muted); line-height:2; font-weight:600; }
-.rules-list li { list-style:none; border-bottom:1px solid var(–border); padding:5px 0; display:flex; justify-content:space-between; }
-.rules-list li:last-child { border-bottom:none; }
-.rules-list .rv { color:var(–text); font-weight:800; }
+.fact-row { display: flex; justify-content: space-between; align-items: baseline; padding: 6px 0; border-bottom: 1px solid var(–border); font-size: 13px; }
+.fact-row:last-child { border-bottom: none; }
+.fact-label { color: var(–muted); font-weight: 600; }
+.fact-val { font-weight: 800; color: var(–text); text-align: right; }
 
 /* ── FOOTNOTE ── */
-.footnote { font-size:11px; color:var(–muted); padding:14px 28px 20px; font-weight:600; border-top:1px solid var(–border); margin-top:10px; }
+.footnote { font-size: 11px; color: var(–muted); padding: 14px 28px 20px; font-weight: 600; border-top: 1px solid var(–border); margin-top: 10px; }
 </style>
 
 </head>
@@ -130,27 +119,61 @@ td:not(:first-child) { text-align:center; }
 
 <div class="ticker-wrap">
   <div class="ticker-inner">
-    <span>🏁 PENNZOIL 400 — LAS VEGAS MOTOR SPEEDWAY — SUNDAY MARCH 15 — 4:00 PM ET — FS1</span>
-    <span>📋 PHOENIX RESULTS: 1. Ryan Blaney #12 · 2. Christopher Bell #20 · 3. Joey Logano #22 · 4. Tyler Reddick #45 · 5. Denny Hamlin #11</span>
-    <span>🏆 PHOENIX POOL WINNER: PAM (Ryan Blaney #12) · +$90</span>
-    <span>🎰 LAS VEGAS ODDS FAVORITES: Kyle Larson +450 · Christopher Bell +550 · Tyler Reddick +750 · Denny Hamlin +750 · Ryan Blaney +800 · William Byron +850</span>
-    <span>🏎️ LAS VEGAS MOTOR SPEEDWAY — 1.5-mile tri-oval — 400 laps — 267 miles</span>
+    <span>🔥 KO3 landed the favorite — Denny Hamlin at +500. The man who owns Darlington. You're welcome, KO3.</span>
+    <span>🏟️ DARLINGTON FACT: Opened in 1950, it's the oldest superspeedway still on the Cup schedule. She doesn't care about your feelings.</span>
+    <span>💀 The "Darlington Stripe" — scrape the wall and wear it like a badge of honor. Some of y'all's drivers will be wearing one today.</span>
+    <span>🎰 Brenda drew Kyle Larson at +600. He's won here before. Don't get too excited — it's Darlington.</span>
+    <span>🏁 Scott is sitting at +$150 after back-to-back wins. The rest of the pool would like him to stop now.</span>
+    <span>🏟️ DARLINGTON FACT: The egg shape exists because a landowner refused to move his minnow pond. A minnow pond. Changed NASCAR history.</span>
+    <span>😬 Daniel drew Chase Briscoe at +600. Two-time Darlington winner. Daniel quietly has one of the best cards today.</span>
+    <span>🐍 Zach has Tyler Reddick at +600. Points leader. Fast everywhere. Nobody is talking about it and that's suspicious.</span>
+    <span>🏟️ DARLINGTON FACT: Only track on the circuit with two differently shaped ends — Turns 1-2 are tighter than 3-4. Drivers have to adjust mid-lap every single time.</span>
+    <span>😴 Ron drew Ross Chastain, Justin Allgaier, and Noah Gragson. Ron, buddy. We're rooting for you.</span>
+    <span>🎰 Nicole has William Byron at +750. Quietly one of the top picks on the board. Don't sleep on Nicole.</span>
+    <span>🏟️ DARLINGTON FACT: They call it "The Lady in Black." She's beautiful. She will also destroy your car without hesitation.</span>
+    <span>💸 Pam won Phoenix and Scott won Las Vegas. Someone else needs to step up or these two are running away with it.</span>
+    <span>🔥 Four drivers co-favored at +600: Larson, Reddick, Briscoe, and Bell. Brenda, Daniel, and Zach each have one. Spicy.</span>
+    <span>🏟️ DARLINGTON FACT: Harold Brasington built the track in 1949-50 and modeled it after Indianapolis Motor Speedway — except for that minnow pond.</span>
   </div>
+</div>
+
+<!-- LIVE LEADERBOARD LINK -->
+
+<div class="leaderboard-bar">
+  <div class="leaderboard-dot"></div>
+  <a href="https://www.nascar.com/nascar-cup-series/2026/race/leaderboard/" target="_blank">🏁 Live Race Leaderboard — NASCAR.com</a>
+</div>
+
+<!-- DARLINGTON LOGO BANNER -->
+
+<div style="background:#111;display:flex;justify-content:center;align-items:center;padding:12px 28px;border-bottom:2px solid #c0392b;">
+  <svg width="420" height="64" viewBox="0 0 420 64" xmlns="http://www.w3.org/2000/svg">
+    <!-- Red stripe accent left -->
+    <rect x="0" y="0" width="6" height="64" fill="#c0392b"/>
+    <!-- Red stripe accent right -->
+    <rect x="414" y="0" width="6" height="64" fill="#c0392b"/>
+    <!-- Track oval shape -->
+    <ellipse cx="34" cy="32" rx="22" ry="28" fill="none" stroke="#c0392b" stroke-width="3"/>
+    <ellipse cx="34" cy="32" rx="14" ry="20" fill="none" stroke="#888" stroke-width="1.5"/>
+    <!-- Main wordmark -->
+    <text x="68" y="24" font-family="Arial Black, Arial" font-weight="900" font-size="22" fill="#ffffff" letter-spacing="3">DARLINGTON</text>
+    <text x="68" y="46" font-family="Arial Black, Arial" font-weight="900" font-size="22" fill="#ffffff" letter-spacing="3">RACEWAY</text>
+    <!-- Tagline -->
+    <text x="68" y="60" font-family="Arial, sans-serif" font-weight="700" font-size="10" fill="#c0392b" letter-spacing="4">TOO TOUGH TO TAME</text>
+  </svg>
 </div>
 
 <!-- HEADER -->
 
 <header>
-  <div class="header-left">
-    <div>
-      <div class="race-title">Pennzoil 400 <span>· Las Vegas</span></div>
-      <div class="race-subtitle">Race 5 of 2026 · Las Vegas Motor Speedway · Sunday, March 15, 2026</div>
-    </div>
+  <div>
+    <div class="race-title">Goodyear 400 <span>· Darlington</span></div>
+    <div class="race-subtitle">Race 6 of 2026 · Darlington Raceway · Sunday, March 22, 2026</div>
   </div>
-  <div style="display:flex;align-items:center;gap:24px;">
-    <div class="countdown-digits">
-      <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:1px;text-align:center;margin-bottom:4px;">🟢 &nbsp;4:00 PM ET &nbsp;|&nbsp; 267 Laps</div>
-      <div style="display:flex;gap:8px;align-items:center;">
+  <div class="header-right">
+    <div class="countdown-block">
+      <div class="cd-info">🟢 &nbsp;3:12 PM ET &nbsp;|&nbsp; 293 Laps</div>
+      <div class="cd-digits">
         <div class="cd-unit"><div class="cd-num" id="cd-h">--</div><div class="cd-lbl">Hrs</div></div>
         <div class="cd-sep">:</div>
         <div class="cd-unit"><div class="cd-num" id="cd-m">--</div><div class="cd-lbl">Min</div></div>
@@ -158,18 +181,15 @@ td:not(:first-child) { text-align:center; }
         <div class="cd-unit"><div class="cd-num" id="cd-s">--</div><div class="cd-lbl">Sec</div></div>
       </div>
     </div>
-    <div class="network-badge">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/37/2015_Fox_Sports_1_logo.svg" alt="FS1" style="height:48px;display:block;">
-    </div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/37/2015_Fox_Sports_1_logo.svg" alt="FS1" style="height:48px;display:block;">
   </div>
 </header>
 
-<!-- PARTICIPANT DRIVER + ODDS CARDS -->
+<!-- PARTICIPANT CARDS -->
 
-<div style="padding:16px 28px 10px;border-bottom:1px solid var(--border);">
-
-  <div id="participant-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px;"></div>
-  <div style="font-size:11px;color:var(--muted);margin-top:10px;font-weight:600;">Source: FanDuel / DraftKings sportsbook odds · updated 3/14/26</div>
+<div class="participant-section">
+  <div id="participant-grid" class="participant-grid"></div>
+  <div style="font-size:11px;color:var(--muted);margin-top:10px;font-weight:600;">Source: FanDuel sportsbook odds · updated 3/22/26</div>
 </div>
 
 <!-- MAIN GRID -->
@@ -180,7 +200,7 @@ td:not(:first-child) { text-align:center; }
 
   <div>
     <div class="standings-card">
-      <div class="section-header">📊 Pool Standings — After Phoenix (Race 4)</div>
+      <div class="section-header">📊 Pool Standings — After Las Vegas (Race 5)</div>
       <table>
         <thead>
           <tr>
@@ -191,12 +211,10 @@ td:not(:first-child) { text-align:center; }
             <th>Balance</th>
           </tr>
         </thead>
-        <tbody id="standings-body">
-          <!-- Populated by JS -->
-        </tbody>
+        <tbody id="standings-body"></tbody>
       </table>
       <div style="font-size:11px;color:var(--muted);margin-top:12px;font-weight:600;">
-        🏁 = Pool win (accumulates per race won). Winner this week earns <span style="color:var(--green);font-weight:800;">+$90</span>. All others: <span style="color:var(--red);font-weight:800;">–$10</span>.
+        🏁 = Pool win (accumulates). Winner this week earns <span style="color:var(--green);font-weight:800;">+$90</span>. All others: <span style="color:var(--red);font-weight:800;">–$10</span>.
       </div>
     </div>
   </div>
@@ -206,168 +224,167 @@ td:not(:first-child) { text-align:center; }
   <div class="sidebar">
 
 ```
-<!-- LAST RACE RESULT -->
+<!-- LAST RACE -->
 <div class="card">
-  <div class="section-header">🏁 Phoenix Results (Race 4)</div>
+  <div class="section-header">🏁 Las Vegas Results (Race 5)</div>
   <div class="pool-winner-row">
     <span class="pwtag">🏆 Pool Winner</span>
-    <span class="pwname">🏁 Pam &nbsp;<span style="color:var(--muted);font-size:14px;font-weight:600;">Ryan Blaney #12 · +$90</span></span>
+    <span class="pwname">🏁 Scott &nbsp;<span style="color:var(--muted);font-size:14px;font-weight:600;">Denny Hamlin #11 · +$90</span></span>
   </div>
   <div class="winner-banner">
     <div class="wlabel">Race Winner</div>
-    <div class="wname">Ryan Blaney</div>
-    <div class="wdetail">#12 Team Penske Ford · Phoenix Raceway</div>
+    <div class="wname">Denny Hamlin</div>
+    <div class="wdetail">#11 Joe Gibbs Racing Toyota · Las Vegas Motor Speedway</div>
   </div>
-  <div class="last-race-result">
-    <div class="result-row"><span class="result-pos">1</span><span class="result-driver">Ryan Blaney <span class="result-car">#12 Ford</span></span></div>
-    <div class="result-row"><span class="result-pos">2</span><span class="result-driver">Christopher Bell <span class="result-car">#20 Toyota</span></span></div>
-    <div class="result-row"><span class="result-pos">3</span><span class="result-driver">Joey Logano <span class="result-car">#22 Ford</span></span></div>
-    <div class="result-row"><span class="result-pos">4</span><span class="result-driver">Tyler Reddick <span class="result-car">#45 Toyota</span></span></div>
-    <div class="result-row"><span class="result-pos">5</span><span class="result-driver">Denny Hamlin <span class="result-car">#11 Toyota</span></span></div>
+  <div>
+    <div class="result-row"><span class="result-pos">1</span><span class="result-driver">Denny Hamlin <span class="result-car">#11 Toyota</span></span></div>
+    <div class="result-row"><span class="result-pos">2</span><span class="result-driver">Chase Elliott <span class="result-car">#9 Chevy</span></span></div>
+    <div class="result-row"><span class="result-pos">3</span><span class="result-driver">William Byron <span class="result-car">#24 Chevy</span></span></div>
+    <div class="result-row"><span class="result-pos">4</span><span class="result-driver">Christopher Bell <span class="result-car">#20 Toyota</span></span></div>
+    <div class="result-row"><span class="result-pos">5</span><span class="result-driver">Ty Gibbs <span class="result-car">#54 Toyota</span></span></div>
   </div>
 </div>
 
 <!-- TRACK FACTS -->
 <div class="card">
-  <div class="section-header">🗺️ Las Vegas Motor Speedway</div>
-  <div class="fact-row"><span class="fact-label">Track Type</span><span class="fact-val">1.5-mile tri-oval</span></div>
-  <div class="fact-row"><span class="fact-label">Banking (Turns)</span><span class="fact-val">20°</span></div>
-  <div class="fact-row"><span class="fact-label">Race Length</span><span class="fact-val">267 laps · 400 miles</span></div>
+  <div class="section-header">🗺️ Darlington Raceway</div>
+  <div class="fact-row"><span class="fact-label">Track Type</span><span class="fact-val">1.366-mile egg-shaped oval</span></div>
+  <div class="fact-row"><span class="fact-label">Banking (Turns 1-2)</span><span class="fact-val">25°</span></div>
+  <div class="fact-row"><span class="fact-label">Banking (Turns 3-4)</span><span class="fact-val">23°</span></div>
+  <div class="fact-row"><span class="fact-label">Race Length</span><span class="fact-val">293 laps · 400 miles</span></div>
   <div class="fact-row"><span class="fact-label">Surface</span><span class="fact-val">Asphalt</span></div>
-  <div class="fact-row"><span class="fact-label">Capacity</span><span class="fact-val">~80,000</span></div>
-  <div class="fact-row"><span class="fact-label">Last Spring Winner</span><span class="fact-val">Josh Berry (2025)</span></div>
-  <div class="fact-row"><span class="fact-label">Last Fall Winner</span><span class="fact-val">Denny Hamlin (2025)</span></div>
+  <div class="fact-row"><span class="fact-label">Nickname</span><span class="fact-val">The Lady in Black</span></div>
+  <div class="fact-row"><span class="fact-label">Last Spring Winner</span><span class="fact-val">Denny Hamlin (2025)</span></div>
 </div>
 ```
 
-  </div><!-- end sidebar -->
-</div><!-- end main grid -->
+  </div>
+</div>
 
 <!-- FOOTNOTE -->
 
 <div class="footnote">
-  * Drivers finishing outside the top 30 listed by last name only. Pot will go to Daytona Race if applicable. &nbsp;|&nbsp; Balances reflect standings after Race 4 (Phoenix). &nbsp;|&nbsp; Las Vegas Motor Speedway · Pennzoil 400 · Race 5 of 2026 NASCAR Cup Series.
+  * Drivers finishing outside the top 30 listed by last name only. Pot will go to Daytona Race if applicable. &nbsp;|&nbsp; Balances reflect standings after Race 5 (Las Vegas). &nbsp;|&nbsp; Darlington Raceway · Goodyear 400 · Race 6 of 2026 NASCAR Cup Series.
 </div>
 
 <script>
 var STANDINGS = [
-  { name:"Pam",    flags:1, cars:["20","88","71"], balance:60 },
-  { name:"Scott",  flags:1, cars:["11","48","42"], balance:60 },
-  { name:"Ron",    flags:1, cars:["19","8","97"],  balance:60 },
-  { name:"Zach",   flags:1, cars:["45","77","38"], balance:60 },
-  { name:"Brenda", flags:0, cars:["5","60","7"],   balance:-40 },
-  { name:"KO3",    flags:0, cars:["24","23","3"],  balance:-40 },
-  { name:"Nick",   flags:0, cars:["12","54","2"],  balance:-40 },
-  { name:"Nicole", flags:0, cars:["22","21","4"],  balance:-40 },
-  { name:"Daniel", flags:0, cars:["9","6","34"],   balance:-40 },
-  { name:"Ace",    flags:0, cars:["1","17","43"],  balance:-40 }
+  { name:"Scott",  flags:2, cars:["22","43","34"], balance:150 },
+  { name:"Pam",    flags:1, cars:["12","8","97"],  balance:50  },
+  { name:"Ron",    flags:1, cars:["1","48","4"],   balance:50  },
+  { name:"Zach",   flags:1, cars:["45","6","71"],  balance:50  },
+  { name:"Brenda", flags:0, cars:["5","23","60"],  balance:-50 },
+  { name:"KO3",    flags:0, cars:["11","17","21"], balance:-50 },
+  { name:"Nick",   flags:0, cars:["20","2","3"],   balance:-50 },
+  { name:"Nicole", flags:0, cars:["24","77","88"], balance:-50 },
+  { name:"Daniel", flags:0, cars:["19","54","7"],  balance:-50 },
+  { name:"Ace",    flags:0, cars:["9","42","38"],  balance:-50 }
 ];
 
-// Cars that finished top-5 at Phoenix — highlight those assigned to participants
-var PHOENIX_TOP5_CARS = ["12","20","22","45","11"];
+var LV_TOP5 = ["11","9","24","20","54"];
 
-// Sort: by balance desc, then by name
-STANDINGS.sort(function(a,b){
-  if(b.balance !== a.balance) return b.balance - a.balance;
+var ODDS_BY_CAR = {
+  "11": { driver:"Denny Hamlin",           odds:"+500"   },
+  "45": { driver:"Tyler Reddick",          odds:"+600"   },
+  "5":  { driver:"Kyle Larson",            odds:"+600"   },
+  "19": { driver:"Chase Briscoe",          odds:"+600"   },
+  "24": { driver:"William Byron",          odds:"+750"   },
+  "20": { driver:"Christopher Bell",       odds:"+850"   },
+  "9":  { driver:"Chase Elliott",          odds:"+1400"  },
+  "22": { driver:"Joey Logano",            odds:"+1400"  },
+  "12": { driver:"Ryan Blaney",            odds:"+1600"  },
+  "1":  { driver:"Ross Chastain",          odds:"+2000"  },
+  "23": { driver:"Bubba Wallace",          odds:"+2500"  },
+  "54": { driver:"Ty Gibbs",               odds:"+2800"  },
+  "17": { driver:"Chris Buescher",         odds:"+3300"  },
+  "6":  { driver:"Brad Keselowski",        odds:"+4000"  },
+  "42": { driver:"John Hunter Nemechek",   odds:"+4000"  },
+  "8":  { driver:"Kyle Busch",             odds:"+4500"  },
+  "48": { driver:"Justin Allgaier",        odds:"+5000"  },
+  "2":  { driver:"Austin Cindric",         odds:"+5000"  },
+  "43": { driver:"Erik Jones",             odds:"+5000"  },
+  "77": { driver:"Carson Hocevar",         odds:"+6000"  },
+  "21": { driver:"Josh Berry",             odds:"+8000"  },
+  "88": { driver:"Connor Zilisch",         odds:"+8000"  },
+  "97": { driver:"Shane van Gisbergen",    odds:"+10000" },
+  "7":  { driver:"Daniel Suarez",          odds:"+10000" },
+  "34": { driver:"Todd Gilliland",         odds:"+15000" },
+  "38": { driver:"Zane Smith",             odds:"+15000" },
+  "4":  { driver:"Noah Gragson",           odds:"+20000" },
+  "71": { driver:"Michael McDowell",       odds:"+20000" },
+  "3":  { driver:"Austin Dillon",          odds:"+20000" },
+  "60": { driver:"Ryan Preece",            odds:"+25000" }
+};
+
+// Sort standings: balance desc, then name
+STANDINGS.sort(function(a, b) {
+  if (b.balance !== a.balance) return b.balance - a.balance;
   return a.name.localeCompare(b.name);
 });
 
+// Build standings table
 var tbody = document.getElementById('standings-body');
-STANDINGS.forEach(function(p, i){
+STANDINGS.forEach(function(p, i) {
   var flagStr = '';
-  for(var f=0;f<p.flags;f++) flagStr += '🏁';
+  for (var f = 0; f < p.flags; f++) flagStr += '🏁';
   var balClass = p.balance >= 0 ? 'pos' : 'neg';
   var balStr = (p.balance >= 0 ? '+' : '') + '$' + p.balance;
-  var carsHtml = p.cars.map(function(c){
-    var isHot = PHOENIX_TOP5_CARS.indexOf(c) >= 0;
-    return isHot ? '<span class="car-highlight">#'+c+'</span>' : '#'+c;
+  var carsHtml = p.cars.map(function(c) {
+    var isHot = LV_TOP5.indexOf(c) >= 0;
+    return isHot ? '<span class="car-highlight">#' + c + '</span>' : '#' + c;
   }).join(' · ');
-  var winsHtml = p.flags > 0 ? '<span class="wins-cell has-win">'+flagStr+'</span>' : '<span class="wins-cell">—</span>';
+  var winsHtml = p.flags > 0
+    ? '<span class="wins-cell has-win">' + flagStr + '</span>'
+    : '<span class="wins-cell">—</span>';
   tbody.innerHTML += '<tr>'
-    + '<td class="rank">'+(i+1)+'</td>'
-    + '<td><div class="participant"><span class="pname">'+p.name+'</span></div></td>'
-    + '<td class="cars-cell">'+carsHtml+'</td>'
-    + '<td>'+winsHtml+'</td>'
-    + '<td class="balance '+balClass+'">'+balStr+'</td>'
+    + '<td class="rank">' + (i + 1) + '</td>'
+    + '<td><span class="pname">' + p.name + '</span></td>'
+    + '<td class="cars-cell">' + carsHtml + '</td>'
+    + '<td>' + winsHtml + '</td>'
+    + '<td class="balance ' + balClass + '">' + balStr + '</td>'
     + '</tr>';
 });
 
-// ODDS lookup by car number — FanDuel, updated 3/14/26
-var ODDS_BY_CAR = {
-  "5":  { driver:"Kyle Larson",              odds:"+450"   },
-  "20": { driver:"Christopher Bell",         odds:"+550"   },
-  "45": { driver:"Tyler Reddick",            odds:"+750"   },
-  "11": { driver:"Denny Hamlin",             odds:"+750"   },
-  "12": { driver:"Ryan Blaney",              odds:"+800"   },
-  "24": { driver:"William Byron",            odds:"+850"   },
-  "22": { driver:"Joey Logano",              odds:"+1400"  },
-  "19": { driver:"Chase Briscoe",            odds:"+1400"  },
-  "9":  { driver:"Chase Elliott",            odds:"+1600"  },
-  "1":  { driver:"Ross Chastain",            odds:"+2000"  },
-  "23": { driver:"Bubba Wallace",            odds:"+2000"  },
-  "77": { driver:"Carson Hocevar",           odds:"+2500"  },
-  "54": { driver:"Ty Gibbs",                 odds:"+3300"  },
-  "60": { driver:"Ryan Preece",              odds:"+4000"  },
-  "17": { driver:"Chris Buescher",           odds:"+4000"  },
-  "21": { driver:"Josh Berry",               odds:"+5000"  },
-  "8":  { driver:"Kyle Busch",               odds:"+5000"  },
-  "2":  { driver:"Austin Cindric",           odds:"+6000"  },
-  "48": { driver:"Justin Allgaier",          odds:"+6000"  },
-  "6":  { driver:"Brad Keselowski",          odds:"+7500"  },
-  "88": { driver:"Connor Zilisch",           odds:"+7500"  },
-  "7":  { driver:"Daniel Suarez",            odds:"+7500"  },
-  "42": { driver:"John Hunter Nemechek",     odds:"+10000" },
-  "97": { driver:"Shane van Gisbergen",      odds:"+10000" },
-  "43": { driver:"Erik Jones",               odds:"+15000" },
-  "4":  { driver:"Noah Gragson",             odds:"+15000" },
-  "71": { driver:"Michael McDowell",         odds:"+20000" },
-  "3":  { driver:"Austin Dillon",            odds:"+20000" },
-  "38": { driver:"Zane Smith",               odds:"+25000" },
-  "34": { driver:"Todd Gilliland",           odds:"+25000" }
-};
-
-// Build participant driver cards — no balance shown
+// Build participant cards
 var pgrid = document.getElementById('participant-grid');
-var sortedForCards = STANDINGS.slice();
-sortedForCards.forEach(function(p){
-  var cardsHtml = p.cars.map(function(c){
+STANDINGS.forEach(function(p) {
+  var flagStr = '';
+  for (var f = 0; f < p.flags; f++) flagStr += '🏁';
+  var driversHtml = p.cars.map(function(c) {
     var info = ODDS_BY_CAR[c];
     var driverName = info ? info.driver : 'TBD';
     var oddsVal = info ? info.odds : '—';
-    var isHot = PHOENIX_TOP5_CARS.indexOf(c) >= 0;
-    var carStyle = isHot ? 'color:var(--orange2);font-weight:900;' : 'color:var(--muted);font-weight:700;';
-    return '<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px;">'
-      + '<span><span style="'+carStyle+'">#'+c+'</span> <span style="font-weight:700;color:var(--text);">'+driverName+'</span></span>'
-      + '<span style="font-weight:800;color:var(--orange2);">'+oddsVal+'</span>'
+    var isHot = LV_TOP5.indexOf(c) >= 0;
+    var carColor = isHot ? 'color:var(--orange2);font-weight:900;' : 'color:var(--muted);font-weight:700;';
+    return '<div class="p-driver-row">'
+      + '<span><span class="p-car" style="' + carColor + '">#' + c + '</span>'
+      + '<span class="p-driver">' + driverName + '</span></span>'
+      + '<span class="p-odds">' + oddsVal + '</span>'
       + '</div>';
   }).join('');
-  var flagStr = '';
-  for(var f=0;f<p.flags;f++) flagStr += '🏁';
-  pgrid.innerHTML += '<div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;">'
-    + '<div style="margin-bottom:10px;border-bottom:1px solid var(--border);padding-bottom:8px;">'
-    +   '<span style="font-size:18px;font-weight:900;">'+flagStr+' '+p.name+'</span>'
-    + '</div>'
-    + cardsHtml
+  pgrid.innerHTML += '<div class="p-card">'
+    + '<div class="p-card-header">' + (flagStr ? flagStr + ' ' : '') + p.name + '</div>'
+    + driversHtml
     + '</div>';
 });
 
-// COUNTDOWN to Sunday March 15 2026 4:00 PM ET (= 20:00 UTC)
-var greenFlag = new Date('2026-03-15T20:00:00Z');
-function updateCountdown(){
+// Countdown to Sunday March 22 2026 3:12 PM ET = 19:12 UTC
+var greenFlag = new Date('2026-03-22T19:12:00Z');
+function updateCountdown() {
   var now = new Date();
   var diff = greenFlag - now;
-  if(diff <= 0){
+  if (diff <= 0) {
     document.getElementById('cd-h').textContent = '00';
     document.getElementById('cd-m').textContent = '00';
     document.getElementById('cd-s').textContent = '00';
     return;
   }
-  var h = Math.floor(diff/3600000);
-  var m = Math.floor((diff%3600000)/60000);
-  var s = Math.floor((diff%60000)/1000);
-  document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
-  document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
-  document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+  var h = Math.floor(diff / 3600000);
+  var m = Math.floor((diff % 3600000) / 60000);
+  var s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-h').textContent = String(h).padStart(2, '0');
+  document.getElementById('cd-m').textContent = String(m).padStart(2, '0');
+  document.getElementById('cd-s').textContent = String(s).padStart(2, '0');
 }
 updateCountdown();
 setInterval(updateCountdown, 1000);
