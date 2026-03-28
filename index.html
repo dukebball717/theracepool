@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NASCAR Race Pool – Goodyear 400 | Darlington</title>
+<title>NASCAR Race Pool – Cook Out 400 | Martinsville</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,12 +23,15 @@
 
 /* ── NEWS TICKER ── */
 .ticker-wrap { background: var(–orange); overflow: hidden; padding: 6px 0; }
-.ticker-inner { display: flex; white-space: nowrap; animation: ticker 5.5s linear infinite; }
+.ticker-inner { display: flex; white-space: nowrap; animation: ticker 22s linear infinite; }
 .ticker-inner span { padding: 0 60px; font-size: 15px; font-weight: 700; color: #fff; letter-spacing: .5px; text-shadow: 0 1px 3px rgba(0,0,0,0.4); flex-shrink: 0; }
 @keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 
+/* ── TRACK BANNER ── */
+.track-banner { background: #0a1628; display: flex; justify-content: center; align-items: center; padding: 10px 28px; border-bottom: 2px solid #c0392b; }
+
 /* ── HEADER ── */
-header { display: flex; align-items: center; justify-content: space-between; padding: 18px 28px 14px; border-bottom: 2px solid var(–orange); flex-wrap: wrap; gap: 12px; }
+header { display: flex; align-items: center; justify-content: space-between; padding: 16px 28px 14px; border-bottom: 2px solid var(–orange); flex-wrap: wrap; gap: 12px; }
 .race-title { font-size: 34px; font-weight: 900; line-height: 1.05; text-transform: uppercase; letter-spacing: 1px; }
 .race-title span { color: var(–orange); }
 .race-subtitle { font-size: 15px; color: var(–muted); font-weight: 600; margin-top: 2px; }
@@ -48,7 +51,7 @@ header { display: flex; align-items: center; justify-content: space-between; pad
 .participant-section { padding: 16px 28px 14px; border-bottom: 1px solid var(–border); }
 .participant-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .p-card { border-radius: 10px; overflow: hidden; border: 1px solid #3a3000; }
-.p-card-header { font-size: 19px; font-weight: 900; padding: 10px 14px; background: linear-gradient(135deg, #2a2000, #3a2c00); border-bottom: 2px solid var(–orange); display: flex; justify-content: space-between; align-items: center; }
+.p-card-header { font-size: 19px; font-weight: 900; padding: 10px 14px; background: linear-gradient(135deg, #2a2000, #3a2c00); border-bottom: 2px solid var(–orange); }
 .p-driver-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 14px; font-size: 13px; }
 .p-driver-row:nth-child(odd) { background: #1c1c1c; }
 .p-driver-row:nth-child(even) { background: #252525; }
@@ -83,8 +86,6 @@ td:not(:first-child) { text-align: center; }
 /* ── SIDEBAR ── */
 .sidebar { display: flex; flex-direction: column; gap: 18px; }
 .card { background: var(–card); border-radius: 10px; padding: 18px; border: 1px solid var(–border); }
-
-/* ── LAST RACE ── */
 .pool-winner-row { background: #1a2d1a; border-radius: 6px; padding: 8px 12px; display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
 .pwtag { font-size: 11px; color: var(–green); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
 .pwname { font-size: 18px; font-weight: 900; }
@@ -97,14 +98,10 @@ td:not(:first-child) { text-align: center; }
 .result-pos { font-size: 20px; font-weight: 900; color: var(–orange); width: 30px; }
 .result-driver { font-weight: 700; flex: 1; }
 .result-car { font-size: 12px; color: var(–muted); font-weight: 600; margin-left: 6px; }
-
-/* ── TRACK FACTS ── */
 .fact-row { display: flex; justify-content: space-between; align-items: baseline; padding: 6px 0; border-bottom: 1px solid var(–border); font-size: 13px; }
 .fact-row:last-child { border-bottom: none; }
 .fact-label { color: var(–muted); font-weight: 600; }
 .fact-val { font-weight: 800; color: var(–text); text-align: right; }
-
-/* ── FOOTNOTE ── */
 .footnote { font-size: 11px; color: var(–muted); padding: 14px 28px 20px; font-weight: 600; border-top: 1px solid var(–border); margin-top: 10px; }
 </style>
 
@@ -115,56 +112,52 @@ td:not(:first-child) { text-align: center; }
 
 <div class="ticker-wrap">
   <div class="ticker-inner">
-    <span>🔥 KO3 landed the favorite — Denny Hamlin at +500. The man who owns Darlington. You're welcome, KO3.</span>
-    <span>🏟️ DARLINGTON FACT: Opened in 1950, it's the oldest superspeedway still on the Cup schedule. She doesn't care about your feelings.</span>
-    <span>💀 The "Darlington Stripe" — scrape the wall and wear it like a badge of honor. Some of y'all's drivers will be wearing one today.</span>
-    <span>🎰 Brenda drew Kyle Larson at +600. He's won here before. Don't get too excited — it's Darlington.</span>
-    <span>🏁 Scott is sitting at +$150 after back-to-back wins. The rest of the pool would like him to stop now.</span>
-    <span>🏟️ DARLINGTON FACT: The egg shape exists because a landowner refused to move his minnow pond. A minnow pond. Changed NASCAR history.</span>
-    <span>😬 Daniel drew Chase Briscoe at +600. Two-time Darlington winner. Daniel quietly has one of the best cards today.</span>
-    <span>🐍 Zach has Tyler Reddick at +600. Points leader. Fast everywhere. Nobody is talking about it and that's suspicious.</span>
-    <span>🏟️ DARLINGTON FACT: Only track on the circuit with two differently shaped ends — Turns 1-2 are tighter than 3-4. Drivers have to adjust mid-lap every single time.</span>
-    <span>😴 Ron drew Ross Chastain, Justin Allgaier, and Noah Gragson. Ron, buddy. We're rooting for you.</span>
-    <span>🎰 Nicole has William Byron at +750. Quietly one of the top picks on the board. Don't sleep on Nicole.</span>
-    <span>🏟️ DARLINGTON FACT: They call it "The Lady in Black." She's beautiful. She will also destroy your car without hesitation.</span>
-    <span>💸 Pam won Phoenix and Scott won Las Vegas. Someone else needs to step up or these two are running away with it.</span>
-    <span>🔥 Four drivers co-favored at +600: Larson, Reddick, Briscoe, and Bell. Brenda, Daniel, and Zach each have one. Spicy.</span>
-    <span>🏟️ DARLINGTON FACT: Harold Brasington built the track in 1949-50 and modeled it after Indianapolis Motor Speedway — except for that minnow pond.</span>
+    <span>🏁 Nick drew Ryan Blaney at +450 — the Martinsville king is back and coming for everyone's money.</span>
+    <span>📌 MARTINSVILLE FACT: The track has been hosting NASCAR since 1949 — it's the oldest active venue on the Cup schedule. Ancient and unforgiving.</span>
+    <span>😤 Zach has Logano at +850. He's top-10'd the last 13 times here without a win. Consistency is nice. Winning is better.</span>
+    <span>🔴 The infamous Martinsville hot dogs are better than whatever's in your fridge. The racing is better too. Probably.</span>
+    <span>🏆 Zach won Darlington with Tyler Reddick! Four wins in six races for Reddick. Zach's catching up to Scott fast.</span>
+    <span>📌 MARTINSVILLE FACT: The paperclip shape means passing is nearly impossible — track position and bump-and-run are everything. Bring a helmet.</span>
+    <span>🎰 Nicole drew William Byron at +550. Three-time Martinsville winner. Two of those wins in the last four races here. Nicole is quietly dangerous.</span>
+    <span>😬 Scott drew Chase Briscoe, Ross Chastain, and Erik Jones. The vibes are... rough. We believe in you, Scott. Kinda.</span>
+    <span>📌 MARTINSVILLE FACT: Denny Hamlin has six wins here — more than any active driver. He won this very race in 2025 leading 274 of 400 laps.</span>
+    <span>🔥 Daniel has Kyle Larson at +650. Four straight top-5s at Martinsville. Silent assassin mode activated.</span>
+    <span>🏆 Scott leads the pool at +$150. But Zach just won Darlington — both are at +$140. This is getting spicy.</span>
+    <span>📌 MARTINSVILLE FACT: Zero degrees of banking on the straightaways. The cars are basically sliding on flat pavement into 12-degree turns. Chaos is the plan.</span>
+    <span>🎰 Pam drew Denny Hamlin at +600. Defending winner. Six-time Martinsville champion. Home state hero from Chesterfield, VA. No pressure, Pam.</span>
+    <span>😴 Ron drew Chase Elliott, John Hunter Nemechek, and Zane Smith. Elliott's good here. The rest... we'll light a candle.</span>
+    <span>📌 MARTINSVILLE FACT: The grandfather clock trophy is one of the most unique in all of motorsport. Winners literally take home a working clock. Tick tock.</span>
     <!-- Duplicate for seamless loop -->
-    <span>🔥 KO3 landed the favorite — Denny Hamlin at +500. The man who owns Darlington. You're welcome, KO3.</span>
-    <span>🏟️ DARLINGTON FACT: Opened in 1950, it's the oldest superspeedway still on the Cup schedule. She doesn't care about your feelings.</span>
-    <span>💀 The "Darlington Stripe" — scrape the wall and wear it like a badge of honor. Some of y'all's drivers will be wearing one today.</span>
-    <span>🎰 Brenda drew Kyle Larson at +600. He's won here before. Don't get too excited — it's Darlington.</span>
-    <span>🏁 Scott is sitting at +$150 after back-to-back wins. The rest of the pool would like him to stop now.</span>
-    <span>🏟️ DARLINGTON FACT: The egg shape exists because a landowner refused to move his minnow pond. A minnow pond. Changed NASCAR history.</span>
-    <span>😬 Daniel drew Chase Briscoe at +600. Two-time Darlington winner. Daniel quietly has one of the best cards today.</span>
-    <span>🐍 Zach has Tyler Reddick at +600. Points leader. Fast everywhere. Nobody is talking about it and that's suspicious.</span>
-    <span>🏟️ DARLINGTON FACT: Only track on the circuit with two differently shaped ends — Turns 1-2 are tighter than 3-4. Drivers have to adjust mid-lap every single time.</span>
-    <span>😴 Ron drew Ross Chastain, Justin Allgaier, and Noah Gragson. Ron, buddy. We're rooting for you.</span>
-    <span>🎰 Nicole has William Byron at +750. Quietly one of the top picks on the board. Don't sleep on Nicole.</span>
-    <span>🏟️ DARLINGTON FACT: They call it "The Lady in Black." She's beautiful. She will also destroy your car without hesitation.</span>
-    <span>💸 Pam won Phoenix and Scott won Las Vegas. Someone else needs to step up or these two are running away with it.</span>
-    <span>🔥 Four drivers co-favored at +600: Larson, Reddick, Briscoe, and Bell. Brenda, Daniel, and Zach each have one. Spicy.</span>
-    <span>🏟️ DARLINGTON FACT: Harold Brasington built the track in 1949-50 and modeled it after Indianapolis Motor Speedway — except for that minnow pond.</span>
+    <span>🏁 Nick drew Ryan Blaney at +450 — the Martinsville king is back and coming for everyone's money.</span>
+    <span>📌 MARTINSVILLE FACT: The track has been hosting NASCAR since 1949 — it's the oldest active venue on the Cup schedule. Ancient and unforgiving.</span>
+    <span>😤 Zach has Logano at +850. He's top-10'd the last 13 times here without a win. Consistency is nice. Winning is better.</span>
+    <span>🔴 The infamous Martinsville hot dogs are better than whatever's in your fridge. The racing is better too. Probably.</span>
+    <span>🏆 Zach won Darlington with Tyler Reddick! Four wins in six races for Reddick. Zach's catching up to Scott fast.</span>
+    <span>📌 MARTINSVILLE FACT: The paperclip shape means passing is nearly impossible — track position and bump-and-run are everything. Bring a helmet.</span>
+    <span>🎰 Nicole drew William Byron at +550. Three-time Martinsville winner. Two of those wins in the last four races here. Nicole is quietly dangerous.</span>
+    <span>😬 Scott drew Chase Briscoe, Ross Chastain, and Erik Jones. The vibes are... rough. We believe in you, Scott. Kinda.</span>
+    <span>📌 MARTINSVILLE FACT: Denny Hamlin has six wins here — more than any active driver. He won this very race in 2025 leading 274 of 400 laps.</span>
+    <span>🔥 Daniel has Kyle Larson at +650. Four straight top-5s at Martinsville. Silent assassin mode activated.</span>
+    <span>🏆 Scott leads the pool at +$150. But Zach just won Darlington — both are at +$140. This is getting spicy.</span>
+    <span>📌 MARTINSVILLE FACT: Zero degrees of banking on the straightaways. The cars are basically sliding on flat pavement into 12-degree turns. Chaos is the plan.</span>
+    <span>🎰 Pam drew Denny Hamlin at +600. Defending winner. Six-time Martinsville champion. Home state hero from Chesterfield, VA. No pressure, Pam.</span>
+    <span>😴 Ron drew Chase Elliott, John Hunter Nemechek, and Zane Smith. Elliott's good here. The rest... we'll light a candle.</span>
+    <span>📌 MARTINSVILLE FACT: The grandfather clock trophy is one of the most unique in all of motorsport. Winners literally take home a working clock. Tick tock.</span>
   </div>
 </div>
 
-<!-- DARLINGTON LOGO BANNER -->
+<!-- TRACK BANNER -->
 
-<div style="background:#111;display:flex;justify-content:center;align-items:center;padding:12px 28px;border-bottom:2px solid #c0392b;">
-  <svg width="420" height="64" viewBox="0 0 420 64" xmlns="http://www.w3.org/2000/svg">
-    <!-- Red stripe accent left -->
+<div class="track-banner">
+  <svg width="460" height="64" viewBox="0 0 460 64" xmlns="http://www.w3.org/2000/svg">
     <rect x="0" y="0" width="6" height="64" fill="#c0392b"/>
-    <!-- Red stripe accent right -->
-    <rect x="414" y="0" width="6" height="64" fill="#c0392b"/>
-    <!-- Track oval shape -->
-    <ellipse cx="34" cy="32" rx="22" ry="28" fill="none" stroke="#c0392b" stroke-width="3"/>
-    <ellipse cx="34" cy="32" rx="14" ry="20" fill="none" stroke="#888" stroke-width="1.5"/>
-    <!-- Main wordmark -->
-    <text x="68" y="24" font-family="Arial Black, Arial" font-weight="900" font-size="22" fill="#ffffff" letter-spacing="3">DARLINGTON</text>
-    <text x="68" y="46" font-family="Arial Black, Arial" font-weight="900" font-size="22" fill="#ffffff" letter-spacing="3">RACEWAY</text>
-    <!-- Tagline -->
-    <text x="68" y="60" font-family="Arial, sans-serif" font-weight="700" font-size="10" fill="#c0392b" letter-spacing="4">TOO TOUGH TO TAME</text>
+    <rect x="454" y="0" width="6" height="64" fill="#c0392b"/>
+    <!-- Paperclip oval shape -->
+    <rect x="12" y="8" width="44" height="48" rx="22" fill="none" stroke="#c0392b" stroke-width="3"/>
+    <rect x="20" y="16" width="28" height="32" rx="14" fill="none" stroke="#555" stroke-width="1.5"/>
+    <text x="70" y="26" font-family="Arial Black, Arial" font-weight="900" font-size="22" fill="#ffffff" letter-spacing="2">MARTINSVILLE</text>
+    <text x="70" y="48" font-family="Arial Black, Arial" font-weight="900" font-size="22" fill="#ffffff" letter-spacing="2">SPEEDWAY</text>
+    <text x="70" y="61" font-family="Arial, sans-serif" font-weight="700" font-size="10" fill="#c0392b" letter-spacing="4">THE PAPERCLIP · TOO TOUGH TO TAME</text>
   </svg>
 </div>
 
@@ -172,12 +165,12 @@ td:not(:first-child) { text-align: center; }
 
 <header>
   <div>
-    <div class="race-title">Goodyear 400 <span>· Darlington</span></div>
-    <div class="race-subtitle">Race 6 of 2026 · Darlington Raceway · Sunday, March 22, 2026</div>
+    <div class="race-title">Cook Out 400 <span>· Martinsville</span></div>
+    <div class="race-subtitle">Race 7 of 2026 · Martinsville Speedway · Sunday, March 29, 2026</div>
   </div>
   <div class="header-right">
     <div class="countdown-block">
-      <div class="cd-info">🟢 &nbsp;3:12 PM ET &nbsp;|&nbsp; 293 Laps</div>
+      <div class="cd-info">🟢 &nbsp;3:30 PM ET &nbsp;|&nbsp; 400 Laps</div>
       <div class="cd-digits">
         <div class="cd-unit"><div class="cd-num" id="cd-h">--</div><div class="cd-lbl">Hrs</div></div>
         <div class="cd-sep">:</div>
@@ -194,18 +187,15 @@ td:not(:first-child) { text-align: center; }
 
 <div class="participant-section">
   <div id="participant-grid" class="participant-grid"></div>
-  <div style="font-size:11px;color:var(--muted);margin-top:10px;font-weight:600;">Source: FanDuel sportsbook odds · updated 3/22/26</div>
+  <div style="font-size:11px;color:var(--muted);margin-top:10px;font-weight:600;">Source: FanDuel sportsbook odds · updated 3/28/26</div>
 </div>
 
 <!-- MAIN GRID -->
 
 <div class="main">
-
-  <!-- LEFT: STANDINGS -->
-
   <div>
     <div class="standings-card">
-      <div class="section-header">📊 Pool Standings — After Las Vegas (Race 5)</div>
+      <div class="section-header">📊 Pool Standings — After Darlington (Race 6)</div>
       <table>
         <thead>
           <tr>
@@ -219,46 +209,41 @@ td:not(:first-child) { text-align: center; }
         <tbody id="standings-body"></tbody>
       </table>
       <div style="font-size:11px;color:var(--muted);margin-top:12px;font-weight:600;">
-        🏁 = Pool win (accumulates). Winner this week earns <span style="color:var(--green);font-weight:800;">+$90</span>. All others: <span style="color:var(--red);font-weight:800;">–$10</span>.
+        🏁 = Pool win. Winner earns <span style="color:var(--green);font-weight:800;">+$90</span>. All others: <span style="color:var(--red);font-weight:800;">–$10</span>.
       </div>
     </div>
   </div>
 
-  <!-- RIGHT: SIDEBAR -->
-
   <div class="sidebar">
+    <div class="card">
+      <div class="section-header">🏁 Darlington Results (Race 6)</div>
+      <div class="pool-winner-row">
+        <span class="pwtag">🏆 Pool Winner</span>
+        <span class="pwname">🏁 Zach &nbsp;<span style="color:var(--muted);font-size:14px;font-weight:600;">Tyler Reddick #45 · +$90</span></span>
+      </div>
+      <div class="winner-banner">
+        <div class="wlabel">Race Winner</div>
+        <div class="wname">Tyler Reddick</div>
+        <div class="wdetail">#45 23XI Racing Toyota · Darlington Raceway</div>
+      </div>
+      <div>
+        <div class="result-row"><span class="result-pos">1</span><span class="result-driver">Tyler Reddick <span class="result-car">#45 Toyota</span></span></div>
+        <div class="result-row"><span class="result-pos">2</span><span class="result-driver">Brad Keselowski <span class="result-car">#6 Ford</span></span></div>
+        <div class="result-row"><span class="result-pos">3</span><span class="result-driver">Denny Hamlin <span class="result-car">#11 Toyota</span></span></div>
+        <div class="result-row"><span class="result-pos">4</span><span class="result-driver">William Byron <span class="result-car">#24 Chevy</span></span></div>
+        <div class="result-row"><span class="result-pos">5</span><span class="result-driver">Ty Gibbs <span class="result-car">#54 Toyota</span></span></div>
+      </div>
+    </div>
 
 ```
-<!-- LAST RACE -->
 <div class="card">
-  <div class="section-header">🏁 Las Vegas Results (Race 5)</div>
-  <div class="pool-winner-row">
-    <span class="pwtag">🏆 Pool Winner</span>
-    <span class="pwname">🏁 Scott &nbsp;<span style="color:var(--muted);font-size:14px;font-weight:600;">Denny Hamlin #11 · +$90</span></span>
-  </div>
-  <div class="winner-banner">
-    <div class="wlabel">Race Winner</div>
-    <div class="wname">Denny Hamlin</div>
-    <div class="wdetail">#11 Joe Gibbs Racing Toyota · Las Vegas Motor Speedway</div>
-  </div>
-  <div>
-    <div class="result-row"><span class="result-pos">1</span><span class="result-driver">Denny Hamlin <span class="result-car">#11 Toyota</span></span></div>
-    <div class="result-row"><span class="result-pos">2</span><span class="result-driver">Chase Elliott <span class="result-car">#9 Chevy</span></span></div>
-    <div class="result-row"><span class="result-pos">3</span><span class="result-driver">William Byron <span class="result-car">#24 Chevy</span></span></div>
-    <div class="result-row"><span class="result-pos">4</span><span class="result-driver">Christopher Bell <span class="result-car">#20 Toyota</span></span></div>
-    <div class="result-row"><span class="result-pos">5</span><span class="result-driver">Ty Gibbs <span class="result-car">#54 Toyota</span></span></div>
-  </div>
-</div>
-
-<!-- TRACK FACTS -->
-<div class="card">
-  <div class="section-header">🗺️ Darlington Raceway</div>
-  <div class="fact-row"><span class="fact-label">Track Type</span><span class="fact-val">1.366-mile egg-shaped oval</span></div>
-  <div class="fact-row"><span class="fact-label">Banking (Turns 1-2)</span><span class="fact-val">25°</span></div>
-  <div class="fact-row"><span class="fact-label">Banking (Turns 3-4)</span><span class="fact-val">23°</span></div>
-  <div class="fact-row"><span class="fact-label">Race Length</span><span class="fact-val">293 laps · 400 miles</span></div>
-  <div class="fact-row"><span class="fact-label">Surface</span><span class="fact-val">Asphalt</span></div>
-  <div class="fact-row"><span class="fact-label">Nickname</span><span class="fact-val">The Lady in Black</span></div>
+  <div class="section-header">🗺️ Martinsville Speedway</div>
+  <div class="fact-row"><span class="fact-label">Nickname</span><span class="fact-val">The Paperclip</span></div>
+  <div class="fact-row"><span class="fact-label">Track Length</span><span class="fact-val">0.526-mile oval</span></div>
+  <div class="fact-row"><span class="fact-label">Banking (Turns)</span><span class="fact-val">12°</span></div>
+  <div class="fact-row"><span class="fact-label">Banking (Straights)</span><span class="fact-val">0°</span></div>
+  <div class="fact-row"><span class="fact-label">Race Length</span><span class="fact-val">400 laps · 210.4 miles</span></div>
+  <div class="fact-row"><span class="fact-label">Trophy</span><span class="fact-val">Grandfather Clock ⏰</span></div>
   <div class="fact-row"><span class="fact-label">Last Spring Winner</span><span class="fact-val">Denny Hamlin (2025)</span></div>
 </div>
 ```
@@ -266,68 +251,69 @@ td:not(:first-child) { text-align: center; }
   </div>
 </div>
 
-<!-- FOOTNOTE -->
-
 <div class="footnote">
-  * Drivers finishing outside the top 30 listed by last name only. Pot will go to Daytona Race if applicable. &nbsp;|&nbsp; Balances reflect standings after Race 5 (Las Vegas). &nbsp;|&nbsp; Darlington Raceway · Goodyear 400 · Race 6 of 2026 NASCAR Cup Series.
+  * Drivers finishing outside the top 30 listed by last name only. Pot will go to Daytona Race if applicable. &nbsp;|&nbsp; Balances reflect standings after Race 6 (Darlington). &nbsp;|&nbsp; Martinsville Speedway · Cook Out 400 · Race 7 of 2026 NASCAR Cup Series.
 </div>
 
 <script>
+// Updated balances: after Darlington, Zach wins (+$90), Scott and others -$10
+// Pre-Darlington: Scott +150, Pam/Ron/Zach +50, others -50
+// Post-Darlington: Scott +140, Zach +140, Pam/Ron -60, others -60... wait
+// Actually: Scott +150-10=140, Zach +50+90=140, Pam +50-10=40, Ron +50-10=40
+// Brenda/KO3/Nick/Nicole/Daniel/Ace: -50-10=-60
 var STANDINGS = [
-  { name:"Scott",  flags:2, cars:["22","43","34"], balance:150 },
-  { name:"Pam",    flags:1, cars:["12","8","97"],  balance:50  },
-  { name:"Ron",    flags:1, cars:["1","48","4"],   balance:50  },
-  { name:"Zach",   flags:1, cars:["45","6","71"],  balance:50  },
-  { name:"Brenda", flags:0, cars:["5","23","60"],  balance:-50 },
-  { name:"KO3",    flags:0, cars:["11","17","21"], balance:-50 },
-  { name:"Nick",   flags:0, cars:["20","2","3"],   balance:-50 },
-  { name:"Nicole", flags:0, cars:["24","77","88"], balance:-50 },
-  { name:"Daniel", flags:0, cars:["19","54","7"],  balance:-50 },
-  { name:"Ace",    flags:0, cars:["9","42","38"],  balance:-50 }
+  { name:"Scott",  flags:2, cars:["19","1","43"],  balance:140 },
+  { name:"Zach",   flags:2, cars:["22","88","3"],  balance:140 },
+  { name:"Pam",    flags:1, cars:["11","6","60"],  balance:40  },
+  { name:"Ron",    flags:1, cars:["9","42","38"],  balance:40  },
+  { name:"Brenda", flags:0, cars:["45","77","97"], balance:-60 },
+  { name:"KO3",    flags:0, cars:["23","8","34"],  balance:-60 },
+  { name:"Nick",   flags:0, cars:["12","48","21"], balance:-60 },
+  { name:"Nicole", flags:0, cars:["24","2","4"],   balance:-60 },
+  { name:"Daniel", flags:0, cars:["5","54","7"],   balance:-60 },
+  { name:"Ace",    flags:0, cars:["20","17","71"], balance:-60 }
 ];
 
-var LV_TOP5 = ["11","9","24","20","54"];
+var DARLINGTON_TOP5 = ["45","6","11","24","54"];
 
 var ODDS_BY_CAR = {
-  "11": { driver:"Denny Hamlin",           odds:"+500"   },
-  "45": { driver:"Tyler Reddick",          odds:"+600"   },
-  "5":  { driver:"Kyle Larson",            odds:"+600"   },
-  "19": { driver:"Chase Briscoe",          odds:"+600"   },
-  "24": { driver:"William Byron",          odds:"+750"   },
-  "20": { driver:"Christopher Bell",       odds:"+850"   },
-  "9":  { driver:"Chase Elliott",          odds:"+1400"  },
-  "22": { driver:"Joey Logano",            odds:"+1400"  },
-  "12": { driver:"Ryan Blaney",            odds:"+1600"  },
-  "1":  { driver:"Ross Chastain",          odds:"+2000"  },
-  "23": { driver:"Bubba Wallace",          odds:"+2500"  },
-  "54": { driver:"Ty Gibbs",               odds:"+2800"  },
-  "17": { driver:"Chris Buescher",         odds:"+3300"  },
+  "12": { driver:"Ryan Blaney",            odds:"+450"   },
+  "24": { driver:"William Byron",          odds:"+550"   },
+  "11": { driver:"Denny Hamlin",           odds:"+600"   },
+  "5":  { driver:"Kyle Larson",            odds:"+650"   },
+  "20": { driver:"Christopher Bell",       odds:"+800"   },
+  "9":  { driver:"Chase Elliott",          odds:"+850"   },
+  "22": { driver:"Joey Logano",            odds:"+850"   },
+  "19": { driver:"Chase Briscoe",          odds:"+1300"  },
+  "45": { driver:"Tyler Reddick",          odds:"+1500"  },
+  "23": { driver:"Bubba Wallace",          odds:"+1600"  },
+  "54": { driver:"Ty Gibbs",               odds:"+2000"  },
+  "1":  { driver:"Ross Chastain",          odds:"+3000"  },
+  "17": { driver:"Chris Buescher",         odds:"+3500"  },
   "6":  { driver:"Brad Keselowski",        odds:"+4000"  },
-  "42": { driver:"John Hunter Nemechek",   odds:"+4000"  },
-  "8":  { driver:"Kyle Busch",             odds:"+4500"  },
-  "48": { driver:"Justin Allgaier",        odds:"+5000"  },
-  "2":  { driver:"Austin Cindric",         odds:"+5000"  },
-  "43": { driver:"Erik Jones",             odds:"+5000"  },
-  "77": { driver:"Carson Hocevar",         odds:"+6000"  },
-  "21": { driver:"Josh Berry",             odds:"+8000"  },
-  "88": { driver:"Connor Zilisch",         odds:"+8000"  },
+  "8":  { driver:"Kyle Busch",             odds:"+4000"  },
+  "77": { driver:"Carson Hocevar",         odds:"+4500"  },
+  "2":  { driver:"Austin Cindric",         odds:"+6500"  },
+  "48": { driver:"Justin Allgaier",        odds:"+10000" },
+  "42": { driver:"John Hunter Nemechek",   odds:"+10000" },
+  "88": { driver:"Connor Zilisch",         odds:"+10000" },
+  "21": { driver:"Josh Berry",             odds:"+10000" },
   "97": { driver:"Shane van Gisbergen",    odds:"+10000" },
   "7":  { driver:"Daniel Suarez",          odds:"+10000" },
-  "34": { driver:"Todd Gilliland",         odds:"+15000" },
-  "38": { driver:"Zane Smith",             odds:"+15000" },
+  "43": { driver:"Erik Jones",             odds:"+15000" },
+  "60": { driver:"Ryan Preece",            odds:"+15000" },
+  "34": { driver:"Todd Gilliland",         odds:"+20000" },
+  "38": { driver:"Zane Smith",             odds:"+20000" },
   "4":  { driver:"Noah Gragson",           odds:"+20000" },
   "71": { driver:"Michael McDowell",       odds:"+20000" },
-  "3":  { driver:"Austin Dillon",          odds:"+20000" },
-  "60": { driver:"Ryan Preece",            odds:"+25000" }
+  "3":  { driver:"Austin Dillon",          odds:"+20000" }
 };
 
-// Sort standings: balance desc, then name
 STANDINGS.sort(function(a, b) {
   if (b.balance !== a.balance) return b.balance - a.balance;
   return a.name.localeCompare(b.name);
 });
 
-// Build standings table
 var tbody = document.getElementById('standings-body');
 STANDINGS.forEach(function(p, i) {
   var flagStr = '';
@@ -335,8 +321,8 @@ STANDINGS.forEach(function(p, i) {
   var balClass = p.balance >= 0 ? 'pos' : 'neg';
   var balStr = (p.balance >= 0 ? '+' : '') + '$' + p.balance;
   var carsHtml = p.cars.map(function(c) {
-    var isHot = LV_TOP5.indexOf(c) >= 0;
-    return isHot ? '<span class="car-highlight">#' + c + '</span>' : '#' + c;
+    var hot = DARLINGTON_TOP5.indexOf(c) >= 0;
+    return hot ? '<span class="car-highlight">#' + c + '</span>' : '#' + c;
   }).join(' · ');
   var winsHtml = p.flags > 0
     ? '<span class="wins-cell has-win">' + flagStr + '</span>'
@@ -350,7 +336,6 @@ STANDINGS.forEach(function(p, i) {
     + '</tr>';
 });
 
-// Build participant cards
 var pgrid = document.getElementById('participant-grid');
 STANDINGS.forEach(function(p) {
   var flagStr = '';
@@ -359,8 +344,8 @@ STANDINGS.forEach(function(p) {
     var info = ODDS_BY_CAR[c];
     var driverName = info ? info.driver : 'TBD';
     var oddsVal = info ? info.odds : '—';
-    var isHot = LV_TOP5.indexOf(c) >= 0;
-    var carColor = isHot ? 'color:var(--orange2);font-weight:900;' : 'color:var(--muted);font-weight:700;';
+    var hot = DARLINGTON_TOP5.indexOf(c) >= 0;
+    var carColor = hot ? 'color:var(--orange2);font-weight:900;' : 'color:var(--orange);font-weight:900;';
     return '<div class="p-driver-row">'
       + '<span><span class="p-car" style="' + carColor + '">#' + c + '</span>'
       + '<span class="p-driver">' + driverName + '</span></span>'
@@ -373,8 +358,8 @@ STANDINGS.forEach(function(p) {
     + '</div>';
 });
 
-// Countdown to Sunday March 22 2026 3:12 PM ET = 19:12 UTC
-var greenFlag = new Date('2026-03-22T19:12:00Z');
+// Countdown: Sunday March 29 2026 3:30 PM ET = 19:30 UTC
+var greenFlag = new Date('2026-03-29T19:30:00Z');
 function updateCountdown() {
   var now = new Date();
   var diff = greenFlag - now;
