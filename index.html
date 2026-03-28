@@ -21,11 +21,11 @@
   }
   body { background: var(--bg); color: var(--text); font-family: 'Barlow Condensed', sans-serif; min-height: 100vh; }
 
-/* ── NEWS TICKER ── */
-.ticker-wrap { background: var(–orange); overflow: hidden; padding: 6px 0; }
-.ticker-inner { display: flex; white-space: nowrap; animation: ticker 3s linear infinite; }
-.ticker-inner span { padding: 0 60px; font-size: 15px; font-weight: 700; color: #fff; letter-spacing: .5px; text-shadow: 0 1px 3px rgba(0,0,0,0.4); flex-shrink: 0; }
-@keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+/* ── STAT FLIPPER ── */
+.ticker-wrap { background: var(–orange); padding: 7px 28px; display: flex; align-items: center; gap: 14px; min-height: 38px; }
+.ticker-pip { width: 8px; height: 8px; background: #fff; border-radius: 50%; opacity: 0.7; flex-shrink: 0; }
+.ticker-text { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: .4px; text-shadow: 0 1px 3px rgba(0,0,0,0.3); flex: 1; text-align: center; }
+.ticker-counter { font-size: 11px; font-weight: 800; color: rgba(255,255,255,0.6); flex-shrink: 0; letter-spacing: 1px; }
 
 /* ── TRACK BANNER ── */
 .track-banner { background: #0a1628; display: flex; justify-content: center; align-items: center; padding: 10px 28px; border-bottom: 2px solid #c0392b; }
@@ -108,42 +108,13 @@ td:not(:first-child) { text-align: center; }
 </head>
 <body>
 
-<!-- TICKER -->
+<!-- STAT FLIPPER -->
 
 <div class="ticker-wrap">
-  <div class="ticker-inner">
-    <span>📊 SEASON STANDINGS · Race 7 of 2026 · Scott +$140 · Zach +$140 · Pam +$40 · Ron +$40 · Brenda -$60 · KO3 -$60 · Nick -$60 · Nicole -$60 · Daniel -$60 · Ace -$60</span>
-    <span>🏆 WINS THIS SEASON · Pam: 1 win (Phoenix) · Scott: 1 win (Las Vegas) · Zach: 1 win (Darlington) · Ron: 1 win (Race TBD) · 6 races down · 30 to go</span>
-    <span>🎰 BEST DRIVER DRAW OF THE SEASON · Nick drew Ryan Blaney #12 today at +450 — the single best odds any participant has seen all year</span>
-    <span>📉 BIGGEST DROUGHT · Brenda, KO3, Nick, Nicole, Daniel, and Ace are all still searching for their first win after 6 races. Somebody has to break through today.</span>
-    <span>💰 TOTAL POOL POT · 10 participants × 6 races × $10 = $600 paid in · $270 paid out · $330 still on the table for the rest of the season</span>
-    <span>🏁 MOST DANGEROUS PARTICIPANT · Scott and Zach are tied at +$140 with 2 wins each through 6 races. The gap to 3rd place is $100. This is a two-horse race.</span>
-    <span>📊 BEST DRIVER PERFORMANCE · Tyler Reddick won 2 of the last 4 races. Zach has him again today at +1500. Bold of the pool gods.</span>
-    <span>🔥 HOT STREAK ALERT · Denny Hamlin has finished top-3 in 4 of 6 races this season. Pam holds #11 today and likes her chances. Hard to argue.</span>
-    <span>📉 WORST LUCK OF THE SEASON · Ron drew Kyle Busch (#8) at Daytona, Phoenix, Las Vegas, Darlington, and now Martinsville. Kyle has 0 wins. Ron is not okay.</span>
-    <span>💸 IF THE SEASON ENDED TODAY · Scott wins $140 · Zach wins $140 · Pam collects $40 · Ron collects $40 · Six people split -$60 each. Nobody is happy.</span>
-    <span>🏆 RACE WIN BREAKDOWN · Race 1 (Daytona): Ron · Race 2 (Atlanta): — · Race 3 (Texas): — · Race 4 (Phoenix): Pam · Race 5 (Las Vegas): Scott · Race 6 (Darlington): Zach</span>
-    <span>🎯 CLOSEST RACE OF THE SEASON · Phoenix — Ryan Blaney won by 0.045 seconds over Christopher Bell. Pam's #20 Bell was runner-up. Nearly a different pool winner entirely.</span>
-    <span>📊 AVERAGE FINISH OF POOL DRIVERS THIS SEASON · Reddick leads all pool cars with an avg finish of 4.2 · Hamlin avg 5.8 · Blaney avg 8.1 · Larson avg 9.3</span>
-    <span>🚗 CAR WITH MOST VALUE THIS SEASON · #45 Tyler Reddick has won twice and led the most laps of any pool car. Zach is officially the luckiest person in this pool.</span>
-    <span>💀 POOL CAR DNFS THIS SEASON · #3 Austin Dillon: 2 DNFs · #60 Preece: 1 DNF · #4 Gragson: 1 DNF · The long-shot cars keep breaking. Shocking.</span>
-    <!-- Duplicate for seamless loop -->
-    <span>📊 SEASON STANDINGS · Race 7 of 2026 · Scott +$140 · Zach +$140 · Pam +$40 · Ron +$40 · Brenda -$60 · KO3 -$60 · Nick -$60 · Nicole -$60 · Daniel -$60 · Ace -$60</span>
-    <span>🏆 WINS THIS SEASON · Pam: 1 win (Phoenix) · Scott: 1 win (Las Vegas) · Zach: 1 win (Darlington) · Ron: 1 win (Race TBD) · 6 races down · 30 to go</span>
-    <span>🎰 BEST DRIVER DRAW OF THE SEASON · Nick drew Ryan Blaney #12 today at +450 — the single best odds any participant has seen all year</span>
-    <span>📉 BIGGEST DROUGHT · Brenda, KO3, Nick, Nicole, Daniel, and Ace are all still searching for their first win after 6 races. Somebody has to break through today.</span>
-    <span>💰 TOTAL POOL POT · 10 participants × 6 races × $10 = $600 paid in · $270 paid out · $330 still on the table for the rest of the season</span>
-    <span>🏁 MOST DANGEROUS PARTICIPANT · Scott and Zach are tied at +$140 with 2 wins each through 6 races. The gap to 3rd place is $100. This is a two-horse race.</span>
-    <span>📊 BEST DRIVER PERFORMANCE · Tyler Reddick won 2 of the last 4 races. Zach has him again today at +1500. Bold of the pool gods.</span>
-    <span>🔥 HOT STREAK ALERT · Denny Hamlin has finished top-3 in 4 of 6 races this season. Pam holds #11 today and likes her chances. Hard to argue.</span>
-    <span>📉 WORST LUCK OF THE SEASON · Ron drew Kyle Busch (#8) at Daytona, Phoenix, Las Vegas, Darlington, and now Martinsville. Kyle has 0 wins. Ron is not okay.</span>
-    <span>💸 IF THE SEASON ENDED TODAY · Scott wins $140 · Zach wins $140 · Pam collects $40 · Ron collects $40 · Six people split -$60 each. Nobody is happy.</span>
-    <span>🏆 RACE WIN BREAKDOWN · Race 1 (Daytona): Ron · Race 2 (Atlanta): — · Race 3 (Texas): — · Race 4 (Phoenix): Pam · Race 5 (Las Vegas): Scott · Race 6 (Darlington): Zach</span>
-    <span>🎯 CLOSEST RACE OF THE SEASON · Phoenix — Ryan Blaney won by 0.045 seconds over Christopher Bell. Pam's #20 Bell was runner-up. Nearly a different pool winner entirely.</span>
-    <span>📊 AVERAGE FINISH OF POOL DRIVERS THIS SEASON · Reddick leads all pool cars with an avg finish of 4.2 · Hamlin avg 5.8 · Blaney avg 8.1 · Larson avg 9.3</span>
-    <span>🚗 CAR WITH MOST VALUE THIS SEASON · #45 Tyler Reddick has won twice and led the most laps of any pool car. Zach is officially the luckiest person in this pool.</span>
-    <span>💀 POOL CAR DNFS THIS SEASON · #3 Austin Dillon: 2 DNFs · #60 Preece: 1 DNF · #4 Gragson: 1 DNF · The long-shot cars keep breaking. Shocking.</span>
-  </div>
+  <div class="ticker-pip"></div>
+  <div class="ticker-text" id="stat-text">Loading...</div>
+  <div class="ticker-counter" id="stat-counter">1 / 15</div>
+  <div class="ticker-pip"></div>
 </div>
 
 <!-- TRACK BANNER -->
@@ -356,6 +327,39 @@ STANDINGS.forEach(function(p) {
     + driversHtml
     + '</div>';
 });
+
+var STATS = [
+  "📊 SEASON STANDINGS · Scott +$140 · Zach +$140 · Pam +$40 · Ron +$40 · Brenda -$60 · KO3 -$60 · Nick -$60 · Nicole -$60 · Daniel -$60 · Ace -$60",
+  "🏆 WINS THIS SEASON · Ron: Race 1 (Daytona) · Pam: Race 4 (Phoenix) · Scott: Race 5 (Las Vegas) · Zach: Race 6 (Darlington) · 6 races in · 30 still to go",
+  "🎰 BEST DRAW OF THE SEASON · Nick drew Ryan Blaney #12 today at +450 — the best single-driver odds any participant has held all year",
+  "📉 LONGEST DROUGHT · Brenda, KO3, Nick, Nicole, Daniel & Ace are still searching for win #1 through 6 races. Today someone breaks through. Probably.",
+  "💰 POOL POT MATH · 10 players × 6 races × $10 = $600 paid in · $360 paid out · $240 still on the table for the rest of the season",
+  "🏁 TWO-HORSE RACE · Scott and Zach are tied at +$140 with 2 wins each. The gap to 3rd place is $100. Everyone else is just watching.",
+  "🚗 MOST VALUABLE CAR · #45 Tyler Reddick won twice and led the most laps of any pool car. Zach drew him both times. Zach is suspiciously lucky.",
+  "🔥 HOT DRIVER · Denny Hamlin has finished top-3 in 4 of 6 races this season. Pam holds #11 today. Hard to argue with that.",
+  "😬 ROUGH DRAW ALERT · Scott has Chase Briscoe, Ross Chastain & Erik Jones at Martinsville. Two wins but zero help today. Character-building stuff.",
+  "💸 IF THE SEASON ENDED TODAY · Scott +$140 · Zach +$140 · Pam +$40 · Ron +$40 · Six people owe $60 each. Nobody is fully happy.",
+  "🎯 CLOSEST FINISH · Phoenix — Blaney beat Bell by 0.045 seconds. Pam's #20 Bell was runner-up. A nose and the whole standings change.",
+  "📉 WORST LUCK · Ron held Kyle Busch #8 through five straight races. Zero wins. Ron is fine. Totally fine.",
+  "🏆 STANDINGS PACE · At this rate Scott & Zach finish +$500+ for the year. The field needs to start winning or this is a two-man show.",
+  "🎰 Nicole has William Byron #24 at +550 today — 3-time Martinsville winner. Nicole is quietly dangerous this race.",
+  "⏰ GRANDFATHER CLOCK · Win today and you take home a working grandfather clock. It's Martinsville. The trophy is better than the paycheck."
+];
+var statIndex = 0;
+function showStat() {
+  var el = document.getElementById('stat-text');
+  var counter = document.getElementById('stat-counter');
+  el.style.opacity = '0';
+  setTimeout(function() {
+    el.textContent = STATS[statIndex];
+    counter.textContent = (statIndex + 1) + ' / ' + STATS.length;
+    el.style.opacity = '1';
+    statIndex = (statIndex + 1) % STATS.length;
+  }, 300);
+}
+document.getElementById('stat-text').style.transition = 'opacity 0.3s';
+showStat();
+setInterval(showStat, 5000);
 
 // Countdown: Sunday March 29 2026 3:30 PM ET = 19:30 UTC
 var greenFlag = new Date('2026-03-29T19:41:00Z');
