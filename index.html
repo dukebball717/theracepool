@@ -4,383 +4,623 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NASCAR Race Pool – Cook Out 400 | Martinsville</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<title>Happy Easter from The Race Pool!</title>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #141414;
-    --card: #1e1e1e;
-    --border: #2a2a2a;
-    --orange: #e8a020;
-    --orange2: #f0b840;
-    --text: #f0f0f0;
-    --muted: #888;
-    --green: #4caf50;
-    --red: #e05555;
-  }
-  body { background: var(--bg); color: var(--text); font-family: 'Barlow Condensed', sans-serif; min-height: 100vh; }
+  @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Fredoka+One&display=swap');
 
-/* ── STAT FLIPPER ── */
-.ticker-wrap { background: var(–orange); padding: 7px 28px; display: flex; align-items: center; gap: 14px; min-height: 38px; }
-.ticker-pip { width: 8px; height: 8px; background: #fff; border-radius: 50%; opacity: 0.7; flex-shrink: 0; }
-.ticker-text { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: .4px; text-shadow: 0 1px 3px rgba(0,0,0,0.3); flex: 1; text-align: center; }
-.ticker-counter { font-size: 11px; font-weight: 800; color: rgba(255,255,255,0.6); flex-shrink: 0; letter-spacing: 1px; }
+- { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ── TRACK BANNER ── */
-.track-banner { background: #0a1628; display: flex; justify-content: center; align-items: center; padding: 10px 28px; border-bottom: 2px solid #c0392b; }
+body {
+background-color: #fffde0;
+background-image:
+radial-gradient(circle, #ffb3de 1px, transparent 1px),
+radial-gradient(circle, #b3f0ff 1px, transparent 1px);
+background-size: 30px 30px, 45px 45px;
+font-family: ‘Fredoka One’, ‘Comic Sans MS’, cursive;
+overflow-x: hidden;
+cursor: url(“data:image/svg+xml,%3Csvg xmlns=‘http://www.w3.org/2000/svg’ width=‘32’ height=‘32’%3E%3Ctext y=‘28’ font-size=‘28’%3E🐣%3C/text%3E%3C/svg%3E”) 16 16, auto;
+}
 
-/* ── HEADER ── */
-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 28px 14px; border-bottom: 2px solid var(–orange); flex-wrap: wrap; gap: 12px; }
-.race-title { font-size: 34px; font-weight: 900; line-height: 1.05; text-transform: uppercase; letter-spacing: 1px; }
-.race-title span { color: var(–orange); }
-.race-subtitle { font-size: 15px; color: var(–muted); font-weight: 600; margin-top: 2px; }
-.header-right { display: flex; align-items: center; gap: 24px; }
-.countdown-block { text-align: center; }
-.cd-info { font-size: 11px; color: var(–muted); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-.cd-digits { display: flex; gap: 8px; align-items: center; }
-.cd-unit { text-align: center; }
-.cd-num { font-size: 28px; font-weight: 900; color: var(–orange); line-height: 1; }
-.cd-lbl { font-size: 10px; color: var(–muted); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-.cd-sep { font-size: 24px; font-weight: 900; color: var(–orange); margin-bottom: 12px; }
+/* ===== MARQUEE BANNER ===== */
+.marquee-wrap {
+background: linear-gradient(90deg, #ff69b4, #ff9900, #ffff00, #00cc66, #6699ff, #cc66ff, #ff69b4);
+background-size: 400% 100%;
+animation: rainbowShift 3s linear infinite;
+padding: 8px 0;
+overflow: hidden;
+border-top: 4px solid #333;
+border-bottom: 4px solid #333;
+}
+@keyframes rainbowShift {
+0% { background-position: 0% 50%; }
+100% { background-position: 400% 50%; }
+}
+.marquee-inner {
+display: flex;
+white-space: nowrap;
+animation: marquee 12s linear infinite;
+}
+.marquee-inner span {
+font-size: 1.2rem;
+color: #fff;
+text-shadow: 2px 2px 0 #333;
+padding: 0 20px;
+letter-spacing: 2px;
+}
+@keyframes marquee {
+0% { transform: translateX(0); }
+100% { transform: translateX(-50%); }
+}
 
-/* ── SECTION HEADERS ── */
-.section-header { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(–orange); border-bottom: 1px solid var(–border); padding-bottom: 8px; margin-bottom: 14px; }
+/* ===== EGG BORDER ===== */
+.egg-border {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+padding: 10px 5px;
+gap: 6px;
+background: rgba(255,255,255,0.4);
+border-bottom: 3px dashed #cc66ff;
+}
+.egg-border.bottom-border {
+border-bottom: none;
+border-top: 3px dashed #cc66ff;
+}
+.egg {
+font-size: 2rem;
+display: inline-block;
+animation: wobbleEgg 1.5s ease-in-out infinite;
+animation-delay: var(–delay);
+transform-origin: bottom center;
+}
+@keyframes wobbleEgg {
+0%, 100% { transform: rotate(-8deg); }
+50% { transform: rotate(8deg); }
+}
 
-/* ── PARTICIPANT CARDS ── */
-.participant-section { padding: 16px 28px 14px; border-bottom: 1px solid var(–border); }
-.participant-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.p-card { border-radius: 10px; overflow: hidden; border: 1px solid #3a3000; }
-.p-card-header { font-size: 19px; font-weight: 900; padding: 10px 14px; background: linear-gradient(135deg, #2a2000, #3a2c00); border-bottom: 2px solid var(–orange); }
-.p-driver-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 14px; font-size: 13px; }
-.p-driver-row:nth-child(odd) { background: #1c1c1c; }
-.p-driver-row:nth-child(even) { background: #252525; }
-.p-car { font-weight: 900; color: var(–orange); min-width: 34px; display: inline-block; }
-.p-driver { font-weight: 700; color: var(–text); margin-left: 4px; }
-.p-odds { font-weight: 800; color: var(–orange2); background: rgba(240,184,64,0.12); padding: 2px 8px; border-radius: 4px; font-size: 12px; }
+/* ===== MAIN CONTAINER ===== */
+.main {
+max-width: 900px;
+margin: 0 auto;
+padding: 10px 20px 30px;
+text-align: center;
+}
 
-/* ── MAIN LAYOUT ── */
-.main { display: grid; grid-template-columns: 1fr 340px; gap: 20px; padding: 20px 28px; max-width: 1400px; margin: 0 auto; }
-@media(max-width:900px){ .main { grid-template-columns: 1fr; } }
+/* ===== GLITTER TITLE ===== */
+.glitter-title {
+font-size: clamp(3rem, 10vw, 6rem);
+background: linear-gradient(90deg, #ff3399, #ff9900, #ffff00, #33cc33, #3399ff, #cc33ff);
+background-size: 300% 100%;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+animation: glitterAnim 2s linear infinite, bounce 0.6s ease-in-out infinite alternate;
+text-shadow: none;
+filter: drop-shadow(3px 3px 0px rgba(0,0,0,0.3));
+line-height: 1.1;
+margin-bottom: 0;
+}
+@keyframes glitterAnim {
+0% { background-position: 0% 50%; }
+100% { background-position: 300% 50%; }
+}
+@keyframes bounce {
+from { transform: translateY(0px) scale(1); }
+to { transform: translateY(-8px) scale(1.02); }
+}
 
-/* ── STANDINGS ── */
-.standings-card { background: var(–card); border-radius: 10px; padding: 20px; border: 1px solid var(–border); }
-table { width: 100%; border-collapse: collapse; }
-thead th { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(–muted); padding: 6px 10px; text-align: left; border-bottom: 1px solid var(–border); }
-thead th:not(:first-child) { text-align: center; }
-tbody tr { border-bottom: 1px solid var(–border); transition: background .15s; }
-tbody tr:last-child { border-bottom: none; }
-tbody tr:hover { background: #252525; }
-td { padding: 10px; font-size: 17px; font-weight: 700; vertical-align: middle; }
-td:not(:first-child) { text-align: center; }
-.rank { font-size: 13px; color: var(–muted); font-weight: 700; width: 28px; }
-.pname { font-size: 18px; font-weight: 800; }
-.cars-cell { font-size: 12px; color: var(–muted); font-weight: 600; line-height: 1.4; }
-.car-highlight { color: var(–orange2); font-weight: 800; }
-.balance { font-size: 18px; font-weight: 900; }
-.pos { color: var(–green); }
-.neg { color: var(–red); }
-.wins-cell { font-size: 14px; color: var(–muted); font-weight: 700; }
-.wins-cell.has-win { color: var(–orange); font-weight: 800; }
+.subtitle {
+font-size: clamp(1.2rem, 4vw, 2rem);
+color: #ff6600;
+text-shadow: 2px 2px 0 #fff, 3px 3px 0 #333;
+margin: 5px 0 20px;
+animation: colorCycle 2s steps(1) infinite;
+}
+@keyframes colorCycle {
+0% { color: #ff6600; }
+25% { color: #cc00cc; }
+50% { color: #009900; }
+75% { color: #0000cc; }
+}
 
-/* ── SIDEBAR ── */
-.sidebar { display: flex; flex-direction: column; gap: 18px; }
-.card { background: var(–card); border-radius: 10px; padding: 18px; border: 1px solid var(–border); }
-.pool-winner-row { background: #1a2d1a; border-radius: 6px; padding: 8px 12px; display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-.pwtag { font-size: 11px; color: var(–green); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
-.pwname { font-size: 18px; font-weight: 900; }
-.winner-banner { background: linear-gradient(135deg, #2a1f00, #3d2c00); border: 1px solid var(–orange); border-radius: 8px; padding: 12px 14px; margin-bottom: 12px; }
-.winner-banner .wlabel { font-size: 11px; color: var(–orange); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 4px; }
-.winner-banner .wname { font-size: 22px; font-weight: 900; }
-.winner-banner .wdetail { font-size: 13px; color: var(–muted); margin-top: 2px; }
-.result-row { display: flex; align-items: center; padding: 7px 0; border-bottom: 1px solid var(–border); font-size: 14px; }
-.result-row:last-child { border-bottom: none; }
-.result-pos { font-size: 20px; font-weight: 900; color: var(–orange); width: 30px; }
-.result-driver { font-weight: 700; flex: 1; }
-.result-car { font-size: 12px; color: var(–muted); font-weight: 600; margin-left: 6px; }
-.fact-row { display: flex; justify-content: space-between; align-items: baseline; padding: 6px 0; border-bottom: 1px solid var(–border); font-size: 13px; }
-.fact-row:last-child { border-bottom: none; }
-.fact-label { color: var(–muted); font-weight: 600; }
-.fact-val { font-weight: 800; color: var(–text); text-align: right; }
-.footnote { font-size: 11px; color: var(–muted); padding: 14px 28px 20px; font-weight: 600; border-top: 1px solid var(–border); margin-top: 10px; }
+/* ===== LOGO BOX ===== */
+.logo-box {
+background: linear-gradient(135deg, #ffcce5, #ffe4b5, #ccf5cc, #cce5ff, #e5ccff);
+background-size: 400% 400%;
+animation: bgSlide 4s ease infinite;
+border: 6px solid;
+border-image: repeating-linear-gradient(90deg, #ff69b4, #ff9900, #ffff00, #66cc66, #6699ff 40px) 6;
+border-radius: 20px;
+padding: 20px;
+margin: 10px auto 20px;
+max-width: 600px;
+box-shadow: 8px 8px 0 #cc66ff, 16px 16px 0 #ffcc00;
+position: relative;
+}
+@keyframes bgSlide {
+0%, 100% { background-position: 0% 50%; }
+50% { background-position: 100% 50%; }
+}
+.logo-box img {
+width: 100%;
+max-width: 500px;
+height: auto;
+display: block;
+margin: 0 auto;
+filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+animation: logoPulse 2s ease-in-out infinite alternate;
+}
+@keyframes logoPulse {
+from { transform: scale(1) rotate(-1deg); }
+to { transform: scale(1.04) rotate(1deg); }
+}
+
+/* Stars orbiting logo */
+.logo-box::before {
+content: “⭐🌟⭐🌟⭐🌟⭐🌟”;
+position: absolute;
+top: -18px;
+left: 50%;
+transform: translateX(-50%);
+font-size: 1.4rem;
+animation: starSpin 4s linear infinite;
+white-space: nowrap;
+}
+@keyframes starSpin {
+0% { letter-spacing: 2px; }
+50% { letter-spacing: 10px; }
+100% { letter-spacing: 2px; }
+}
+
+/* ===== BUNNY SCENE ===== */
+.bunny-scene {
+position: relative;
+height: 200px;
+margin: 10px 0;
+overflow: hidden;
+}
+.ground {
+position: absolute;
+bottom: 0;
+left: 0;
+right: 0;
+height: 50px;
+background: linear-gradient(180deg, #77dd77 0%, #55aa55 100%);
+border-top: 4px solid #33aa33;
+border-radius: 50% 50% 0 0 / 20px 20px 0 0;
+}
+
+/* Flowers on ground */
+.flower {
+position: absolute;
+bottom: 42px;
+font-size: 1.8rem;
+animation: flowerSway 2s ease-in-out infinite;
+animation-delay: var(–fd);
+}
+@keyframes flowerSway {
+0%, 100% { transform: rotate(-5deg); }
+50% { transform: rotate(5deg); }
+}
+
+/* Bunny */
+.bunny {
+position: absolute;
+bottom: 42px;
+font-size: 5rem;
+animation: bunnyhop 3s ease-in-out infinite;
+filter: drop-shadow(3px 3px 4px rgba(0,0,0,0.3));
+z-index: 10;
+}
+@keyframes bunnyhop {
+0%   { left: -10%; transform: scaleX(1); }
+20%  { left: 10%;  transform: scaleX(1) translateY(-30px); }
+40%  { left: 25%;  transform: scaleX(1) translateY(0); }
+60%  { left: 50%;  transform: scaleX(1) translateY(-40px); }
+80%  { left: 70%;  transform: scaleX(1) translateY(0); }
+85%  { left: 80%;  transform: scaleX(-1) translateY(-20px); }
+100% { left: 110%; transform: scaleX(-1); }
+}
+
+/* Clouds */
+.cloud {
+position: absolute;
+top: 10px;
+font-size: 3rem;
+animation: cloudDrift 8s linear infinite;
+animation-delay: var(–cd);
+opacity: 0.85;
+}
+@keyframes cloudDrift {
+from { left: -10%; }
+to   { left: 110%; }
+}
+
+/* Sun */
+.sun {
+position: absolute;
+top: 5px;
+right: 20px;
+font-size: 3.5rem;
+animation: sunSpin 6s linear infinite;
+}
+@keyframes sunSpin {
+from { transform: rotate(0deg); }
+to   { transform: rotate(360deg); }
+}
+
+/* ===== EGG HUNT GRID ===== */
+.egg-section {
+background: rgba(255,255,255,0.6);
+border: 4px dashed #ff69b4;
+border-radius: 20px;
+padding: 20px;
+margin: 15px 0;
+box-shadow: inset 0 0 20px rgba(255,105,180,0.2);
+}
+.egg-section h2 {
+font-size: 2rem;
+color: #cc00cc;
+text-shadow: 2px 2px 0 #ffff99;
+margin-bottom: 15px;
+animation: wiggle 1s ease-in-out infinite;
+}
+@keyframes wiggle {
+0%, 100% { transform: rotate(-3deg); }
+50% { transform: rotate(3deg); }
+}
+.egg-grid {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 15px;
+}
+.fancy-egg {
+font-size: 3.5rem;
+display: inline-block;
+cursor: pointer;
+transition: transform 0.1s;
+animation: eggBob var(–eb) ease-in-out infinite alternate;
+animation-delay: var(–ebdelay);
+}
+@keyframes eggBob {
+from { transform: translateY(0) rotate(-5deg); }
+to   { transform: translateY(-12px) rotate(5deg); }
+}
+.fancy-egg:hover {
+transform: scale(1.5) rotate(20deg) !important;
+animation: none !important;
+}
+.fancy-egg:active {
+transform: scale(0.8) !important;
+}
+
+/* ===== CHICK PARADE ===== */
+.chick-row {
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 10px;
+margin: 10px 0;
+font-size: 2.5rem;
+}
+.chick {
+display: inline-block;
+animation: chickDance 0.5s ease-in-out infinite alternate;
+animation-delay: var(–chd);
+}
+@keyframes chickDance {
+from { transform: translateY(0) rotate(-10deg); }
+to   { transform: translateY(-10px) rotate(10deg); }
+}
+
+/* ===== VISITOR COUNTER (90s classic!) ===== */
+.visitor-box {
+display: inline-block;
+background: #000;
+border: 4px inset #666;
+padding: 6px 16px;
+margin: 10px auto;
+border-radius: 4px;
+font-family: ‘Courier New’, monospace;
+font-size: 1.1rem;
+color: #00ff00;
+text-shadow: 0 0 8px #00ff00;
+letter-spacing: 4px;
+}
+.visitor-label {
+font-size: 0.9rem;
+color: #ff9900;
+font-family: ‘Comic Neue’, ‘Comic Sans MS’, cursive;
+text-shadow: 1px 1px 0 #000;
+}
+
+/* ===== UNDER CONSTRUCTION (90s staple) ===== */
+.under-construction {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+margin: 15px 0;
+font-size: 1rem;
+color: #cc3300;
+font-family: ‘Comic Neue’, ‘Comic Sans MS’, cursive;
+font-weight: 700;
+text-shadow: 1px 1px 0 #ffff00;
+}
+.cone { font-size: 1.8rem; animation: coneBlink 0.8s step-start infinite; }
+@keyframes coneBlink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+
+/* ===== FOOTER ===== */
+.footer {
+font-size: 0.85rem;
+color: #666;
+font-family: ‘Comic Neue’, ‘Comic Sans MS’, cursive;
+padding: 10px;
+text-shadow: none;
+}
+
+/* ===== FLOATING EGGS (background decoration) ===== */
+.floating-egg {
+position: fixed;
+font-size: 2rem;
+pointer-events: none;
+z-index: 0;
+animation: floatUp linear infinite;
+opacity: 0.5;
+}
+@keyframes floatUp {
+from { transform: translateY(110vh) rotate(0deg); opacity: 0.5; }
+to   { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+/* ===== SIDE BUNNIES (fixed position) ===== */
+.side-bunny {
+position: fixed;
+top: 50%;
+font-size: 3rem;
+z-index: 5;
+animation: sideBob 1.2s ease-in-out infinite alternate;
+}
+.side-bunny.left { left: 5px; }
+.side-bunny.right { right: 5px; transform: scaleX(-1); }
+@keyframes sideBob {
+from { transform: translateY(0); }
+to { transform: translateY(-20px); }
+}
+.side-bunny.right { animation: sideBobRight 1.4s ease-in-out infinite alternate; }
+@keyframes sideBobRight {
+from { transform: scaleX(-1) translateY(0); }
+to { transform: scaleX(-1) translateY(-20px); }
+}
+
 </style>
-
 </head>
 <body>
 
-<!-- STAT FLIPPER -->
+<!-- FLOATING BACKGROUND EGGS -->
 
-<div class="ticker-wrap">
-  <div class="ticker-pip"></div>
-  <div class="ticker-text" id="stat-text">Loading...</div>
-  <div class="ticker-counter" id="stat-counter">1 / 15</div>
-  <div class="ticker-pip"></div>
-</div>
+<div class="floating-egg" style="left:5%; animation-duration:6s; animation-delay:0s;">🥚</div>
+<div class="floating-egg" style="left:15%; animation-duration:8s; animation-delay:1s;">🐣</div>
+<div class="floating-egg" style="left:30%; animation-duration:7s; animation-delay:2s;">🥚</div>
+<div class="floating-egg" style="left:50%; animation-duration:9s; animation-delay:0.5s;">🌷</div>
+<div class="floating-egg" style="left:65%; animation-duration:5s; animation-delay:3s;">🥚</div>
+<div class="floating-egg" style="left:80%; animation-duration:10s; animation-delay:1.5s;">🐣</div>
+<div class="floating-egg" style="left:92%; animation-duration:7s; animation-delay:4s;">🌸</div>
 
-<!-- TRACK BANNER -->
+<!-- SIDE BUNNIES -->
 
-<div class="track-banner">
-  <svg width="460" height="64" viewBox="0 0 460 64" xmlns="http://www.w3.org/2000/svg">
-    <rect x="0" y="0" width="6" height="64" fill="#c0392b"/>
-    <rect x="454" y="0" width="6" height="64" fill="#c0392b"/>
-    <!-- Paperclip oval shape -->
-    <rect x="12" y="8" width="44" height="48" rx="22" fill="none" stroke="#c0392b" stroke-width="3"/>
-    <rect x="20" y="16" width="28" height="32" rx="14" fill="none" stroke="#555" stroke-width="1.5"/>
-    <text x="70" y="26" font-family="Arial Black, Arial" font-weight="900" font-size="22" fill="#ffffff" letter-spacing="2">MARTINSVILLE</text>
-    <text x="70" y="52" font-family="Arial Black, Arial" font-weight="900" font-size="22" fill="#ffffff" letter-spacing="2">SPEEDWAY</text>
-  </svg>
-</div>
+<div class="side-bunny left">🐰</div>
+<div class="side-bunny right">🐰</div>
 
-<!-- HEADER -->
+<!-- TOP MARQUEE -->
 
-<header>
-  <div>
-    <div class="race-title">Cook Out 400 <span>· Martinsville</span></div>
-    <div class="race-subtitle">Race 7 of 2026 · Martinsville Speedway · Sunday, March 29, 2026</div>
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    <span>🐰 HAPPY EASTER! 🐣 HOP HOP HOP! 🥚 FIND THOSE EGGS! 🌷 SPRING IS HERE! 🌸 THE RACE POOL WISHES YOU A HAPPY EASTER! 🐰 HAPPY EASTER! 🐣 HOP HOP HOP! 🥚 FIND THOSE EGGS! 🌷 SPRING IS HERE! 🌸 THE RACE POOL WISHES YOU A HAPPY EASTER! &nbsp;</span>
+    <span>🐰 HAPPY EASTER! 🐣 HOP HOP HOP! 🥚 FIND THOSE EGGS! 🌷 SPRING IS HERE! 🌸 THE RACE POOL WISHES YOU A HAPPY EASTER! 🐰 HAPPY EASTER! 🐣 HOP HOP HOP! 🥚 FIND THOSE EGGS! 🌷 SPRING IS HERE! 🌸 THE RACE POOL WISHES YOU A HAPPY EASTER! &nbsp;</span>
   </div>
-  <div class="header-right">
-    <div class="countdown-block">
-      <div class="cd-info">🟢 &nbsp;3:41 PM ET &nbsp;|&nbsp; 400 Laps</div>
-      <div class="cd-digits">
-        <div class="cd-unit"><div class="cd-num" id="cd-h">--</div><div class="cd-lbl">Hrs</div></div>
-        <div class="cd-sep">:</div>
-        <div class="cd-unit"><div class="cd-num" id="cd-m">--</div><div class="cd-lbl">Min</div></div>
-        <div class="cd-sep">:</div>
-        <div class="cd-unit"><div class="cd-num" id="cd-s">--</div><div class="cd-lbl">Sec</div></div>
-      </div>
-    </div>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/37/2015_Fox_Sports_1_logo.svg" alt="FS1" style="height:48px;display:block;">
-  </div>
-</header>
-
-<!-- PARTICIPANT CARDS -->
-
-<div class="participant-section">
-  <div id="participant-grid" class="participant-grid"></div>
-  <div style="font-size:11px;color:var(--muted);margin-top:10px;font-weight:600;">Source: FanDuel sportsbook odds · updated 3/28/26</div>
 </div>
 
-<!-- MAIN GRID -->
+<!-- TOP EGG BORDER -->
+
+<div class="egg-border">
+  <span class="egg" style="--delay:0.0s">🥚</span>
+  <span class="egg" style="--delay:0.1s">🐣</span>
+  <span class="egg" style="--delay:0.2s">🥚</span>
+  <span class="egg" style="--delay:0.3s">🌷</span>
+  <span class="egg" style="--delay:0.4s">🥚</span>
+  <span class="egg" style="--delay:0.5s">🐣</span>
+  <span class="egg" style="--delay:0.6s">🌸</span>
+  <span class="egg" style="--delay:0.7s">🥚</span>
+  <span class="egg" style="--delay:0.8s">🐣</span>
+  <span class="egg" style="--delay:0.9s">🌺</span>
+  <span class="egg" style="--delay:1.0s">🥚</span>
+  <span class="egg" style="--delay:1.1s">🐣</span>
+  <span class="egg" style="--delay:1.2s">🥚</span>
+  <span class="egg" style="--delay:1.3s">🌻</span>
+  <span class="egg" style="--delay:1.4s">🥚</span>
+  <span class="egg" style="--delay:1.5s">🐣</span>
+  <span class="egg" style="--delay:1.6s">🥚</span>
+  <span class="egg" style="--delay:1.7s">🌷</span>
+  <span class="egg" style="--delay:1.8s">🥚</span>
+  <span class="egg" style="--delay:1.9s">🐣</span>
+</div>
+
+<!-- MAIN CONTENT -->
 
 <div class="main">
+
+  <!-- GLITTER TITLE -->
+
+  <div class="glitter-title">HAPPY EASTER!</div>
+  <div class="subtitle">✨ FROM THE RACE POOL CREW! ✨</div>
+
+  <!-- LOGO BOX -->
+
+  <div class="logo-box">
+    <img src="IMG_8712.jpeg" alt="The Race Pool Logo">
+  </div>
+
+  <!-- BUNNY SCENE -->
+
+  <div class="bunny-scene">
+    <div class="sun">☀️</div>
+    <div class="cloud" style="--cd:0s; top:15px; font-size:2.5rem;">☁️</div>
+    <div class="cloud" style="--cd:4s; top:30px; font-size:2rem;">☁️</div>
+    <div class="cloud" style="--cd:9s; top:8px; font-size:3rem;">☁️</div>
+    <div class="bunny">🐰</div>
+    <div class="ground"></div>
+    <div class="flower" style="--fd:0s; left:10%;">🌷</div>
+    <div class="flower" style="--fd:0.3s; left:22%;">🌸</div>
+    <div class="flower" style="--fd:0.6s; left:38%;">🌼</div>
+    <div class="flower" style="--fd:0.9s; left:55%;">🌺</div>
+    <div class="flower" style="--fd:1.2s; left:70%;">🌷</div>
+    <div class="flower" style="--fd:1.5s; left:85%;">🌻</div>
+  </div>
+
+  <!-- CHICK PARADE -->
+
+  <div class="chick-row">
+    <span class="chick" style="--chd:0.0s">🐥</span>
+    <span class="chick" style="--chd:0.1s">🐤</span>
+    <span class="chick" style="--chd:0.2s">🐥</span>
+    <span class="chick" style="--chd:0.3s">🐤</span>
+    <span class="chick" style="--chd:0.4s">🐥</span>
+    <span class="chick" style="--chd:0.5s">🐤</span>
+    <span class="chick" style="--chd:0.6s">🐥</span>
+    <span class="chick" style="--chd:0.7s">🐤</span>
+    <span class="chick" style="--chd:0.8s">🐥</span>
+    <span class="chick" style="--chd:0.9s">🐤</span>
+  </div>
+
+  <!-- EGG HUNT SECTION -->
+
+  <div class="egg-section">
+    <h2>🐣 EGG HUNT TIME!! CLICK THE EGGS!! 🐣</h2>
+    <div class="egg-grid" id="eggGrid">
+      <!-- Eggs injected by JS -->
+    </div>
+    <p id="eggMsg" style="margin-top:12px; font-size:1.3rem; color:#cc00cc; min-height:2rem;"></p>
+  </div>
+
+  <!-- VISITOR COUNTER -->
+
   <div>
-    <div class="standings-card">
-      <div class="section-header">📊 Pool Standings — After Darlington (Race 6)</div>
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th style="text-align:left">Participant</th>
-            <th>Cars</th>
-            <th>Wins</th>
-            <th>Balance</th>
-          </tr>
-        </thead>
-        <tbody id="standings-body"></tbody>
-      </table>
-      <div style="font-size:11px;color:var(--muted);margin-top:12px;font-weight:600;">
-        🏁 = Pool win. Winner earns <span style="color:var(--green);font-weight:800;">+$90</span>. All others: <span style="color:var(--red);font-weight:800;">–$10</span>.
-      </div>
-    </div>
+    <div class="visitor-box" id="counter">0001337</div>
+    <br>
+    <span class="visitor-label">🌐 You are visitor #<span id="visNum">1337</span> to this TOTALLY AWESOME page!! 🌐</span>
   </div>
 
-  <div class="sidebar">
-    <div class="card">
-      <div class="section-header">🏁 Darlington Results (Race 6)</div>
-      <div class="pool-winner-row">
-        <span class="pwtag">🏆 Pool Winner</span>
-        <span class="pwname">🏁 Zach &nbsp;<span style="color:var(--muted);font-size:14px;font-weight:600;">Tyler Reddick #45 · +$90</span></span>
-      </div>
-      <div class="winner-banner">
-        <div class="wlabel">Race Winner</div>
-        <div class="wname">Tyler Reddick</div>
-        <div class="wdetail">#45 23XI Racing Toyota · Darlington Raceway</div>
-      </div>
-      <div>
-        <div class="result-row"><span class="result-pos">1</span><span class="result-driver">Tyler Reddick <span class="result-car">#45 Toyota</span></span></div>
-        <div class="result-row"><span class="result-pos">2</span><span class="result-driver">Brad Keselowski <span class="result-car">#6 Ford</span></span></div>
-        <div class="result-row"><span class="result-pos">3</span><span class="result-driver">Denny Hamlin <span class="result-car">#11 Toyota</span></span></div>
-        <div class="result-row"><span class="result-pos">4</span><span class="result-driver">William Byron <span class="result-car">#24 Chevy</span></span></div>
-        <div class="result-row"><span class="result-pos">5</span><span class="result-driver">Ty Gibbs <span class="result-car">#54 Toyota</span></span></div>
-      </div>
-    </div>
+  <!-- UNDER CONSTRUCTION -->
 
-```
-<div class="card">
-  <div class="section-header">🗺️ Martinsville Speedway</div>
-  <div class="fact-row"><span class="fact-label">Nickname</span><span class="fact-val">The Paperclip</span></div>
-  <div class="fact-row"><span class="fact-label">Track Length</span><span class="fact-val">0.526-mile oval</span></div>
-  <div class="fact-row"><span class="fact-label">Banking (Turns)</span><span class="fact-val">12°</span></div>
-  <div class="fact-row"><span class="fact-label">Banking (Straights)</span><span class="fact-val">0°</span></div>
-  <div class="fact-row"><span class="fact-label">Race Length</span><span class="fact-val">400 laps · 210.4 miles</span></div>
-  <div class="fact-row"><span class="fact-label">Trophy</span><span class="fact-val">Grandfather Clock ⏰</span></div>
-  <div class="fact-row"><span class="fact-label">Last Spring Winner</span><span class="fact-val">Denny Hamlin (2025)</span></div>
+  <div class="under-construction">
+    <span class="cone">🚧</span>
+    <span>THIS PAGE IS UNDER CONSTRUCTION!! CHECK BACK SOON!!</span>
+    <span class="cone">🚧</span>
+  </div>
+
+  <!-- BEST VIEWED IN NETSCAPE -->
+
+  <p style="font-family:'Comic Sans MS',cursive; font-size:0.85rem; color:#cc0000; font-weight:bold;">
+    ⚠️ BEST VIEWED IN NETSCAPE NAVIGATOR 4.0 AT 800x600 RESOLUTION ⚠️
+  </p>
+
+</div><!-- /main -->
+
+<!-- BOTTOM EGG BORDER -->
+
+<div class="egg-border bottom-border">
+  <span class="egg" style="--delay:0.0s">🥚</span>
+  <span class="egg" style="--delay:0.1s">🐣</span>
+  <span class="egg" style="--delay:0.2s">🥚</span>
+  <span class="egg" style="--delay:0.3s">🌷</span>
+  <span class="egg" style="--delay:0.4s">🥚</span>
+  <span class="egg" style="--delay:0.5s">🐣</span>
+  <span class="egg" style="--delay:0.6s">🌸</span>
+  <span class="egg" style="--delay:0.7s">🥚</span>
+  <span class="egg" style="--delay:0.8s">🐣</span>
+  <span class="egg" style="--delay:0.9s">🌺</span>
+  <span class="egg" style="--delay:1.0s">🥚</span>
+  <span class="egg" style="--delay:1.1s">🐣</span>
+  <span class="egg" style="--delay:1.2s">🥚</span>
+  <span class="egg" style="--delay:1.3s">🌻</span>
+  <span class="egg" style="--delay:1.4s">🥚</span>
+  <span class="egg" style="--delay:1.5s">🐣</span>
+  <span class="egg" style="--delay:1.6s">🥚</span>
+  <span class="egg" style="--delay:1.7s">🌷</span>
+  <span class="egg" style="--delay:1.8s">🥚</span>
+  <span class="egg" style="--delay:1.9s">🐣</span>
 </div>
-```
 
+<!-- BOTTOM MARQUEE -->
+
+<div class="marquee-wrap">
+  <div class="marquee-inner" style="animation-direction:reverse;">
+    <span>🌷 HAPPY EASTER 2026 FROM THE RACE POOL! 🐰 MAY YOUR BASKET BE FULL! 🥚 AND YOUR TANK FULL OF GAS! 🏁 VROOM VROOM! 🌸 HAPPY EASTER! 🌷 HAPPY EASTER 2026 FROM THE RACE POOL! 🐰 MAY YOUR BASKET BE FULL! 🥚 AND YOUR TANK FULL OF GAS! 🏁 VROOM VROOM! 🌸 HAPPY EASTER! &nbsp;</span>
+    <span>🌷 HAPPY EASTER 2026 FROM THE RACE POOL! 🐰 MAY YOUR BASKET BE FULL! 🥚 AND YOUR TANK FULL OF GAS! 🏁 VROOM VROOM! 🌸 HAPPY EASTER! 🌷 HAPPY EASTER 2026 FROM THE RACE POOL! 🐰 MAY YOUR BASKET BE FULL! 🥚 AND YOUR TANK FULL OF GAS! 🏁 VROOM VROOM! 🌸 HAPPY EASTER! &nbsp;</span>
   </div>
 </div>
 
-<div class="footnote">
-  * Drivers finishing outside the top 30 listed by last name only. Pot will go to Daytona Race if applicable. &nbsp;|&nbsp; Balances reflect standings after Race 6 (Darlington). &nbsp;|&nbsp; Martinsville Speedway · Cook Out 400 · Race 7 of 2026 NASCAR Cup Series.
+<div class="footer">
+  &copy; 1997-2026 The Race Pool &bull; Made with 💖 and way too much sugar &bull;
+  <a href="#" style="color:#cc00cc;">Sign My Guestbook!</a> &bull;
+  <a href="#" style="color:#0000cc;">Email Me!</a>
 </div>
 
 <script>
-// Updated balances: after Darlington, Zach wins (+$90), Scott and others -$10
-// Pre-Darlington: Scott +150, Pam/Ron/Zach +50, others -50
-// Post-Darlington: Scott +140, Zach +140, Pam/Ron -60, others -60... wait
-// Actually: Scott +150-10=140, Zach +50+90=140, Pam +50-10=40, Ron +50-10=40
-// Brenda/KO3/Nick/Nicole/Daniel/Ace: -50-10=-60
-var STANDINGS = [
-  { name:"Scott",  flags:2, cars:["19","1","43"],  balance:140 },
-  { name:"Zach",   flags:2, cars:["22","88","3"],  balance:140 },
-  { name:"Pam",    flags:1, cars:["11","6","60"],  balance:40  },
-  { name:"Ron",    flags:1, cars:["9","42","38"],  balance:40  },
-  { name:"Brenda", flags:0, cars:["45","77","97"], balance:-60 },
-  { name:"KO3",    flags:0, cars:["23","8","34"],  balance:-60 },
-  { name:"Nick",   flags:0, cars:["12","48","21"], balance:-60 },
-  { name:"Nicole", flags:0, cars:["24","2","4"],   balance:-60 },
-  { name:"Daniel", flags:0, cars:["5","54","7"],   balance:-60 },
-  { name:"Ace",    flags:0, cars:["20","17","71"], balance:-60 }
-];
+  var eggEmojis = ["🥚","🐣","🥚","🥚","🐤","🥚","🐣","🥚","🥚","🐥","🥚","🐣","🥚","🥚","🐤","🥚","🐣","🥚"];
+  var eggMessages = [
+    "WOW!! You found an egg!! 🎉",
+    "AMAZING!! Keep hunting!! 🐰",
+    "YOU'RE AN EGG MASTER!! 🏆",
+    "SUPER DUPER COOL!! 🌟",
+    "WHOA!! ANOTHER ONE!! 💥",
+    "EGG-CELLENT WORK!! 🥚✨",
+    "THE EASTER BUNNY IS PROUD!! 🐰💕",
+    "YOU ROCK!! 🎸🥚",
+    "HOPPIN' AMAZING!! 🐇🎊",
+    "EGGS-TRAORDINARY!! 🌈🥚"
+  ];
+  var clickCount = 0;
 
-var DARLINGTON_TOP5 = ["45","6","11","24","54"];
-
-var ODDS_BY_CAR = {
-  "12": { driver:"Ryan Blaney",            odds:"+450"   },
-  "24": { driver:"William Byron",          odds:"+550"   },
-  "11": { driver:"Denny Hamlin",           odds:"+600"   },
-  "5":  { driver:"Kyle Larson",            odds:"+650"   },
-  "20": { driver:"Christopher Bell",       odds:"+800"   },
-  "9":  { driver:"Chase Elliott",          odds:"+850"   },
-  "22": { driver:"Joey Logano",            odds:"+850"   },
-  "19": { driver:"Chase Briscoe",          odds:"+1300"  },
-  "45": { driver:"Tyler Reddick",          odds:"+1500"  },
-  "23": { driver:"Bubba Wallace",          odds:"+1600"  },
-  "54": { driver:"Ty Gibbs",               odds:"+2000"  },
-  "1":  { driver:"Ross Chastain",          odds:"+3000"  },
-  "17": { driver:"Chris Buescher",         odds:"+3500"  },
-  "6":  { driver:"Brad Keselowski",        odds:"+4000"  },
-  "8":  { driver:"Kyle Busch",             odds:"+4000"  },
-  "77": { driver:"Carson Hocevar",         odds:"+4500"  },
-  "2":  { driver:"Austin Cindric",         odds:"+6500"  },
-  "48": { driver:"Justin Allgaier",        odds:"+10000" },
-  "42": { driver:"John Hunter Nemechek",   odds:"+10000" },
-  "88": { driver:"Connor Zilisch",         odds:"+10000" },
-  "21": { driver:"Josh Berry",             odds:"+10000" },
-  "97": { driver:"Shane van Gisbergen",    odds:"+10000" },
-  "7":  { driver:"Daniel Suarez",          odds:"+10000" },
-  "43": { driver:"Erik Jones",             odds:"+15000" },
-  "60": { driver:"Ryan Preece",            odds:"+15000" },
-  "34": { driver:"Todd Gilliland",         odds:"+20000" },
-  "38": { driver:"Zane Smith",             odds:"+20000" },
-  "4":  { driver:"Noah Gragson",           odds:"+20000" },
-  "71": { driver:"Michael McDowell",       odds:"+20000" },
-  "3":  { driver:"Austin Dillon",          odds:"+20000" }
-};
-
-STANDINGS.sort(function(a, b) {
-  if (b.balance !== a.balance) return b.balance - a.balance;
-  return a.name.localeCompare(b.name);
-});
-
-var tbody = document.getElementById('standings-body');
-STANDINGS.forEach(function(p, i) {
-  var flagStr = '';
-  for (var f = 0; f < p.flags; f++) flagStr += '🏁';
-  var balClass = p.balance >= 0 ? 'pos' : 'neg';
-  var balStr = (p.balance >= 0 ? '+' : '') + '$' + p.balance;
-  var carsHtml = p.cars.map(function(c) {
-    var hot = DARLINGTON_TOP5.indexOf(c) >= 0;
-    return hot ? '<span class="car-highlight">#' + c + '</span>' : '#' + c;
-  }).join(' · ');
-  var winsHtml = p.flags > 0
-    ? '<span class="wins-cell has-win">' + flagStr + '</span>'
-    : '<span class="wins-cell">—</span>';
-  tbody.innerHTML += '<tr>'
-    + '<td class="rank">' + (i + 1) + '</td>'
-    + '<td><span class="pname">' + p.name + '</span></td>'
-    + '<td class="cars-cell">' + carsHtml + '</td>'
-    + '<td>' + winsHtml + '</td>'
-    + '<td class="balance ' + balClass + '">' + balStr + '</td>'
-    + '</tr>';
-});
-
-var pgrid = document.getElementById('participant-grid');
-STANDINGS.forEach(function(p) {
-  var flagStr = '';
-  for (var f = 0; f < p.flags; f++) flagStr += '🏁';
-  var driversHtml = p.cars.map(function(c) {
-    var info = ODDS_BY_CAR[c];
-    var driverName = info ? info.driver : 'TBD';
-    var oddsVal = info ? info.odds : '—';
-    var hot = DARLINGTON_TOP5.indexOf(c) >= 0;
-    var carColor = hot ? 'color:var(--orange2);font-weight:900;' : 'color:var(--orange);font-weight:900;';
-    return '<div class="p-driver-row">'
-      + '<span><span class="p-car" style="' + carColor + '">#' + c + '</span>'
-      + '<span class="p-driver">' + driverName + '</span></span>'
-      + '<span class="p-odds">' + oddsVal + '</span>'
-      + '</div>';
-  }).join('');
-  pgrid.innerHTML += '<div class="p-card">'
-    + '<div class="p-card-header">' + (flagStr ? flagStr + ' ' : '') + p.name + '</div>'
-    + driversHtml
-    + '</div>';
-});
-
-var STATS = [
-  "📊 SEASON STANDINGS · Scott +$140 · Zach +$140 · Pam +$40 · Ron +$40 · Brenda -$60 · KO3 -$60 · Nick -$60 · Nicole -$60 · Daniel -$60 · Ace -$60",
-  "🏆 WINS THIS SEASON · Ron: Race 1 (Daytona) · Pam: Race 4 (Phoenix) · Scott: Race 5 (Las Vegas) · Zach: Race 6 (Darlington) · 6 races in · 30 still to go",
-  "🎰 BEST DRAW OF THE SEASON · Nick drew Ryan Blaney #12 today at +450 — the best single-driver odds any participant has held all year",
-  "📉 LONGEST DROUGHT · Brenda, KO3, Nick, Nicole, Daniel & Ace are still searching for win #1 through 6 races. Today someone breaks through. Probably.",
-  "💰 POOL POT MATH · 10 players × 6 races × $10 = $600 paid in · $360 paid out · $240 still on the table for the rest of the season",
-  "🏁 TWO-HORSE RACE · Scott and Zach are tied at +$140 with 2 wins each. The gap to 3rd place is $100. Everyone else is just watching.",
-  "🚗 MOST VALUABLE CAR · #45 Tyler Reddick won twice and led the most laps of any pool car. Zach drew him both times. Zach is suspiciously lucky.",
-  "🔥 HOT DRIVER · Denny Hamlin has finished top-3 in 4 of 6 races this season. Pam holds #11 today. Hard to argue with that.",
-  "😬 ROUGH DRAW ALERT · Scott has Chase Briscoe, Ross Chastain & Erik Jones at Martinsville. Two wins but zero help today. Character-building stuff.",
-  "💸 IF THE SEASON ENDED TODAY · Scott +$140 · Zach +$140 · Pam +$40 · Ron +$40 · Six people owe $60 each. Nobody is fully happy.",
-  "🎯 CLOSEST FINISH · Phoenix — Blaney beat Bell by 0.045 seconds. Pam's #20 Bell was runner-up. A nose and the whole standings change.",
-  "📉 WORST LUCK · Ron held Kyle Busch #8 through five straight races. Zero wins. Ron is fine. Totally fine.",
-  "🏆 STANDINGS PACE · At this rate Scott & Zach finish +$500+ for the year. The field needs to start winning or this is a two-man show.",
-  "🎰 Nicole has William Byron #24 at +550 today — 3-time Martinsville winner. Nicole is quietly dangerous this race.",
-  "⏰ GRANDFATHER CLOCK · Win today and you take home a working grandfather clock. It's Martinsville. The trophy is better than the paycheck."
-];
-var statIndex = 0;
-function showStat() {
-  var el = document.getElementById('stat-text');
-  var counter = document.getElementById('stat-counter');
-  el.style.opacity = '0';
-  setTimeout(function() {
-    el.textContent = STATS[statIndex];
-    counter.textContent = (statIndex + 1) + ' / ' + STATS.length;
-    el.style.opacity = '1';
-    statIndex = (statIndex + 1) % STATS.length;
-  }, 300);
-}
-document.getElementById('stat-text').style.transition = 'opacity 0.3s';
-showStat();
-setInterval(showStat, 5000);
-
-// Countdown: Sunday March 29 2026 3:30 PM ET = 19:30 UTC
-var greenFlag = new Date('2026-03-29T19:41:00Z');
-function updateCountdown() {
-  var now = new Date();
-  var diff = greenFlag - now;
-  if (diff <= 0) {
-    document.getElementById('cd-h').textContent = '00';
-    document.getElementById('cd-m').textContent = '00';
-    document.getElementById('cd-s').textContent = '00';
-    return;
+  var grid = document.getElementById("eggGrid");
+  for (var i = 0; i < eggEmojis.length; i++) {
+    var span = document.createElement("span");
+    span.className = "fancy-egg";
+    span.textContent = eggEmojis[i];
+    span.style.setProperty("--eb", (1.2 + Math.random() * 1.2) + "s");
+    span.style.setProperty("--ebdelay", (Math.random() * 1.5) + "s");
+    span.setAttribute("data-idx", i);
+    span.addEventListener("click", function() {
+      var msg = eggMessages[clickCount % eggMessages.length];
+      clickCount++;
+      document.getElementById("eggMsg").textContent = msg;
+      this.style.transition = "transform 0.2s";
+      this.style.transform = "scale(0) rotate(720deg)";
+      var self = this;
+      setTimeout(function() {
+        self.style.transform = "";
+        self.style.transition = "";
+      }, 400);
+    });
+    grid.appendChild(span);
   }
-  var h = Math.floor(diff / 3600000);
-  var m = Math.floor((diff % 3600000) / 60000);
-  var s = Math.floor((diff % 60000) / 1000);
-  document.getElementById('cd-h').textContent = String(h).padStart(2, '0');
-  document.getElementById('cd-m').textContent = String(m).padStart(2, '0');
-  document.getElementById('cd-s').textContent = String(s).padStart(2, '0');
-}
-updateCountdown();
-setInterval(updateCountdown, 1000);
+
+  // Fake visitor counter
+  var baseCount = 1337;
+  var visEl = document.getElementById("visNum");
+  var counterEl = document.getElementById("counter");
+  function pad(n, width) {
+    var s = String(n);
+    while (s.length < width) s = "0" + s;
+    return s;
+  }
+  setInterval(function() {
+    baseCount += Math.floor(Math.random() * 3);
+    visEl.textContent = baseCount;
+    counterEl.textContent = pad(baseCount, 7);
+  }, 4000);
 </script>
 
 </body>
