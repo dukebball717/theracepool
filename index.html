@@ -5,7 +5,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NASCAR Race Pool – Food City 500 | Bristol</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -13,7 +12,7 @@
     --orange: #e8a020; --orange2: #f0b840;
     --text: #f0f0f0; --muted: #888; --green: #4caf50; --red: #e05555;
   }
-  body { background: var(--bg); color: var(--text); font-family: 'Barlow Condensed', sans-serif; min-height: 100vh; }
+  body { background: var(--bg); color: var(--text); font-family: 'Arial Narrow', 'Impact', 'Franklin Gothic Medium', Arial, sans-serif; min-height: 100vh; }
 
 /* ── STAT FLIPPER ── */
 .ticker-wrap { background: var(–orange); padding: 7px 28px; display: flex; align-items: center; gap: 14px; min-height: 38px; }
@@ -142,7 +141,11 @@ td:not(:first-child) { text-align: center; }
         <div class="cd-unit"><div class="cd-num" id="cd-s">--</div><div class="cd-lbl">Sec</div></div>
       </div>
     </div>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/37/2015_Fox_Sports_1_logo.svg" alt="FS1" style="height:48px;display:block;">
+    <svg width="88" height="48" viewBox="0 0 88 48" xmlns="http://www.w3.org/2000/svg">
+      <rect width="88" height="48" fill="#003087" rx="4"/>
+      <text x="44" y="17" font-family="Arial Black,Arial" font-weight="900" font-size="10" fill="#fff" text-anchor="middle" letter-spacing="1">FOX SPORTS</text>
+      <text x="44" y="42" font-family="Arial Black,Arial" font-weight="900" font-size="28" fill="#fff" text-anchor="middle">1</text>
+    </svg>
   </div>
 </header>
 
