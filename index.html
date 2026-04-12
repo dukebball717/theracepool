@@ -1,376 +1,111 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NASCAR Race Pool – Food City 500 | Bristol</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #141414; --card: #1e1e1e; --border: #2a2a2a;
-    --orange: #e8a020; --orange2: #f0b840;
-    --text: #f0f0f0; --muted: #888; --green: #4caf50; --red: #e05555;
-  }
-  body { background: var(--bg); color: var(--text); font-family: 'Barlow Condensed', sans-serif; min-height: 100vh; }
-
-/* ── STAT FLIPPER ── */
-.ticker-wrap { background: var(–orange); padding: 7px 28px; display: flex; align-items: center; gap: 14px; min-height: 38px; }
-.ticker-pip { width: 8px; height: 8px; background: #fff; border-radius: 50%; opacity: 0.7; flex-shrink: 0; }
-.ticker-text { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: .4px; text-shadow: 0 1px 3px rgba(0,0,0,0.3); flex: 1; text-align: center; transition: opacity 0.3s; }
-.ticker-counter { font-size: 11px; font-weight: 800; color: rgba(255,255,255,0.6); flex-shrink: 0; letter-spacing: 1px; }
-
-/* ── TRACK BANNER ── */
-.track-banner { background: #1a0a00; display: flex; justify-content: center; align-items: center; padding: 10px 28px; border-bottom: 2px solid #c0392b; }
-
-/* ── HEADER ── */
-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 28px 14px; border-bottom: 2px solid var(–orange); flex-wrap: wrap; gap: 12px; }
-.race-title { font-size: 34px; font-weight: 900; line-height: 1.05; text-transform: uppercase; letter-spacing: 1px; }
-.race-title span { color: var(–orange); }
-.race-subtitle { font-size: 16px; color: var(–muted); font-weight: 600; margin-top: 2px; }
-.header-right { display: flex; align-items: center; gap: 24px; }
-.countdown-block { text-align: center; }
-.cd-info { font-size: 11px; color: var(–muted); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-.cd-digits { display: flex; gap: 8px; align-items: center; }
-.cd-unit { text-align: center; }
-.cd-num { font-size: 28px; font-weight: 900; color: var(–orange); line-height: 1; }
-.cd-lbl { font-size: 10px; color: var(–muted); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-.cd-sep { font-size: 24px; font-weight: 900; color: var(–orange); margin-bottom: 12px; }
-
-/* ── SECTION HEADERS ── */
-.section-header { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(–orange); border-bottom: 1px solid var(–border); padding-bottom: 8px; margin-bottom: 14px; }
-
-/* ── PARTICIPANT CARDS ── */
-.participant-section { padding: 16px 28px 14px; border-bottom: 1px solid var(–border); }
-.participant-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.p-card { border-radius: 10px; overflow: hidden; border: 1px solid #3a3000; }
-.p-card-header { font-size: 19px; font-weight: 900; padding: 10px 14px; background: linear-gradient(135deg, #2a2000, #3a2c00); border-bottom: 2px solid var(–orange); }
-.p-driver-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 14px; font-size: 13px; }
-.p-driver-row:nth-child(odd) { background: #1c1c1c; }
-.p-driver-row:nth-child(even) { background: #252525; }
-.p-car { font-weight: 900; color: var(–orange); min-width: 34px; display: inline-block; }
-.p-driver { font-weight: 700; color: var(–text); margin-left: 4px; }
-.p-odds { font-weight: 800; color: var(–orange2); background: rgba(240,184,64,0.12); padding: 2px 8px; border-radius: 4px; font-size: 12px; }
-
-/* ── MAIN LAYOUT ── */
-.main { display: grid; grid-template-columns: 1fr 340px; gap: 20px; padding: 20px 28px; max-width: 1400px; margin: 0 auto; }
-@media(max-width:900px){ .main { grid-template-columns: 1fr; } }
-
-/* ── STANDINGS ── */
-.standings-card { background: var(–card); border-radius: 10px; padding: 20px; border: 1px solid var(–border); }
-table { width: 100%; border-collapse: collapse; }
-thead th { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(–muted); padding: 6px 10px; text-align: left; border-bottom: 1px solid var(–border); }
-thead th:not(:first-child) { text-align: center; }
-tbody tr { border-bottom: 1px solid var(–border); transition: background .15s; }
-tbody tr:last-child { border-bottom: none; }
-tbody tr:hover { background: #252525; }
-td { padding: 10px; font-size: 17px; font-weight: 700; vertical-align: middle; }
-td:not(:first-child) { text-align: center; }
-.rank { font-size: 13px; color: var(–muted); font-weight: 700; width: 28px; }
-.pname { font-size: 18px; font-weight: 800; }
-.cars-cell { font-size: 12px; color: var(–muted); font-weight: 600; line-height: 1.4; }
-.car-highlight { color: var(–orange2); font-weight: 800; }
-.balance { font-size: 18px; font-weight: 900; }
-.pos { color: var(–green); } .neg { color: var(–red); }
-.wins-cell { font-size: 14px; color: var(–muted); font-weight: 700; }
-.wins-cell.has-win { color: var(–orange); font-weight: 800; }
-
-/* ── SIDEBAR ── */
-.sidebar { display: flex; flex-direction: column; gap: 18px; }
-.card { background: var(–card); border-radius: 10px; padding: 18px; border: 1px solid var(–border); }
-.pool-winner-row { background: #1a2d1a; border-radius: 6px; padding: 8px 12px; display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-.pwtag { font-size: 11px; color: var(–green); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
-.pwname { font-size: 18px; font-weight: 900; }
-.winner-banner { background: linear-gradient(135deg, #2a1f00, #3d2c00); border: 1px solid var(–orange); border-radius: 8px; padding: 12px 14px; margin-bottom: 12px; }
-.winner-banner .wlabel { font-size: 11px; color: var(–orange); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 4px; }
-.winner-banner .wname { font-size: 22px; font-weight: 900; }
-.winner-banner .wdetail { font-size: 13px; color: var(–muted); margin-top: 2px; }
-.result-row { display: flex; align-items: center; padding: 7px 0; border-bottom: 1px solid var(–border); font-size: 14px; }
-.result-row:last-child { border-bottom: none; }
-.result-pos { font-size: 20px; font-weight: 900; color: var(–orange); width: 30px; }
-.result-driver { font-weight: 700; flex: 1; }
-.result-car { font-size: 12px; color: var(–muted); font-weight: 600; margin-left: 6px; }
-.fact-row { display: flex; justify-content: space-between; align-items: baseline; padding: 6px 0; border-bottom: 1px solid var(–border); font-size: 13px; }
-.fact-row:last-child { border-bottom: none; }
-.fact-label { color: var(–muted); font-weight: 600; }
-.fact-val { font-weight: 800; color: var(–text); text-align: right; }
-.footnote { font-size: 11px; color: var(–muted); padding: 14px 28px 20px; font-weight: 600; border-top: 1px solid var(–border); margin-top: 10px; }
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Private NASCAR fan race pool standings — just for fun with friends. No real betting or gambling.">
+    <title>NASCAR Race Pool • Pennzoil 400 | Las Vegas</title>
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 20px; background: #f4f4f4; color: #111; line-height: 1.5; }
+        .container { max-width: 900px; margin: 0 auto; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); overflow: hidden; }
+        header { background: #1a1a1a; color: white; padding: 20px; text-align: center; }
+        h1 { margin: 0; font-size: 2.2em; }
+        .subtitle { font-size: 1.1em; opacity: 0.9; }
+        section { padding: 20px 30px; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #f8f8f8; }
+        .highlight { background: #fff3cd; font-weight: bold; }
+        .emoji { font-size: 1.4em; }
+        .disclaimer { font-size: 0.9em; background: #e8f5e8; padding: 15px; border-radius: 8px; margin: 20px 0; }
+        footer { text-align: center; padding: 15px; font-size: 0.85em; color: #666; background: #f8f8f8; }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>🏁 NASCAR Race Pool</h1>
+            <p class="subtitle">PENNZOIL 400 — LAS VEGAS MOTOR SPEEDWAY<br>
+            Sunday, March 15, 2026 • 4:00 PM ET • FS1</p>
+        </header>
 
-<!-- STAT FLIPPER -->
+        <section>
+            <h2>📋 Phoenix Results (Race 4)</h2>
+            <p><strong>🏆 Pool Winner:</strong> Pam (Christopher Bell #20) • +$90</p>
+            <p><strong>Race Winner:</strong> Ryan Blaney #12 (Team Penske Ford)</p>
+            
+            <ol>
+                <li>Ryan Blaney #12 Ford</li>
+                <li>Christopher Bell #20 Toyota</li>
+                <li>Joey Logano #22 Ford</li>
+                <li>Tyler Reddick #45 Toyota</li>
+                <li>Denny Hamlin #11 Toyota</li>
+            </ol>
+        </section>
 
-<div class="ticker-wrap">
-  <div class="ticker-pip"></div>
-  <div class="ticker-text" id="stat-text">Loading...</div>
-  <div class="ticker-counter" id="stat-counter">1 / 15</div>
-  <div class="ticker-pip"></div>
-</div>
+        <section>
+            <h2>📊 Pool Standings — After Phoenix (Race 4)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Participant</th>
+                        <th>Cars</th>
+                        <th>Wins</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Add your rows here when you update standings -->
+                    <tr><td colspan="5" style="text-align:center; color:#888;">Standings will be updated after each race</td></tr>
+                </tbody>
+            </table>
+            <p><strong>🏁 = Pool win</strong> (accumulates). Winner this week earns +$90. Everyone else: –$10.</p>
+        </section>
 
-<!-- TRACK BANNER -->
+        <section>
+            <h2>🎰 Las Vegas Odds Favorites</h2>
+            <p><em>Source: FanDuel / DraftKings sportsbook odds • updated 3/13/26</em></p>
+            <ul>
+                <li>Kyle Larson +500</li>
+                <li>Christopher Bell +600</li>
+                <li>William Byron +750</li>
+                <li>Denny Hamlin +850</li>
+                <li>Ryan Blaney +850</li>
+            </ul>
+        </section>
 
-<div class="track-banner">
-  <svg width="460" height="64" viewBox="0 0 460 64" xmlns="http://www.w3.org/2000/svg">
-    <rect x="0" y="0" width="6" height="64" fill="#c0392b"/>
-    <rect x="454" y="0" width="6" height="64" fill="#c0392b"/>
-    <!-- Bristol oval — steep banks represented -->
-    <ellipse cx="36" cy="32" rx="24" ry="28" fill="none" stroke="#c0392b" stroke-width="3"/>
-    <ellipse cx="36" cy="32" rx="15" ry="19" fill="none" stroke="#555" stroke-width="1.5"/>
-    <text x="74" y="26" font-family="Arial Black, Arial" font-weight="900" font-size="22" fill="#ffffff" letter-spacing="2">BRISTOL MOTOR</text>
-    <text x="74" y="52" font-family="Arial Black, Arial" font-weight="900" font-size="22" fill="#ffffff" letter-spacing="2">SPEEDWAY</text>
-  </svg>
-</div>
+        <section>
+            <h2>🏎️ Las Vegas Motor Speedway</h2>
+            <table>
+                <tr><th>Track Type</th><td>1.5-mile tri-oval</td></tr>
+                <tr><th>Banking (Turns)</th><td>20°</td></tr>
+                <tr><th>Race Length</th><td>267 laps • 400 miles</td></tr>
+                <tr><th>Surface</th><td>Asphalt</td></tr>
+                <tr><th>Capacity</th><td>~80,000</td></tr>
+                <tr><th>Last Spring Winner</th><td>Josh Berry (2025)</td></tr>
+                <tr><th>Last Fall Winner</th><td>Denny Hamlin (2025)</td></tr>
+            </table>
+        </section>
 
-<!-- HEADER -->
+        <section>
+            <h2>📋 Pool Rules</h2>
+            <ul>
+                <li>Race Win = +$90</li>
+                <li>All Others = –$10</li>
+                <li>10 Participants • 3 cars per person</li>
+                <li>Pool Win (🏁) accumulates across races</li>
+            </ul>
+            <p class="disclaimer">
+                <strong>👋 Friendly note:</strong> This is a <strong>private NASCAR fan pool for friends only</strong>. 
+                No real money betting or gambling is involved — just fun standings and bragging rights!
+            </p>
+        </section>
 
-<header>
-  <div>
-    <div class="race-title">Food City 500 <span>· Bristol</span></div>
-    <div class="race-subtitle">Race 8 of 2026 · Bristol Motor Speedway · Sunday, April 12, 2026</div>
-  </div>
-  <div class="header-right">
-    <div class="countdown-block">
-      <div class="cd-info">🟢 &nbsp;3:11 PM ET &nbsp;|&nbsp; 500 Laps</div>
-      <div class="cd-digits">
-        <div class="cd-unit"><div class="cd-num" id="cd-h">--</div><div class="cd-lbl">Hrs</div></div>
-        <div class="cd-sep">:</div>
-        <div class="cd-unit"><div class="cd-num" id="cd-m">--</div><div class="cd-lbl">Min</div></div>
-        <div class="cd-sep">:</div>
-        <div class="cd-unit"><div class="cd-num" id="cd-s">--</div><div class="cd-lbl">Sec</div></div>
-      </div>
+        <footer>
+            <p>Las Vegas Motor Speedway • Pennzoil 400 • Race 5 of 2026 NASCAR Cup Series<br>
+            Hosted on GitHub Pages • Updated by dukebball717</p>
+        </footer>
     </div>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/37/2015_Fox_Sports_1_logo.svg" alt="FS1" style="height:48px;display:block;">
-  </div>
-</header>
-
-<!-- PARTICIPANT CARDS -->
-
-<div class="participant-section">
-  <div id="participant-grid" class="participant-grid"></div>
-  <div style="font-size:11px;color:var(--muted);margin-top:10px;font-weight:600;">Source: FanDuel / DraftKings sportsbook odds · updated 4/11/26</div>
-</div>
-
-<!-- MAIN GRID -->
-
-<div class="main">
-  <div>
-    <div class="standings-card">
-      <div class="section-header">📊 Pool Standings — After Martinsville (Race 7)</div>
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th style="text-align:left">Participant</th>
-            <th>Cars</th>
-            <th>Wins</th>
-            <th>Balance</th>
-          </tr>
-        </thead>
-        <tbody id="standings-body"></tbody>
-      </table>
-      <div style="font-size:11px;color:var(--muted);margin-top:12px;font-weight:600;">
-        🏁 = Pool win. Winner earns <span style="color:var(--green);font-weight:800;">+$90</span>. All others: <span style="color:var(--red);font-weight:800;">–$10</span>.
-      </div>
-    </div>
-  </div>
-
-  <div class="sidebar">
-    <div class="card">
-      <div class="section-header">🏁 Martinsville Results (Race 7)</div>
-      <div class="pool-winner-row">
-        <span class="pwtag">🏆 Pool Winner</span>
-        <span class="pwname">🏁 Ron &nbsp;<span style="color:var(--muted);font-size:14px;font-weight:600;">Chase Elliott #9 · +$90</span></span>
-      </div>
-      <div class="winner-banner">
-        <div class="wlabel">Race Winner</div>
-        <div class="wname">Chase Elliott</div>
-        <div class="wdetail">#9 Hendrick Motorsports Chevrolet · Martinsville Speedway</div>
-      </div>
-      <div>
-        <div class="result-row"><span class="result-pos">1</span><span class="result-driver">Chase Elliott <span class="result-car">#9 Chevy</span></span></div>
-        <div class="result-row"><span class="result-pos">2</span><span class="result-driver">Denny Hamlin <span class="result-car">#11 Toyota</span></span></div>
-        <div class="result-row"><span class="result-pos">3</span><span class="result-driver">Joey Logano <span class="result-car">#22 Ford</span></span></div>
-        <div class="result-row"><span class="result-pos">4</span><span class="result-driver">Ty Gibbs <span class="result-car">#54 Toyota</span></span></div>
-        <div class="result-row"><span class="result-pos">5</span><span class="result-driver">William Byron <span class="result-car">#24 Chevy</span></span></div>
-      </div>
-    </div>
-
-```
-<div class="card">
-  <div class="section-header">🗺️ Bristol Motor Speedway</div>
-  <div class="fact-row"><span class="fact-label">Nickname</span><span class="fact-val">The Last Great Colosseum</span></div>
-  <div class="fact-row"><span class="fact-label">Track Length</span><span class="fact-val">0.533-mile oval</span></div>
-  <div class="fact-row"><span class="fact-label">Banking (Turns)</span><span class="fact-val">24–28°</span></div>
-  <div class="fact-row"><span class="fact-label">Surface</span><span class="fact-val">Concrete</span></div>
-  <div class="fact-row"><span class="fact-label">Race Length</span><span class="fact-val">500 laps · 266.5 miles</span></div>
-  <div class="fact-row"><span class="fact-label">Capacity</span><span class="fact-val">~162,000</span></div>
-  <div class="fact-row"><span class="fact-label">Last Spring Winner</span><span class="fact-val">Kyle Larson (2025)</span></div>
-</div>
-```
-
-  </div>
-</div>
-
-<div class="footnote">
-  * Drivers finishing outside the top 30 listed by last name only. Pot will go to Daytona Race if applicable. &nbsp;|&nbsp; Balances reflect standings after Race 7 (Martinsville). &nbsp;|&nbsp; Bristol Motor Speedway · Food City 500 · Race 8 of 2026 NASCAR Cup Series.
-</div>
-
-<script>
-// Martinsville: Ron wins (+90), everyone else -10
-// Pre-Martinsville: Scott +140, Zach +140, Pam +40, Ron +40, rest -60
-// Post-Martinsville: Scott +130, Zach +130, Ron +130, Pam +30, rest -70
-var STANDINGS = [
-  { name:"Scott",  flags:2, cars:["5","77","4"],   balance:130 },
-  { name:"Zach",   flags:2, cars:["9","1","21"],   balance:130 },
-  { name:"Ron",    flags:2, cars:["24","97","43"],  balance:130 },
-  { name:"Pam",    flags:1, cars:["20","17","7"],   balance:30  },
-  { name:"Brenda", flags:0, cars:["22","88","34"],  balance:-70 },
-  { name:"KO3",    flags:0, cars:["12","23","42"],  balance:-70 },
-  { name:"Nick",   flags:0, cars:["54","2","60"],   balance:-70 },
-  { name:"Nicole", flags:0, cars:["19","6","71"],   balance:-70 },
-  { name:"Daniel", flags:0, cars:["45","8","3"],    balance:-70 },
-  { name:"Ace",    flags:0, cars:["11","48","38"],  balance:-70 }
-];
-
-var MART_TOP5 = ["9","11","22","54","24"];
-
-var ODDS_BY_CAR = {
-  "5":  { driver:"Kyle Larson",           odds:"+400"   },
-  "11": { driver:"Denny Hamlin",          odds:"+500"   },
-  "12": { driver:"Ryan Blaney",           odds:"+600"   },
-  "20": { driver:"Christopher Bell",      odds:"+650"   },
-  "9":  { driver:"Chase Elliott",         odds:"+1300"  },
-  "24": { driver:"William Byron",         odds:"+1000"  },
-  "22": { driver:"Joey Logano",           odds:"+1900"  },
-  "19": { driver:"Chase Briscoe",         odds:"+1400"  },
-  "54": { driver:"Ty Gibbs",              odds:"+1600"  },
-  "45": { driver:"Tyler Reddick",         odds:"+2500"  },
-  "6":  { driver:"Brad Keselowski",       odds:"+2200"  },
-  "23": { driver:"Bubba Wallace",         odds:"+3000"  },
-  "77": { driver:"Carson Hocevar",        odds:"+2800"  },
-  "8":  { driver:"Kyle Busch",            odds:"+3500"  },
-  "1":  { driver:"Ross Chastain",         odds:"+4000"  },
-  "17": { driver:"Chris Buescher",        odds:"+4000"  },
-  "2":  { driver:"Austin Cindric",        odds:"+5000"  },
-  "97": { driver:"Shane van Gisbergen",   odds:"+6000"  },
-  "88": { driver:"Connor Zilisch",        odds:"+7500"  },
-  "48": { driver:"Justin Allgaier",       odds:"+10000" },
-  "43": { driver:"Erik Jones",            odds:"+10000" },
-  "60": { driver:"Ryan Preece",           odds:"+10000" },
-  "21": { driver:"Josh Berry",            odds:"+10000" },
-  "7":  { driver:"Daniel Suarez",         odds:"+10000" },
-  "42": { driver:"John Hunter Nemechek",  odds:"+10000" },
-  "71": { driver:"Michael McDowell",      odds:"+15000" },
-  "34": { driver:"Todd Gilliland",        odds:"+20000" },
-  "38": { driver:"Zane Smith",            odds:"+20000" },
-  "4":  { driver:"Noah Gragson",          odds:"+20000" },
-  "3":  { driver:"Austin Dillon",         odds:"+20000" }
-};
-
-STANDINGS.sort(function(a, b) {
-  if (b.balance !== a.balance) return b.balance - a.balance;
-  return a.name.localeCompare(b.name);
-});
-
-var tbody = document.getElementById('standings-body');
-STANDINGS.forEach(function(p, i) {
-  var flagStr = '';
-  for (var f = 0; f < p.flags; f++) flagStr += '🏁';
-  var balClass = p.balance >= 0 ? 'pos' : 'neg';
-  var balStr = (p.balance >= 0 ? '+' : '') + '$' + p.balance;
-  var carsHtml = p.cars.map(function(c) {
-    var hot = MART_TOP5.indexOf(c) >= 0;
-    return hot ? '<span class="car-highlight">#' + c + '</span>' : '#' + c;
-  }).join(' · ');
-  var winsHtml = p.flags > 0 ? '<span class="wins-cell has-win">' + flagStr + '</span>' : '<span class="wins-cell">—</span>';
-  tbody.innerHTML += '<tr>'
-    + '<td class="rank">' + (i + 1) + '</td>'
-    + '<td><span class="pname">' + p.name + '</span></td>'
-    + '<td class="cars-cell">' + carsHtml + '</td>'
-    + '<td>' + winsHtml + '</td>'
-    + '<td class="balance ' + balClass + '">' + balStr + '</td>'
-    + '</tr>';
-});
-
-var pgrid = document.getElementById('participant-grid');
-STANDINGS.forEach(function(p) {
-  var flagStr = '';
-  for (var f = 0; f < p.flags; f++) flagStr += '🏁';
-  var driversHtml = p.cars.map(function(c) {
-    var info = ODDS_BY_CAR[c];
-    var driverName = info ? info.driver : 'TBD';
-    var oddsVal = info ? info.odds : '—';
-    var hot = MART_TOP5.indexOf(c) >= 0;
-    var carColor = hot ? 'color:var(--orange2);font-weight:900;' : 'color:var(--orange);font-weight:900;';
-    return '<div class="p-driver-row">'
-      + '<span><span class="p-car" style="' + carColor + '">#' + c + '</span>'
-      + '<span class="p-driver">' + driverName + '</span></span>'
-      + '<span class="p-odds">' + oddsVal + '</span>'
-      + '</div>';
-  }).join('');
-  pgrid.innerHTML += '<div class="p-card">'
-    + '<div class="p-card-header">' + (flagStr ? flagStr + ' ' : '') + p.name + '</div>'
-    + driversHtml
-    + '</div>';
-});
-
-// Stat flipper
-var STATS = [
-  "📊 SEASON STANDINGS · Scott +$130 · Zach +$130 · Ron +$130 · Pam +$30 · Brenda/KO3/Nick/Nicole/Daniel/Ace each -$70",
-  "🏆 WINS THIS SEASON (8 races) · Ron: Daytona + Martinsville · Scott: Las Vegas · Zach: Darlington · Pam: Phoenix — 3-way tie at the top!",
-  "🔥 Scott drew Kyle Larson #5 at +400 — the outright favorite and defending Food City 500 winner. History on his side.",
-  "💰 POOL POT MATH · 10 players × 7 races × $10 = $700 paid in · $450 paid out · $250 on the line the rest of the season",
-  "🏁 THREE-WAY TIE · Scott, Zach, and Ron are all locked at +$130 with 2 wins each through 7 races. This is anybody's race.",
-  "😤 Ace drew Denny Hamlin #11 at +500. The short-track king. After leading 292 laps at Martinsville and coming up short... he's hungry.",
-  "📊 BRISTOL HISTORY · Larson, Hamlin & Bell have combined to win 7 of the last 10 Bristol spring races on concrete. Scott, Ace, and Pam each hold one of them.",
-  "🎰 Pam has Christopher Bell #20 at +650 — a previous Bristol winner with 6 top-10s in 8 starts. Pam stays dangerous.",
-  "📉 COLD STREAK · Brenda, KO3, Nick, Nicole, Daniel & Ace are 0-for-7. All six are at -$70. Bristol is the track someone breaks through.",
-  "🏎️ BRISTOL FAST FACT · The 26-28° banking is among the steepest on the circuit. Cars stack up 3 wide through the turns and carnage is practically guaranteed.",
-  "😬 Daniel drew Tyler Reddick #45 at +2500. Points leader but 0 top-5s in his last 7 Bristol starts. Great season, wrong track for Zach's buddy.",
-  "💸 IF THE SEASON ENDED TODAY · Scott/Zach/Ron split 1st at +$130 · Pam takes 4th at +$30 · Six people each -$70. Drama is nowhere near over.",
-  "🏆 MOST CONSISTENT DRIVER IN THE POOL · #11 Denny Hamlin — top-3 in 5 of 7 races this season. Ace holds the golden ticket today.",
-  "🎰 Nicole drew Chase Briscoe #19 at +1400 — a consistent Bristol performer who could easily crack the top 5. Nicole is sneaky good.",
-  "⚡ BRISTOL FAST FACT · 500 laps on a half-mile = 266 miles. Sounds short. The average speed is ~130 mph and the racing is absolutely relentless."
-];
-var statIndex = 0;
-function showStat() {
-  var el = document.getElementById('stat-text');
-  var counter = document.getElementById('stat-counter');
-  el.style.opacity = '0';
-  setTimeout(function() {
-    el.textContent = STATS[statIndex];
-    counter.textContent = (statIndex + 1) + ' / ' + STATS.length;
-    el.style.opacity = '1';
-    statIndex = (statIndex + 1) % STATS.length;
-  }, 300);
-}
-showStat();
-setInterval(showStat, 5000);
-
-// Countdown: Sunday April 12 2026 3:11 PM ET = 19:11 UTC
-var greenFlag = new Date('2026-04-12T19:11:00Z');
-function updateCountdown() {
-  var now = new Date();
-  var diff = greenFlag - now;
-  if (diff <= 0) {
-    document.getElementById('cd-h').textContent = '00';
-    document.getElementById('cd-m').textContent = '00';
-    document.getElementById('cd-s').textContent = '00';
-    return;
-  }
-  var h = Math.floor(diff / 3600000);
-  var m = Math.floor((diff % 3600000) / 60000);
-  var s = Math.floor((diff % 60000) / 1000);
-  document.getElementById('cd-h').textContent = String(h).padStart(2, '0');
-  document.getElementById('cd-m').textContent = String(m).padStart(2, '0');
-  document.getElementById('cd-s').textContent = String(s).padStart(2, '0');
-}
-updateCountdown();
-setInterval(updateCountdown, 1000);
-</script>
-
 </body>
 </html>
