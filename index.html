@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NASCAR Race Pool – Food City 500 | Bristol</title>
+<title>NASCAR Race Pool – AdventHealth 400 | Kansas</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -12,18 +12,15 @@
     --orange: #e8a020; --orange2: #f0b840;
     --text: #f0f0f0; --muted: #888; --green: #4caf50; --red: #e05555;
   }
-  body { background: var(--bg); color: var(--text); font-family: 'Arial Narrow', 'Impact', 'Franklin Gothic Medium', Arial, sans-serif; min-height: 100vh; }
+  body { background: var(--bg); color: var(--text); font-family: 'Arial Narrow', 'Franklin Gothic Medium', Arial, sans-serif; min-height: 100vh; }
 
-/* ── STAT FLIPPER ── */
 .ticker-wrap { background: var(–orange); padding: 7px 28px; display: flex; align-items: center; gap: 14px; min-height: 38px; }
 .ticker-pip { width: 8px; height: 8px; background: #fff; border-radius: 50%; opacity: 0.7; flex-shrink: 0; }
 .ticker-text { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: .4px; text-shadow: 0 1px 3px rgba(0,0,0,0.3); flex: 1; text-align: center; transition: opacity 0.3s; }
 .ticker-counter { font-size: 11px; font-weight: 800; color: rgba(255,255,255,0.6); flex-shrink: 0; letter-spacing: 1px; }
 
-/* ── TRACK BANNER ── */
-.track-banner { background: #1a0a00; display: flex; justify-content: center; align-items: center; padding: 10px 28px; border-bottom: 2px solid #c0392b; }
+.track-banner { background: #001a40; display: flex; justify-content: center; align-items: center; padding: 10px 28px; border-bottom: 2px solid #c8a800; }
 
-/* ── HEADER ── */
 header { display: flex; align-items: center; justify-content: space-between; padding: 16px 28px 14px; border-bottom: 2px solid var(–orange); flex-wrap: wrap; gap: 12px; }
 .race-title { font-size: 34px; font-weight: 900; line-height: 1.05; text-transform: uppercase; letter-spacing: 1px; }
 .race-title span { color: var(–orange); }
@@ -37,10 +34,8 @@ header { display: flex; align-items: center; justify-content: space-between; pad
 .cd-lbl { font-size: 10px; color: var(–muted); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
 .cd-sep { font-size: 24px; font-weight: 900; color: var(–orange); margin-bottom: 12px; }
 
-/* ── SECTION HEADERS ── */
 .section-header { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(–orange); border-bottom: 1px solid var(–border); padding-bottom: 8px; margin-bottom: 14px; }
 
-/* ── PARTICIPANT CARDS ── */
 .participant-section { padding: 16px 28px 14px; border-bottom: 1px solid var(–border); }
 .participant-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .p-card { border-radius: 10px; overflow: hidden; border: 1px solid #3a3000; }
@@ -50,13 +45,11 @@ header { display: flex; align-items: center; justify-content: space-between; pad
 .p-driver-row:nth-child(even) { background: #252525; }
 .p-car { font-weight: 900; color: var(–orange); min-width: 34px; display: inline-block; }
 .p-driver { font-weight: 700; color: var(–text); margin-left: 4px; }
-.p-odds { font-weight: 800; color: var(–orange2); background: rgba(240,184,64,0.12); padding: 2px 8px; border-radius: 4px; font-size: 12px; }
+.p-rating { font-weight: 800; color: var(–orange2); font-size: 13px; }
 
-/* ── MAIN LAYOUT ── */
 .main { display: grid; grid-template-columns: 1fr 340px; gap: 20px; padding: 20px 28px; max-width: 1400px; margin: 0 auto; }
 @media(max-width:900px){ .main { grid-template-columns: 1fr; } }
 
-/* ── STANDINGS ── */
 .standings-card { background: var(–card); border-radius: 10px; padding: 20px; border: 1px solid var(–border); }
 table { width: 100%; border-collapse: collapse; }
 thead th { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(–muted); padding: 6px 10px; text-align: left; border-bottom: 1px solid var(–border); }
@@ -75,7 +68,6 @@ td:not(:first-child) { text-align: center; }
 .wins-cell { font-size: 14px; color: var(–muted); font-weight: 700; }
 .wins-cell.has-win { color: var(–orange); font-weight: 800; }
 
-/* ── SIDEBAR ── */
 .sidebar { display: flex; flex-direction: column; gap: 18px; }
 .card { background: var(–card); border-radius: 10px; padding: 18px; border: 1px solid var(–border); }
 .pool-winner-row { background: #1a2d1a; border-radius: 6px; padding: 8px 12px; display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
@@ -113,13 +105,12 @@ td:not(:first-child) { text-align: center; }
 
 <div class="track-banner">
   <svg width="460" height="64" viewBox="0 0 460 64" xmlns="http://www.w3.org/2000/svg">
-    <rect x="0" y="0" width="6" height="64" fill="#c0392b"/>
-    <rect x="454" y="0" width="6" height="64" fill="#c0392b"/>
-    <!-- Bristol oval — steep banks represented -->
-    <ellipse cx="36" cy="32" rx="24" ry="28" fill="none" stroke="#c0392b" stroke-width="3"/>
-    <ellipse cx="36" cy="32" rx="15" ry="19" fill="none" stroke="#555" stroke-width="1.5"/>
-    <text x="74" y="26" font-family="Arial Black, Arial" font-weight="900" font-size="22" fill="#ffffff" letter-spacing="2">BRISTOL MOTOR</text>
-    <text x="74" y="52" font-family="Arial Black, Arial" font-weight="900" font-size="22" fill="#ffffff" letter-spacing="2">SPEEDWAY</text>
+    <rect x="0" y="0" width="6" height="64" fill="#c8a800"/>
+    <rect x="454" y="0" width="6" height="64" fill="#c8a800"/>
+    <ellipse cx="36" cy="32" rx="24" ry="26" fill="none" stroke="#c8a800" stroke-width="3"/>
+    <ellipse cx="36" cy="32" rx="15" ry="17" fill="none" stroke="#555" stroke-width="1.5"/>
+    <text x="74" y="24" font-family="Arial Black, Arial" font-weight="900" font-size="20" fill="#ffffff" letter-spacing="2">KANSAS SPEEDWAY</text>
+    <text x="74" y="50" font-family="Arial Black, Arial" font-weight="900" font-size="16" fill="#c8a800" letter-spacing="3">ADVENTHEALTH 400</text>
   </svg>
 </div>
 
@@ -127,12 +118,12 @@ td:not(:first-child) { text-align: center; }
 
 <header>
   <div>
-    <div class="race-title">Food City 500 <span>· Bristol</span></div>
-    <div class="race-subtitle">Race 8 of 2026 · Bristol Motor Speedway · Sunday, April 12, 2026</div>
+    <div class="race-title">AdventHealth 400 <span>· Kansas</span></div>
+    <div class="race-subtitle">Race 9 of 2026 · Kansas Speedway · Sunday, April 19, 2026</div>
   </div>
   <div class="header-right">
     <div class="countdown-block">
-      <div class="cd-info">🟢 &nbsp;3:11 PM ET &nbsp;|&nbsp; 500 Laps</div>
+      <div class="cd-info">🟢 &nbsp;2:19 PM ET &nbsp;|&nbsp; 267 Laps</div>
       <div class="cd-digits">
         <div class="cd-unit"><div class="cd-num" id="cd-h">--</div><div class="cd-lbl">Hrs</div></div>
         <div class="cd-sep">:</div>
@@ -143,8 +134,8 @@ td:not(:first-child) { text-align: center; }
     </div>
     <svg width="88" height="48" viewBox="0 0 88 48" xmlns="http://www.w3.org/2000/svg">
       <rect width="88" height="48" fill="#003087" rx="4"/>
-      <text x="44" y="17" font-family="Arial Black,Arial" font-weight="900" font-size="10" fill="#fff" text-anchor="middle" letter-spacing="1">FOX SPORTS</text>
-      <text x="44" y="42" font-family="Arial Black,Arial" font-weight="900" font-size="28" fill="#fff" text-anchor="middle">1</text>
+      <text x="44" y="15" font-family="Arial Black,Arial" font-weight="900" font-size="8" fill="#fff" text-anchor="middle" letter-spacing="1">FOX SPORTS</text>
+      <text x="44" y="41" font-family="Arial Black,Arial" font-weight="900" font-size="30" fill="#fff" text-anchor="middle">FOX</text>
     </svg>
   </div>
 </header>
@@ -153,7 +144,7 @@ td:not(:first-child) { text-align: center; }
 
 <div class="participant-section">
   <div id="participant-grid" class="participant-grid"></div>
-  <div style="font-size:11px;color:var(--muted);margin-top:10px;font-weight:600;">Driver ratings based on track history · updated 4/11/26</div>
+  <div style="font-size:11px;color:var(--muted);margin-top:10px;font-weight:600;">Driver ratings based on track history · updated 4/18/26</div>
 </div>
 
 <!-- MAIN GRID -->
@@ -161,7 +152,7 @@ td:not(:first-child) { text-align: center; }
 <div class="main">
   <div>
     <div class="standings-card">
-      <div class="section-header">📊 Pool Standings — After Martinsville (Race 7)</div>
+      <div class="section-header">📊 Pool Standings — After Bristol (Race 8)</div>
       <table>
         <thead>
           <tr>
@@ -182,35 +173,35 @@ td:not(:first-child) { text-align: center; }
 
   <div class="sidebar">
     <div class="card">
-      <div class="section-header">🏁 Martinsville Results (Race 7)</div>
+      <div class="section-header">🏁 Bristol Results (Race 8)</div>
       <div class="pool-winner-row">
         <span class="pwtag">🏆 Pool Winner</span>
-        <span class="pwname">🏁 Ron &nbsp;<span style="color:var(--muted);font-size:14px;font-weight:600;">Chase Elliott #9 · +$90</span></span>
+        <span class="pwname">🏁 Nick &nbsp;<span style="color:var(--muted);font-size:14px;font-weight:600;">Ty Gibbs #54 · +$90</span></span>
       </div>
       <div class="winner-banner">
         <div class="wlabel">Race Winner</div>
-        <div class="wname">Chase Elliott</div>
-        <div class="wdetail">#9 Hendrick Motorsports Chevrolet · Martinsville Speedway</div>
+        <div class="wname">Ty Gibbs</div>
+        <div class="wdetail">#54 Joe Gibbs Racing Toyota · Bristol Motor Speedway</div>
       </div>
       <div>
-        <div class="result-row"><span class="result-pos">1</span><span class="result-driver">Chase Elliott <span class="result-car">#9 Chevy</span></span></div>
-        <div class="result-row"><span class="result-pos">2</span><span class="result-driver">Denny Hamlin <span class="result-car">#11 Toyota</span></span></div>
-        <div class="result-row"><span class="result-pos">3</span><span class="result-driver">Joey Logano <span class="result-car">#22 Ford</span></span></div>
-        <div class="result-row"><span class="result-pos">4</span><span class="result-driver">Ty Gibbs <span class="result-car">#54 Toyota</span></span></div>
-        <div class="result-row"><span class="result-pos">5</span><span class="result-driver">William Byron <span class="result-car">#24 Chevy</span></span></div>
+        <div class="result-row"><span class="result-pos">1</span><span class="result-driver">Ty Gibbs <span class="result-car">#54 Toyota</span></span></div>
+        <div class="result-row"><span class="result-pos">2</span><span class="result-driver">Ryan Blaney <span class="result-car">#12 Ford</span></span></div>
+        <div class="result-row"><span class="result-pos">3</span><span class="result-driver">Kyle Larson <span class="result-car">#5 Chevy</span></span></div>
+        <div class="result-row"><span class="result-pos">4</span><span class="result-driver">Tyler Reddick <span class="result-car">#45 Toyota</span></span></div>
+        <div class="result-row"><span class="result-pos">5</span><span class="result-driver">Chase Briscoe <span class="result-car">#19 Toyota</span></span></div>
       </div>
     </div>
 
 ```
 <div class="card">
-  <div class="section-header">🗺️ Bristol Motor Speedway</div>
-  <div class="fact-row"><span class="fact-label">Nickname</span><span class="fact-val">The Last Great Colosseum</span></div>
-  <div class="fact-row"><span class="fact-label">Track Length</span><span class="fact-val">0.533-mile oval</span></div>
-  <div class="fact-row"><span class="fact-label">Banking (Turns)</span><span class="fact-val">24–28°</span></div>
-  <div class="fact-row"><span class="fact-label">Surface</span><span class="fact-val">Concrete</span></div>
-  <div class="fact-row"><span class="fact-label">Race Length</span><span class="fact-val">500 laps · 266.5 miles</span></div>
-  <div class="fact-row"><span class="fact-label">Capacity</span><span class="fact-val">~162,000</span></div>
+  <div class="section-header">🗺️ Kansas Speedway</div>
+  <div class="fact-row"><span class="fact-label">Track Length</span><span class="fact-val">1.5-mile tri-oval</span></div>
+  <div class="fact-row"><span class="fact-label">Banking (Turns)</span><span class="fact-val">17–20°</span></div>
+  <div class="fact-row"><span class="fact-label">Surface</span><span class="fact-val">Asphalt</span></div>
+  <div class="fact-row"><span class="fact-label">Race Length</span><span class="fact-val">267 laps · 400 miles</span></div>
+  <div class="fact-row"><span class="fact-label">Opened</span><span class="fact-val">2001</span></div>
   <div class="fact-row"><span class="fact-label">Last Spring Winner</span><span class="fact-val">Kyle Larson (2025)</span></div>
+  <div class="fact-row"><span class="fact-label">Last Fall Winner</span><span class="fact-val">Chase Elliott (2025)</span></div>
 </div>
 ```
 
@@ -218,59 +209,60 @@ td:not(:first-child) { text-align: center; }
 </div>
 
 <div class="footnote">
-  * Drivers finishing outside the top 30 listed by last name only. Pot will go to Daytona Race if applicable. &nbsp;|&nbsp; Balances reflect standings after Race 7 (Martinsville). &nbsp;|&nbsp; Bristol Motor Speedway · Food City 500 · Race 8 of 2026 NASCAR Cup Series.
+  * Drivers finishing outside the top 30 listed by last name only. Pot will go to Daytona Race if applicable. &nbsp;|&nbsp; Balances reflect standings after Race 8 (Bristol). &nbsp;|&nbsp; Kansas Speedway · AdventHealth 400 · Race 9 of 2026 NASCAR Cup Series.
 </div>
 
 <script>
-// Martinsville: Ron wins (+90), everyone else -10
-// Pre-Martinsville: Scott +140, Zach +140, Pam +40, Ron +40, rest -60
-// Post-Martinsville: Scott +130, Zach +130, Ron +130, Pam +30, rest -70
+// Post-Bristol standings:
+// Bristol winner: Ty Gibbs #54 = Nick's car → Nick +90
+// Pre-Bristol: Scott +130, Zach +130, Ron +130, Pam +30, rest -70
+// Post-Bristol: Scott/Zach/Ron +120, Pam +20, Nick +20, rest -80
 var STANDINGS = [
-  { name:"Scott",  flags:2, cars:["5","77","4"],   balance:130 },
-  { name:"Zach",   flags:2, cars:["9","1","21"],   balance:130 },
-  { name:"Ron",    flags:2, cars:["24","97","43"],  balance:130 },
-  { name:"Pam",    flags:1, cars:["20","17","7"],   balance:30  },
-  { name:"Brenda", flags:0, cars:["22","88","34"],  balance:-70 },
-  { name:"KO3",    flags:0, cars:["12","23","42"],  balance:-70 },
-  { name:"Nick",   flags:0, cars:["54","2","60"],   balance:-70 },
-  { name:"Nicole", flags:0, cars:["19","6","71"],   balance:-70 },
-  { name:"Daniel", flags:0, cars:["45","8","3"],    balance:-70 },
-  { name:"Ace",    flags:0, cars:["11","48","38"],  balance:-70 }
+  { name:"Scott",  flags:2, cars:["20","8","43"],   balance:120 },
+  { name:"Zach",   flags:2, cars:["19","48","60"],  balance:120 },
+  { name:"Ron",    flags:2, cars:["5","77","42"],   balance:120 },
+  { name:"Nick",   flags:1, cars:["12","1","21"],   balance:20  },
+  { name:"Pam",    flags:1, cars:["11","22","71"],  balance:20  },
+  { name:"Brenda", flags:0, cars:["24","2","3"],    balance:-80 },
+  { name:"KO3",    flags:0, cars:["9","88","34"],   balance:-80 },
+  { name:"Nicole", flags:0, cars:["45","6","7"],    balance:-80 },
+  { name:"Daniel", flags:0, cars:["54","17","38"],  balance:-80 },
+  { name:"Ace",    flags:0, cars:["23","97","4"],   balance:-80 }
 ];
 
-var MART_TOP5 = ["9","11","22","54","24"];
+var BRISTOL_TOP5 = ["54","12","5","45","19"];
 
 var RATINGS_BY_CAR = {
-  "5":  { driver:"Kyle Larson",           rating:"★★★★★" },
-  "11": { driver:"Denny Hamlin",          rating:"★★★★★" },
-  "12": { driver:"Ryan Blaney",           rating:"★★★★½" },
-  "20": { driver:"Christopher Bell",      rating:"★★★★½" },
-  "9":  { driver:"Chase Elliott",         rating:"★★★★"  },
-  "24": { driver:"William Byron",         rating:"★★★★"  },
-  "22": { driver:"Joey Logano",           rating:"★★★½"  },
-  "19": { driver:"Chase Briscoe",         rating:"★★★★"  },
-  "54": { driver:"Ty Gibbs",              rating:"★★★★"  },
-  "45": { driver:"Tyler Reddick",         rating:"★★★"   },
-  "6":  { driver:"Brad Keselowski",       rating:"★★★"   },
-  "23": { driver:"Bubba Wallace",         rating:"★★★"   },
-  "77": { driver:"Carson Hocevar",        rating:"★★★"   },
-  "8":  { driver:"Kyle Busch",            rating:"★★½"   },
-  "1":  { driver:"Ross Chastain",         rating:"★★½"   },
-  "17": { driver:"Chris Buescher",        rating:"★★½"   },
-  "2":  { driver:"Austin Cindric",        rating:"★★"    },
-  "97": { driver:"Shane van Gisbergen",   rating:"★★"    },
-  "88": { driver:"Connor Zilisch",        rating:"★★"    },
-  "48": { driver:"Justin Allgaier",       rating:"★½"    },
-  "43": { driver:"Erik Jones",            rating:"★½"    },
-  "60": { driver:"Ryan Preece",           rating:"★½"    },
-  "21": { driver:"Josh Berry",            rating:"★½"    },
-  "7":  { driver:"Daniel Suarez",         rating:"★½"    },
-  "42": { driver:"John Hunter Nemechek",  rating:"★½"    },
-  "71": { driver:"Michael McDowell",      rating:"★"     },
-  "34": { driver:"Todd Gilliland",        rating:"★"     },
-  "38": { driver:"Zane Smith",            rating:"★"     },
-  "4":  { driver:"Noah Gragson",          rating:"★"     },
-  "3":  { driver:"Austin Dillon",         rating:"★"     }
+  "11": { driver:"Denny Hamlin",           rating:"★★★★★" },
+  "20": { driver:"Christopher Bell",       rating:"★★★★★" },
+  "5":  { driver:"Kyle Larson",            rating:"★★★★★" },
+  "24": { driver:"William Byron",          rating:"★★★★½" },
+  "12": { driver:"Ryan Blaney",            rating:"★★★★½" },
+  "9":  { driver:"Chase Elliott",          rating:"★★★★"  },
+  "19": { driver:"Chase Briscoe",          rating:"★★★★"  },
+  "45": { driver:"Tyler Reddick",          rating:"★★★½"  },
+  "54": { driver:"Ty Gibbs",               rating:"★★★½"  },
+  "23": { driver:"Bubba Wallace",          rating:"★★★"   },
+  "1":  { driver:"Ross Chastain",          rating:"★★★"   },
+  "17": { driver:"Chris Buescher",         rating:"★★★"   },
+  "77": { driver:"Carson Hocevar",         rating:"★★½"   },
+  "6":  { driver:"Brad Keselowski",        rating:"★★½"   },
+  "22": { driver:"Joey Logano",            rating:"★★½"   },
+  "8":  { driver:"Kyle Busch",             rating:"★★"    },
+  "2":  { driver:"Austin Cindric",         rating:"★★"    },
+  "88": { driver:"Connor Zilisch",         rating:"★★"    },
+  "97": { driver:"Shane van Gisbergen",    rating:"★½"    },
+  "48": { driver:"Alex Bowman",            rating:"★½"    },
+  "60": { driver:"Ryan Preece",            rating:"★½"    },
+  "43": { driver:"Erik Jones",             rating:"★½"    },
+  "21": { driver:"Josh Berry",             rating:"★½"    },
+  "7":  { driver:"Daniel Suarez",          rating:"★½"    },
+  "42": { driver:"John Hunter Nemechek",   rating:"★"     },
+  "34": { driver:"Todd Gilliland",         rating:"★"     },
+  "38": { driver:"Zane Smith",             rating:"★"     },
+  "4":  { driver:"Noah Gragson",           rating:"★"     },
+  "71": { driver:"Michael McDowell",       rating:"★"     },
+  "3":  { driver:"Austin Dillon",          rating:"★"     }
 };
 
 STANDINGS.sort(function(a, b) {
@@ -285,7 +277,7 @@ STANDINGS.forEach(function(p, i) {
   var balClass = p.balance >= 0 ? 'pos' : 'neg';
   var balStr = (p.balance >= 0 ? '+' : '') + '$' + p.balance;
   var carsHtml = p.cars.map(function(c) {
-    var hot = MART_TOP5.indexOf(c) >= 0;
+    var hot = BRISTOL_TOP5.indexOf(c) >= 0;
     return hot ? '<span class="car-highlight">#' + c + '</span>' : '#' + c;
   }).join(' · ');
   var winsHtml = p.flags > 0 ? '<span class="wins-cell has-win">' + flagStr + '</span>' : '<span class="wins-cell">—</span>';
@@ -305,13 +297,13 @@ STANDINGS.forEach(function(p) {
   var driversHtml = p.cars.map(function(c) {
     var info = RATINGS_BY_CAR[c];
     var driverName = info ? info.driver : 'TBD';
-    var ratingVal = info ? info.rating : '—';
-    var hot = MART_TOP5.indexOf(c) >= 0;
+    var rating = info ? info.rating : '—';
+    var hot = BRISTOL_TOP5.indexOf(c) >= 0;
     var carColor = hot ? 'color:var(--orange2);font-weight:900;' : 'color:var(--orange);font-weight:900;';
     return '<div class="p-driver-row">'
       + '<span><span class="p-car" style="' + carColor + '">#' + c + '</span>'
       + '<span class="p-driver">' + driverName + '</span></span>'
-      + '<span class="p-odds">' + ratingVal + '</span>'
+      + '<span class="p-rating">' + rating + '</span>'
       + '</div>';
   }).join('');
   pgrid.innerHTML += '<div class="p-card">'
@@ -320,24 +312,24 @@ STANDINGS.forEach(function(p) {
     + '</div>';
 });
 
-// Stat flipper
 var STATS = [
-  "📊 SEASON STANDINGS · Scott +$130 · Zach +$130 · Ron +$130 · Pam +$30 · Brenda/KO3/Nick/Nicole/Daniel/Ace each -$70",
-  "🏆 WINS THIS SEASON · Ron: Daytona + Martinsville · Scott: Las Vegas · Zach: Darlington · Pam: Phoenix — 3-way tie at the top!",
-  "🔥 Scott drew Kyle Larson #5 — defending Food City 500 winner and the top-rated driver at Bristol. History on his side.",
-  "💰 POOL MATH · 10 players × 7 races = $700 in · $450 out · $250 still on the line for the rest of the season",
-  "🏁 THREE-WAY TIE · Scott, Zach, and Ron are all locked at +$130 with 2 wins each through 7 races. This is anybody's race.",
-  "😤 Ace drew Denny Hamlin #11 — the short-track king. After leading 292 laps at Martinsville and coming up short... he's hungry.",
-  "📊 BRISTOL HISTORY · Larson, Hamlin & Bell have combined to win 7 of the last 10 Bristol spring races. Scott, Ace & Pam each hold one of them today.",
-  "⭐ Pam has Christopher Bell #20 — a previous Bristol winner with 6 top-10s in 8 starts here. Pam stays dangerous.",
-  "📉 COLD STREAK · Brenda, KO3, Nick, Nicole, Daniel & Ace are 0-for-7. All six are at -$70. Bristol is where someone breaks through.",
-  "🏎️ BRISTOL FAST FACT · The 26-28° banking is among the steepest on the circuit. Cars stack up 3 wide through the turns and carnage is practically guaranteed.",
-  "😬 Daniel drew Tyler Reddick #45 — points leader all season but 0 top-5s in his last 7 Bristol starts. Wrong track for Zach's rival.",
-  "💸 IF THE SEASON ENDED TODAY · Scott/Zach/Ron split the lead at +$130 · Pam takes 4th at +$30 · Six people each -$70. Season is far from over.",
-  "🏆 MOST CONSISTENT DRIVER IN THE POOL · #11 Denny Hamlin — top-3 in 5 of 7 races this season. Ace holds the golden ticket today.",
-  "⭐ Nicole drew Chase Briscoe #19 — a consistent Bristol performer who could easily crack the top 5. Nicole is sneaky good.",
-  "⚡ BRISTOL FAST FACT · 500 laps on a half-mile = 266 miles. Sounds short. The average speed is ~130 mph and the racing is absolutely relentless."
+  "📊 STANDINGS · Scott +$120 · Zach +$120 · Ron +$120 · Nick +$20 · Pam +$20 · Brenda/KO3/Nicole/Daniel/Ace each -$80",
+  "🏆 WINS THIS SEASON · Ron: Daytona + Martinsville · Scott: Las Vegas · Zach: Darlington · Pam: Phoenix · Nick: Bristol — 5 different winners in 8 races!",
+  "🏁 LOGJAM AT THE TOP · Scott, Zach & Ron are tied at +$120 with 2 wins each. The gap to 4th place is $100. Three-way race for first.",
+  "🔥 Ron drew Kyle Larson #5 — defending Kansas spring winner, 5 wins at this track. Home away from home for the No. 5.",
+  "🌾 KANSAS FAST FACT · Kansas Speedway is nicknamed The Great Plains Oval and sits just outside Kansas City. Has hosted NASCAR since 2001.",
+  "⭐ Scott drew Christopher Bell #20 — Bell's average running position at Kansas is the best of any active driver at 5.9. Dark horse today.",
+  "📊 SEASON RECAP · 8 races, 5 different winners, no one with more than 2 wins except Tyler Reddick with 4. This pool is anyone's game.",
+  "🌾 KANSAS FAST FACT · The track was repaved in 2012 and now allows 3-wide racing. Passing is possible everywhere — unlike Bristol last week.",
+  "😤 Daniel drew Ty Gibbs #54 again. Fresh off his first career win at Bristol. Good time to hold the hot hand.",
+  "🏆 BEST SEASON PACE · At this rate Scott, Zach & Ron are all on track to finish at +$300 or more. The field needs wins — fast.",
+  "🌾 KANSAS FAST FACT · Denny Hamlin leads all active drivers with 4 career Kansas wins. Pam holds #11 today. The numbers are in her favor.",
+  "⭐ Nicole drew Tyler Reddick #45 — points leader with 4 wins this season. He finished 4th at Bristol and is focused on the championship.",
+  "📉 DROUGHT WATCH · Brenda, KO3, Nicole, Daniel & Ace are still 0-for-8. One of them has to break through eventually. Today could be the day.",
+  "🏎️ Zach drew Chase Briscoe #19 — qualified on pole at Kansas in 2025 and finished 4th. Zach has a quiet contender today.",
+  "🏁 MOMENTUM CHECK · Kansas and Las Vegas are considered the two most similar tracks on the schedule. Hamlin won Las Vegas. Pam is smiling."
 ];
+
 var statIndex = 0;
 function showStat() {
   var el = document.getElementById('stat-text');
@@ -353,8 +345,8 @@ function showStat() {
 showStat();
 setInterval(showStat, 5000);
 
-// Countdown: Sunday April 12 2026 3:11 PM ET = 19:11 UTC
-var greenFlag = new Date('2026-04-12T19:11:00Z');
+// Countdown: Sunday April 19 2026 2:19 PM ET = 18:19 UTC
+var greenFlag = new Date('2026-04-19T18:19:00Z');
 function updateCountdown() {
   var now = new Date();
   var diff = greenFlag - now;
