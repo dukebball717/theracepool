@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NASCAR Race Pool – WÜRTH 400 | Texas</title>
+<title>NASCAR Race Pool – Go Bowling at The Glen | Watkins Glen</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -19,7 +19,7 @@
 .ticker-text { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: .4px; text-shadow: 0 1px 3px rgba(0,0,0,0.3); flex: 1; text-align: center; transition: opacity 0.3s; }
 .ticker-counter { font-size: 11px; font-weight: 800; color: rgba(255,255,255,0.6); flex-shrink: 0; letter-spacing: 1px; }
 
-.track-banner { background: #0d1f0d; display: flex; justify-content: center; align-items: center; padding: 10px 28px; border-bottom: 2px solid #1a6b1a; }
+.track-banner { background: #0a1a0a; display: flex; justify-content: center; align-items: center; padding: 10px 28px; border-bottom: 2px solid #2d6a2d; }
 
 header { display: flex; align-items: center; justify-content: space-between; padding: 16px 28px 14px; border-bottom: 2px solid var(–orange); flex-wrap: wrap; gap: 12px; }
 .race-title { font-size: 34px; font-weight: 900; line-height: 1.05; text-transform: uppercase; letter-spacing: 1px; }
@@ -104,13 +104,14 @@ td:not(:first-child) { text-align: center; }
 <!-- TRACK BANNER -->
 
 <div class="track-banner">
-  <svg width="480" height="64" viewBox="0 0 480 64" xmlns="http://www.w3.org/2000/svg">
-    <rect x="0" y="0" width="6" height="64" fill="#1a6b1a"/>
-    <rect x="474" y="0" width="6" height="64" fill="#1a6b1a"/>
-    <ellipse cx="36" cy="32" rx="24" ry="26" fill="none" stroke="#1a6b1a" stroke-width="3"/>
-    <ellipse cx="36" cy="32" rx="15" ry="17" fill="none" stroke="#444" stroke-width="1.5"/>
-    <text x="74" y="24" font-family="Arial Black, Arial" font-weight="900" font-size="20" fill="#ffffff" letter-spacing="2">TEXAS MOTOR SPEEDWAY</text>
-    <text x="74" y="50" font-family="Arial Black, Arial" font-weight="900" font-size="18" fill="#1a6b1a" letter-spacing="2">WÜRTH 400 · RACE 11 OF 2026</text>
+  <svg width="500" height="64" viewBox="0 0 500 64" xmlns="http://www.w3.org/2000/svg">
+    <rect x="0" y="0" width="6" height="64" fill="#2d6a2d"/>
+    <rect x="494" y="0" width="6" height="64" fill="#2d6a2d"/>
+    <!-- Road course shape - irregular polygon suggesting turns -->
+    <path d="M20 44 Q24 16 36 14 Q48 12 52 28 Q56 44 44 52 Q32 60 20 44Z" fill="none" stroke="#2d6a2d" stroke-width="2.5"/>
+    <path d="M26 44 Q30 24 36 22 Q42 20 46 32 Q50 44 40 50 Q30 56 26 44Z" fill="none" stroke="#444" stroke-width="1.5"/>
+    <text x="74" y="24" font-family="Arial Black, Arial" font-weight="900" font-size="19" fill="#ffffff" letter-spacing="1">WATKINS GLEN INTERNATIONAL</text>
+    <text x="74" y="50" font-family="Arial Black, Arial" font-weight="900" font-size="17" fill="#2d6a2d" letter-spacing="2">GO BOWLING AT THE GLEN · RACE 12</text>
   </svg>
 </div>
 
@@ -118,12 +119,12 @@ td:not(:first-child) { text-align: center; }
 
 <header>
   <div>
-    <div class="race-title">WÜRTH 400 <span>· Texas</span></div>
-    <div class="race-subtitle">Race 11 of 2026 · Texas Motor Speedway · Sunday, May 3, 2026</div>
+    <div class="race-title">Go Bowling <span>· The Glen</span></div>
+    <div class="race-subtitle">Race 12 of 2026 · Watkins Glen International · Sunday, May 10, 2026</div>
   </div>
   <div class="header-right">
     <div class="countdown-block">
-      <div class="cd-info">🟢 &nbsp;3:41 PM ET &nbsp;|&nbsp; 267 Laps</div>
+      <div class="cd-info">🟢 &nbsp;3:00 PM ET &nbsp;|&nbsp; 100 Laps</div>
       <div class="cd-digits">
         <div class="cd-unit"><div class="cd-num" id="cd-h">--</div><div class="cd-lbl">Hrs</div></div>
         <div class="cd-sep">:</div>
@@ -132,12 +133,10 @@ td:not(:first-child) { text-align: center; }
         <div class="cd-unit"><div class="cd-num" id="cd-s">--</div><div class="cd-lbl">Sec</div></div>
       </div>
     </div>
-    <!-- FS1 logo inline SVG — no external request -->
+    <!-- FS1 logo inline SVG -->
     <svg width="80" height="48" viewBox="0 0 80 48" xmlns="http://www.w3.org/2000/svg">
       <rect width="80" height="48" fill="#00073d" rx="4"/>
-      <!-- White "FS" left side -->
       <text x="26" y="36" font-family="Arial Black, Impact, Arial" font-weight="900" font-size="30" fill="#ffffff" text-anchor="middle" letter-spacing="-2">FS</text>
-      <!-- Red "1" right side in red box -->
       <rect x="50" y="6" width="24" height="36" fill="#cc0000" rx="2"/>
       <text x="62" y="35" font-family="Arial Black, Impact, Arial" font-weight="900" font-size="26" fill="#ffffff" text-anchor="middle">1</text>
     </svg>
@@ -148,7 +147,7 @@ td:not(:first-child) { text-align: center; }
 
 <div class="participant-section">
   <div id="participant-grid" class="participant-grid"></div>
-  <div style="font-size:11px;color:var(--muted);margin-top:10px;font-weight:600;">Driver ratings based on Texas track history · updated 5/2/26</div>
+  <div style="font-size:11px;color:var(--muted);margin-top:10px;font-weight:600;">Driver ratings based on Watkins Glen road course history · updated 5/9/26</div>
 </div>
 
 <!-- MAIN GRID -->
@@ -156,7 +155,7 @@ td:not(:first-child) { text-align: center; }
 <div class="main">
   <div>
     <div class="standings-card">
-      <div class="section-header">📊 Pool Standings — After Talladega (Race 10)</div>
+      <div class="section-header">📊 Pool Standings — After Texas (Race 11)</div>
       <table>
         <thead>
           <tr>
@@ -177,35 +176,35 @@ td:not(:first-child) { text-align: center; }
 
   <div class="sidebar">
     <div class="card">
-      <div class="section-header">🏁 Talladega Results (Race 10)</div>
+      <div class="section-header">🏁 Texas Results (Race 11)</div>
       <div class="pool-winner-row">
         <span class="pwtag">🏆 Pool Winner</span>
-        <span class="pwname">🏁 Pam &nbsp;<span style="color:var(--muted);font-size:14px;font-weight:600;">Carson Hocevar #77 · +$90</span></span>
+        <span class="pwname">🏁 Nicole &nbsp;<span style="color:var(--muted);font-size:14px;font-weight:600;">Chase Elliott #9 · +$90</span></span>
       </div>
       <div class="winner-banner">
         <div class="wlabel">Race Winner</div>
-        <div class="wname">Carson Hocevar</div>
-        <div class="wdetail">#77 Spire Motorsports Chevy · First Career Win · Talladega</div>
+        <div class="wname">Chase Elliott</div>
+        <div class="wdetail">#9 Hendrick Motorsports Chevy · Win #2 of 2026 · Texas</div>
       </div>
       <div>
-        <div class="result-row"><span class="result-pos">1</span><span class="result-driver">Carson Hocevar <span class="result-car">#77 Chevy</span></span></div>
-        <div class="result-row"><span class="result-pos">2</span><span class="result-driver">Chris Buescher <span class="result-car">#17 Ford</span></span></div>
+        <div class="result-row"><span class="result-pos">1</span><span class="result-driver">Chase Elliott <span class="result-car">#9 Chevy</span></span></div>
+        <div class="result-row"><span class="result-pos">2</span><span class="result-driver">Denny Hamlin <span class="result-car">#11 Toyota</span></span></div>
         <div class="result-row"><span class="result-pos">3</span><span class="result-driver">Alex Bowman <span class="result-car">#48 Chevy</span></span></div>
-        <div class="result-row"><span class="result-pos">4</span><span class="result-driver">Chase Elliott <span class="result-car">#9 Chevy</span></span></div>
-        <div class="result-row"><span class="result-pos">5</span><span class="result-driver">Zane Smith <span class="result-car">#38 Ford</span></span></div>
+        <div class="result-row"><span class="result-pos">4</span><span class="result-driver">Tyler Reddick <span class="result-car">#45 Toyota</span></span></div>
+        <div class="result-row"><span class="result-pos">5</span><span class="result-driver">Chris Buescher <span class="result-car">#17 Ford</span></span></div>
       </div>
     </div>
 
 ```
 <div class="card">
-  <div class="section-header">🗺️ Texas Motor Speedway</div>
-  <div class="fact-row"><span class="fact-label">Track Length</span><span class="fact-val">1.5-mile tri-oval</span></div>
-  <div class="fact-row"><span class="fact-label">Banking (Turns)</span><span class="fact-val">24°</span></div>
-  <div class="fact-row"><span class="fact-label">Surface</span><span class="fact-val">Concrete/Asphalt</span></div>
-  <div class="fact-row"><span class="fact-label">Race Length</span><span class="fact-val">267 laps · 400 miles</span></div>
-  <div class="fact-row"><span class="fact-label">Anniversary</span><span class="fact-val">30th season (2026)</span></div>
-  <div class="fact-row"><span class="fact-label">Last Winner</span><span class="fact-val">Joey Logano (2025)</span></div>
-  <div class="fact-row"><span class="fact-label">Nine different winners</span><span class="fact-val">last 9 races here</span></div>
+  <div class="section-header">🗺️ Watkins Glen International</div>
+  <div class="fact-row"><span class="fact-label">Track Type</span><span class="fact-val">2.45-mile road course</span></div>
+  <div class="fact-row"><span class="fact-label">Configuration</span><span class="fact-val">7 turns · short circuit</span></div>
+  <div class="fact-row"><span class="fact-label">Race Length</span><span class="fact-val">100 laps · 245 miles</span></div>
+  <div class="fact-row"><span class="fact-label">Surface</span><span class="fact-val">Asphalt</span></div>
+  <div class="fact-row"><span class="fact-label">Defending Winner</span><span class="fact-val">SVG (2025)</span></div>
+  <div class="fact-row"><span class="fact-label">Last 7 winners</span><span class="fact-val">5 from Hendrick</span></div>
+  <div class="fact-row"><span class="fact-label">Chevy wins</span><span class="fact-val">6 of last 7 here</span></div>
 </div>
 ```
 
@@ -213,59 +212,60 @@ td:not(:first-child) { text-align: center; }
 </div>
 
 <div class="footnote">
-  * Drivers finishing outside the top 30 listed by last name only. Pot will go to Daytona Race if applicable. &nbsp;|&nbsp; Balances reflect standings after Race 10 (Talladega). &nbsp;|&nbsp; Texas Motor Speedway · WÜRTH 400 · Race 11 of 2026 NASCAR Cup Series.
+  * Drivers finishing outside the top 30 listed by last name only. Pot will go to Daytona Race if applicable. &nbsp;|&nbsp; Balances reflect standings after Race 11 (Texas). &nbsp;|&nbsp; Watkins Glen International · Go Bowling at The Glen · Race 12 of 2026 NASCAR Cup Series.
 </div>
 
 <script>
-// Talladega: Hocevar #77 wins = KO3's car
-// Pre-Talladega: Ron/Scott/Zach +110, Pam/Nick/Nicole +10, Brenda/KO3/Daniel/Ace -90
-// Post-Talladega: Ron/Scott/Zach +100, KO3 +0, Pam/Nick/Nicole +0, Brenda/Daniel/Ace -100
+// Post-Texas standings:
+// Texas winner: Chase Elliott #9 = Nicole's car → Nicole wins her 2nd pool
+// Pre-Texas: Scott/Zach/Ron/Pam +100, Nick/Nicole 0, Brenda/KO3/Daniel/Ace -100
+// Post-Texas: Scott/Zach/Ron/Pam +90, Nicole +80, Nick -10, Brenda/KO3/Daniel/Ace -110
 var STANDINGS = [
-  { name:"Ron",    flags:2, cars:["19","48","42"],  balance:100 },
-  { name:"Scott",  flags:2, cars:["7","1","97"],    balance:100 },
-  { name:"Zach",   flags:2, cars:["45","2","60"],   balance:100 },
-  { name:"Pam",    flags:2, cars:["23","54","34"],  balance:100 },
-  { name:"Nick",   flags:1, cars:["24","22","4"],   balance:0   },
-  { name:"Nicole", flags:1, cars:["9","88","38"],   balance:0   },
-  { name:"Ace",    flags:0, cars:["5","77","43"],   balance:-100 },
-  { name:"Brenda", flags:0, cars:["12","17","21"],  balance:-100 },
-  { name:"Daniel", flags:0, cars:["20","6","71"],   balance:-100 },
-  { name:"KO3",    flags:0, cars:["11","8","3"],    balance:-100 }
+  { name:"Pam",    flags:2, cars:["20","54","60"],  balance:90  },
+  { name:"Ron",    flags:2, cars:["19","1","43"],   balance:90  },
+  { name:"Scott",  flags:2, cars:["24","11","4"],   balance:90  },
+  { name:"Zach",   flags:2, cars:["9","7","23"],    balance:90  },
+  { name:"Nicole", flags:2, cars:["12","8","2"],    balance:80  },
+  { name:"Nick",   flags:1, cars:["17","71","34"],  balance:-10 },
+  { name:"Ace",    flags:0, cars:["45","22","6"],   balance:-110 },
+  { name:"Brenda", flags:0, cars:["5","77","21"],   balance:-110 },
+  { name:"Daniel", flags:0, cars:["88","48","3"],   balance:-110 },
+  { name:"KO3",    flags:0, cars:["97","16","43"],  balance:-110 }
 ];
 
-var TALLADEGA_TOP5 = ["77","17","48","9","38"];
+var TEXAS_TOP5 = ["9","11","48","45","17"];
 
 var RATINGS_BY_CAR = {
-  "11": { driver:"Denny Hamlin",           rating:"★★★★★" },
-  "45": { driver:"Tyler Reddick",          rating:"★★★★★" },
-  "5":  { driver:"Kyle Larson",            rating:"★★★★★" },
-  "24": { driver:"William Byron",          rating:"★★★★½" },
-  "12": { driver:"Ryan Blaney",            rating:"★★★★"  },
-  "20": { driver:"Christopher Bell",       rating:"★★★★"  },
-  "7":  { driver:"Daniel Suarez",          rating:"★★★★"  },
-  "9":  { driver:"Chase Elliott",          rating:"★★★½"  },
-  "23": { driver:"Bubba Wallace",          rating:"★★★½"  },
-  "19": { driver:"Chase Briscoe",          rating:"★★★"   },
-  "77": { driver:"Carson Hocevar",         rating:"★★★"   },
-  "6":  { driver:"Brad Keselowski",        rating:"★★★"   },
-  "1":  { driver:"Ross Chastain",          rating:"★★½"   },
-  "54": { driver:"Ty Gibbs",              rating:"★★½"   },
-  "22": { driver:"Joey Logano",            rating:"★★½"   },
-  "17": { driver:"Chris Buescher",         rating:"★★½"   },
-  "48": { driver:"Alex Bowman",            rating:"★★"    },
-  "8":  { driver:"Kyle Busch",             rating:"★★"    },
-  "2":  { driver:"Austin Cindric",         rating:"★★"    },
-  "88": { driver:"Connor Zilisch",         rating:"★★"    },
-  "97": { driver:"Shane van Gisbergen",    rating:"★½"    },
-  "43": { driver:"Erik Jones",             rating:"★½"    },
-  "21": { driver:"Josh Berry",             rating:"★½"    },
-  "60": { driver:"Ryan Preece",            rating:"★½"    },
-  "4":  { driver:"Noah Gragson",           rating:"★½"    },
-  "71": { driver:"Michael McDowell",       rating:"★"     },
-  "38": { driver:"Zane Smith",             rating:"★"     },
-  "34": { driver:"Todd Gilliland",         rating:"★"     },
-  "42": { driver:"John Hunter Nemechek",   rating:"★"     },
-  "3":  { driver:"Austin Dillon",          rating:"★"     }
+  "97": { driver:"Shane van Gisbergen",  rating:"★★★★★" },
+  "88": { driver:"Connor Zilisch",       rating:"★★★★★" },
+  "45": { driver:"Tyler Reddick",        rating:"★★★★★" },
+  "20": { driver:"Christopher Bell",     rating:"★★★★★" },
+  "17": { driver:"Chris Buescher",       rating:"★★★★"  },
+  "24": { driver:"William Byron",        rating:"★★★★"  },
+  "9":  { driver:"Chase Elliott",        rating:"★★★★"  },
+  "5":  { driver:"Kyle Larson",          rating:"★★★★"  },
+  "19": { driver:"Chase Briscoe",        rating:"★★★½"  },
+  "12": { driver:"Ryan Blaney",          rating:"★★★½"  },
+  "71": { driver:"Michael McDowell",     rating:"★★★"   },
+  "16": { driver:"AJ Allmendinger",      rating:"★★★"   },
+  "1":  { driver:"Ross Chastain",        rating:"★★★"   },
+  "11": { driver:"Denny Hamlin",         rating:"★★½"   },
+  "22": { driver:"Joey Logano",          rating:"★★½"   },
+  "77": { driver:"Carson Hocevar",       rating:"★★½"   },
+  "7":  { driver:"Daniel Suarez",        rating:"★★½"   },
+  "54": { driver:"Ty Gibbs",             rating:"★★"    },
+  "48": { driver:"Alex Bowman",          rating:"★★"    },
+  "8":  { driver:"Kyle Busch",           rating:"★★"    },
+  "23": { driver:"Bubba Wallace",        rating:"★★"    },
+  "6":  { driver:"Brad Keselowski",      rating:"★½"    },
+  "2":  { driver:"Austin Cindric",       rating:"★½"    },
+  "43": { driver:"Erik Jones",           rating:"★½"    },
+  "60": { driver:"Ryan Preece",          rating:"★½"    },
+  "4":  { driver:"Noah Gragson",         rating:"★"     },
+  "38": { driver:"Zane Smith",           rating:"★"     },
+  "34": { driver:"Todd Gilliland",       rating:"★"     },
+  "21": { driver:"Josh Berry",           rating:"★"     },
+  "3":  { driver:"Austin Dillon",        rating:"★"     }
 };
 
 STANDINGS.sort(function(a, b) {
@@ -280,7 +280,7 @@ STANDINGS.forEach(function(p, i) {
   var balClass = p.balance >= 0 ? 'pos' : 'neg';
   var balStr = (p.balance >= 0 ? '+' : '') + '$' + p.balance;
   var carsHtml = p.cars.map(function(c) {
-    var hot = TALLADEGA_TOP5.indexOf(c) >= 0;
+    var hot = TEXAS_TOP5.indexOf(c) >= 0;
     return hot ? '<span class="car-highlight">#' + c + '</span>' : '#' + c;
   }).join(' · ');
   var winsHtml = p.flags > 0 ? '<span class="wins-cell has-win">' + flagStr + '</span>' : '<span class="wins-cell">—</span>';
@@ -301,7 +301,7 @@ STANDINGS.forEach(function(p) {
     var info = RATINGS_BY_CAR[c];
     var driverName = info ? info.driver : 'TBD';
     var rating = info ? info.rating : '—';
-    var hot = TALLADEGA_TOP5.indexOf(c) >= 0;
+    var hot = TEXAS_TOP5.indexOf(c) >= 0;
     var carColor = hot ? 'color:var(--orange2);font-weight:900;' : 'color:var(--orange);font-weight:900;';
     return '<div class="p-driver-row">'
       + '<span><span class="p-car" style="' + carColor + '">#' + c + '</span>'
@@ -316,21 +316,21 @@ STANDINGS.forEach(function(p) {
 });
 
 var STATS = [
-  "📊 STANDINGS · Scott/Zach/Ron/Pam all tied at +$100 🏁🏁 · Nick/Nicole at $0 🏁 · Ace/Brenda/Daniel/KO3 at -$100 · Race 11 of 36",
-  "🏆 WIN HISTORY · R1 Daytona: Ron · R2 Atlanta: Scott · R3 COTA: Zach · R4 Phoenix: Pam · R5 Las Vegas: Scott · R6 Darlington: Zach · R7 Martinsville: Ron · R8 Bristol: Nick · R9 Kansas: Nicole · R10 Talladega: Pam",
-  "🔥 SCOTT & ZACH lead with 2 wins each — Atlanta/Las Vegas for Scott, COTA/Darlington for Zach. Both sitting at +$100 after 10 races.",
-  "🏆 RON & PAM also at +$100 with 2 wins each — Ron took Daytona + Martinsville, Pam took Phoenix + Talladega. Four-way tie at the top!",
-  "⭐ KO3 draws Denny Hamlin #11 — the top-rated driver at Texas and a multi-time winner here. KO3 is 0-for-10 and hungry.",
-  "📊 TEXAS FAST FACT: Nine different winners in the last nine Cup races here. Track position matters but the field is wide open every week.",
-  "💸 STANDINGS MATH · 4 people at +$100 · 2 people at $0 · 4 people at -$100 · The gap from 1st to last is $200 after just 10 races.",
-  "⭐ Ace drew Kyle Larson #5 ★★★★★ — Larson has finished top-5 in 14 of his last 23 Texas starts. Ace has the best draw on paper today.",
-  "📊 TEXAS FAST FACT: Carson Hocevar won the pole for today's race — coming off his first career win at Talladega last week. Ace holds #77.",
-  "😤 Brenda draws Ryan Blaney #12 ★★★★ — consistent performer on 1.5-milers all season. Brenda is still 0-for-10. Something has to give.",
-  "⭐ Zach drew Tyler Reddick #45 — 5 wins in 10 races, Cup points leader by a wide margin. Former Texas winner and a threat every week.",
-  "📊 TEXAS FAST FACT: The track celebrates its 30th anniversary season in 2026. Jeff Burton won the very first Cup race here back in 1997.",
-  "🏁 0-FOR-10 CLUB: Brenda, Daniel, KO3 & Ace have all come close but haven't won yet. Four drivers, 40 combined entries, zero wins. Today's the day.",
-  "⭐ Daniel drew Christopher Bell #20 ★★★★ — Kevin Harvick's pick to win this week. Bell has been fast but winless all season in 2026.",
-  "🏎️ Scott holds Daniel Suarez #7 — avg finish of 8.75 in his last four Texas starts, one of the best records at this track. Sneaky good draw."
+  "📊 STANDINGS · Pam/Ron/Scott/Zach +$90 🏁🏁 · Nicole +$80 🏁🏁 · Nick -$10 🏁 · Ace/Brenda/Daniel/KO3 -$110 · Race 12 of 36",
+  "🏆 WIN HISTORY · R1 Daytona: Ron · R2 Atlanta: Scott · R3 COTA: Zach · R4 Phoenix: Pam · R5 Las Vegas: Scott · R6 Darlington: Zach · R7 Martinsville: Ron · R8 Bristol: Nick · R9 Kansas: Nicole · R10 Talladega: Pam · R11 Texas: Nicole",
+  "🔥 NICOLE IS HEATING UP — wins at Kansas AND Texas in back-to-back races. She's now 2-for-12 and only $10 behind the leaders. Watch out.",
+  "⭐ KO3 FINALLY has Shane van Gisbergen #97 — the defending Watkins Glen winner and outright race favorite. KO3's first elite draw all season.",
+  "🏎️ ROAD COURSE FACT: SVG has won 6 consecutive road course races across Cup, O'Reilly, and Trucks. Watkins Glen is his house.",
+  "⭐ Daniel drew Connor Zilisch #88 ★★★★★ — the rookie sensation who has won here twice in lower series. Back on his home turf today.",
+  "📊 WATKINS GLEN FACT: Hendrick Motorsports has won 5 of the last 7 races here. Scott has Byron #24 ★★★★, Zach has Elliott #9 ★★★★, Nick has Buescher #17 ★★★★.",
+  "🏁 0-FOR-11 CLUB: Ace, Brenda, Daniel & KO3 are all still hunting win #1. But KO3 has the outright favorite today. This could be the day.",
+  "📊 WATKINS GLEN FACT: Chevrolet has won 6 of the last 7 races at this track. 7 of the 10 top-rated cars today are Chevrolets.",
+  "⭐ Ace drew Tyler Reddick #45 ★★★★★ — points leader and COTA winner earlier this season. Reddick's road course form has been elite in 2026.",
+  "💸 STANDINGS GAP · The top 5 (Pam/Ron/Scott/Zach/Nicole) are all within $10 of each other. The bottom 4 are $200 behind. Two separate races happening.",
+  "📊 WATKINS GLEN FACT: Top-5 starting positions have produced 67.5% of all Cup wins here. Qualifying matters enormously at The Glen.",
+  "😤 Brenda has Kyle Larson #5 ★★★★ — a former Glen winner but with 3 finishes of 12th, 26th, 39th in his last 3 starts here. Feast or famine.",
+  "⭐ Nick drew Chris Buescher #17 ★★★★ — the 2024 Watkins Glen winner with finishes of 9th, 7th, 1st, 3rd in his last 4 starts here. Nick is live today.",
+  "🏎️ WATKINS GLEN FACT: This race has been extended from 90 to 100 laps in 2026. More laps means more strategy, more pit windows, and more chaos."
 ];
 
 var statIndex = 0;
@@ -348,8 +348,8 @@ function showStat() {
 showStat();
 setInterval(showStat, 5000);
 
-// Countdown: Sunday May 3 2026 3:41 PM ET = 19:41 UTC
-var greenFlag = new Date('2026-05-03T19:41:00Z');
+// Countdown: Sunday May 10 2026 3:00 PM ET = 19:00 UTC
+var greenFlag = new Date('2026-05-10T19:00:00Z');
 function updateCountdown() {
   var now = new Date();
   var diff = greenFlag - now;
