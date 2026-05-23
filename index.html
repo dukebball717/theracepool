@@ -1,99 +1,97 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NASCAR Race Pool – Go Bowling at The Glen | Watkins Glen</title>
+<title>NASCAR Race Pool – Coca-Cola 600 | Charlotte</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --bg: #141414; --card: #1e1e1e; --border: #2a2a2a;
     --orange: #e8a020; --orange2: #f0b840;
     --text: #f0f0f0; --muted: #888; --green: #4caf50; --red: #e05555;
+    --prime: #00a8e0;
   }
   body { background: var(--bg); color: var(--text); font-family: 'Arial Narrow', 'Franklin Gothic Medium', Arial, sans-serif; min-height: 100vh; }
 
-.ticker-wrap { background: var(–orange); padding: 7px 28px; display: flex; align-items: center; gap: 14px; min-height: 38px; }
-.ticker-pip { width: 8px; height: 8px; background: #fff; border-radius: 50%; opacity: 0.7; flex-shrink: 0; }
-.ticker-text { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: .4px; text-shadow: 0 1px 3px rgba(0,0,0,0.3); flex: 1; text-align: center; transition: opacity 0.3s; }
-.ticker-counter { font-size: 11px; font-weight: 800; color: rgba(255,255,255,0.6); flex-shrink: 0; letter-spacing: 1px; }
+  .ticker-wrap { background: var(--orange); padding: 7px 28px; display: flex; align-items: center; gap: 14px; min-height: 38px; }
+  .ticker-pip { width: 8px; height: 8px; background: #fff; border-radius: 50%; opacity: 0.7; flex-shrink: 0; }
+  .ticker-text { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: .4px; text-shadow: 0 1px 3px rgba(0,0,0,0.3); flex: 1; text-align: center; transition: opacity 0.3s; }
+  .ticker-counter { font-size: 11px; font-weight: 800; color: rgba(255,255,255,0.6); flex-shrink: 0; letter-spacing: 1px; }
 
-.track-banner { background: #0a1a0a; display: flex; justify-content: center; align-items: center; padding: 10px 28px; border-bottom: 2px solid #2d6a2d; }
+  .track-banner { background: #0d0018; display: flex; justify-content: center; align-items: center; padding: 10px 28px; border-bottom: 2px solid #c8002a; }
 
-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 28px 14px; border-bottom: 2px solid var(–orange); flex-wrap: wrap; gap: 12px; }
-.race-title { font-size: 34px; font-weight: 900; line-height: 1.05; text-transform: uppercase; letter-spacing: 1px; }
-.race-title span { color: var(–orange); }
-.race-subtitle { font-size: 15px; color: var(–muted); font-weight: 600; margin-top: 2px; }
-.header-right { display: flex; align-items: center; gap: 24px; }
-.countdown-block { text-align: center; }
-.cd-info { font-size: 11px; color: var(–muted); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-.cd-digits { display: flex; gap: 8px; align-items: center; }
-.cd-unit { text-align: center; }
-.cd-num { font-size: 28px; font-weight: 900; color: var(–orange); line-height: 1; }
-.cd-lbl { font-size: 10px; color: var(–muted); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-.cd-sep { font-size: 24px; font-weight: 900; color: var(–orange); margin-bottom: 12px; }
+  header { display: flex; align-items: center; justify-content: space-between; padding: 16px 28px 14px; border-bottom: 2px solid var(--orange); flex-wrap: wrap; gap: 12px; }
+  .race-title { font-size: 34px; font-weight: 900; line-height: 1.05; text-transform: uppercase; letter-spacing: 1px; }
+  .race-title span { color: var(--orange); }
+  .race-subtitle { font-size: 15px; color: var(--muted); font-weight: 600; margin-top: 2px; }
+  .header-right { display: flex; align-items: center; gap: 24px; }
+  .countdown-block { text-align: center; }
+  .cd-info { font-size: 11px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .cd-digits { display: flex; gap: 8px; align-items: center; }
+  .cd-unit { text-align: center; }
+  .cd-num { font-size: 28px; font-weight: 900; color: var(--orange); line-height: 1; }
+  .cd-lbl { font-size: 10px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+  .cd-sep { font-size: 24px; font-weight: 900; color: var(--orange); margin-bottom: 12px; }
 
-.section-header { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(–orange); border-bottom: 1px solid var(–border); padding-bottom: 8px; margin-bottom: 14px; }
+  .section-header { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--orange); border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 14px; }
 
-.participant-section { padding: 16px 28px 14px; border-bottom: 1px solid var(–border); }
-.participant-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.p-card { border-radius: 10px; overflow: hidden; border: 1px solid #3a3000; }
-.p-card-header { font-size: 19px; font-weight: 900; padding: 10px 14px; background: linear-gradient(135deg, #2a2000, #3a2c00); border-bottom: 2px solid var(–orange); }
-.p-driver-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 14px; font-size: 13px; }
-.p-driver-row:nth-child(odd) { background: #1c1c1c; }
-.p-driver-row:nth-child(even) { background: #252525; }
-.p-car { font-weight: 900; color: var(–orange); min-width: 34px; display: inline-block; }
-.p-driver { font-weight: 700; color: var(–text); margin-left: 4px; }
-.p-rating { font-weight: 800; color: var(–orange2); font-size: 13px; }
+  .participant-section { padding: 16px 28px 14px; border-bottom: 1px solid var(--border); }
+  .participant-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .p-card { border-radius: 10px; overflow: hidden; border: 1px solid #3a3000; }
+  .p-card-header { font-size: 19px; font-weight: 900; padding: 10px 14px; background: linear-gradient(135deg, #2a2000, #3a2c00); border-bottom: 2px solid var(--orange); }
+  .p-driver-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 14px; font-size: 13px; }
+  .p-driver-row:nth-child(odd) { background: #1c1c1c; }
+  .p-driver-row:nth-child(even) { background: #252525; }
+  .p-car { font-weight: 900; color: var(--orange); min-width: 34px; display: inline-block; }
+  .p-driver { font-weight: 700; color: var(--text); margin-left: 4px; }
+  .p-rating { font-weight: 800; color: var(--orange2); font-size: 13px; }
 
-.main { display: grid; grid-template-columns: 1fr 340px; gap: 20px; padding: 20px 28px; max-width: 1400px; margin: 0 auto; }
-@media(max-width:900px){ .main { grid-template-columns: 1fr; } }
+  .main { display: grid; grid-template-columns: 1fr 340px; gap: 20px; padding: 20px 28px; max-width: 1400px; margin: 0 auto; }
+  @media(max-width:900px){ .main { grid-template-columns: 1fr; } }
 
-.standings-card { background: var(–card); border-radius: 10px; padding: 20px; border: 1px solid var(–border); }
-table { width: 100%; border-collapse: collapse; }
-thead th { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(–muted); padding: 6px 10px; text-align: left; border-bottom: 1px solid var(–border); }
-thead th:not(:first-child) { text-align: center; }
-tbody tr { border-bottom: 1px solid var(–border); transition: background .15s; }
-tbody tr:last-child { border-bottom: none; }
-tbody tr:hover { background: #252525; }
-td { padding: 10px; font-size: 17px; font-weight: 700; vertical-align: middle; }
-td:not(:first-child) { text-align: center; }
-.rank { font-size: 13px; color: var(–muted); font-weight: 700; width: 28px; }
-.pname { font-size: 18px; font-weight: 800; }
-.cars-cell { font-size: 12px; color: var(–muted); font-weight: 600; line-height: 1.4; }
-.car-highlight { color: var(–orange2); font-weight: 800; }
-.balance { font-size: 18px; font-weight: 900; }
-.pos { color: var(–green); } .neg { color: var(–red); }
-.wins-cell { font-size: 14px; color: var(–muted); font-weight: 700; }
-.wins-cell.has-win { color: var(–orange); font-weight: 800; }
+  .standings-card { background: var(--card); border-radius: 10px; padding: 20px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; }
+  thead th { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); padding: 6px 10px; text-align: left; border-bottom: 1px solid var(--border); }
+  thead th:not(:first-child) { text-align: center; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background .15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #252525; }
+  td { padding: 10px; font-size: 17px; font-weight: 700; vertical-align: middle; }
+  td:not(:first-child) { text-align: center; }
+  .rank { font-size: 13px; color: var(--muted); font-weight: 700; width: 28px; }
+  .pname { font-size: 18px; font-weight: 800; }
+  .cars-cell { font-size: 12px; color: var(--muted); font-weight: 600; line-height: 1.4; }
+  .car-highlight { color: var(--orange2); font-weight: 800; }
+  .balance { font-size: 18px; font-weight: 900; }
+  .pos { color: var(--green); } .neg { color: var(--red); }
+  .wins-cell { font-size: 14px; color: var(--muted); font-weight: 700; }
+  .wins-cell.has-win { color: var(--orange); font-weight: 800; }
 
-.sidebar { display: flex; flex-direction: column; gap: 18px; }
-.card { background: var(–card); border-radius: 10px; padding: 18px; border: 1px solid var(–border); }
-.pool-winner-row { background: #1a2d1a; border-radius: 6px; padding: 8px 12px; display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-.pwtag { font-size: 11px; color: var(–green); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
-.pwname { font-size: 18px; font-weight: 900; }
-.winner-banner { background: linear-gradient(135deg, #2a1f00, #3d2c00); border: 1px solid var(–orange); border-radius: 8px; padding: 12px 14px; margin-bottom: 12px; }
-.winner-banner .wlabel { font-size: 11px; color: var(–orange); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 4px; }
-.winner-banner .wname { font-size: 22px; font-weight: 900; }
-.winner-banner .wdetail { font-size: 13px; color: var(–muted); margin-top: 2px; }
-.result-row { display: flex; align-items: center; padding: 7px 0; border-bottom: 1px solid var(–border); font-size: 14px; }
-.result-row:last-child { border-bottom: none; }
-.result-pos { font-size: 20px; font-weight: 900; color: var(–orange); width: 30px; }
-.result-driver { font-weight: 700; flex: 1; }
-.result-car { font-size: 12px; color: var(–muted); font-weight: 600; margin-left: 6px; }
-.fact-row { display: flex; justify-content: space-between; align-items: baseline; padding: 6px 0; border-bottom: 1px solid var(–border); font-size: 13px; }
-.fact-row:last-child { border-bottom: none; }
-.fact-label { color: var(–muted); font-weight: 600; }
-.fact-val { font-weight: 800; color: var(–text); text-align: right; }
-.footnote { font-size: 11px; color: var(–muted); padding: 14px 28px 20px; font-weight: 600; border-top: 1px solid var(–border); margin-top: 10px; }
+  .sidebar { display: flex; flex-direction: column; gap: 18px; }
+  .card { background: var(--card); border-radius: 10px; padding: 18px; border: 1px solid var(--border); }
+  .pool-winner-row { background: #1a2d1a; border-radius: 6px; padding: 8px 12px; display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .pwtag { font-size: 11px; color: var(--green); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
+  .pwname { font-size: 18px; font-weight: 900; }
+  .winner-banner { background: linear-gradient(135deg, #2a1f00, #3d2c00); border: 1px solid var(--orange); border-radius: 8px; padding: 12px 14px; margin-bottom: 12px; }
+  .winner-banner .wlabel { font-size: 11px; color: var(--orange); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 4px; }
+  .winner-banner .wname { font-size: 22px; font-weight: 900; }
+  .winner-banner .wdetail { font-size: 13px; color: var(--muted); margin-top: 2px; }
+  .result-row { display: flex; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .result-row:last-child { border-bottom: none; }
+  .result-pos { font-size: 20px; font-weight: 900; color: var(--orange); width: 30px; }
+  .result-driver { font-weight: 700; flex: 1; }
+  .result-car { font-size: 12px; color: var(--muted); font-weight: 600; margin-left: 6px; }
+  .fact-row { display: flex; justify-content: space-between; align-items: baseline; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .fact-row:last-child { border-bottom: none; }
+  .fact-label { color: var(--muted); font-weight: 600; }
+  .fact-val { font-weight: 800; color: var(--text); text-align: right; }
+  .footnote { font-size: 11px; color: var(--muted); padding: 14px 28px 20px; font-weight: 600; border-top: 1px solid var(--border); margin-top: 10px; }
 </style>
-
 </head>
 <body>
 
 <!-- STAT FLIPPER -->
-
 <div class="ticker-wrap">
   <div class="ticker-pip"></div>
   <div class="ticker-text" id="stat-text">Loading...</div>
@@ -102,29 +100,27 @@ td:not(:first-child) { text-align: center; }
 </div>
 
 <!-- TRACK BANNER -->
-
 <div class="track-banner">
   <svg width="500" height="64" viewBox="0 0 500 64" xmlns="http://www.w3.org/2000/svg">
-    <rect x="0" y="0" width="6" height="64" fill="#2d6a2d"/>
-    <rect x="494" y="0" width="6" height="64" fill="#2d6a2d"/>
-    <!-- Road course shape - irregular polygon suggesting turns -->
-    <path d="M20 44 Q24 16 36 14 Q48 12 52 28 Q56 44 44 52 Q32 60 20 44Z" fill="none" stroke="#2d6a2d" stroke-width="2.5"/>
-    <path d="M26 44 Q30 24 36 22 Q42 20 46 32 Q50 44 40 50 Q30 56 26 44Z" fill="none" stroke="#444" stroke-width="1.5"/>
-    <text x="74" y="24" font-family="Arial Black, Arial" font-weight="900" font-size="19" fill="#ffffff" letter-spacing="1">WATKINS GLEN INTERNATIONAL</text>
-    <text x="74" y="50" font-family="Arial Black, Arial" font-weight="900" font-size="17" fill="#2d6a2d" letter-spacing="2">GO BOWLING AT THE GLEN · RACE 12</text>
+    <rect x="0" y="0" width="6" height="64" fill="#c8002a"/>
+    <rect x="494" y="0" width="6" height="64" fill="#c8002a"/>
+    <ellipse cx="36" cy="32" rx="24" ry="26" fill="none" stroke="#c8002a" stroke-width="3"/>
+    <ellipse cx="36" cy="32" rx="15" ry="17" fill="none" stroke="#444" stroke-width="1.5"/>
+    <text x="74" y="22" font-family="Arial Black, Arial" font-weight="900" font-size="20" fill="#ffffff" letter-spacing="2">CHARLOTTE MOTOR SPEEDWAY</text>
+    <text x="74" y="46" font-family="Arial Black, Arial" font-weight="900" font-size="18" fill="#c8002a" letter-spacing="2">COCA-COLA 600 · RACE 13 OF 2026</text>
+    <text x="74" y="61" font-family="Arial, sans-serif" font-weight="700" font-size="10" fill="#888" letter-spacing="2">MEMORIAL DAY WEEKEND · NASCAR ON PRIME</text>
   </svg>
 </div>
 
 <!-- HEADER -->
-
 <header>
   <div>
-    <div class="race-title">Go Bowling <span>· The Glen</span></div>
-    <div class="race-subtitle">Race 12 of 2026 · Watkins Glen International · Sunday, May 10, 2026</div>
+    <div class="race-title">Coca-Cola 600 <span>· Charlotte</span></div>
+    <div class="race-subtitle">Race 13 of 2026 · Charlotte Motor Speedway · Sunday, May 24, 2026</div>
   </div>
   <div class="header-right">
     <div class="countdown-block">
-      <div class="cd-info">🟢 &nbsp;3:00 PM ET &nbsp;|&nbsp; 100 Laps</div>
+      <div class="cd-info">🟢 &nbsp;6:00 PM ET &nbsp;|&nbsp; 400 Laps</div>
       <div class="cd-digits">
         <div class="cd-unit"><div class="cd-num" id="cd-h">--</div><div class="cd-lbl">Hrs</div></div>
         <div class="cd-sep">:</div>
@@ -133,29 +129,33 @@ td:not(:first-child) { text-align: center; }
         <div class="cd-unit"><div class="cd-num" id="cd-s">--</div><div class="cd-lbl">Sec</div></div>
       </div>
     </div>
-    <!-- FS1 logo inline SVG -->
-    <svg width="80" height="48" viewBox="0 0 80 48" xmlns="http://www.w3.org/2000/svg">
-      <rect width="80" height="48" fill="#00073d" rx="4"/>
-      <text x="26" y="36" font-family="Arial Black, Impact, Arial" font-weight="900" font-size="30" fill="#ffffff" text-anchor="middle" letter-spacing="-2">FS</text>
-      <rect x="50" y="6" width="24" height="36" fill="#cc0000" rx="2"/>
-      <text x="62" y="35" font-family="Arial Black, Impact, Arial" font-weight="900" font-size="26" fill="#ffffff" text-anchor="middle">1</text>
+    <!-- NASCAR on Prime inline SVG logo -->
+    <svg width="96" height="48" viewBox="0 0 96 48" xmlns="http://www.w3.org/2000/svg">
+      <rect width="96" height="48" fill="#0f0f1a" rx="4"/>
+      <!-- Prime blue underline accent -->
+      <rect x="0" y="40" width="96" height="5" fill="#00a8e0" rx="0"/>
+      <!-- NASCAR wordmark -->
+      <text x="48" y="18" font-family="Arial Black, Impact, Arial" font-weight="900" font-size="13" fill="#ffffff" text-anchor="middle" letter-spacing="2">NASCAR</text>
+      <!-- "on Prime" with Prime arrow -->
+      <text x="32" y="35" font-family="Arial, sans-serif" font-weight="700" font-size="10" fill="#a0a0b0" text-anchor="middle" letter-spacing="1">on</text>
+      <!-- Prime arrow shape -->
+      <polygon points="44,28 56,28 62,34 56,40 44,40 38,34" fill="#00a8e0"/>
+      <text x="50" y="37" font-family="Arial Black, Arial" font-weight="900" font-size="8" fill="#fff" text-anchor="middle" letter-spacing="0.5">prime</text>
     </svg>
   </div>
 </header>
 
 <!-- PARTICIPANT CARDS -->
-
 <div class="participant-section">
   <div id="participant-grid" class="participant-grid"></div>
-  <div style="font-size:11px;color:var(--muted);margin-top:10px;font-weight:600;">Driver ratings based on Watkins Glen road course history · updated 5/9/26</div>
+  <div style="font-size:11px;color:var(--muted);margin-top:10px;font-weight:600;">Driver ratings based on Charlotte track history · updated 5/23/26</div>
 </div>
 
 <!-- MAIN GRID -->
-
 <div class="main">
   <div>
     <div class="standings-card">
-      <div class="section-header">📊 Pool Standings — After Texas (Race 11)</div>
+      <div class="section-header">📊 Pool Standings — After Watkins Glen (Race 12)</div>
       <table>
         <thead>
           <tr>
@@ -176,96 +176,92 @@ td:not(:first-child) { text-align: center; }
 
   <div class="sidebar">
     <div class="card">
-      <div class="section-header">🏁 Texas Results (Race 11)</div>
+      <div class="section-header">🏁 Watkins Glen Results (Race 12)</div>
       <div class="pool-winner-row">
         <span class="pwtag">🏆 Pool Winner</span>
-        <span class="pwname">🏁 Nicole &nbsp;<span style="color:var(--muted);font-size:14px;font-weight:600;">Chase Elliott #9 · +$90</span></span>
+        <span class="pwname">🏁 KO3 &nbsp;<span style="color:var(--muted);font-size:14px;font-weight:600;">SVG #97 · +$90</span></span>
       </div>
       <div class="winner-banner">
         <div class="wlabel">Race Winner</div>
-        <div class="wname">Chase Elliott</div>
-        <div class="wdetail">#9 Hendrick Motorsports Chevy · Win #2 of 2026 · Texas</div>
+        <div class="wname">Shane van Gisbergen</div>
+        <div class="wdetail">#97 Trackhouse Racing Chevy · Win #7 Cup Career · Watkins Glen</div>
       </div>
       <div>
-        <div class="result-row"><span class="result-pos">1</span><span class="result-driver">Chase Elliott <span class="result-car">#9 Chevy</span></span></div>
-        <div class="result-row"><span class="result-pos">2</span><span class="result-driver">Denny Hamlin <span class="result-car">#11 Toyota</span></span></div>
-        <div class="result-row"><span class="result-pos">3</span><span class="result-driver">Alex Bowman <span class="result-car">#48 Chevy</span></span></div>
-        <div class="result-row"><span class="result-pos">4</span><span class="result-driver">Tyler Reddick <span class="result-car">#45 Toyota</span></span></div>
-        <div class="result-row"><span class="result-pos">5</span><span class="result-driver">Chris Buescher <span class="result-car">#17 Ford</span></span></div>
+        <div class="result-row"><span class="result-pos">1</span><span class="result-driver">Shane van Gisbergen <span class="result-car">#97 Chevy</span></span></div>
+        <div class="result-row"><span class="result-pos">2</span><span class="result-driver">Michael McDowell <span class="result-car">#71 Ford</span></span></div>
+        <div class="result-row"><span class="result-pos">3</span><span class="result-driver">Ty Gibbs <span class="result-car">#54 Toyota</span></span></div>
+        <div class="result-row"><span class="result-pos">4</span><span class="result-driver">Chase Briscoe <span class="result-car">#19 Toyota</span></span></div>
+        <div class="result-row"><span class="result-pos">5</span><span class="result-driver">Tyler Reddick <span class="result-car">#45 Toyota</span></span></div>
       </div>
     </div>
 
-```
-<div class="card">
-  <div class="section-header">🗺️ Watkins Glen International</div>
-  <div class="fact-row"><span class="fact-label">Track Type</span><span class="fact-val">2.45-mile road course</span></div>
-  <div class="fact-row"><span class="fact-label">Configuration</span><span class="fact-val">7 turns · short circuit</span></div>
-  <div class="fact-row"><span class="fact-label">Race Length</span><span class="fact-val">100 laps · 245 miles</span></div>
-  <div class="fact-row"><span class="fact-label">Surface</span><span class="fact-val">Asphalt</span></div>
-  <div class="fact-row"><span class="fact-label">Defending Winner</span><span class="fact-val">SVG (2025)</span></div>
-  <div class="fact-row"><span class="fact-label">Last 7 winners</span><span class="fact-val">5 from Hendrick</span></div>
-  <div class="fact-row"><span class="fact-label">Chevy wins</span><span class="fact-val">6 of last 7 here</span></div>
-</div>
-```
-
+    <div class="card">
+      <div class="section-header">🗺️ Charlotte Motor Speedway</div>
+      <div class="fact-row"><span class="fact-label">Track Length</span><span class="fact-val">1.5-mile quad-oval</span></div>
+      <div class="fact-row"><span class="fact-label">Banking (Turns)</span><span class="fact-val">24°</span></div>
+      <div class="fact-row"><span class="fact-label">Race Length</span><span class="fact-val">400 laps · 600 miles</span></div>
+      <div class="fact-row"><span class="fact-label">Longest Race</span><span class="fact-val">On the schedule</span></div>
+      <div class="fact-row"><span class="fact-label">Green Flag</span><span class="fact-val">~6:00 PM ET</span></div>
+      <div class="fact-row"><span class="fact-label">Finish Time</span><span class="fact-val">~11:00–11:30 PM ET</span></div>
+      <div class="fact-row"><span class="fact-label">Defending Winner</span><span class="fact-val">Ross Chastain (2025)</span></div>
+    </div>
   </div>
 </div>
 
 <div class="footnote">
-  * Drivers finishing outside the top 30 listed by last name only. Pot will go to Daytona Race if applicable. &nbsp;|&nbsp; Balances reflect standings after Race 11 (Texas). &nbsp;|&nbsp; Watkins Glen International · Go Bowling at The Glen · Race 12 of 2026 NASCAR Cup Series.
+  * Kyle Busch (#8) has passed away — #33 Austin Hill substituting for RCR. Katherine Legge (#78) attempting Indy 500 / Coke 600 double. &nbsp;|&nbsp; Balances reflect standings after Race 12 (Watkins Glen). &nbsp;|&nbsp; Charlotte Motor Speedway · Coca-Cola 600 · Race 13 of 2026 NASCAR Cup Series.
 </div>
 
 <script>
-// Post-Texas standings:
-// Texas winner: Chase Elliott #9 = Nicole's car → Nicole wins her 2nd pool
-// Pre-Texas: Scott/Zach/Ron/Pam +100, Nick/Nicole 0, Brenda/KO3/Daniel/Ace -100
-// Post-Texas: Scott/Zach/Ron/Pam +90, Nicole +80, Nick -10, Brenda/KO3/Daniel/Ace -110
+// Watkins Glen winner: SVG #97 = KO3's car → KO3 wins first pool
+// Pre-WG: Scott/Zach/Ron/Pam +$90, Nicole +$80, Nick -$10, Ace/Brenda/Daniel/KO3 -$110
+// Post-WG: Scott/Zach/Ron/Pam +$80, Nicole +$70, Nick -$20, KO3 -$20, Ace/Brenda/Daniel -$120
 var STANDINGS = [
-  { name:"Pam",    flags:2, cars:["20","54","60"],  balance:90  },
-  { name:"Ron",    flags:2, cars:["19","1","43"],   balance:90  },
-  { name:"Scott",  flags:2, cars:["24","11","4"],   balance:90  },
-  { name:"Zach",   flags:2, cars:["9","7","23"],    balance:90  },
-  { name:"Nicole", flags:2, cars:["12","8","2"],    balance:80  },
-  { name:"Nick",   flags:1, cars:["17","71","34"],  balance:-10 },
-  { name:"Ace",    flags:0, cars:["45","22","6"],   balance:-110 },
-  { name:"Brenda", flags:0, cars:["5","77","21"],   balance:-110 },
-  { name:"Daniel", flags:0, cars:["88","48","3"],   balance:-110 },
-  { name:"KO3",    flags:0, cars:["97","16","43"],  balance:-110 }
+  { name:"Pam",    flags:2, cars:["20","54","71"],  balance:80  },
+  { name:"Ron",    flags:2, cars:["11","7","38"],   balance:80  },
+  { name:"Scott",  flags:2, cars:["45","22","43"],  balance:80  },
+  { name:"Zach",   flags:2, cars:["5","77","21"],   balance:80  },
+  { name:"Nicole", flags:2, cars:["23","88","34"],  balance:70  },
+  { name:"KO3",    flags:1, cars:["9","97","78"],   balance:-20 },
+  { name:"Nick",   flags:1, cars:["1","2","3"],     balance:-20 },
+  { name:"Ace",    flags:0, cars:["24","17","4"],   balance:-120 },
+  { name:"Brenda", flags:0, cars:["12","48","33"],  balance:-120 },
+  { name:"Daniel", flags:0, cars:["19","6","60"],   balance:-120 }
 ];
 
-var TEXAS_TOP5 = ["9","11","48","45","17"];
+var WG_TOP5 = ["97","71","54","19","45"];
 
 var RATINGS_BY_CAR = {
-  "97": { driver:"Shane van Gisbergen",  rating:"★★★★★" },
-  "88": { driver:"Connor Zilisch",       rating:"★★★★★" },
-  "45": { driver:"Tyler Reddick",        rating:"★★★★★" },
-  "20": { driver:"Christopher Bell",     rating:"★★★★★" },
-  "17": { driver:"Chris Buescher",       rating:"★★★★"  },
-  "24": { driver:"William Byron",        rating:"★★★★"  },
-  "9":  { driver:"Chase Elliott",        rating:"★★★★"  },
-  "5":  { driver:"Kyle Larson",          rating:"★★★★"  },
-  "19": { driver:"Chase Briscoe",        rating:"★★★½"  },
-  "12": { driver:"Ryan Blaney",          rating:"★★★½"  },
-  "71": { driver:"Michael McDowell",     rating:"★★★"   },
-  "16": { driver:"AJ Allmendinger",      rating:"★★★"   },
-  "1":  { driver:"Ross Chastain",        rating:"★★★"   },
-  "11": { driver:"Denny Hamlin",         rating:"★★½"   },
-  "22": { driver:"Joey Logano",          rating:"★★½"   },
-  "77": { driver:"Carson Hocevar",       rating:"★★½"   },
-  "7":  { driver:"Daniel Suarez",        rating:"★★½"   },
-  "54": { driver:"Ty Gibbs",             rating:"★★"    },
-  "48": { driver:"Alex Bowman",          rating:"★★"    },
-  "8":  { driver:"Kyle Busch",           rating:"★★"    },
-  "23": { driver:"Bubba Wallace",        rating:"★★"    },
-  "6":  { driver:"Brad Keselowski",      rating:"★½"    },
-  "2":  { driver:"Austin Cindric",       rating:"★½"    },
-  "43": { driver:"Erik Jones",           rating:"★½"    },
-  "60": { driver:"Ryan Preece",          rating:"★½"    },
-  "4":  { driver:"Noah Gragson",         rating:"★"     },
-  "38": { driver:"Zane Smith",           rating:"★"     },
-  "34": { driver:"Todd Gilliland",       rating:"★"     },
-  "21": { driver:"Josh Berry",           rating:"★"     },
-  "3":  { driver:"Austin Dillon",        rating:"★"     }
+  "11": { driver:"Denny Hamlin",          rating:"★★★★★" },
+  "45": { driver:"Tyler Reddick",         rating:"★★★★★" },
+  "5":  { driver:"Kyle Larson",           rating:"★★★★★" },
+  "24": { driver:"William Byron",         rating:"★★★★★" },
+  "19": { driver:"Chase Briscoe",         rating:"★★★★"  },
+  "20": { driver:"Christopher Bell",      rating:"★★★★"  },
+  "12": { driver:"Ryan Blaney",           rating:"★★★★"  },
+  "9":  { driver:"Chase Elliott",         rating:"★★★★"  },
+  "1":  { driver:"Ross Chastain",         rating:"★★★½"  },
+  "23": { driver:"Bubba Wallace",         rating:"★★★"   },
+  "54": { driver:"Ty Gibbs",              rating:"★★★"   },
+  "17": { driver:"Chris Buescher",        rating:"★★★"   },
+  "6":  { driver:"Brad Keselowski",       rating:"★★½"   },
+  "22": { driver:"Joey Logano",           rating:"★★½"   },
+  "97": { driver:"Shane van Gisbergen",   rating:"★★½"   },
+  "48": { driver:"Alex Bowman",           rating:"★★½"   },
+  "88": { driver:"Connor Zilisch",        rating:"★★"    },
+  "2":  { driver:"Austin Cindric",        rating:"★★"    },
+  "77": { driver:"Carson Hocevar",        rating:"★★"    },
+  "7":  { driver:"Daniel Suarez",         rating:"★★"    },
+  "43": { driver:"Erik Jones",            rating:"★½"    },
+  "71": { driver:"Michael McDowell",      rating:"★½"    },
+  "60": { driver:"Ryan Preece",           rating:"★½"    },
+  "21": { driver:"Josh Berry",            rating:"★½"    },
+  "4":  { driver:"Noah Gragson",          rating:"★½"    },
+  "34": { driver:"Todd Gilliland",        rating:"★"     },
+  "38": { driver:"Zane Smith",            rating:"★"     },
+  "33": { driver:"Austin Hill",           rating:"★"     },
+  "3":  { driver:"Austin Dillon",         rating:"★"     },
+  "78": { driver:"Katherine Legge",       rating:"★"     }
 };
 
 STANDINGS.sort(function(a, b) {
@@ -280,7 +276,7 @@ STANDINGS.forEach(function(p, i) {
   var balClass = p.balance >= 0 ? 'pos' : 'neg';
   var balStr = (p.balance >= 0 ? '+' : '') + '$' + p.balance;
   var carsHtml = p.cars.map(function(c) {
-    var hot = TEXAS_TOP5.indexOf(c) >= 0;
+    var hot = WG_TOP5.indexOf(c) >= 0;
     return hot ? '<span class="car-highlight">#' + c + '</span>' : '#' + c;
   }).join(' · ');
   var winsHtml = p.flags > 0 ? '<span class="wins-cell has-win">' + flagStr + '</span>' : '<span class="wins-cell">—</span>';
@@ -301,7 +297,7 @@ STANDINGS.forEach(function(p) {
     var info = RATINGS_BY_CAR[c];
     var driverName = info ? info.driver : 'TBD';
     var rating = info ? info.rating : '—';
-    var hot = TEXAS_TOP5.indexOf(c) >= 0;
+    var hot = WG_TOP5.indexOf(c) >= 0;
     var carColor = hot ? 'color:var(--orange2);font-weight:900;' : 'color:var(--orange);font-weight:900;';
     return '<div class="p-driver-row">'
       + '<span><span class="p-car" style="' + carColor + '">#' + c + '</span>'
@@ -316,21 +312,21 @@ STANDINGS.forEach(function(p) {
 });
 
 var STATS = [
-  "📊 STANDINGS · Pam/Ron/Scott/Zach +$90 🏁🏁 · Nicole +$80 🏁🏁 · Nick -$10 🏁 · Ace/Brenda/Daniel/KO3 -$110 · Race 12 of 36",
-  "🏆 WIN HISTORY · R1 Daytona: Ron · R2 Atlanta: Scott · R3 COTA: Zach · R4 Phoenix: Pam · R5 Las Vegas: Scott · R6 Darlington: Zach · R7 Martinsville: Ron · R8 Bristol: Nick · R9 Kansas: Nicole · R10 Talladega: Pam · R11 Texas: Nicole",
-  "🔥 NICOLE IS HEATING UP — wins at Kansas AND Texas in back-to-back races. She's now 2-for-12 and only $10 behind the leaders. Watch out.",
-  "⭐ KO3 FINALLY has Shane van Gisbergen #97 — the defending Watkins Glen winner and outright race favorite. KO3's first elite draw all season.",
-  "🏎️ ROAD COURSE FACT: SVG has won 6 consecutive road course races across Cup, O'Reilly, and Trucks. Watkins Glen is his house.",
-  "⭐ Daniel drew Connor Zilisch #88 ★★★★★ — the rookie sensation who has won here twice in lower series. Back on his home turf today.",
-  "📊 WATKINS GLEN FACT: Hendrick Motorsports has won 5 of the last 7 races here. Scott has Byron #24 ★★★★, Zach has Elliott #9 ★★★★, Nick has Buescher #17 ★★★★.",
-  "🏁 0-FOR-11 CLUB: Ace, Brenda, Daniel & KO3 are all still hunting win #1. But KO3 has the outright favorite today. This could be the day.",
-  "📊 WATKINS GLEN FACT: Chevrolet has won 6 of the last 7 races at this track. 7 of the 10 top-rated cars today are Chevrolets.",
-  "⭐ Ace drew Tyler Reddick #45 ★★★★★ — points leader and COTA winner earlier this season. Reddick's road course form has been elite in 2026.",
-  "💸 STANDINGS GAP · The top 5 (Pam/Ron/Scott/Zach/Nicole) are all within $10 of each other. The bottom 4 are $200 behind. Two separate races happening.",
-  "📊 WATKINS GLEN FACT: Top-5 starting positions have produced 67.5% of all Cup wins here. Qualifying matters enormously at The Glen.",
-  "😤 Brenda has Kyle Larson #5 ★★★★ — a former Glen winner but with 3 finishes of 12th, 26th, 39th in his last 3 starts here. Feast or famine.",
-  "⭐ Nick drew Chris Buescher #17 ★★★★ — the 2024 Watkins Glen winner with finishes of 9th, 7th, 1st, 3rd in his last 4 starts here. Nick is live today.",
-  "🏎️ WATKINS GLEN FACT: This race has been extended from 90 to 100 laps in 2026. More laps means more strategy, more pit windows, and more chaos."
+  "📊 STANDINGS · Pam/Ron/Scott/Zach +$80 🏁🏁 · Nicole +$70 🏁🏁 · KO3/Nick -$20 🏁 · Ace/Brenda/Daniel -$120 · Race 13 of 36",
+  "🏆 WIN HISTORY · R1 Daytona: Ron · R2 Atlanta: Scott · R3 COTA: Zach · R4 Phoenix: Pam · R5 Las Vegas: Scott · R6 Darlington: Zach · R7 Martinsville: Ron · R8 Bristol: Nick · R9 Kansas: Nicole · R10 Talladega: Pam · R11 Texas: Nicole · R12 Watkins Glen: KO3",
+  "🎉 KO3 FINALLY WINS — SVG dominated Watkins Glen for his 7th career Cup road course victory. The pool's longest drought is over!",
+  "⭐ Ron drew Denny Hamlin #11 ★★★★★ — the top-rated driver at Charlotte with 3 wins here. Fresh off winning the All-Star Race at Dover.",
+  "🏎️ COCA-COLA 600 FACT: This is the longest race on the NASCAR schedule at 600 miles. It starts at 6pm and typically finishes near midnight.",
+  "⭐ Scott drew Tyler Reddick #45 ★★★★★ — the points leader who has won 5 races this season. Still looking for his first Charlotte win.",
+  "📊 CHARLOTTE FACT: The race has been run every Memorial Day weekend since 1960. It's older than Daytona 500 weekend traditions at most families.",
+  "🕯️ The NASCAR community remembers Kyle Busch, who passed away this week at age 41. Austin Hill drives the #33 in his honor tonight.",
+  "⭐ Zach drew Kyle Larson #5 ★★★★★ — a Charlotte specialist with multiple wins and top-5s at the 1.5-mile oval. Zach has elite firepower.",
+  "📊 CHARLOTTE FACT: Track conditions change dramatically during the 600 miles as temperatures drop after sundown. The night setup is critical.",
+  "⭐ Ace drew William Byron #24 ★★★★★ — the best Charlotte driver in the NextGen era. His home track, his rules.",
+  "🏁 WINLESS TRIO: Ace, Brenda & Daniel are 0-for-12 and sitting at -$120. They need wins in the back half of the season to make up serious ground.",
+  "📊 FIRST AMAZON PRIME RACE: This is the first of 5 Cup races on Prime Video in 2026. Dale Earnhardt Jr., Steve Letarte & Adam Alexander on the call.",
+  "⭐ Daniel drew Chase Briscoe #19 ★★★★ — Charlotte specialist who led laps here in 2025. Daniel has a legitimate contender tonight.",
+  "🏎️ COCA-COLA 600 FACT: Katherine Legge (#78) is attempting the Indy 500 / Coke 600 double today — she'll fly from Indianapolis to Charlotte for tonight's race. KO3 holds her car."
 ];
 
 var statIndex = 0;
@@ -348,8 +344,8 @@ function showStat() {
 showStat();
 setInterval(showStat, 5000);
 
-// Countdown: Sunday May 10 2026 3:00 PM ET = 19:00 UTC
-var greenFlag = new Date('2026-05-10T19:00:00Z');
+// Countdown: Sunday May 24 2026 6:00 PM ET = 22:00 UTC
+var greenFlag = new Date('2026-05-24T22:00:00Z');
 function updateCountdown() {
   var now = new Date();
   var diff = greenFlag - now;
@@ -369,6 +365,5 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 </script>
-
 </body>
 </html>
