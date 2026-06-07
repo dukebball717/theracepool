@@ -98,6 +98,15 @@
   <div class="ticker-pip"></div>
 </div>
 
+<!-- RACEPARTY BAR -->
+<div style="background:#111;border-bottom:1px solid #2a2a2a;padding:6px 28px;display:flex;align-items:center;gap:16px;">
+  <div style="font-family:Arial Black,Arial;font-weight:900;font-size:14px;color:#e8a020;letter-spacing:3px;">RACEPARTY</div>
+  <div style="color:#444;font-size:14px;font-weight:700;">•</div>
+  <div style="font-family:Arial,sans-serif;font-weight:700;font-size:13px;color:#aaa;letter-spacing:1px;">8/29/26 · DanCave · 7:00 PM</div>
+  <div style="color:#444;font-size:14px;font-weight:700;">•</div>
+  <div style="font-family:Arial Black,Arial;font-weight:900;font-size:13px;color:#4caf50;" id="party-countdown">-- days away</div>
+</div>
+
 <!-- TRACK BANNER -->
 <div class="track-banner">
   <svg width="500" height="64" viewBox="0 0 500 64" xmlns="http://www.w3.org/2000/svg">
@@ -305,7 +314,7 @@ var STATS = [
   "🔥 RON LEADS with 3 wins and +$150 — but Nashville gave Nick his 2nd win, joining Scott, Zach, Pam and Nicole all with 2 wins each. Six people in the thick of it.",
   "⭐ Ace drew Tyler Reddick #45 ★★★★★ — the points leader and 2024 Michigan winner. Reddick ranks 2nd best average finish at high-speed intermediates in 2026. Ace is live.",
   "🏎️ MICHIGAN FACT: At 2.0 miles, Michigan is the longest purely oval track on the schedule. Horsepower is king here — teams with more engine lift win more here than anywhere else.",
-  "⭐ Zach drew Denny Hamlin #11 ★★★★★ — back-to-back winner (Nashville + defending Michigan). The +380 favorite coming in absolutely on fire with his 62nd career win last week.",
+  "⭐ Pam drew Denny Hamlin #11 ★★★★★ — back-to-back winner (Nashville + defending Michigan). The top-rated driver coming in on fire with his 62nd career win last week. Pam is dangerous.",
   "📊 MICHIGAN FACT: Kyle Larson has won here 3 times. Scott holds #5 today. Larson qualified 3rd in practice — his car is clearly fast at MIS this week.",
   "⭐ Daniel drew Christopher Bell #20 ★★★★★ — fresh off a P2 at Nashville, Bell is running his best Michigan of the NextGen era in practice. Daniel has a serious contender.",
   "🏁 0-FOR-14 CLUB: Ace, Brenda & Daniel have still never won the pool. Combined they're -$140 each. Ace has Reddick today — the closest any of them has come to a bulletproof draw.",
@@ -316,6 +325,17 @@ var STATS = [
   "⭐ KO3 drew Chase Briscoe #19 ★★★★ — averaging 31.1 fast laps per Michigan race, by far the best in the field. KO3 has a legitimate shot to win their 2nd pool this week.",
   "🏎️ MICHIGAN FACT: This is the only 2-mile oval on the schedule. Michigan International Speedway was built in 1968 and has hosted Cup racing since 1969 — one of the oldest active venues."
 ];
+
+// RACEPARTY countdown — Aug 29 2026 7:00 PM ET = 23:00 UTC
+(function() {
+  var party = new Date('2026-08-29T23:00:00Z');
+  var now = new Date();
+  var diff = party - now;
+  var days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+  var el = document.getElementById('party-countdown');
+  if (el) el.textContent = days > 0 ? days + ' days away 🎉' : 'IT\'S PARTY DAY! 🎉';
+})();
+
 
 var statIndex = 0;
 function showStat() {
