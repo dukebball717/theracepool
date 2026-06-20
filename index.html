@@ -1,93 +1,89 @@
-python3 - << 'EOF'
+python3 - << 'PYEOF'
 import base64
-with open('/mnt/user-data/uploads/IMG_9490.webp', 'rb') as f:
+with open('/mnt/user-data/uploads/IMG_9490.webp','rb') as f:
     PRIME_LOGO = base64.b64encode(f.read()).decode()
 
-html = '''<!DOCTYPE html>
+html = r"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NASCAR Race Pool – Great American Getaway 400 | Pocono</title>
+<title>NASCAR Race Pool - Anduril 250 | Naval Base Coronado</title>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #141414; --card: #1e1e1e; --border: #2a2a2a;
-    --orange: #e8a020; --orange2: #f0b840;
-    --text: #f0f0f0; --muted: #888; --green: #4caf50; --red: #e05555;
-  }
-  body { background: var(--bg); color: var(--text); font-family: "Arial Narrow","Franklin Gothic Medium",Arial,sans-serif; min-height: 100vh; }
-  .ticker-wrap { background: var(--orange); padding: 7px 28px; display: flex; align-items: center; gap: 14px; min-height: 38px; }
-  .ticker-pip { width: 8px; height: 8px; background: #fff; border-radius: 50%; opacity: 0.7; flex-shrink: 0; }
-  .ticker-text { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: .4px; text-shadow: 0 1px 3px rgba(0,0,0,0.3); flex: 1; text-align: center; transition: opacity 0.3s; }
-  .ticker-counter { font-size: 11px; font-weight: 800; color: rgba(255,255,255,0.6); flex-shrink: 0; letter-spacing: 1px; }
-  .raceparty-bar { background: #111; border-bottom: 1px solid #2a2a2a; padding: 6px 28px; display: flex; align-items: center; gap: 16px; }
-  .rp-label { font-family: Arial Black,Arial; font-weight: 900; font-size: 14px; color: #e8a020; letter-spacing: 3px; }
-  .rp-detail { font-weight: 700; font-size: 13px; color: #aaa; letter-spacing: 1px; }
-  .rp-dot { color: #444; font-size: 14px; font-weight: 700; }
-  .rp-countdown { font-family: Arial Black,Arial; font-weight: 900; font-size: 13px; color: #4caf50; }
-  .track-banner { background: #0a1a00; display: flex; justify-content: center; align-items: center; padding: 10px 28px; border-bottom: 2px solid #4a7a1a; }
-  header { display: flex; align-items: center; justify-content: space-between; padding: 16px 28px 14px; border-bottom: 2px solid var(--orange); flex-wrap: wrap; gap: 12px; }
-  .race-title { font-size: 34px; font-weight: 900; line-height: 1.05; text-transform: uppercase; letter-spacing: 1px; }
-  .race-title span { color: var(--orange); }
-  .race-subtitle { font-size: 15px; color: var(--muted); font-weight: 600; margin-top: 2px; }
-  .header-right { display: flex; align-items: center; gap: 24px; }
-  .countdown-block { text-align: center; }
-  .cd-info { font-size: 11px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-  .cd-digits { display: flex; gap: 8px; align-items: center; }
-  .cd-unit { text-align: center; }
-  .cd-num { font-size: 28px; font-weight: 900; color: var(--orange); line-height: 1; }
-  .cd-lbl { font-size: 10px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-  .cd-sep { font-size: 24px; font-weight: 900; color: var(--orange); margin-bottom: 12px; }
-  .section-header { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--orange); border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 14px; }
-  .participant-section { padding: 16px 28px 14px; border-bottom: 1px solid var(--border); }
-  .participant-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .p-card { border-radius: 10px; overflow: hidden; border: 1px solid #3a3000; }
-  .p-card-header { font-size: 19px; font-weight: 900; padding: 10px 14px; background: linear-gradient(135deg, #2a2000, #3a2c00); border-bottom: 2px solid var(--orange); }
-  .p-driver-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 14px; font-size: 13px; }
-  .p-driver-row:nth-child(odd) { background: #1c1c1c; }
-  .p-driver-row:nth-child(even) { background: #252525; }
-  .p-car { font-weight: 900; color: var(--orange); min-width: 34px; display: inline-block; }
-  .p-driver { font-weight: 700; color: var(--text); margin-left: 4px; }
-  .p-rating { font-weight: 800; color: var(--orange2); font-size: 13px; }
-  .main { display: grid; grid-template-columns: 1fr 340px; gap: 20px; padding: 20px 28px; max-width: 1400px; margin: 0 auto; }
-  @media(max-width:900px){ .main { grid-template-columns: 1fr; } }
-  .standings-card { background: var(--card); border-radius: 10px; padding: 20px; border: 1px solid var(--border); }
-  table { width: 100%; border-collapse: collapse; }
-  thead th { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); padding: 6px 10px; text-align: left; border-bottom: 1px solid var(--border); }
-  thead th:not(:first-child) { text-align: center; }
-  tbody tr { border-bottom: 1px solid var(--border); transition: background .15s; }
-  tbody tr:last-child { border-bottom: none; }
-  tbody tr:hover { background: #252525; }
-  td { padding: 10px; font-size: 17px; font-weight: 700; vertical-align: middle; }
-  td:not(:first-child) { text-align: center; }
-  .rank { font-size: 13px; color: var(--muted); font-weight: 700; width: 28px; }
-  .pname { font-size: 18px; font-weight: 800; }
-  .cars-cell { font-size: 12px; color: var(--muted); font-weight: 600; line-height: 1.4; }
-  .car-highlight { color: var(--orange2); font-weight: 800; }
-  .balance { font-size: 18px; font-weight: 900; }
-  .pos { color: var(--green); } .neg { color: var(--red); }
-  .wins-cell { font-size: 14px; color: var(--muted); font-weight: 700; }
-  .wins-cell.has-win { color: var(--orange); font-weight: 800; }
-  .sidebar { display: flex; flex-direction: column; gap: 18px; }
-  .card { background: var(--card); border-radius: 10px; padding: 18px; border: 1px solid var(--border); }
-  .pool-winner-row { background: #1a2d1a; border-radius: 6px; padding: 8px 12px; display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-  .pwtag { font-size: 11px; color: var(--green); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
-  .pwname { font-size: 18px; font-weight: 900; }
-  .winner-banner { background: linear-gradient(135deg, #2a1f00, #3d2c00); border: 1px solid var(--orange); border-radius: 8px; padding: 12px 14px; margin-bottom: 12px; }
-  .winner-banner .wlabel { font-size: 11px; color: var(--orange); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 4px; }
-  .winner-banner .wname { font-size: 22px; font-weight: 900; }
-  .winner-banner .wdetail { font-size: 13px; color: var(--muted); margin-top: 2px; }
-  .result-row { display: flex; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
-  .result-row:last-child { border-bottom: none; }
-  .result-pos { font-size: 20px; font-weight: 900; color: var(--orange); width: 30px; }
-  .result-driver { font-weight: 700; flex: 1; }
-  .result-car { font-size: 12px; color: var(--muted); font-weight: 600; margin-left: 6px; }
-  .fact-row { display: flex; justify-content: space-between; align-items: baseline; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
-  .fact-row:last-child { border-bottom: none; }
-  .fact-label { color: var(--muted); font-weight: 600; }
-  .fact-val { font-weight: 800; color: var(--text); text-align: right; }
-  .footnote { font-size: 11px; color: var(--muted); padding: 14px 28px 20px; font-weight: 600; border-top: 1px solid var(--border); margin-top: 10px; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#141414;--card:#1e1e1e;--border:#2a2a2a;--orange:#e8a020;--orange2:#f0b840;--text:#f0f0f0;--muted:#888;--green:#4caf50;--red:#e05555}
+body{background:var(--bg);color:var(--text);font-family:"Arial Narrow","Franklin Gothic Medium",Arial,sans-serif;min-height:100vh}
+.ticker-wrap{background:var(--orange);padding:7px 28px;display:flex;align-items:center;gap:14px;min-height:38px}
+.ticker-pip{width:8px;height:8px;background:#fff;border-radius:50%;opacity:.7;flex-shrink:0}
+.ticker-text{font-size:15px;font-weight:700;color:#fff;letter-spacing:.4px;text-shadow:0 1px 3px rgba(0,0,0,.3);flex:1;text-align:center;transition:opacity .3s}
+.ticker-counter{font-size:11px;font-weight:800;color:rgba(255,255,255,.6);flex-shrink:0;letter-spacing:1px}
+.raceparty-bar{background:#111;border-bottom:1px solid #2a2a2a;padding:6px 28px;display:flex;align-items:center;gap:16px}
+.rp-label{font-family:Arial Black,Arial;font-weight:900;font-size:14px;color:#e8a020;letter-spacing:3px}
+.rp-detail{font-weight:700;font-size:13px;color:#aaa;letter-spacing:1px}
+.rp-dot{color:#444;font-size:14px;font-weight:700}
+.rp-countdown{font-family:Arial Black,Arial;font-weight:900;font-size:13px;color:#4caf50}
+.track-banner{background:#0a1428;display:flex;justify-content:center;align-items:center;padding:10px 28px;border-bottom:2px solid #1a3a6a}
+header{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 14px;border-bottom:2px solid var(--orange);flex-wrap:wrap;gap:12px}
+.race-title{font-size:34px;font-weight:900;line-height:1.05;text-transform:uppercase;letter-spacing:1px}
+.race-title span{color:var(--orange)}
+.race-subtitle{font-size:15px;color:var(--muted);font-weight:600;margin-top:2px}
+.header-right{display:flex;align-items:center;gap:24px}
+.countdown-block{text-align:center}
+.cd-info{font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.cd-digits{display:flex;gap:8px;align-items:center}
+.cd-unit{text-align:center}
+.cd-num{font-size:28px;font-weight:900;color:var(--orange);line-height:1}
+.cd-lbl{font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:1px}
+.cd-sep{font-size:24px;font-weight:900;color:var(--orange);margin-bottom:12px}
+.section-header{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:var(--orange);border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:14px}
+.participant-section{padding:16px 28px 14px;border-bottom:1px solid var(--border)}
+.participant-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.p-card{border-radius:10px;overflow:hidden;border:1px solid #3a3000}
+.p-card-header{font-size:19px;font-weight:900;padding:10px 14px;background:linear-gradient(135deg,#2a2000,#3a2c00);border-bottom:2px solid var(--orange)}
+.p-driver-row{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;font-size:13px}
+.p-driver-row:nth-child(odd){background:#1c1c1c}
+.p-driver-row:nth-child(even){background:#252525}
+.p-car{font-weight:900;color:var(--orange);min-width:34px;display:inline-block}
+.p-driver{font-weight:700;color:var(--text);margin-left:4px}
+.p-rating{font-weight:800;color:var(--orange2);font-size:13px}
+.main{display:grid;grid-template-columns:1fr 340px;gap:20px;padding:20px 28px;max-width:1400px;margin:0 auto}
+@media(max-width:900px){.main{grid-template-columns:1fr}}
+.standings-card{background:var(--card);border-radius:10px;padding:20px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse}
+thead th{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);padding:6px 10px;text-align:left;border-bottom:1px solid var(--border)}
+thead th:not(:first-child){text-align:center}
+tbody tr{border-bottom:1px solid var(--border);transition:background .15s}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:#252525}
+td{padding:10px;font-size:17px;font-weight:700;vertical-align:middle}
+td:not(:first-child){text-align:center}
+.rank{font-size:13px;color:var(--muted);font-weight:700;width:28px}
+.pname{font-size:18px;font-weight:800}
+.cars-cell{font-size:12px;color:var(--muted);font-weight:600;line-height:1.4}
+.car-highlight{color:var(--orange2);font-weight:800}
+.balance{font-size:18px;font-weight:900}
+.pos{color:var(--green)}.neg{color:var(--red)}
+.wins-cell{font-size:14px;color:var(--muted);font-weight:700}
+.wins-cell.has-win{color:var(--orange);font-weight:800}
+.sidebar{display:flex;flex-direction:column;gap:18px}
+.card{background:var(--card);border-radius:10px;padding:18px;border:1px solid var(--border)}
+.pool-winner-row{background:#1a2d1a;border-radius:6px;padding:8px 12px;display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.pwtag{font-size:11px;color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:1.5px}
+.pwname{font-size:18px;font-weight:900}
+.winner-banner{background:linear-gradient(135deg,#2a1f00,#3d2c00);border:1px solid var(--orange);border-radius:8px;padding:12px 14px;margin-bottom:12px}
+.winner-banner .wlabel{font-size:11px;color:var(--orange);font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:4px}
+.winner-banner .wname{font-size:22px;font-weight:900}
+.winner-banner .wdetail{font-size:13px;color:var(--muted);margin-top:2px}
+.result-row{display:flex;align-items:center;padding:7px 0;border-bottom:1px solid var(--border);font-size:14px}
+.result-row:last-child{border-bottom:none}
+.result-pos{font-size:20px;font-weight:900;color:var(--orange);width:30px}
+.result-driver{font-weight:700;flex:1}
+.result-car{font-size:12px;color:var(--muted);font-weight:600;margin-left:6px}
+.fact-row{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px}
+.fact-row:last-child{border-bottom:none}
+.fact-label{color:var(--muted);font-weight:600}
+.fact-val{font-weight:800;color:var(--text);text-align:right}
+.footnote{font-size:11px;color:var(--muted);padding:14px 28px 20px;font-weight:600;border-top:1px solid var(--border);margin-top:10px}
 </style>
 </head>
 <body>
@@ -108,25 +104,26 @@ html = '''<!DOCTYPE html>
 </div>
 
 <div class="track-banner">
-  <svg width="520" height="64" viewBox="0 0 520 64" xmlns="http://www.w3.org/2000/svg">
-    <rect x="0" y="0" width="6" height="64" fill="#4a7a1a"/>
-    <rect x="514" y="0" width="6" height="64" fill="#4a7a1a"/>
-    <polygon points="20,10 52,10 60,32 52,54 20,54 12,32" fill="none" stroke="#4a7a1a" stroke-width="2.5"/>
-    <polygon points="26,18 46,18 52,32 46,46 26,46 20,32" fill="none" stroke="#444" stroke-width="1.5"/>
-    <text x="78" y="22" font-family="Arial Black,Arial" font-weight="900" font-size="19" fill="#fff" letter-spacing="2">POCONO RACEWAY</text>
-    <text x="78" y="46" font-family="Arial Black,Arial" font-weight="900" font-size="17" fill="#4a7a1a" letter-spacing="2">GREAT AMERICAN GETAWAY 400 &middot; RACE 16</text>
-    <text x="78" y="61" font-family="Arial,sans-serif" font-weight="700" font-size="9" fill="#666" letter-spacing="2">THE TRICKY TRIANGLE &middot; LONG POND, PENNSYLVANIA</text>
+  <svg width="540" height="68" viewBox="0 0 540 68" xmlns="http://www.w3.org/2000/svg">
+    <rect x="0" y="0" width="6" height="68" fill="#1a3a6a"/>
+    <rect x="534" y="0" width="6" height="68" fill="#1a3a6a"/>
+    <text x="22" y="20" font-family="Arial Black,Arial" font-weight="900" font-size="11" fill="#8a9ab0" letter-spacing="3">&#9733; USA MILITARY</text>
+    <path d="M22 30 L42 18 L62 30 L62 54 L22 54 Z" fill="none" stroke="#1a3a6a" stroke-width="2.5"/>
+    <path d="M28 33 L42 23 L56 33 L56 50 L28 50 Z" fill="none" stroke="#444" stroke-width="1.5"/>
+    <text x="80" y="24" font-family="Arial Black,Arial" font-weight="900" font-size="19" fill="#fff" letter-spacing="2">NAVAL BASE CORONADO</text>
+    <text x="80" y="47" font-family="Arial Black,Arial" font-weight="900" font-size="17" fill="#1a3a6a" letter-spacing="2">ANDURIL 250 &middot; RACE 17 OF 2026</text>
+    <text x="80" y="62" font-family="Arial,sans-serif" font-weight="700" font-size="9" fill="#666" letter-spacing="2">QUALCOMM CIRCUIT &middot; SAN DIEGO, CA &middot; FIRST-EVER NASCAR RACE AT A U.S. MILITARY BASE</text>
   </svg>
 </div>
 
 <header>
   <div>
-    <div class="race-title">Great American Getaway 400 <span>&middot; Pocono</span></div>
-    <div class="race-subtitle">Race 16 of 2026 &nbsp;&middot;&nbsp; Pocono Raceway &nbsp;&middot;&nbsp; Sunday, June 14, 2026 &nbsp;&middot;&nbsp; Start moved up due to weather</div>
+    <div class="race-title">Anduril 250 <span>&middot; Naval Base Coronado</span></div>
+    <div class="race-subtitle">Race 17 of 2026 &nbsp;&middot;&nbsp; Qualcomm Circuit &nbsp;&middot;&nbsp; San Diego, CA &nbsp;&middot;&nbsp; Sunday, June 21, 2026</div>
   </div>
   <div class="header-right">
     <div class="countdown-block">
-      <div class="cd-info">&#127882; &nbsp;1:00 PM ET &nbsp;|&nbsp; 160 Laps</div>
+      <div class="cd-info">&#127882; &nbsp;4:00 PM ET &nbsp;|&nbsp; 75 Laps</div>
       <div class="cd-digits">
         <div class="cd-unit"><div class="cd-num" id="cd-h">--</div><div class="cd-lbl">Hrs</div></div>
         <div class="cd-sep">:</div>
@@ -135,23 +132,21 @@ html = '''<!DOCTYPE html>
         <div class="cd-unit"><div class="cd-num" id="cd-s">--</div><div class="cd-lbl">Sec</div></div>
       </div>
     </div>
-    <img src="data:image/webp;base64,''' + PRIME_LOGO + '''" alt="NASCAR on Prime" style="height:48px;display:block;border-radius:4px;background:#fff;padding:2px;">
+    <img src="data:image/webp;base64,PRIME_LOGO_PLACEHOLDER" alt="NASCAR on Prime" style="height:48px;display:block;border-radius:4px;background:#fff;padding:2px;">
   </div>
 </header>
 
 <div class="participant-section">
   <div id="participant-grid" class="participant-grid"></div>
-  <div style="font-size:11px;color:var(--muted);margin-top:10px;font-weight:600;">Driver ratings based on Pocono track history &middot; updated 6/14/26 &middot; SVG = #97 &middot; Zilisch = #88 &middot; Start moved to 1PM ET due to rain</div>
+  <div style="font-size:11px;color:var(--muted);margin-top:10px;font-weight:600;">Driver ratings based on road/street course history &middot; Brand new track &mdash; no prior data &middot; SVG #97 &middot; Zilisch #88 &middot; updated 6/21/26</div>
 </div>
 
 <div class="main">
   <div>
     <div class="standings-card">
-      <div class="section-header">&#128202; Pool Standings &mdash; After Michigan (Race 15)</div>
+      <div class="section-header">&#128202; Pool Standings &mdash; After Pocono (Race 16)</div>
       <table>
-        <thead><tr>
-          <th>#</th><th style="text-align:left">Participant</th><th>Cars</th><th>Wins</th><th>Balance</th>
-        </tr></thead>
+        <thead><tr><th>#</th><th style="text-align:left">Participant</th><th>Cars</th><th>Wins</th><th>Balance</th></tr></thead>
         <tbody id="standings-body"></tbody>
       </table>
       <div style="font-size:11px;color:var(--muted);margin-top:12px;font-weight:600;">
@@ -159,116 +154,102 @@ html = '''<!DOCTYPE html>
       </div>
     </div>
   </div>
-
   <div class="sidebar">
     <div class="card">
-      <div class="section-header">&#127937; Michigan Results (Race 15)</div>
+      <div class="section-header">&#127937; Pocono Results (Race 16)</div>
       <div class="pool-winner-row">
         <span class="pwtag">&#127942; Pool Winner</span>
-        <span class="pwname">&#127937; Poochie &nbsp;<span style="color:var(--muted);font-size:14px;font-weight:600;">Denny Hamlin #11 &middot; +$90</span></span>
+        <span class="pwname">&#127937; Nicole &nbsp;<span style="color:var(--muted);font-size:14px;font-weight:600;">Denny Hamlin #11 &middot; +$90</span></span>
       </div>
       <div class="winner-banner">
         <div class="wlabel">Race Winner</div>
         <div class="wname">Denny Hamlin</div>
-        <div class="wdetail">#11 Joe Gibbs Racing Toyota &middot; Win #63 career &middot; Michigan</div>
+        <div class="wdetail">#11 Joe Gibbs Racing &middot; 3rd straight win &middot; 64th career &middot; Pocono</div>
       </div>
       <div>
         <div class="result-row"><span class="result-pos">1</span><span class="result-driver">Denny Hamlin <span class="result-car">#11 Toyota</span></span></div>
-        <div class="result-row"><span class="result-pos">2</span><span class="result-driver">Erik Jones <span class="result-car">#43 Chevy</span></span></div>
-        <div class="result-row"><span class="result-pos">3</span><span class="result-driver">Bubba Wallace <span class="result-car">#23 Toyota</span></span></div>
-        <div class="result-row"><span class="result-pos">4</span><span class="result-driver">Kyle Larson <span class="result-car">#5 Chevy</span></span></div>
-        <div class="result-row"><span class="result-pos">5</span><span class="result-driver">Carson Hocevar <span class="result-car">#77 Chevy</span></span></div>
+        <div class="result-row"><span class="result-pos">2</span><span class="result-driver">Tyler Reddick <span class="result-car">#45 Toyota</span></span></div>
+        <div class="result-row"><span class="result-pos">3</span><span class="result-driver">William Byron <span class="result-car">#24 Chevy</span></span></div>
+        <div class="result-row"><span class="result-pos">4</span><span class="result-driver">John Hunter Nemechek <span class="result-car">#42 Toyota</span></span></div>
+        <div class="result-row"><span class="result-pos">5</span><span class="result-driver">Kyle Larson <span class="result-car">#5 Chevy</span></span></div>
       </div>
     </div>
-
     <div class="card">
-      <div class="section-header">&#128506; Pocono Raceway</div>
-      <div class="fact-row"><span class="fact-label">Nickname</span><span class="fact-val">The Tricky Triangle</span></div>
-      <div class="fact-row"><span class="fact-label">Track Length</span><span class="fact-val">2.5-mile triangle</span></div>
-      <div class="fact-row"><span class="fact-label">3 unique corners</span><span class="fact-val">Turns 1, 2 &amp; 3</span></div>
-      <div class="fact-row"><span class="fact-label">Race Length</span><span class="fact-val">160 laps &middot; 400 miles</span></div>
-      <div class="fact-row"><span class="fact-label">Hamlin wins here</span><span class="fact-val">7 (all-time record)</span></div>
-      <div class="fact-row"><span class="fact-label">Defending Winner</span><span class="fact-val">Chase Briscoe (2025)</span></div>
-      <div class="fact-row"><span class="fact-label">Start moved up</span><span class="fact-val">1 PM ET (weather)</span></div>
+      <div class="section-header">&#128506; Naval Base Coronado</div>
+      <div class="fact-row"><span class="fact-label">Circuit Name</span><span class="fact-val">Qualcomm Circuit</span></div>
+      <div class="fact-row"><span class="fact-label">Length</span><span class="fact-val">3.4-mile street course</span></div>
+      <div class="fact-row"><span class="fact-label">Turns</span><span class="fact-val">19 turns</span></div>
+      <div class="fact-row"><span class="fact-label">Distance</span><span class="fact-val">75 laps &middot; 255 miles</span></div>
+      <div class="fact-row"><span class="fact-label">Location</span><span class="fact-val">San Diego, CA</span></div>
+      <div class="fact-row"><span class="fact-label">Historic first</span><span class="fact-val">NASCAR on a military base</span></div>
+      <div class="fact-row"><span class="fact-label">Prior winner</span><span class="fact-val">None &mdash; inaugural race</span></div>
     </div>
   </div>
 </div>
 
 <div class="footnote">
-  * Start time moved to 1 PM ET due to weather threat. Bell racing with fractured wrist from Michigan crash. Austin Hill #33 (RCR). Casey Mears #62, Daniel Dye #78 (open entries). SVG = #97. Zilisch = #88. Balances reflect standings after Race 15 (Michigan).
+  * Inaugural race at Naval Base Coronado &mdash; no prior Cup history at this venue. Open entries: #67 Corey Heim, #84 Jimmie Johnson, #91 Kevin Magnussen. SVG = #97 Trackhouse. Zilisch = #88 Trackhouse. Balances reflect standings after Race 16 (Pocono). Anduril 250 &middot; Race 17 of 2026.
 </div>
 
 <script>
 var STANDINGS = [
-  { name:"Ron",    flags:3, cars:["20","22","38"],  balance:140 },
-  { name:"Pam",   flags:3, cars:["54","77","3"],   balance:140 },
-  { name:"Nick",   flags:2, cars:["12","23","21"],  balance:50  },
-  { name:"Zach",    flags:2, cars:["24","43","47"],  balance:50  },
-  { name:"Scott",  flags:2, cars:["11","1","71"],   balance:50  },
-  { name:"Nicole", flags:2, cars:["45","2","60"],   balance:40  },
-  { name:"KO3",    flags:1, cars:["19","97","4"],   balance:-50 },
-  { name:"Ace",    flags:0, cars:["9","7","33"],    balance:-150 },
-  { name:"Brenda", flags:0, cars:["5","6","16"],    balance:-150 },
-  { name:"Daniel", flags:0, cars:["17","88","34"],  balance:-150 }
+  { name:"Ron",    flags:3,  balance:150 🌟 },
+  { name:"Poochie",   flags:3,  balance:150 🌟 },
+  { name:"Scott", flags:3,   balance:150 🌟 },
+  { name:"Nicole",   flags:2,  balance:40  },
+  { name:"Zach",    flags:2,    balance:40  },
+  { name:"Nick",  flags:2,  balance:40  },
+  { name:"KO3",    flags:1,  balance:-60 },
+  { name:"Ace",    flags:0,   balance:-160 },
+  { name:"Brenda", flags:0,   balance:-160 },
+  { name:"Daniel", flags:0,   balance:-160 }
 ];
 
-var MICHIGAN_TOP5 = ["11","43","23","5","77"];
+var POCONO_TOP5 = ["11","45","24","42","5"];
 
 var RATINGS_BY_CAR = {
-  "11": { driver:"Denny Hamlin",          rating:"★★★★★" },
-  "45": { driver:"Tyler Reddick",         rating:"★★★★★" },
-  "5":  { driver:"Kyle Larson",           rating:"★★★★★" },
-  "20": { driver:"Christopher Bell",      rating:"★★★★"  },
-  "9":  { driver:"Chase Elliott",         rating:"★★★★"  },
-  "24": { driver:"William Byron",         rating:"★★★★"  },
-  "12": { driver:"Ryan Blaney",           rating:"★★★★"  },
-  "19": { driver:"Chase Briscoe",         rating:"★★★★"  },
-  "17": { driver:"Chris Buescher",        rating:"★★★½"  },
-  "54": { driver:"Ty Gibbs",              rating:"★★★"   },
-  "1":  { driver:"Ross Chastain",         rating:"★★★"   },
-  "77": { driver:"Carson Hocevar",        rating:"★★★"   },
-  "22": { driver:"Joey Logano",           rating:"★★½"   },
-  "7":  { driver:"Daniel Suarez",         rating:"★★½"   },
-  "6":  { driver:"Brad Keselowski",       rating:"★★½"   },
-  "97": { driver:"Shane van Gisbergen",   rating:"★★"    },
-  "88": { driver:"Connor Zilisch",        rating:"★★"    },
-  "23": { driver:"Bubba Wallace",         rating:"★★"    },
-  "43": { driver:"Erik Jones",            rating:"★★"    },
-  "2":  { driver:"Austin Cindric",        rating:"★½"    },
-  "21": { driver:"Josh Berry",            rating:"★½"    },
-  "60": { driver:"Ryan Preece",           rating:"★½"    },
-  "16": { driver:"AJ Allmendinger",       rating:"★½"    },
-  "4":  { driver:"Noah Gragson",          rating:"★½"    },
-  "71": { driver:"Michael McDowell",      rating:"★½"    },
-  "34": { driver:"Todd Gilliland",        rating:"★"     },
-  "38": { driver:"Zane Smith",            rating:"★"     },
-  "33": { driver:"Austin Hill",           rating:"★"     },
-  "3":  { driver:"Austin Dillon",         rating:"★"     },
-  "47": { driver:"Ricky Stenhouse Jr.",   rating:"★"     }
+  "97":{ driver:"Shane van Gisbergen",  rating:"★★★★★" },
+  "88":{ driver:"Connor Zilisch",       rating:"★★★★★" },
+  "45":{ driver:"Tyler Reddick",        rating:"★★★★★" },
+  "20":{ driver:"Christopher Bell",     rating:"★★★★★" },
+  "5": { driver:"Kyle Larson",          rating:"★★★★"  },
+  "24":{ driver:"William Byron",        rating:"★★★★"  },
+  "9": { driver:"Chase Elliott",        rating:"★★★★"  },
+  "16":{ driver:"AJ Allmendinger",      rating:"★★★★"  },
+  "71":{ driver:"Michael McDowell",     rating:"★★★½"  },
+  "1": { driver:"Ross Chastain",        rating:"★★★"   },
+  "17":{ driver:"Chris Buescher",       rating:"★★★"   },
+  "11":{ driver:"Denny Hamlin",         rating:"★★½"   },
+  "54":{ driver:"Ty Gibbs",             rating:"★★½"   },
+  "19":{ driver:"Chase Briscoe",        rating:"★★½"   },
+  "12":{ driver:"Ryan Blaney",          rating:"★★½"   },
+  "23":{ driver:"Bubba Wallace",        rating:"★★"    },
+  "43":{ driver:"Erik Jones",           rating:"★★"    },
+  "77":{ driver:"Carson Hocevar",       rating:"★★"    },
+  "7": { driver:"Daniel Suarez",        rating:"★★"    },
+  "22":{ driver:"Joey Logano",          rating:"★½"    },
+  "6": { driver:"Brad Keselowski",      rating:"★½"    },
+  "48":{ driver:"Alex Bowman",          rating:"★½"    },
+  "2": { driver:"Austin Cindric",       rating:"★½"    },
+  "84":{ driver:"Jimmie Johnson",       rating:"★½"    },
+  "4": { driver:"Noah Gragson",         rating:"★"     },
+  "21":{ driver:"Josh Berry",           rating:"★"     },
+  "60":{ driver:"Ryan Preece",          rating:"★"     },
+  "91":{ driver:"Kevin Magnussen",      rating:"★"     },
+  "33":{ driver:"Austin Hill",          rating:"★"     },
+  "67":{ driver:"Corey Heim",           rating:"★"     }
 };
 
-STANDINGS.sort(function(a,b){
-  if(b.balance!==a.balance) return b.balance-a.balance;
-  return a.name.localeCompare(b.name);
-});
+STANDINGS.sort(function(a,b){ if(b.balance!==a.balance) return b.balance-a.balance; return a.name.localeCompare(b.name); });
 
-var tbody = document.getElementById("standings-body");
+var tbody=document.getElementById("standings-body");
 STANDINGS.forEach(function(p,i){
   var flagStr=""; for(var f=0;f<p.flags;f++) flagStr+="🏁";
   var balClass=p.balance>=0?"pos":"neg";
   var balStr=(p.balance>=0?"+":"")+"\$"+p.balance;
-  var carsHtml=p.cars.map(function(c){
-    var hot=MICHIGAN_TOP5.indexOf(c)>=0;
-    return hot?"<span class='car-highlight'>#"+c+"</span>":"#"+c;
-  }).join(" · ");
+  var carsHtml=p.cars.map(function(c){ var hot=POCONO_TOP5.indexOf(c)>=0; return hot?"<span class='car-highlight'>#"+c+"</span>":"#"+c; }).join(" &middot; ");
   var winsHtml=p.flags>0?"<span class='wins-cell has-win'>"+flagStr+"</span>":"<span class='wins-cell'>&mdash;</span>";
-  tbody.innerHTML+="<tr>"
-    +"<td class='rank'>"+(i+1)+"</td>"
-    +"<td><span class='pname'>"+p.name+"</span></td>"
-    +"<td class='cars-cell'>"+carsHtml+"</td>"
-    +"<td>"+winsHtml+"</td>"
-    +"<td class='balance "+balClass+"'>"+balStr+"</td>"
-    +"</tr>";
+  tbody.innerHTML+="<tr><td class='rank'>"+(i+1)+"</td><td><span class='pname'>"+p.name+"</span></td><td class='cars-cell'>"+carsHtml+"</td><td>"+winsHtml+"</td><td class='balance "+balClass+"'>"+balStr+"</td></tr>";
 });
 
 var pgrid=document.getElementById("participant-grid");
@@ -276,89 +257,67 @@ STANDINGS.forEach(function(p){
   var flagStr=""; for(var f=0;f<p.flags;f++) flagStr+="🏁";
   var driversHtml=p.cars.map(function(c){
     var info=RATINGS_BY_CAR[c];
-    var driverName=info?info.driver:"TBD";
-    var rating=info?info.rating:"—";
-    var hot=MICHIGAN_TOP5.indexOf(c)>=0;
-    var carColor=hot?"color:var(--orange2);font-weight:900;":"color:var(--orange);font-weight:900;";
-    return "<div class='p-driver-row'>"
-      +"<span><span class='p-car' style='"+carColor+"'>#"+c+"</span>"
-      +"<span class='p-driver'>"+driverName+"</span></span>"
-      +"<span class='p-rating'>"+rating+"</span>"
-      +"</div>";
+    var dn=info?info.driver:"TBD";
+    var rt=info?info.rating:"--";
+    var hot=POCONO_TOP5.indexOf(c)>=0;
+    var cc=hot?"color:var(--orange2);font-weight:900;":"color:var(--orange);font-weight:900;";
+    return "<div class='p-driver-row'><span><span class='p-car' style='"+cc+"'>#"+c+"</span><span class='p-driver'>"+dn+"</span></span><span class='p-rating'>"+rt+"</span></div>";
   }).join("");
-  pgrid.innerHTML+="<div class='p-card'>"
-    +"<div class='p-card-header'>"+(flagStr?flagStr+" ":"")+p.name+"</div>"
-    +driversHtml
-    +"</div>";
+  pgrid.innerHTML+="<div class='p-card'><div class='p-card-header'>"+(flagStr?flagStr+" ":"")+p.name+"</div>"+driversHtml+"</div>";
 });
 
 var STATS = [
-  "📊 STANDINGS · Ron/Pam +$140 🏁🏁🏁 · Nick/Zach/Scott +$50 🏁🏁 · Nicole +$40 🏁🏁 · KO3 -$50 🏁 · Ace/Brenda/Daniel -$150 · Race 16 of 36",
-  "🏆 WIN HISTORY · R1 Daytona: Ron · R2 Atlanta: Scott · R3 COTA: Zach · R4 Phoenix: Pam · R5 Las Vegas: Scott · R6 Darlington: Zach · R7 Martinsville: Ron · R8 Bristol: Nick · R9 Kansas: Nicole · R10 Talladega: Pam · R11 Texas: Nicole · R12 Glen: KO3 · R13 Charlotte: Ron · R14 Nashville: Nick · R15 Michigan: Pam",
-  "🔥 HAMLIN IS ON FIRE — 3 wins in his last 4 races (Nashville, Michigan + All-Star at Dover). Nicole holds #11 today at Pocono. Hamlin has 7 wins here. History says pay attention to Nicole.",
-  "⭐ Brenda drew Kyle Larson #5 ★★★★★ — fastest in Pocono practice at 170.7 mph. Brenda is 0-for-15 but has the fastest car in the garage today.",
-  "🔺 POCONO FACT: The Tricky Triangle has 3 completely different corners — Turn 1 is banked like Talladega, Turn 2 like Indianapolis, Turn 3 like a flat road course. Setup compromises are brutal.",
-  "⭐ Scott drew Tyler Reddick #45 ★★★★★ — Cup points leader who won at COTA and Kansas earlier this season. Reddick is the #2 rated driver at Pocono.",
-  "📊 POCONO FACT: Start moved up 2 hours to 1 PM ET due to weather threat. Rain could cause a lightning stoppage at any point today — track position and pit strategy may decide this one.",
-  "⭐ Nicole drew Denny Hamlin #11 ★★★★★ — the man who owns this place. 7 career wins, all-time record at Pocono. Coming in on a 2-race winning streak. Nicole is the one to beat today.",
-  "🏁 ZACH GETS THE HAT TRICK SHOT — Ron won Michigan for his 3rd win. Wait — Pam won Michigan with Hamlin! Pam now ties Ron at 3 wins and +$140. Two-horse race at the top.",
-  "📊 CHRISTOPHER BELL UPDATE: Bell returns today despite a fractured wrist from the Michigan crash. Ron holds #20. A gutsy performance could mean big points for the championship — and the pool.",
-  "⭐ KO3 drew Chase Briscoe #19 ★★★★ — the defending Pocono winner. He won here in dominant fashion in 2025, leading 97 of 160 laps. KO3 has the defending champ of this very race.",
-  "💸 GAP WATCH: Ron and Pam are tied at +$140 with 3 wins each. Nick, Pam and Scott all at +$50 with 2 wins. One win today reshuffles everything.",
-  "📊 RACE PARTY - 8/29/26 7PM - DANCAVE.",
-  "🏁 0-FOR-15 CLUB: Ace, Brenda & Daniel are still winless through 15 races and sitting at -$150. Ace has Elliott, Brenda has Larson (fastest in practice). Today has to be the day for someone.",
-  "⭐ Ace drew Chase Elliott #9 ★★★★ — two-time Pocono top-5 finisher in the NextGen era. Elliott won Michigan just 2 races ago. Ace finally has real firepower when it matters."
+  "📊 STANDINGS · Ron/Pam/Scott +$150 🏁🏁🏁 · Nicole/Zach/Nick +$40 🏁🏁 · KO3 -$60 🏁 · Ace/Brenda/Daniel -$160 · Race 17 of 36",
+  "🏆 WIN HISTORY · R1 Daytona: Ron · R2 Atlanta: Scott · R3 COTA: Zach · R4 Phoenix: Pam · R5 Las Vegas: Scott · R6 Darlington: Zach · R7 Martinsville: Ron · R8 Bristol: Nick · R9 Kansas: Nicole · R10 Talladega: Pam · R11 Texas: Nicole · R12 Glen: KO3 · R13 Charlotte: Ron · R14 Nashville: Nick · R15 Michigan: Zach · R16 Pocono:Scott",
+  "🇺🇸 HISTORIC FIRST: NASCAR has never raced on an active U.S. military base before today. The Qualcomm Circuit at Naval Base Coronado covers 3.4 miles and 19 turns through an actual working naval air station.",
+  "⭐ KO3 has Shane van Gisbergen #97 + Christopher Bell #20 today. SVG has won 6 of the last 7 road/street courses. KO3 drew the most powerful hand on the board. This is KO3's race to lose.",
+  "🔥 HAMLIN RUN: Denny Hamlin has won 3 straight races (Nashville, Michigan, Pocono) — his longest win streak since 2022. Scott holds Hamlin #11 today. Hamlin is weak on road courses though.",
+  "⭐ Brenda drew Connor Zilisch #88 ★★★★★ — SVG's rookie teammate and one of the most dangerous road course drivers in the field. Brenda finally has a legitimate road course horse.",
+  "🏎️ CORONADO FACT: The 19-turn layout features both a long flat-out section past the aircraft hangars and a tight technical section near the flight deck. Teams arrived with zero historical data to work from.",
+  "⭐ Ron drew Tyler Reddick #45 ★★★★★ — the Cup points leader who won COTA earlier this season. Reddick was 2nd at Pocono last week and is motivated to reclaim the points lead today.",
+  "😤 RACE PARTY - 8.29.26 - DANCAVE - 7pm
+  "🏎️ CORONADO FACT: The circuit runs partly on asphalt and partly on concrete — a hybrid surface never seen before in NASCAR. Tire strategy and setup compromises will be crucial.",
+  "⭐ Daniel drew Chase Elliott #9 ★★★★ — Elliott won Texas two races ago and has been running the fastest road course pace of his career in 2026. Daniel has quietly held great draws lately.",
+  "💸 GAP AT THE TOP: Ron/Zach +$130, Nicole +$120. If Nicole wins today she ties them all at +$200. One race could completely scramble the top of the table.",
+  "🏎️ CORONADO FACT: Jimmie Johnson (#84) makes a surprise Cup start today at the track he helped campaign for. The 7-time champion enters at age 50 as a fan favorite wildcard. Zach holds #84... wait, KO3 does.",
+  "⭐ Ace drew Kyle Larson #5 ★★★★ — a legitimate road course winner with 5 Cup road course victories. Ace is 0-for-16 but has the talent in the car today. Something has to give.",
+  "🇺🇸 PATRIOT RACE: The Anduril 250 takes place on Father's Day weekend. Over 30,000 military personnel and their families are expected in attendance today at Naval Base Coronado."
 ];
 
 var statIndex=0;
 function showStat(){
   var el=document.getElementById("stat-text");
-  var counter=document.getElementById("stat-counter");
+  var co=document.getElementById("stat-counter");
   el.style.opacity="0";
-  setTimeout(function(){
-    el.textContent=STATS[statIndex];
-    counter.textContent=(statIndex+1)+" / "+STATS.length;
-    el.style.opacity="1";
-    statIndex=(statIndex+1)%STATS.length;
-  },300);
+  setTimeout(function(){ el.textContent=STATS[statIndex]; co.textContent=(statIndex+1)+" / "+STATS.length; el.style.opacity="1"; statIndex=(statIndex+1)%STATS.length; },300);
 }
 showStat();
 setInterval(showStat,5000);
 
-// RACEPARTY countdown Aug 29 2026 7PM ET = 23:00 UTC
 (function(){
   var party=new Date("2026-08-29T23:00:00Z");
-  var now=new Date();
-  var days=Math.ceil((party-now)/(1000*60*60*24));
+  var days=Math.ceil((party-new Date())/(864e5));
   var el=document.getElementById("party-countdown");
-  if(el) el.textContent=days>0?days+" days away 🎉":"IT\'S PARTY DAY! 🎉";
+  if(el) el.textContent=days>0?days+" days away \uD83C\uDF89":"IT'S PARTY DAY! \uD83C\uDF89";
 })();
 
-// Countdown: June 14 2026 1:00 PM ET = 17:00 UTC
-var greenFlag=new Date("2026-06-14T17:00:00Z");
+var greenFlag=new Date("2026-06-21T20:00:00Z");
 function updateCountdown(){
-  var now=new Date();
-  var diff=greenFlag-now;
-  if(diff<=0){
-    document.getElementById("cd-h").textContent="00";
-    document.getElementById("cd-m").textContent="00";
-    document.getElementById("cd-s").textContent="00";
-    return;
-  }
-  var h=Math.floor(diff/3600000);
-  var m=Math.floor((diff%3600000)/60000);
-  var s=Math.floor((diff%60000)/1000);
-  document.getElementById("cd-h").textContent=String(h).padStart(2,"0");
-  document.getElementById("cd-m").textContent=String(m).padStart(2,"0");
-  document.getElementById("cd-s").textContent=String(s).padStart(2,"0");
+  var diff=greenFlag-new Date();
+  if(diff<=0){ ["cd-h","cd-m","cd-s"].forEach(function(id){ document.getElementById(id).textContent="00"; }); return; }
+  document.getElementById("cd-h").textContent=String(Math.floor(diff/3600000)).padStart(2,"0");
+  document.getElementById("cd-m").textContent=String(Math.floor((diff%3600000)/60000)).padStart(2,"0");
+  document.getElementById("cd-s").textContent=String(Math.floor((diff%60000)/1000)).padStart(2,"0");
 }
 updateCountdown();
 setInterval(updateCountdown,1000);
 </script>
 </body>
-</html>'''
+</html>"""
 
-with open("/home/claude/race_pool_pocono.html","w") as f:
+html = html.replace("PRIME_LOGO_PLACEHOLDER", PRIME_LOGO)
+
+with open("/home/claude/race_pool_coronado.html","w") as f:
     f.write(html)
-print(f"Done — {len(html):,} bytes")
-EOF
+print(f"Done - {len(html):,} bytes")
+PYEOF
