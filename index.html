@@ -1,26 +1,309 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>THE RACE POOL</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NASCAR Race Pool - Anduril 250 | Naval Base Coronado</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#141414;--card:#1e1e1e;--border:#2a2a2a;--orange:#e8a020;--orange2:#f0b840;--text:#f0f0f0;--muted:#888;--green:#4caf50;--red:#e05555}
+body{background:var(--bg);color:var(--text);font-family:"Arial Narrow","Franklin Gothic Medium",Arial,sans-serif;min-height:100vh}
+.ticker-wrap{background:var(--orange);padding:7px 28px;display:flex;align-items:center;gap:14px;min-height:38px}
+.ticker-pip{width:8px;height:8px;background:#fff;border-radius:50%;opacity:.7;flex-shrink:0}
+.ticker-text{font-size:15px;font-weight:700;color:#fff;letter-spacing:.4px;text-shadow:0 1px 3px rgba(0,0,0,.3);flex:1;text-align:center;transition:opacity .3s}
+.ticker-counter{font-size:11px;font-weight:800;color:rgba(255,255,255,.6);flex-shrink:0;letter-spacing:1px}
+.raceparty-bar{background:#111;border-bottom:1px solid #2a2a2a;padding:6px 28px;display:flex;align-items:center;gap:16px}
+.rp-label{font-family:Arial Black,Arial;font-weight:900;font-size:14px;color:#e8a020;letter-spacing:3px}
+.rp-detail{font-weight:700;font-size:13px;color:#aaa;letter-spacing:1px}
+.rp-dot{color:#444;font-size:14px;font-weight:700}
+.rp-countdown{font-family:Arial Black,Arial;font-weight:900;font-size:13px;color:#4caf50}
+.track-banner{background:#0a1428;display:flex;justify-content:center;align-items:center;padding:10px 28px;border-bottom:2px solid #1a3a6a}
+header{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 14px;border-bottom:2px solid var(--orange);flex-wrap:wrap;gap:12px}
+.race-title{font-size:34px;font-weight:900;line-height:1.05;text-transform:uppercase;letter-spacing:1px}
+.race-title span{color:var(--orange)}
+.race-subtitle{font-size:15px;color:var(--muted);font-weight:600;margin-top:2px}
+.header-right{display:flex;align-items:center;gap:24px}
+.countdown-block{text-align:center}
+.cd-info{font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.cd-digits{display:flex;gap:8px;align-items:center}
+.cd-unit{text-align:center}
+.cd-num{font-size:28px;font-weight:900;color:var(--orange);line-height:1}
+.cd-lbl{font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:1px}
+.cd-sep{font-size:24px;font-weight:900;color:var(--orange);margin-bottom:12px}
+.section-header{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:var(--orange);border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:14px}
+.participant-section{padding:16px 28px 14px;border-bottom:1px solid var(--border)}
+.participant-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.p-card{border-radius:10px;overflow:hidden;border:1px solid #3a3000}
+.p-card-header{font-size:19px;font-weight:900;padding:10px 14px;background:linear-gradient(135deg,#2a2000,#3a2c00);border-bottom:2px solid var(--orange)}
+.p-driver-row{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;font-size:13px}
+.p-driver-row:nth-child(odd){background:#1c1c1c}
+.p-driver-row:nth-child(even){background:#252525}
+.p-car{font-weight:900;color:var(--orange);min-width:34px;display:inline-block}
+.p-driver{font-weight:700;color:var(--text);margin-left:4px}
+.p-rating{font-weight:800;color:var(--orange2);font-size:13px}
+.main{display:grid;grid-template-columns:1fr 340px;gap:20px;padding:20px 28px;max-width:1400px;margin:0 auto}
+@media(max-width:900px){.main{grid-template-columns:1fr}}
+.standings-card{background:var(--card);border-radius:10px;padding:20px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse}
+thead th{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);padding:6px 10px;text-align:left;border-bottom:1px solid var(--border)}
+thead th:not(:first-child){text-align:center}
+tbody tr{border-bottom:1px solid var(--border);transition:background .15s}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:#252525}
+td{padding:10px;font-size:17px;font-weight:700;vertical-align:middle}
+td:not(:first-child){text-align:center}
+.rank{font-size:13px;color:var(--muted);font-weight:700;width:28px}
+.pname{font-size:18px;font-weight:800}
+.cars-cell{font-size:12px;color:var(--muted);font-weight:600;line-height:1.4}
+.car-highlight{color:var(--orange2);font-weight:800}
+.balance{font-size:18px;font-weight:900}
+.pos{color:var(--green)}.neg{color:var(--red)}
+.wins-cell{font-size:14px;color:var(--muted);font-weight:700}
+.wins-cell.has-win{color:var(--orange);font-weight:800}
+.sidebar{display:flex;flex-direction:column;gap:18px}
+.card{background:var(--card);border-radius:10px;padding:18px;border:1px solid var(--border)}
+.pool-winner-row{background:#1a2d1a;border-radius:6px;padding:8px 12px;display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.pwtag{font-size:11px;color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:1.5px}
+.pwname{font-size:18px;font-weight:900}
+.winner-banner{background:linear-gradient(135deg,#2a1f00,#3d2c00);border:1px solid var(--orange);border-radius:8px;padding:12px 14px;margin-bottom:12px}
+.winner-banner .wlabel{font-size:11px;color:var(--orange);font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:4px}
+.winner-banner .wname{font-size:22px;font-weight:900}
+.winner-banner .wdetail{font-size:13px;color:var(--muted);margin-top:2px}
+.result-row{display:flex;align-items:center;padding:7px 0;border-bottom:1px solid var(--border);font-size:14px}
+.result-row:last-child{border-bottom:none}
+.result-pos{font-size:20px;font-weight:900;color:var(--orange);width:30px}
+.result-driver{font-weight:700;flex:1}
+.result-car{font-size:12px;color:var(--muted);font-weight:600;margin-left:6px}
+.fact-row{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px}
+.fact-row:last-child{border-bottom:none}
+.fact-label{color:var(--muted);font-weight:600}
+.fact-val{font-weight:800;color:var(--text);text-align:right}
+.footnote{font-size:11px;color:var(--muted);padding:14px 28px 20px;font-weight:600;border-top:1px solid var(--border);margin-top:10px}
+</style>
 </head>
-<body bgcolor="#000000" text="#FF0000">
+<body>
 
-    <center>
-        <h1>THE RACE POOL</h1>
-        
-        <!-- NASCAR Themed Construction Graphic -->
-        <img src="https://web.archive.org/web/20090829145839/http://geocities.com/athens/delphi/4200/car_const.gif" alt="Racing Under Construction">
-        
-        <h2>Pardon the caution flag...</h2>
-        
-        <p>We are currently in the pits tuning up this page. <br>
-        Check back soon for the green flag!</p>
-        
-        <hr width="50%" color="#FFFFFF">
-        
-        <p><i>Last updated: 6/14/26</i></p>
-        
-        <blink><h2>COMING SOON TO THE TRACK!</h2></blink>
-    </center>
+<div class="ticker-wrap">
+  <div class="ticker-pip"></div>
+  <div class="ticker-text" id="stat-text">Loading...</div>
+  <div class="ticker-counter" id="stat-counter">1 / 15</div>
+  <div class="ticker-pip"></div>
+</div>
 
+<div class="raceparty-bar">
+  <div class="rp-label">RACEPARTY</div>
+  <div class="rp-dot">&bull;</div>
+  <div class="rp-detail">8/29/26 &nbsp;&middot;&nbsp; DanCave &nbsp;&middot;&nbsp; 7:00 PM</div>
+  <div class="rp-dot">&bull;</div>
+  <div class="rp-countdown" id="party-countdown">-- days away</div>
+</div>
+
+<div class="track-banner">
+  <svg width="100%" height="60" viewBox="0 0 700 60" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+    <rect x="0" y="0" width="6" height="60" fill="#1a3a6a"/>
+    <rect x="694" y="0" width="6" height="60" fill="#1a3a6a"/>
+    <path d="M22 10 L46 0 L70 10 L70 42 L22 42 Z" fill="none" stroke="#1a3a6a" stroke-width="2.5"/>
+    <path d="M30 14 L46 6 L62 14 L62 38 L30 38 Z" fill="none" stroke="#444" stroke-width="1.5"/>
+    <text x="90" y="25" font-family="Arial Black,Arial" font-weight="900" font-size="20" fill="#ffffff" letter-spacing="2">NAVAL BASE CORONADO</text>
+    <text x="90" y="48" font-family="Arial Black,Arial" font-weight="900" font-size="16" fill="#1a3a6a" letter-spacing="2">ANDURIL 250 &middot; RACE 17 OF 2026 &middot; SAN DIEGO, CA</text>
+  </svg>
+</div>
+
+<header>
+  <div>
+    <div class="race-title">Anduril 250 <span>&middot; Naval Base Coronado</span></div>
+    <div class="race-subtitle">Race 17 of 2026 &nbsp;&middot;&nbsp; Qualcomm Circuit &nbsp;&middot;&nbsp; San Diego, CA &nbsp;&middot;&nbsp; Sunday, June 21, 2026</div>
+  </div>
+  <div class="header-right">
+    <div class="countdown-block">
+      <div class="cd-info">&#127882; &nbsp;4:00 PM ET &nbsp;|&nbsp; 75 Laps</div>
+      <div class="cd-digits">
+        <div class="cd-unit"><div class="cd-num" id="cd-h">--</div><div class="cd-lbl">Hrs</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><div class="cd-num" id="cd-m">--</div><div class="cd-lbl">Min</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><div class="cd-num" id="cd-s">--</div><div class="cd-lbl">Sec</div></div>
+      </div>
+    </div>
+    <img src="data:image/webp;base64,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aHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjUuMTIgKE1hY2ludG9zaCkiIHhtcDpDcmVhdGVEYXRlPSIyMDI1LTA1LTE5VDE0OjAyOjQwLTA0OjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyNS0wNS0yMFQxNToxOTozOS0wNDowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyNS0wNS0yMFQxNToxOTozOS0wNDowMCIgZGM6Zm9ybWF0PSJpbWFnZS9qcGVnIiBwaG90b3Nob3A6Q29sb3JNb2RlPSIzIiBwaG90b3Nob3A6SUNDUHJvZmlsZT0iRGlzcGxheSBQMyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowNGQ5NTY3Ny1jMTdlLTRjOGYtOWI3NS1jOGYzY2I0NjJjY2UiIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDozZGEzNGQzNi1iM2I0LTcxNGYtODlhMC1jZGY5YWI3OWJjNjIiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo2NGRiMTNmNS00MDE5LTRjODYtODk3NS03OWNkZDJlNWUyNTYiPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDo2NGRiMTNmNS00MDE5LTRjODYtODk3NS03OWNkZDJlNWUyNTYiIHN0RXZ0OndoZW49IjIwMjUtMDUtMjBUMTU6MTk6MzktMDQ6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCAyNS4xMiAoTWFjaW50b3NoKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0iY29udmVydGVkIiBzdEV2dDpwYXJhbWV0ZXJzPSJmcm9tIGFwcGxpY2F0aW9uL3ZuZC5hZG9iZS5waG90b3Nob3AgdG8gaW1hZ2UvanBlZyIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0iZGVyaXZlZCIgc3RFdnQ6cGFyYW1ldGVycz0iY29udmVydGVkIGZyb20gYXBwbGljYXRpb24vdm5kLmFkb2JlLnBob3Rvc2hvcCB0byBpbWFnZS9qcGVnIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDowNGQ5NTY3Ny1jMTdlLTRjOGYtOWI3NS1jOGYzY2I0NjJjY2UiIHN0RXZ0OndoZW49IjIwMjUtMDUtMjBUMTU6MTk6MzktMDQ6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCAyNS4xMiAoTWFjaW50b3NoKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8L3JkZjpTZXE+IDwveG1wTU06SGlzdG9yeT4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NjRkYjEzZjUtNDAxOS00Yzg2LTg5NzUtNzljZGQyZTVlMjU2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjY0ZGIxM2Y1LTQwMTktNGM4Ni04OTc1LTc5Y2RkMmU1ZTI1NiIgc3RSZWY6b3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjY0ZGIxM2Y1LTQwMTktNGM4Ni04OTc1LTc5Y2RkMmU1ZTI1NiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8P3hwYWNrZXQgZW5kPSJ3Ij8+AA==" alt="NASCAR on Prime" style="height:48px;display:block;border-radius:4px;background:#fff;padding:2px;">
+  </div>
+</header>
+
+<div class="participant-section">
+  <div id="participant-grid" class="participant-grid"></div>
+  <div style="font-size:11px;color:var(--muted);margin-top:10px;font-weight:600;">Driver ratings based on road/street course history &middot; Brand new track &mdash; no prior data &middot; SVG #97 &middot; Zilisch #88 &middot; updated 6/21/26</div>
+</div>
+
+<div class="main">
+  <div>
+    <div class="standings-card">
+      <div class="section-header">&#128202; Pool Standings &mdash; After Pocono (Race 16)</div>
+      <table>
+        <thead><tr><th>#</th><th style="text-align:left">Participant</th><th>Cars</th><th>Wins</th><th>Balance</th></tr></thead>
+        <tbody id="standings-body"></tbody>
+      </table>
+      <div style="font-size:11px;color:var(--muted);margin-top:12px;font-weight:600;">
+        &#127937; = Pool win. Winner earns <span style="color:var(--green);font-weight:800;">+$90</span>. All others: <span style="color:var(--red);font-weight:800;">&ndash;$10</span>.
+      </div>
+    </div>
+  </div>
+  <div class="sidebar">
+    <div class="card">
+      <div class="section-header">&#127937; Pocono Results (Race 16)</div>
+      <div class="pool-winner-row">
+        <span class="pwtag">&#127942; Pool Winner</span>
+        <span class="pwname">&#127937; Scott &nbsp;<span style="color:var(--muted);font-size:14px;font-weight:600;">Denny Hamlin #11 &middot; +$90</span></span>
+      </div>
+      <div class="winner-banner">
+        <div class="wlabel">Race Winner</div>
+        <div class="wname">Denny Hamlin</div>
+        <div class="wdetail">#11 Joe Gibbs Racing &middot; 3rd straight win &middot; 64th career &middot; Pocono</div>
+      </div>
+      <div>
+        <div class="result-row"><span class="result-pos">1</span><span class="result-driver">Denny Hamlin <span class="result-car">#11 Toyota</span></span></div>
+        <div class="result-row"><span class="result-pos">2</span><span class="result-driver">Tyler Reddick <span class="result-car">#45 Toyota</span></span></div>
+        <div class="result-row"><span class="result-pos">3</span><span class="result-driver">William Byron <span class="result-car">#24 Chevy</span></span></div>
+        <div class="result-row"><span class="result-pos">4</span><span class="result-driver">John Hunter Nemechek <span class="result-car">#42 Toyota</span></span></div>
+        <div class="result-row"><span class="result-pos">5</span><span class="result-driver">Kyle Larson <span class="result-car">#5 Chevy</span></span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="section-header">&#128506; Naval Base Coronado</div>
+      <div class="fact-row"><span class="fact-label">Circuit Name</span><span class="fact-val">Qualcomm Circuit</span></div>
+      <div class="fact-row"><span class="fact-label">Length</span><span class="fact-val">3.4-mile street course</span></div>
+      <div class="fact-row"><span class="fact-label">Turns</span><span class="fact-val">19 turns</span></div>
+      <div class="fact-row"><span class="fact-label">Distance</span><span class="fact-val">75 laps &middot; 255 miles</span></div>
+      <div class="fact-row"><span class="fact-label">Location</span><span class="fact-val">San Diego, CA</span></div>
+      <div class="fact-row"><span class="fact-label">Historic first</span><span class="fact-val">NASCAR on a military base</span></div>
+      <div class="fact-row"><span class="fact-label">Prior winner</span><span class="fact-val">None &mdash; inaugural race</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="footnote">
+  * Inaugural race at Naval Base Coronado &mdash; no prior Cup history at this venue. Open entries: #67 Corey Heim, #84 Jimmie Johnson, #91 Kevin Magnussen. SVG = #97 Trackhouse. Zilisch = #88 Trackhouse. Balances reflect standings after Race 16 (Pocono). Anduril 250 &middot; Race 17 of 2026.
+</div>
+
+<script>
+var STANDINGS = [
+  { name:"Pam",    flags:3, cars:["1","2","60"],    balance:150 },
+  { name:"Ron",    flags:3, cars:["45","48","67"],  balance:150 },
+  { name:"Scott",  flags:3, cars:["16","11","33"],  balance:150 },
+  { name:"Nick",   flags:2, cars:["12","19","21"],  balance:40  },
+  { name:"Nicole", flags:2, cars:["24","7","77"],   balance:40  },
+  { name:"Zach",   flags:2, cars:["71","54","91"],  balance:40  },
+  { name:"KO3",    flags:1, cars:["97","20","84"],  balance:-60 },
+  { name:"Ace",    flags:0, cars:["5","17","22"],   balance:-160 },
+  { name:"Brenda", flags:0, cars:["9","43","6"],   balance:-160 },
+  { name:"Daniel", flags:0, cars:["88","23","4"],  balance:-160 }
+];
+
+var POCONO_TOP5 = ["11","45","24","42","5"];
+
+var RATINGS_BY_CAR = {
+  "97":{ driver:"Shane van Gisbergen",  rating:"★★★★★" },
+  "88":{ driver:"Connor Zilisch",       rating:"★★★★★" },
+  "45":{ driver:"Tyler Reddick",        rating:"★★★★★" },
+  "20":{ driver:"Christopher Bell",     rating:"★★★★★" },
+  "5": { driver:"Kyle Larson",          rating:"★★★★"  },
+  "24":{ driver:"William Byron",        rating:"★★★★"  },
+  "9": { driver:"Chase Elliott",        rating:"★★★★"  },
+  "16":{ driver:"AJ Allmendinger",      rating:"★★★★"  },
+  "71":{ driver:"Michael McDowell",     rating:"★★★½"  },
+  "1": { driver:"Ross Chastain",        rating:"★★★"   },
+  "17":{ driver:"Chris Buescher",       rating:"★★★"   },
+  "11":{ driver:"Denny Hamlin",         rating:"★★½"   },
+  "54":{ driver:"Ty Gibbs",             rating:"★★½"   },
+  "19":{ driver:"Chase Briscoe",        rating:"★★½"   },
+  "12":{ driver:"Ryan Blaney",          rating:"★★½"   },
+  "23":{ driver:"Bubba Wallace",        rating:"★★"    },
+  "43":{ driver:"Erik Jones",           rating:"★★"    },
+  "77":{ driver:"Carson Hocevar",       rating:"★★"    },
+  "7": { driver:"Daniel Suarez",        rating:"★★"    },
+  "22":{ driver:"Joey Logano",          rating:"★½"    },
+  "6": { driver:"Brad Keselowski",      rating:"★½"    },
+  "48":{ driver:"Alex Bowman",          rating:"★½"    },
+  "2": { driver:"Austin Cindric",       rating:"★½"    },
+  "84":{ driver:"Jimmie Johnson",       rating:"★½"    },
+  "4": { driver:"Noah Gragson",         rating:"★"     },
+  "21":{ driver:"Josh Berry",           rating:"★"     },
+  "60":{ driver:"Ryan Preece",          rating:"★"     },
+  "91":{ driver:"Kevin Magnussen",      rating:"★"     },
+  "33":{ driver:"Austin Hill",          rating:"★"     },
+  "67":{ driver:"Corey Heim",           rating:"★"     }
+};
+
+STANDINGS.sort(function(a,b){ if(b.balance!==a.balance) return b.balance-a.balance; return a.name.localeCompare(b.name); });
+
+var tbody=document.getElementById("standings-body");
+STANDINGS.forEach(function(p,i){
+  var flagStr=""; for(var f=0;f<p.flags;f++) flagStr+="🏁";
+  var balClass=p.balance>=0?"pos":"neg";
+  var balStr=(p.balance>=0?"+":"")+"\$"+p.balance;
+  var carsHtml=p.cars.map(function(c){ var hot=POCONO_TOP5.indexOf(c)>=0; return hot?"<span class='car-highlight'>#"+c+"</span>":"#"+c; }).join(" &middot; ");
+  var winsHtml=p.flags>0?"<span class='wins-cell has-win'>"+flagStr+"</span>":"<span class='wins-cell'>&mdash;</span>";
+  tbody.innerHTML+="<tr><td class='rank'>"+(i+1)+"</td><td><span class='pname'>"+p.name+"</span></td><td class='cars-cell'>"+carsHtml+"</td><td>"+winsHtml+"</td><td class='balance "+balClass+"'>"+balStr+"</td></tr>";
+});
+
+var pgrid=document.getElementById("participant-grid");
+STANDINGS.forEach(function(p){
+  var flagStr=""; for(var f=0;f<p.flags;f++) flagStr+="🏁";
+  var driversHtml=p.cars.map(function(c){
+    var info=RATINGS_BY_CAR[c];
+    var dn=info?info.driver:"TBD";
+    var rt=info?info.rating:"--";
+    var hot=POCONO_TOP5.indexOf(c)>=0;
+    var cc=hot?"color:var(--orange2);font-weight:900;":"color:var(--orange);font-weight:900;";
+    return "<div class='p-driver-row'><span><span class='p-car' style='"+cc+"'>#"+c+"</span><span class='p-driver'>"+dn+"</span></span><span class='p-rating'>"+rt+"</span></div>";
+  }).join("");
+  pgrid.innerHTML+="<div class='p-card'><div class='p-card-header'>"+(flagStr?flagStr+" ":"")+p.name+"</div>"+driversHtml+"</div>";
+});
+
+var STATS = [
+  "📊 STANDINGS · Ron/Pam/Scott +$150 🏁🏁🏁 · Nick/Nicole/Zach +$40 🏁🏁 · KO3 -$60 🏁 · Ace/Brenda/Daniel -$160 · Race 17 of 36",
+  "🏆 WIN HISTORY · R1 Daytona: Ron · R2 Atlanta: Scott · R3 COTA: Zach · R4 Phoenix: Pam · R5 Las Vegas: Scott · R6 Darlington: Zach · R7 Martinsville: Ron · R8 Bristol: Nick · R9 Kansas: Nicole · R10 Talladega: Pam · R11 Texas: Nicole · R12 Glen: KO3 · R13 Charlotte: Ron · R14 Nashville: Nick · R15 Michigan: Zach · R16 Pocono: Scott",
+  "🇺🇸 HISTORIC FIRST: NASCAR has never raced on an active U.S. military base before today. The Qualcomm Circuit at Naval Base Coronado covers 3.4 miles and 19 turns through an actual working naval air station.",
+  "⭐ KO3 has Shane van Gisbergen #97 + Christopher Bell #20 today. SVG is the dominant road/street course driver in the Cup Series. KO3 drew the most powerful hand on the board. This is KO3's race to lose.",
+  "🔥 HAMLIN RUN: Denny Hamlin won 3 straight races (Nashville, Michigan, Pocono) — his longest win streak since 2022. Scott held #11 for the last two of those. Hamlin is weak on road courses though.",
+  "⭐ Daniel drew Connor Zilisch #88 ★★★★★ — SVG's Trackhouse teammate and one of the most dangerous road course drivers in the field. Daniel finally has a legitimate road course horse.",
+  "🏎️ CORONADO FACT: The 19-turn layout features a long flat-out section past the aircraft hangars and a tight technical section near the flight deck. Teams arrived with zero historical data to work from.",
+  "⭐ Ron drew Tyler Reddick #45 ★★★★★ — the Cup points leader who won COTA earlier this season. Reddick was 2nd at Pocono last week and is motivated to reclaim the points lead today.",
+  "💸 THREE-WAY TIE AT THE TOP: Ron, Pam and Scott are all locked at +$150 with 3 wins each. Nick, Nicole and Zach are clustered at +$40 with 2 wins. One win today reshuffles everything.",
+  "🏎️ CORONADO FACT: The circuit runs partly on asphalt and partly on concrete — a hybrid surface never seen before in NASCAR. Tire strategy and setup compromises will be crucial all race.",
+  "⭐ Brenda drew Chase Elliott #9 ★★★★ — a legitimate road course specialist who has been running strong all season. Brenda has quietly held good draws lately and is overdue.",
+  "⭐ KO3 also holds Jimmie Johnson #84 — the 7-time champion making a surprise Cup start at the track he helped campaign for. At age 50, Johnson is the ultimate wildcard on a brand new circuit.",
+  "⭐ Ace drew Kyle Larson #5 ★★★★ — a legitimate road course winner with multiple Cup road course victories. Ace is 0-for-16 but has real firepower today. Something has to give.",
+  "🏎️ CORONADO FACT: This race takes place on Father's Day weekend. Over 30,000 military personnel and their families are expected in attendance at Naval Base Coronado.",
+  "😤 WINLESS TRIO: Ace, Brenda and Daniel are 0-for-16 at -$160 each. Brenda has Elliott #9, Daniel has Zilisch #88, Ace has Larson #5. Three of the best road course draws in the field. No more excuses."
+];
+
+var statIndex=0;
+function showStat(){
+  var el=document.getElementById("stat-text");
+  var co=document.getElementById("stat-counter");
+  el.style.opacity="0";
+  setTimeout(function(){ el.textContent=STATS[statIndex]; co.textContent=(statIndex+1)+" / "+STATS.length; el.style.opacity="1"; statIndex=(statIndex+1)%STATS.length; },300);
+}
+showStat();
+setInterval(showStat,5000);
+
+(function(){
+  var party=new Date("2026-08-29T23:00:00Z");
+  var days=Math.ceil((party-new Date())/(864e5));
+  var el=document.getElementById("party-countdown");
+  if(el) el.textContent=days>0?days+" days away \uD83C\uDF89":"IT'S PARTY DAY! \uD83C\uDF89";
+})();
+
+var greenFlag=new Date("2026-06-21T20:00:00Z");
+function updateCountdown(){
+  var diff=greenFlag-new Date();
+  if(diff<=0){ ["cd-h","cd-m","cd-s"].forEach(function(id){ document.getElementById(id).textContent="00"; }); return; }
+  document.getElementById("cd-h").textContent=String(Math.floor(diff/3600000)).padStart(2,"0");
+  document.getElementById("cd-m").textContent=String(Math.floor((diff%3600000)/60000)).padStart(2,"0");
+  document.getElementById("cd-s").textContent=String(Math.floor((diff%60000)/1000)).padStart(2,"0");
+}
+updateCountdown();
+setInterval(updateCountdown,1000);
+</script>
 </body>
 </html>
