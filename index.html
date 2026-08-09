@@ -236,8 +236,7 @@ STANDINGS.forEach(function(p,i){
 
 var pgrid=document.getElementById("participant-grid");
 STANDINGS.forEach(function(p){
-  var f=""; for(var j=0;j<p.flags;j) f+="&#127937;";
-  var dh=p.cars.map(function(c){
+  var f=""; for(var j=0;j<p.flags;j++) f+="&#127937;";
     var hot=BRICKYARD_TOP5.indexOf(c)>=0;
     var cc=hot?"color:var(--orange2);font-weight:900;":"color:var(--orange);font-weight:900;";
     return "<div class='p-driver-row'><span><span class='p-car' style='"+cc+"'>#"+c+"</span><span class='p-driver'>"+(DRIVERS[c]||"TBD")+"</span></span><span class='p-rating'>"+(starMap[RATINGS[c]]||"&#9733;")+"</span></div>";
