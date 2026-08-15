@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-9">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NASCAR Race Pool - Iowa Corn 350 | Iowa Speedway</title>
+<title>NASCAR Race Pool - Cook Out 400 | Richmond</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#141414;--card:#1e1e1e;--border:#2a2a2a;--orange:#e8a020;--orange2:#f0b840;--text:#f0f0f0;--muted:#888;--green:#4caf50;--red:#e05555}
@@ -12,12 +12,12 @@ body{background:var(--bg);color:var(--text);font-family:"Arial Narrow","Franklin
 .ticker-pip{width:8px;height:8px;background:#fff;border-radius:50%;opacity:.7;flex-shrink:0}
 .ticker-text{font-size:15px;font-weight:700;color:#fff;letter-spacing:.4px;text-shadow:0 1px 3px rgba(0,0,0,.3);flex:1;text-align:center;transition:opacity .3s}
 .ticker-counter{font-size:11px;font-weight:800;color:rgba(255,255,255,.6);flex-shrink:0;letter-spacing:1px}
-.raceparty-bar{background:#1a0a28;border-bottom:2px solid var(--orange2);padding:8px 28px;display:flex;align-items:center;gap:16px}
-.rp-label{font-family:Arial Black,Arial;font-weight:900;font-size:16px;color:var(--orange2);letter-spacing:3px}
-.rp-detail{font-weight:700;font-size:14px;color:#ddd;letter-spacing:1px}
-.rp-dot{color:#666;font-size:14px;font-weight:700}
-.rp-countdown{font-family:Arial Black,Arial;font-weight:900;font-size:15px;color:#ff4444}
-.track-banner{background:#001a0a;display:flex;justify-content:center;align-items:center;padding:10px 28px;border-bottom:2px solid #1a6b3a}
+.raceparty-bar{background:#111;border-bottom:1px solid #2a2a2a;padding:6px 28px;display:flex;align-items:center;gap:16px}
+.rp-label{font-family:Arial Black,Arial;font-weight:900;font-size:14px;color:#e8a020;letter-spacing:3px}
+.rp-detail{font-weight:700;font-size:13px;color:#aaa;letter-spacing:1px}
+.rp-dot{color:#444;font-size:14px;font-weight:700}
+.rp-countdown{font-family:Arial Black,Arial;font-weight:900;font-size:13px;color:#4caf50}
+.track-banner{background:#14000a;display:flex;justify-content:center;align-items:center;padding:10px 28px;border-bottom:2px solid #8b003a}
 header{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 14px;border-bottom:2px solid var(--orange);flex-wrap:wrap;gap:12px}
 .race-title{font-size:34px;font-weight:900;line-height:1.05;text-transform:uppercase;letter-spacing:1px}
 .race-title span{color:var(--orange)}
@@ -91,32 +91,32 @@ td:not(:first-child){text-align:center}
 </div>
 
 <div class="raceparty-bar">
-  <div class="rp-label">&#127881; RACEPARTY</div>
+  <div class="rp-label">RACEPARTY</div>
   <div class="rp-dot">&bull;</div>
-  <div class="rp-detail">August 29th&nbsp;&middot;&nbsp; DanCave &nbsp;&middot;&nbsp; 7:00 PM</div>
+  <div class="rp-detail">8/29/26 &nbsp;&middot;&nbsp; DanCave &nbsp;&middot;&nbsp; 7:00 PM</div>
   <div class="rp-dot">&bull;</div>
-  <div class="rp-countdown" id="party-countdown">&#127881; 3 WEEKS &#127881;</div>
+  <div class="rp-countdown" id="party-countdown">-- days away</div>
 </div>
 
 <div class="track-banner">
   <svg width="100%" height="60" viewBox="0 0 700 60" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-    <rect x="0" y="0" width="6" height="60" fill="#1a6b3a"/>
-    <rect x="694" y="0" width="6" height="60" fill="#1a6b3a"/>
-    <ellipse cx="38" cy="30" rx="24" ry="20" fill="none" stroke="#1a6b3a" stroke-width="2.5"/>
+    <rect x="0" y="0" width="6" height="60" fill="#8b003a"/>
+    <rect x="694" y="0" width="6" height="60" fill="#8b003a"/>
+    <ellipse cx="38" cy="30" rx="24" ry="20" fill="none" stroke="#8b003a" stroke-width="2.5"/>
     <ellipse cx="38" cy="30" rx="14" ry="12" fill="none" stroke="#444" stroke-width="1.5"/>
-    <text x="78" y="25" font-family="Arial Black,Arial" font-weight="900" font-size="20" fill="#fff" letter-spacing="2">IOWA SPEEDWAY</text>
-    <text x="78" y="48" font-family="Arial Black,Arial" font-weight="900" font-size="16" fill="#1a6b3a" letter-spacing="2">IOWA CORN 350 &middot; RACE 23 OF 2026 &middot; NEWTON, IOWA</text>
+    <text x="78" y="25" font-family="Arial Black,Arial" font-weight="900" font-size="20" fill="#fff" letter-spacing="2">RICHMOND RACEWAY</text>
+    <text x="78" y="48" font-family="Arial Black,Arial" font-weight="900" font-size="16" fill="#8b003a" letter-spacing="2">COOK OUT 400 &middot; RACE 24 OF 2026 &middot; 2 RACES TO CHASE</text>
   </svg>
 </div>
 
 <header>
   <div>
-    <div class="race-title">Iowa Corn 350 <span>&middot; Iowa Speedway</span></div>
-    <div class="race-subtitle">Race 23 of 2026 &nbsp;&middot;&nbsp; Iowa Speedway &nbsp;&middot;&nbsp; Sunday, August 9, 2026 &nbsp;&middot;&nbsp; Pole: Ryan Blaney #12 (23.474s)</div>
+    <div class="race-title">Cook Out 400 <span>&middot; Richmond</span></div>
+    <div class="race-subtitle">Race 24 of 2026 &nbsp;&middot;&nbsp; Richmond Raceway &nbsp;&middot;&nbsp; Saturday, August 15, 2026 &nbsp;&middot;&nbsp; 2nd-to-last race before the Chase cutoff</div>
   </div>
   <div class="header-right">
     <div class="countdown-block">
-      <div class="cd-info">&#127882; &nbsp;3:40 PM ET &nbsp;|&nbsp; 350 Laps</div>
+      <div class="cd-info">&#127882; &nbsp;7:10 PM ET &nbsp;|&nbsp; 400 Laps</div>
       <div class="cd-digits">
         <div class="cd-unit"><div class="cd-num" id="cd-h">--</div><div class="cd-lbl">Hrs</div></div>
         <div class="cd-sep">:</div>
@@ -135,13 +135,13 @@ td:not(:first-child){text-align:center}
 
 <div class="participant-section">
   <div id="participant-grid" class="participant-grid"></div>
-  <div style="font-size:11px;color:var(--muted);margin-top:10px;font-weight:600;">Driver ratings based on Iowa short track history &middot; Practice fastest: Erik Jones #43 (132.855 mph) &middot; SVG=#97 &middot; Zilisch=#88 &middot; No open entries &middot; 36-car field</div>
+  <div style="font-size:11px;color:var(--muted);margin-top:10px;font-weight:600;">Driver ratings based on Richmond track history &middot; Hamlin/Bell co-favorites &middot; Dillon 2-time defending winner &middot; SVG=#97 &middot; Zilisch=#88 &middot; Open: #66 Josh Bilicki &middot; updated 8/15/26</div>
 </div>
 
 <div class="main">
   <div>
     <div class="standings-card">
-      <div class="section-header">Pool Standings &mdash; After Brickyard 400 (Race 22)</div>
+      <div class="section-header">Pool Standings &mdash; After Iowa (Race 23)</div>
       <table>
         <thead><tr><th>#</th><th style="text-align:left">Participant</th><th>Cars</th><th>Wins</th><th>Balance</th></tr></thead>
         <tbody id="standings-body"></tbody>
@@ -153,73 +153,73 @@ td:not(:first-child){text-align:center}
   </div>
   <div class="sidebar">
     <div class="card">
-      <div class="section-header">Brickyard 400 Results (Race 22)</div>
+      <div class="section-header">Iowa Results (Race 23)</div>
       <div class="pool-winner-row">
         <span class="pwtag">Pool Winner</span>
-        <span class="pwname">&#127937; Daniel &nbsp;<span style="color:var(--muted);font-size:14px;font-weight:600;">Corey Heim #67 &middot; +$90</span></span>
+        <span class="pwname">&#127937; Ace &nbsp;<span style="color:var(--muted);font-size:14px;font-weight:600;">Ty Gibbs #54 &middot; +$90</span></span>
       </div>
       <div class="winner-banner">
         <div class="wlabel">Race Winner</div>
-        <div class="wname">Corey Heim</div>
-        <div class="wdetail">#67 23XI Racing Toyota &middot; Crown Jewel win &middot; 2nd win in 15 starts</div>
+        <div class="wname">Ty Gibbs</div>
+        <div class="wdetail">#54 Joe Gibbs Racing Toyota &middot; 2nd win of 2026 &middot; Won by 0.253s &middot; Iowa</div>
       </div>
       <div>
-        <div class="result-row"><span class="result-pos">1</span><span class="result-driver">Corey Heim <span class="result-car">#67 Toyota</span></span></div>
+        <div class="result-row"><span class="result-pos">1</span><span class="result-driver">Ty Gibbs <span class="result-car">#54 Toyota</span></span></div>
         <div class="result-row"><span class="result-pos">2</span><span class="result-driver">Christopher Bell <span class="result-car">#20 Toyota</span></span></div>
-        <div class="result-row"><span class="result-pos">3</span><span class="result-driver">Joey Logano <span class="result-car">#22 Ford</span></span></div>
-        <div class="result-row"><span class="result-pos">4</span><span class="result-driver">Chase Briscoe <span class="result-car">#19 Toyota</span></span></div>
+        <div class="result-row"><span class="result-pos">3</span><span class="result-driver">Ryan Blaney <span class="result-car">#12 Ford</span></span></div>
+        <div class="result-row"><span class="result-pos">4</span><span class="result-driver">Josh Berry <span class="result-car">#21 Ford</span></span></div>
         <div class="result-row"><span class="result-pos">5</span><span class="result-driver">Denny Hamlin <span class="result-car">#11 Toyota</span></span></div>
       </div>
     </div>
     <div class="card">
-      <div class="section-header">Iowa Speedway</div>
-      <div class="fact-row"><span class="fact-label">Track Length</span><span class="fact-val">0.875-mile D-oval</span></div>
-      <div class="fact-row"><span class="fact-label">Banking (Turns)</span><span class="fact-val">12&deg;</span></div>
+      <div class="section-header">Richmond Raceway</div>
+      <div class="fact-row"><span class="fact-label">Track Length</span><span class="fact-val">0.75-mile D-oval</span></div>
+      <div class="fact-row"><span class="fact-label">Banking (Turns)</span><span class="fact-val">14&deg;</span></div>
       <div class="fact-row"><span class="fact-label">Surface</span><span class="fact-val">Asphalt</span></div>
-      <div class="fact-row"><span class="fact-label">Race Length</span><span class="fact-val">350 laps &middot; 306 miles</span></div>
-      <div class="fact-row"><span class="fact-label">Designed by</span><span class="fact-val">Rusty Wallace</span></div>
-      <div class="fact-row"><span class="fact-label">2025 Winner</span><span class="fact-val">Christopher Bell</span></div>
-      <div class="fact-row"><span class="fact-label">Practice fastest</span><span class="fact-val">Erik Jones #43</span></div>
+      <div class="fact-row"><span class="fact-label">Race Length</span><span class="fact-val">400 laps &middot; 300 miles</span></div>
+      <div class="fact-row"><span class="fact-label">Hamlin wins here</span><span class="fact-val">5 career (most active)</span></div>
+      <div class="fact-row"><span class="fact-label">Defending winner</span><span class="fact-val">Austin Dillon (2025)</span></div>
+      <div class="fact-row"><span class="fact-label">Chase cutoff</span><span class="fact-val">2 races remaining</span></div>
     </div>
   </div>
 </div>
 
 <div class="footnote">
-  No open entries — 36-car field. SVG=#97 Trackhouse. Zilisch=#88 Trackhouse. Austin Hill #33 (RCR). Balances after Race 22 (Brickyard 400). Iowa Corn 350 &middot; Race 23 of 2026. Also on 8/29 RACEPARTY at DanCave, 7:00 PM!
+  Open entry: #66 Josh Bilicki (Garage 66). 37 drivers entered, all qualify. SVG=#97 Trackhouse. Zilisch=#88 Trackhouse. Austin Hill #33 (RCR). Balances after Race 23 (Iowa). Cook Out 400 &middot; Race 24 of 2026. RACEPARTY at DanCave on August 29th!
 </div>
 
 <script>
 var STANDINGS = [
-  { name:"Pam",    flags:4, cars:["12","17","21"],  balance:180 },
-  { name:"Ron",    flags:4, cars:["45","23","4"],   balance:180 },
-  { name:"Scott",  flags:4, cars:["9","48","38"],   balance:180 },
-  { name:"Nick",   flags:3, cars:["22","1","2"],    balance:70  },
-  { name:"Nicole", flags:2, cars:["43","6","3"],    balance:-20 },
-  { name:"Zach",   flags:2, cars:["19","7","60"],   balance:-20 },
-  { name:"Ace",    flags:1, cars:["11","54","34"],  balance:-120},
-  { name:"Daniel", flags:1, cars:["5","77","71"],   balance:-120},
-  { name:"KO3",    flags:1, cars:["24","97","33"],  balance:-120},
-  { name:"Brenda", flags:0, cars:["20","88","47"],  balance:-220}
+  { name:"Pam",    flags:4, cars:["5","1","38"],    balance:170 },
+  { name:"Ron",    flags:4, cars:["19","43","7"],   balance:170 },
+  { name:"Scott",  flags:4, cars:["20","97","71"],  balance:170 },
+  { name:"Nick",   flags:3, cars:["22","54","60"],  balance:60  },
+  { name:"Ace",    flags:2, cars:["11","24","2"],   balance:-30 },
+  { name:"Nicole", flags:2, cars:["45","17","33"],  balance:-30 },
+  { name:"Zach",   flags:2, cars:["9","77","21"],   balance:-30 },
+  { name:"Daniel", flags:1, cars:["23","48","4"],   balance:-130},
+  { name:"KO3",    flags:1, cars:["3","6","34"],    balance:-130},
+  { name:"Brenda", flags:0, cars:["12","88","47"],  balance:-230}
 ];
 
-var BRICKYARD_TOP5 = ["67","20","22","19","11"];
+var IOWA_TOP5 = ["54","20","12","21","11"];
 
 var RATINGS={
-  "11":"AAAAA","20":"AAAAA","5":"AAAAA","12":"AAAA","19":"AAAA","9":"AAAA","45":"AAAA",
-  "22":"AAAB","43":"AAAB","24":"AAAB",
-  "54":"AAA","1":"AAA","77":"AAA","17":"AAA",
-  "23":"AA","97":"AA","88":"AA","6":"AA","48":"AA","7":"AA",
-  "2":"AB","4":"AB","60":"AB","47":"AB","21":"AB",
-  "34":"A","38":"A","33":"A","3":"A","71":"A"
+  "11":"AAAAA","20":"AAAAA","9":"AAAA","5":"AAAA","19":"AAAA","22":"AAAA",
+  "12":"AAAB","3":"AAAB","45":"AAAB","23":"AAAB",
+  "54":"AAA","77":"AAA","1":"AAA","24":"AAA",
+  "48":"AA","6":"AA","97":"AA","88":"AA","17":"AA","43":"AA",
+  "60":"AB","21":"AB","4":"AB","47":"AB","2":"AB",
+  "34":"A","38":"A","33":"A","7":"A","71":"A"
 };
 var starMap={"AAAAA":"&#9733;&#9733;&#9733;&#9733;&#9733;","AAAA":"&#9733;&#9733;&#9733;&#9733;","AAAB":"&#9733;&#9733;&#9733;&frac12;","AAA":"&#9733;&#9733;&#9733;","AA":"&#9733;&#9733;","AB":"&#9733;&frac12;","A":"&#9733;"};
 var DRIVERS={
-  "11":"Denny Hamlin","20":"Christopher Bell","5":"Kyle Larson","12":"Ryan Blaney","19":"Chase Briscoe",
-  "9":"Chase Elliott","45":"Tyler Reddick","22":"Joey Logano","43":"Erik Jones","24":"William Byron",
-  "54":"Ty Gibbs","1":"Ross Chastain","77":"Carson Hocevar","17":"Chris Buescher","23":"Bubba Wallace",
-  "97":"Shane van Gisbergen","88":"Connor Zilisch","6":"Brad Keselowski","48":"Alex Bowman","7":"Daniel Suarez",
-  "2":"Austin Cindric","4":"Noah Gragson","60":"Ryan Preece","47":"Ricky Stenhouse Jr.","21":"Josh Berry",
-  "34":"Todd Gilliland","38":"Zane Smith","33":"Austin Hill","3":"Austin Dillon","71":"Michael McDowell"
+  "11":"Denny Hamlin","20":"Christopher Bell","9":"Chase Elliott","5":"Kyle Larson","19":"Chase Briscoe",
+  "22":"Joey Logano","12":"Ryan Blaney","3":"Austin Dillon","45":"Tyler Reddick","23":"Bubba Wallace",
+  "54":"Ty Gibbs","77":"Carson Hocevar","1":"Ross Chastain","24":"William Byron","48":"Alex Bowman",
+  "6":"Brad Keselowski","97":"Shane van Gisbergen","88":"Connor Zilisch","17":"Chris Buescher","43":"Erik Jones",
+  "60":"Ryan Preece","21":"Josh Berry","4":"Noah Gragson","47":"Ricky Stenhouse Jr.","2":"Austin Cindric",
+  "34":"Todd Gilliland","38":"Zane Smith","33":"Austin Hill","7":"Daniel Suarez","71":"Michael McDowell"
 };
 
 STANDINGS.sort(function(a,b){ if(b.balance!==a.balance) return b.balance-a.balance; return a.name.localeCompare(b.name); });
@@ -229,7 +229,7 @@ STANDINGS.forEach(function(p,i){
   var f=""; for(var j=0;j<p.flags;j++) f+="&#127937;";
   var bc=p.balance>=0?"pos":"neg";
   var bs=(p.balance>=0?"+":"")+"$"+p.balance;
-  var ch=p.cars.map(function(c){ return BRICKYARD_TOP5.indexOf(c)>=0?"<span class='car-highlight'>#"+c+"</span>":"#"+c; }).join(" &middot; ");
+  var ch=p.cars.map(function(c){ return IOWA_TOP5.indexOf(c)>=0?"<span class='car-highlight'>#"+c+"</span>":"#"+c; }).join(" &middot; ");
   var wh=p.flags>0?"<span class='wins-cell has-win'>"+f+"</span>":"<span class='wins-cell'>&mdash;</span>";
   tbody.innerHTML+="<tr><td class='rank'>"+(i+1)+"</td><td><span class='pname'>"+p.name+"</span></td><td class='cars-cell'>"+ch+"</td><td>"+wh+"</td><td class='balance "+bc+"'>"+bs+"</td></tr>";
 });
@@ -238,7 +238,7 @@ var pgrid=document.getElementById("participant-grid");
 STANDINGS.forEach(function(p){
   var f=""; for(var j=0;j<p.flags;j++) f+="&#127937;";
   var dh=p.cars.map(function(c){
-    var hot=BRICKYARD_TOP5.indexOf(c)>=0;
+    var hot=IOWA_TOP5.indexOf(c)>=0;
     var cc=hot?"color:var(--orange2);font-weight:900;":"color:var(--orange);font-weight:900;";
     return "<div class='p-driver-row'><span><span class='p-car' style='"+cc+"'>#"+c+"</span><span class='p-driver'>"+(DRIVERS[c]||"TBD")+"</span></span><span class='p-rating'>"+(starMap[RATINGS[c]]||"&#9733;")+"</span></div>";
   }).join("");
@@ -246,21 +246,21 @@ STANDINGS.forEach(function(p){
 });
 
 var STATS=[
-  "STANDINGS: Pam/Ron/Scott +$180 (4 wins) | Nick +$70 (3 wins) | Nicole/Zach -$20 (2 wins) | Ace/Daniel/KO3 -$120 (1 win) | Brenda -$220 | Race 23 of 36",
-  "WIN HISTORY: R1 Ron | R2 Scott | R3 Zach | R4 Pam | R5 Scott | R6 Zach | R7 Ron | R8 Nick | R9 Nicole | R10 Pam | R11 Nicole | R12 KO3 | R13 Ron | R14 Nick | R15 Zach | R16 Scott | R17 Ron | R18 Scott | R19 Nick | R20 Pam | R21 Ace | R22 Daniel | 22 races - 9 different winners",
-  "RACEPARTY IS TWENTY DAYS! The DanCave RACEPARTY is at 7:00 PM 8/29. 23 races in. Ron, Pam and Scott all at +$180. Nick surging at +$70.",
-  "DANIEL BREAKS THROUGH at the Brickyard! Corey Heim shocked the field to win his second Cup race and his first Crown Jewel. Daniel had Heim #67 and finally gets on the board. Welcome, Daniel.",
-  "IOWA FACT: The track was designed by Rusty Wallace and modeled after Richmond Raceway. It is the newest permanent oval on the Cup schedule, hosting its third Cup race today.",
-  "Ace drew Denny Hamlin #11 - the top-rated Iowa driver and Cup points leader. Hamlin won the 2025 Iowa race in dominant fashion leading 247 of 350 laps. Ace has the horse today.",
-  "Brenda drew Christopher Bell #20 and Connor Zilisch #88 - the 2025 Iowa winner plus her Trackhouse road course ace. Brenda is 0-for-22 at -$220. Iowa is a Bell track. This could be the one.",
-  "IOWA FACT: Blaney won the pole at 23.474 seconds. Logano was on the outside front row at 23.492. Pam holds Blaney. Nick holds Logano. The front row is split between the pool's two strongest contenders today.",
-  "Daniel drew Kyle Larson #5 today - fresh off the emotional Brickyard pool win. Larson finished P10 at Indianapolis and has quietly been building pace on short tracks in the second half of 2026.",
-  "IOWA FACT: This is only the third Cup race at Iowa Speedway. The 2024 race was won by Tyler Reddick. The 2025 race was won by Christopher Bell. Two first-time winners in two races. Who is third?",
-  "Nicole drew Erik Jones #43 - the practice fastest car at 132.855 mph in Happy Hour. Jones starts outside the top 10 but has track position feel and is statistically the fastest car this weekend. Nicole is live.",
-  "Ron drew Tyler Reddick #45 - the 2024 Iowa winner who is fighting to reclaim the points lead from Hamlin. Reddick has bounced back from a rough summer stretch and is focused on making the playoffs.",
-  "WITH 14 RACES LEFT: Pam/Ron/Scott are at +$180 and need 2 more wins to guarantee the title. Nick at +$70 needs to go on a run. Anyone at -$120 or worse needs a miracle. The RACEPARTY awaits.",
-  "Zach drew Chase Briscoe #19 - 3rd at North Wilkesboro, 4th at the Brickyard. Briscoe is quietly on one of the best runs of any driver in the second half of the season. Zach has a contender tonight.",
-  "RACEPARTY IN 20 DAYS. AUGUST 29th DANCAVE."
+  "STANDINGS: Pam/Ron/Scott +$170 (4 wins) | Nick +$60 (3 wins) | Ace/Nicole/Zach -$30 (2 wins) | Daniel/KO3 -$130 (1 win) | Brenda -$230 | Race 24 of 36 | 2 races to the Chase!",
+  "WIN HISTORY: R1 Ron | R2 Scott | R3 Zach | R4 Pam | R5 Scott | R6 Zach | R7 Ron | R8 Nick | R9 Nicole | R10 Pam | R11 Nicole | R12 KO3 | R13 Ron | R14 Nick | R15 Zach | R16 Scott | R17 Ron | R18 Scott | R19 Nick | R20 Pam | R21 Ace | R22 Daniel | R23 Ace | 23 races - 9 different winners",
+  "ACE IS HOT: Back-to-back pool wins (NWB Logano + Iowa Gibbs). Ace climbs from -$200 to -$30 in two weeks. Still needs more wins but the momentum is real. Ace draws Hamlin #11 tonight - the co-favorite.",
+  "RICHMOND FACT: Denny Hamlin has 5 career wins at Richmond - more than any active driver. He finished 5th at Iowa despite brake problems all day. Ace holds #11 tonight. History is on Ace's side.",
+  "CHASE CUTOFF ALERT: Only 2 races remain before the 16-driver Chase field is set. Austin Cindric holds the final spot by 29 points over Ryan Preece. Brad Keselowski, Erik Jones and Ross Chastain are all bubble drivers tonight.",
+  "KO3 drew Austin Dillon #3 - the 2-time defending Richmond winner who won here in 2024 AND 2025. Dillon is listed at +1200 but has been quietly dominant at this specific track. KO3 has the defending champion.",
+  "RICHMOND FACT: Richmond is nicknamed 'America's Premier Short Track' and is one of the most driver-friendly venues on the schedule. Track position matters enormously - winning from 20th back is nearly impossible.",
+  "Zach drew Chase Elliott #9 - one of the top-rated Richmond performers in the NextGen era. Elliott has 4 top-5s in his last 6 Richmond starts. Zach at -$30 is one win away from climbing back into contention.",
+  "RACEPARTY IS 14 DAYS AWAY: DanCave, August 29th, 7:00 PM. Pam/Ron/Scott lead at +$170. Nick is 4th at +$60. With 12 races left after tonight this pool is absolutely alive.",
+  "Brenda drew Ryan Blaney #12 - finished 3rd at Iowa last week and is on a run of 4 consecutive top-5 finishes. Brenda is 0-for-23 at -$230 but has one of the top-5 draws tonight.",
+  "RICHMOND FACT: JGR has won 6 of the last 8 Richmond races. Ace holds Hamlin #11. Nick holds Logano #22 and Gibbs #54. Scott holds Bell #20. JGR dominates and the pool knows it.",
+  "Scott drew Christopher Bell #20 - the co-favorite at +450. Bell finished 2nd at Iowa, 2nd at North Wilkesboro, and 2nd at Chicagoland. Christopher Bell has been the most consistent runner-up in NASCAR in 2026.",
+  "Ron drew Chase Briscoe #19 - the Chicagoland winner who finished 6th at Iowa. Briscoe has been one of the most consistent JGR cars in the second half of 2026. Ron with Briscoe is a legitimate threat.",
+  "Nick drew Joey Logano #22 AND Ty Gibbs #54 - back-to-back pool winners in the last two races. Nick has the hot hands tonight. If either wins, Nick jumps from 4th to 2nd place in the standings overnight.",
+  "Pam drew Kyle Larson #5 - has averaged 8.5 finishes at Richmond over the last 6 races and has been quietly building momentum on short tracks in August. Pam at +$170 stays dangerous tonight."
 ];
 
 var si=0;
@@ -271,10 +271,13 @@ function showStat(){
 }
 showStat(); setInterval(showStat,5000);
 
-// RACEPARTY in 20 days - show it's party day
-document.getElementById("party-countdown").textContent = "\uD83C\uDF89 20 DAYS \uD83C\uDF89";
+(function(){
+  var days=Math.ceil((new Date("2026-08-29T23:00:00Z")-new Date())/864e5);
+  var el=document.getElementById("party-countdown");
+  if(el) el.textContent=days>0?days+" days away":"IT'S PARTY DAY!";
+})();
 
-var gf=new Date("2026-08-09T19:40:00Z");
+var gf=new Date("2026-08-15T23:10:00Z");
 function uc(){
   var d=gf-new Date();
   if(d<=0){["cd-h","cd-m","cd-s"].forEach(function(id){document.getElementById(id).textContent="00";});return;}
@@ -284,6 +287,5 @@ function uc(){
 }
 uc(); setInterval(uc,1000);
 </script>
-
 </body>
 </html>
