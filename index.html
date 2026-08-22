@@ -290,7 +290,6 @@ showStat(); setInterval(showStat,5000);
 (function(){
   var party=new Date("2026-08-29T23:00:00Z");
   var days=Math.ceil((party-new Date())/864e5);
-  var txt=days>0?days+" days away":"IT'S PARTY DAY!";
   var el=document.getElementById("party-countdown");
   var el2=document.getElementById("mega-days");
   if(el) el.textContent=txt;
