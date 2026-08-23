@@ -10,12 +10,14 @@
 body{background:var(--bg);color:var(--text);font-family:"Arial Narrow","Franklin Gothic Medium",Arial,sans-serif;min-height:100vh}
 
 /* RACEPARTY MEGA BANNER */
-.rp-mega{background:linear-gradient(135deg,#1a0030,#2d0050,#1a0030);border-bottom:4px solid var(--orange2);padding:14px 28px;text-align:center;position:relative;overflow:hidden}
-.rp-mega::before{content:"";position:absolute;top:0;left:-100%;width:300%;height:100%;background:linear-gradient(90deg,transparent,rgba(240,184,64,0.08),transparent);animation:shine 3s linear infinite}
-@keyframes shine{0%{left:-100%}100%{left:100%}}
-.rp-mega-title{font-family:Arial Black,Arial;font-weight:900;font-size:26px;color:var(--orange2);letter-spacing:4px;text-transform:uppercase;text-shadow:0 0 20px rgba(240,184,64,0.5)}
-.rp-mega-sub{font-family:Arial Black,Arial;font-weight:900;font-size:15px;color:#fff;letter-spacing:3px;margin-top:4px;opacity:.9}
-.rp-mega-days{font-family:Arial Black,Arial;font-weight:900;font-size:13px;color:var(--orange);letter-spacing:2px;margin-top:6px}
+.raceparty-mega{background:linear-gradient(135deg,#1a0030,#3d0070,#1a0030);border-bottom:4px solid var(--orange2);border-top:4px solid var(--orange2);padding:22px 28px;text-align:center;position:relative;overflow:hidden}
+.raceparty-mega::before{content:"";position:absolute;top:0;left:-100%;width:300%;height:100%;background:linear-gradient(90deg,transparent,rgba(240,184,64,0.15),transparent);animation:shimmer 2s infinite}
+@keyframes shimmer{0%{left:-100%}100%{left:100%}}
+@keyframes flash{0%,100%{opacity:1;text-shadow:0 0 40px rgba(240,184,64,0.9),0 0 80px rgba(240,184,64,0.5)}50%{opacity:0.6;text-shadow:0 0 10px rgba(240,184,64,0.3)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+.rp-mega-label{font-family:Arial Black,Arial;font-weight:900;font-size:38px;color:var(--orange2);letter-spacing:6px;text-shadow:0 0 40px rgba(240,184,64,0.9),0 0 80px rgba(240,184,64,0.5);line-height:1;animation:flash 1s infinite, pulse 1s infinite}
+.rp-mega-sub{font-family:Arial Black,Arial;font-weight:900;font-size:16px;color:#fff;letter-spacing:5px;margin-top:8px;text-shadow:0 0 20px rgba(255,255,255,0.5)}
+.rp-mega-countdown{font-family:Arial Black,Arial;font-weight:900;font-size:13px;color:var(--orange);margin-top:5px;letter-spacing:2px}
 
 .ticker-wrap{background:var(--orange);padding:7px 28px;display:flex;align-items:center;gap:14px;min-height:38px}
 .ticker-pip{width:8px;height:8px;background:#fff;border-radius:50%;opacity:.7;flex-shrink:0}
@@ -26,7 +28,7 @@ body{background:var(--bg);color:var(--text);font-family:"Arial Narrow","Franklin
 .rp-detail{font-weight:700;font-size:13px;color:#aaa;letter-spacing:1px}
 .rp-dot{color:#444;font-size:14px;font-weight:700}
 .rp-countdown{font-family:Arial Black,Arial;font-weight:900;font-size:13px;color:#4caf50}
-.track-banner{background:#000a14;display:flex;justify-content:center;align-items:center;padding:10px 28px;border-bottom:2px solid #1a4a6a}
+.track-banner{background:#00001a;display:flex;justify-content:center;align-items:center;padding:10px 28px;border-bottom:2px solid #003080}
 header{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 14px;border-bottom:2px solid var(--orange);flex-wrap:wrap;gap:12px}
 .race-title{font-size:34px;font-weight:900;line-height:1.05;text-transform:uppercase;letter-spacing:1px}
 .race-title span{color:var(--orange)}
@@ -92,12 +94,12 @@ td:not(:first-child){text-align:center}
 </head>
 <body>
 
-<!-- RACEPARTY MEGA BANNER -->
-<div class="rp-mega">
-  <div class="rp-mega-title">RACEPARTY SATURDAY 8/29</div>
-  <div class="rp-mega-sub">DanCave &nbsp;&middot;&nbsp; 7:00 PM &nbsp;&middot;&nbsp; See you there!</div>
+<!-- RACEPARTY FLASHING MEGA BANNER -->
+<div class="raceparty-mega">
+  <div class="rp-mega-label" id="flash-banner">&#127881; RACEPARTY SATURDAY 7PM &#127881;</div>
+  <div class="rp-mega-sub">DANCAVE &nbsp;&middot;&nbsp; AUGUST 29TH &nbsp;&middot;&nbsp; 7:00 PM</div>
+  <div class="rp-mega-countdown" id="party-countdown-mega">-- days away</div>
 </div>
-
 
 <div class="ticker-wrap">
   <div class="ticker-pip"></div>
@@ -111,24 +113,24 @@ td:not(:first-child){text-align:center}
   <div class="rp-dot">&bull;</div>
   <div class="rp-detail">8/29/26 &nbsp;&middot;&nbsp; DanCave &nbsp;&middot;&nbsp; 7:00 PM</div>
   <div class="rp-dot">&bull;</div>
-  <div class="rp-countdown" id="party-countdown">SATURDAY</div>
+  <div class="rp-countdown" id="party-countdown">-- days away</div>
 </div>
 
 <div class="track-banner">
   <svg width="100%" height="60" viewBox="0 0 700 60" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-    <rect x="0" y="0" width="6" height="60" fill="#1a4a6a"/>
-    <rect x="694" y="0" width="6" height="60" fill="#1a4a6a"/>
-    <ellipse cx="38" cy="30" rx="24" ry="20" fill="none" stroke="#1a4a6a" stroke-width="2.5"/>
+    <rect x="0" y="0" width="6" height="60" fill="#003080"/>
+    <rect x="694" y="0" width="6" height="60" fill="#003080"/>
+    <ellipse cx="38" cy="30" rx="24" ry="20" fill="none" stroke="#003080" stroke-width="2.5"/>
     <ellipse cx="38" cy="30" rx="14" ry="12" fill="none" stroke="#444" stroke-width="1.5"/>
     <text x="78" y="25" font-family="Arial Black,Arial" font-weight="900" font-size="20" fill="#fff" letter-spacing="2">NEW HAMPSHIRE MOTOR SPEEDWAY</text>
-    <text x="78" y="48" font-family="Arial Black,Arial" font-weight="900" font-size="16" fill="#1a4a6a" letter-spacing="2">DOLLAR TREE 301 &middot; RACE 25 &middot; LAST REGULAR SEASON RACE</text>
+    <text x="78" y="48" font-family="Arial Black,Arial" font-weight="900" font-size="16" fill="#003080" letter-spacing="2">DOLLAR TREE 301 &middot; RACE 25 &middot; FINAL REGULAR SEASON RACE</text>
   </svg>
 </div>
 
 <header>
   <div>
     <div class="race-title">Dollar Tree 301 <span>&middot; New Hampshire</span></div>
-    <div class="race-subtitle">Race 25 of 2026 &nbsp;&middot;&nbsp; New Hampshire Motor Speedway &nbsp;&middot;&nbsp; Sunday, August 23, 2026 &nbsp;&middot;&nbsp; Start moved to 2:10 PM ET (weather)</div>
+    <div class="race-subtitle">Race 25 of 2026 &nbsp;&middot;&nbsp; New Hampshire Motor Speedway &nbsp;&middot;&nbsp; Sunday, August 23, 2026 &nbsp;&middot;&nbsp; Start moved to 2:10 PM ET (weather) &nbsp;&middot;&nbsp; Last regular season race</div>
   </div>
   <div class="header-right">
     <div class="countdown-block">
@@ -151,7 +153,7 @@ td:not(:first-child){text-align:center}
 
 <div class="participant-section">
   <div id="participant-grid" class="participant-grid"></div>
-  <div style="font-size:11px;color:var(--muted);margin-top:10px;font-weight:600;">Driver ratings based on New Hampshire history &middot; Blaney/Bell co-favorites &middot; Practice fastest: Erik Jones #43 &middot; Start moved up 1hr for weather &middot; SVG=#97 &middot; Zilisch=#88 &middot; 36-car field, no open entries</div>
+  <div style="font-size:11px;color:var(--muted);margin-top:10px;font-weight:600;">Driver ratings based on New Hampshire history &middot; Blaney/Bell co-favorites &middot; Practice fastest: Erik Jones #43 (130.251 mph) &middot; SVG=#97 &middot; Zilisch=#88 &middot; No open entries &middot; 36-car field &middot; updated 8/23/26</div>
 </div>
 
 <div class="main">
@@ -190,18 +192,18 @@ td:not(:first-child){text-align:center}
     <div class="card">
       <div class="section-header">New Hampshire Motor Speedway</div>
       <div class="fact-row"><span class="fact-label">Nickname</span><span class="fact-val">The Magic Mile</span></div>
-      <div class="fact-row"><span class="fact-label">Track Length</span><span class="fact-val">1.058-mile oval</span></div>
+      <div class="fact-row"><span class="fact-label">Track Length</span><span class="fact-val">1.058-mile flat oval</span></div>
       <div class="fact-row"><span class="fact-label">Banking (Turns)</span><span class="fact-val">12&deg;</span></div>
       <div class="fact-row"><span class="fact-label">Race Length</span><span class="fact-val">301 laps &middot; 318 miles</span></div>
-      <div class="fact-row"><span class="fact-label">Defending Winner</span><span class="fact-val">Ryan Blaney (2025)</span></div>
-      <div class="fact-row"><span class="fact-label">Hamlin wins here</span><span class="fact-val">3 career victories</span></div>
-      <div class="fact-row"><span class="fact-label">Start moved up</span><span class="fact-val">2:10 PM ET (weather)</span></div>
+      <div class="fact-row"><span class="fact-label">Defending winner</span><span class="fact-val">Ryan Blaney (2025)</span></div>
+      <div class="fact-row"><span class="fact-label">JGR/Penske streak</span><span class="fact-val">Won last 17 races here</span></div>
+      <div class="fact-row"><span class="fact-label">Weather</span><span class="fact-val">65% rain chance 6pm ET</span></div>
     </div>
   </div>
 </div>
 
 <div class="footnote">
-  No open entries &mdash; 36-car field. Start moved from 3:00 PM to 2:10 PM ET due to weather. SVG=#97 Trackhouse. Zilisch=#88 Trackhouse. Austin Hill #33 (RCR). Balances after Race 24 (Richmond). Dollar Tree 301 &middot; Race 25 of 2026 &middot; FINAL regular season race. RACEPARTY at DanCave August 29th at 7:00 PM!
+  No open entries. 36-car field. SVG=#97 Trackhouse. Zilisch=#88 Trackhouse. Austin Hill #33 (RCR). Start moved to 2:10 PM ET due to 65% rain chance forecast at 6pm. Balances after Race 24 (Richmond). Dollar Tree 301 &middot; Race 25 of 2026 &middot; FINAL REGULAR SEASON RACE before the Chase. RACEPARTY at DanCave next Saturday 8/29!
 </div>
 
 <script>
@@ -221,21 +223,21 @@ var STANDINGS = [
 var RICHMOND_TOP5 = ["22","19","2","11","9"];
 
 var RATINGS={
-  "12":"AAAAA","20":"AAAAA","22":"AAAA","11":"AAAA","19":"AAAA","9":"AAAA",
-  "45":"AAAB","5":"AAAB","54":"AAAB","2":"AAAB",
-  "43":"AAA","1":"AAA","17":"AAA","24":"AAA",
-  "23":"AA","97":"AA","88":"AA","48":"AA","6":"AA","77":"AA",
-  "60":"AB","21":"AB","4":"AB","47":"AB","7":"AB",
-  "34":"A","38":"A","33":"A","3":"A","71":"A"
+  "20":"AAAAA","12":"AAAAA","22":"AAAA","11":"AAAA","19":"AAAA",
+  "9":"AAAA","5":"AAAB","45":"AAAB","24":"AAA","2":"AAAB",
+  "54":"AAAB","43":"AAA","1":"AAA","77":"AA",
+  "17":"AAA","48":"AA","97":"AA","88":"AA","6":"AA",
+  "23":"AA","21":"AB","4":"AB","60":"AB","47":"AB","34":"A",
+  "38":"A","3":"A","33":"A","7":"AB","71":"A"
 };
 var starMap={"AAAAA":"&#9733;&#9733;&#9733;&#9733;&#9733;","AAAA":"&#9733;&#9733;&#9733;&#9733;","AAAB":"&#9733;&#9733;&#9733;&frac12;","AAA":"&#9733;&#9733;&#9733;","AA":"&#9733;&#9733;","AB":"&#9733;&frac12;","A":"&#9733;"};
 var DRIVERS={
-  "12":"Ryan Blaney","20":"Christopher Bell","22":"Joey Logano","11":"Denny Hamlin","19":"Chase Briscoe",
-  "9":"Chase Elliott","45":"Tyler Reddick","5":"Kyle Larson","54":"Ty Gibbs","2":"Austin Cindric",
-  "43":"Erik Jones","1":"Ross Chastain","17":"Chris Buescher","24":"William Byron","23":"Bubba Wallace",
-  "97":"Shane van Gisbergen","88":"Connor Zilisch","48":"Alex Bowman","6":"Brad Keselowski","77":"Carson Hocevar",
-  "60":"Ryan Preece","21":"Josh Berry","4":"Noah Gragson","47":"Ricky Stenhouse Jr.","7":"Daniel Suarez",
-  "34":"Todd Gilliland","38":"Zane Smith","33":"Austin Hill","3":"Austin Dillon","71":"Michael McDowell"
+  "20":"Christopher Bell","12":"Ryan Blaney","22":"Joey Logano","11":"Denny Hamlin","19":"Chase Briscoe",
+  "9":"Chase Elliott","5":"Kyle Larson","45":"Tyler Reddick","24":"William Byron","2":"Austin Cindric",
+  "54":"Ty Gibbs","23":"Bubba Wallace","77":"Carson Hocevar","43":"Erik Jones","1":"Ross Chastain",
+  "17":"Chris Buescher","48":"Alex Bowman","97":"Shane van Gisbergen","88":"Connor Zilisch","6":"Brad Keselowski",
+  "21":"Josh Berry","4":"Noah Gragson","60":"Ryan Preece","47":"Ricky Stenhouse Jr.","34":"Todd Gilliland",
+  "38":"Zane Smith","3":"Austin Dillon","33":"Austin Hill","7":"Daniel Suarez","71":"Michael McDowell"
 };
 
 STANDINGS.sort(function(a,b){ if(b.balance!==a.balance) return b.balance-a.balance; return a.name.localeCompare(b.name); });
@@ -262,21 +264,21 @@ STANDINGS.forEach(function(p){
 });
 
 var STATS=[
-  "STANDINGS: Pam/Ron/Scott +$160 (4 wins) | Nick +$140 (4 wins) | Ace/Nicole/Zach -$40 (2 wins) | Daniel/KO3 -$140 (1 win) | Brenda -$240 | LAST REGULAR SEASON RACE",
-  "WIN HISTORY: R1 Ron | R2 Scott | R3 Zach | R4 Pam | R5 Scott | R6 Zach | R7 Ron | R8 Nick | R9 Nicole | R10 Pam | R11 Nicole | R12 KO3 | R13 Ron | R14 Nick | R15 Zach | R16 Scott | R17 Ron | R18 Scott | R19 Nick | R20 Pam | R21 Ace | R22 Daniel | R23 Ace | R24 Nick | 24 races, 9 different winners",
-  "RACEPARTY NEXT SATURDAY: DanCave August 29th at 7:00 PM - SATURDAY! Pam/Ron/Scott at +$160, Nick closing fast at +$140. One win today changes everything going into the party.",
-  "NICK IS SURGING: 4 wins this season including 2 of the last 6 races (Iowa Briscoe... wait, that was Nick at Chicagoland and Richmond). Nick is only $20 behind the leaders at +$140. This is a 4-person race.",
-  "NEW HAMPSHIRE FACT: Start moved up to 2:10 PM ET from 3:00 PM due to weather. This is the FINAL race of the regular season. After today, Daytona and then the playoffs.",
-  "Zach drew Ryan Blaney #12 - the co-favorite and defending New Hampshire winner. Blaney won here in 2025 and is one of two drivers at +400. Zach at -$40 needs a win badly. Blaney gives him a real shot.",
-  "NEW HAMPSHIRE FACT: No winner has started outside the top 5 at New Hampshire since the NextGen car debuted. Track position is everything on the Magic Mile. Qualifying matters more here than almost anywhere.",
-  "Scott drew Christopher Bell #20 - the other co-favorite at +400. Bell has the best average running position of any active driver at New Hampshire (5.4). Bell finished 7th at Richmond after leading stages. Scott stays dangerous.",
-  "NEW HAMPSHIRE FACT: Toyota has won 3 of the last 4 races here. JGR and Penske have dominated this track for years. Ron holds Hamlin, Nick holds Briscoe - both JGR. Daniel holds Logano - Penske. Strong cards.",
-  "Brenda drew Ty Gibbs #54 - the Iowa winner who has been on a tear in August. Brenda is 0-for-24 at -$240. If there is ever going to be a breakthrough, it is this race. Daytona is next week and anything can happen there.",
-  "Ron drew Denny Hamlin #11 - 3 career wins at New Hampshire, currently on a streak of 4 consecutive top-5 finishes. Hamlin is at +550 and leads the Cup standings by 115 points. Ron has the chess player today.",
-  "PENSKE SURGE: Logano won Richmond. Blaney won the pole and is a co-favorite. Cindric finished 3rd at Richmond. Ace holds Cindric's #2 today and could benefit from the team momentum.",
-  "NEW HAMPSHIRE FACT: This is New England's only Cup race of the season. The Magic Mile is 1.058 miles of flat asphalt with 12-degree banking. Braking into the turns is the primary passing zone.",
-  "Nick drew Chase Briscoe #19 AND Erik Jones #43 - Briscoe led 171 laps at Richmond before finishing 2nd. Jones was fastest in practice at 130.251 mph. Nick has two of the hottest draws on the board today.",
-  "FINAL REGULAR SEASON RACE: After today, Daytona is Saturday night - the RACEPARTY race. Whoever wins this pool season will have their moment of glory at DanCave in Saturday. Everything on the line."
+  "STANDINGS: Pam/Ron/Scott +$160 (4 wins) | Nick +$140 (4 wins) | Ace/Nicole/Zach -$40 (2 wins) | Daniel/KO3 -$140 (1 win) | Brenda -$240 | FINAL REGULAR SEASON RACE | RACEPARTY SATURDAY!",
+  "WIN HISTORY: R1 Ron | R2 Scott | R3 Zach | R4 Pam | R5 Scott | R6 Zach | R7 Ron | R8 Nick | R9 Nicole | R10 Pam | R11 Nicole | R12 KO3 | R13 Ron | R14 Nick | R15 Zach | R16 Scott | R17 Ron | R18 Scott | R19 Nick | R20 Pam | R21 Ace | R22 Daniel | R23 Ace | R24 Nick | 24 races - 9 different winners",
+  "RACEPARTY IS SATURDAY: DanCave, August 29th, 7:00 PM. Pam/Ron/Scott at +$160. Nick right behind at +$140. The gap is only $20. Whoever wins today walks into DanCave with the momentum.",
+  "Zach drew Ryan Blaney #12 - the co-favorite, defending New Hampshire winner, and the pole sitter. Blaney has won here in back-to-back seasons. Zach at -$40 needs wins badly and got the best draw today.",
+  "NEW HAMPSHIRE FACT: JGR and Team Penske have combined to win the last 17 races at The Magic Mile. Today Zach has Blaney, Scott has Bell, Daniel has Logano, Nick has Briscoe. All Penske or JGR. The pool is stacked.",
+  "Scott drew Christopher Bell #20 - the co-favorite and 2-time New Hampshire winner. Bell won here in 2024 AND 2025. He has finished 2nd in 4 of his last 6 races in 2026. Scott with Bell is the most dangerous combo today.",
+  "NEW HAMPSHIRE FACT: Start moved up to 2:10 PM ET due to a 65% rain forecast after 6pm. Weather could shorten the race or create strategy chaos. Teams may need wet-weather tires before the end.",
+  "Brenda drew Ty Gibbs #54 and William Byron #24 - Gibbs is coming off a win at Iowa, Byron has been quietly consistent in the second half. Brenda is 0-for-24 at -$240 but has two legitimate threats today.",
+  "PLAYOFF PICTURE: This is the last regular season race. The Chase field locks in today. Austin Cindric (#2 KO3) holds the final playoff spot. KO3 has Cindric today - if he makes it, KO3 played a small role.",
+  "Ron drew Denny Hamlin #11 - 3 career New Hampshire wins, leads the Cup standings by 115 points. Hamlin may manage risk for the championship but his JGR setup has been elite at flat tracks all season. Ron is dangerous.",
+  "Nick drew Chase Briscoe #19 and Erik Jones #43. Briscoe finished 2nd at Richmond after leading 171 laps. Jones was the practice fastest car at New Hampshire (130.251 mph). Nick has TWO legitimate threats today.",
+  "Ace drew Chase Elliott #9 and SVG #97. Elliott finished 5th at Richmond and has 4 top-5s in his last 6 New Hampshire starts. Ace at -$40 could jump back into contention with a win tonight.",
+  "Daniel drew Joey Logano #22 - the back-to-back winner from North Wilkesboro AND Richmond. Logano is the hottest driver in NASCAR right now and Daniel has him again. Back-to-back pool wins for Daniel?",
+  "Pam drew Kyle Larson #5 - finished top-10 at Richmond and has been quietly building pace at flat short tracks in the Chase run-up. Pam at +$160 stays the coolest hand at the table today.",
+  "Nicole drew Tyler Reddick #45 - the Cup points runner-up who finished 11th at Richmond from 32nd after a tough stretch. Reddick is motivated. Nicole at -$40 needs this one to stay relevant heading into the Chase."
 ];
 
 var si=0;
@@ -288,12 +290,12 @@ function showStat(){
 showStat(); setInterval(showStat,5000);
 
 (function(){
-  var party=new Date("2026-08-29T23:00:00Z");
-  var days=Math.ceil((party-new Date())/864e5);
+  var days=Math.floor((new Date("2026-08-29T23:00:00Z")-new Date())/864e5);
+  var txt=days>0?days+" days away":"IT'S PARTY DAY!";
   var el=document.getElementById("party-countdown");
-  var el2=document.getElementById("mega-days");
+  var el2=document.getElementById("party-countdown-mega");
   if(el) el.textContent=txt;
-  if(el2) el2.textContent=days>0?"SATURDAY":"IT'S PARTY DAY! &#127881;";
+  if(el2) el2.textContent=days>0?"( "+days+" DAYS AWAY )":"( TODAY! )";
 })();
 
 var gf=new Date("2026-08-23T18:10:00Z");
